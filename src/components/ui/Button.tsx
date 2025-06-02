@@ -34,7 +34,7 @@ function Button({ className, size = 'medium', color = 'primary', children, ...pr
         '[box-shadow:0_0_0_1px_rgba(225,228,234,0.2),0_16px_24px_-8px_rgba(24,27,37,0.1),inset_0_-2px_4px_rgba(14,18,27,0.2),inset_0_2px_6px_rgba(255,255,255,1)] ' +
         'hover:[box-shadow:0_0_0_1px_rgba(225,228,234,0.2),0_16px_24px_-8px_rgba(24,27,37,0.1),inset_0_-2px_4px_rgba(14,18,27,0.2),inset_0_2px_6px_rgba(255,255,255,1)] '+
         'active:[box-shadow:inset_0_2px_4px_rgba(14,18,27,0.1),0_0_0_1px_rgba(225,228,234,1),0_16px_24px_-8px_rgba(24,27,37,0.1)] ' +
-        'focus:[box-shadow:0_0_0_4px_rgba(153,160,174,0.1),inset_0_2px_4px_rgba(14,18,24,0.1),0_0_0_1px_rgba(225,228,234,1),0_16px_24px_-8px_rgba(24,27,37,0.1)]',
+        'focus:[box-shadow:0_0_0_4px_rgba(153,160,174,0.1),inset_0_2px_4px_rgba(14,18,27,0.1),0_0_0_1px_rgba(225,228,234,1),0_16px_24px_-8px_rgba(24,27,37,0.1)]',
       color === 'neutral' && 
         'bg-neutral-800 text-neutral-0 hover:bg-neutral-600 active:bg-neutral-800 focus:bg-neutral-800 disabled:bg-neutral-950 ' +
         '[box-shadow:0_0_0_1px_rgba(34,37,48,1),0_16px_24px_-8px_rgba(24,27,37,0.1),inset_0_-2px_4px_0_rgba(14,18,27,1),inset_0_2px_6px_0_rgba(255,255,255,0.2)] ' +
@@ -44,9 +44,10 @@ function Button({ className, size = 'medium', color = 'primary', children, ...pr
         'transition-all',
       color === 'error' && 'bg-error-500 text-neutral-0 hover:bg-error-400 active:bg-error-600 disabled:bg-error-950 hover:shadow-error-700 active:shadow-error-700 ' +
         '[box-shadow:0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1),inset_0_-2px_4px_0_rgba(14,18,27,0.3),inset_0_2px_6px_0_rgba(255,255,255,0.25)] ' +
-        'hover:[box-shadow:0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1),inset_4px_-2px_4px_0_rgba(14,18,27,0.3)',
-        'active:[box-shadow:inset_0_2px_4px_0_rgba(14,18,27,0.3),0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1)]',
-        'focus:[box-shadow:0_0_0_4px_rgba(233,56,68,0.1),inset_0_2px_4px_0_rgba(14,18,27,0.3),0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1)]',
+        'hover:[box-shadow:0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1),inset_4px_-2px_4px_0_rgba(14,18,27,0.3)' +
+        'active:[box-shadow:inset_0_2px_4px_0_rgba(14,18,27,0.3),0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1)]' +
+        'focus:[box-shadow:0_0_0_4px_rgba(233,56,68,0.1),inset_0_2px_4px_0_rgba(14,18,27,0.3),0_0_0_1px_rgba(181,32,44,1),0_16px_24px_-8px_rgba(24,27,37,0.1)]' +
+        'focus:bg-error-800',
       className
       )}
         {...props}
