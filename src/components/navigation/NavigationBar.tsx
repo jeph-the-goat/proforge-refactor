@@ -5,7 +5,7 @@ import Button from '@/components/ui/Button'
 
 function NavigationBar() {
   return (
-    <div className="bg-neutral-950 min-h-screen w-full flex flex-col items-center p-2 px-[140px] gap-2 h-[80px]">
+    <div className="bg-neutral-950 min-h-screen w-full flex flex-col items-center p-2 gap-2 h-[80px] px-36 pt-6">
       <div className="p-2 bg-neutral-400/10 rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-400/10 backdrop-blur-xl inline-flex justify-start items-center gap-10">
         <div className="pl-2 inline-flex flex-col justify-start items-start gap-2">
           <Logo type="icon-text" color="#fff" />
