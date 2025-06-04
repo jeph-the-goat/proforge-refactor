@@ -14,10 +14,10 @@ function Button({ className, size = 'medium', color = 'primary', children, ...pr
     <button
       className={cn(
       'flex items-center justify-center gap-1 rounded-sm font-inter',
-      size === 'icon' && 'w-[52px] h-[52px] gap-1',
-      size === 'small' && 'w-[116px] h-[36px] gap-1 text-sm font-semibold',
-      size === 'medium' && 'w-[124px] h-[40px] gap-1 text-sm font-semibold',
-      size === 'large' && 'w-[155px] h-[52px] gap-1 text-md font-semibold',
+      size === 'icon' && 'p-4 gap-1',
+      size === 'small' && 'px-2 py-1 gap-1 text-sm font-semibold',
+      size === 'medium' && 'px-3 py-2 gap-1 text-sm font-semibold',
+      size === 'large' && 'px-6 py-3 gap-1 text-md font-semibold',
       color === 'primary' &&
         'bg-primary-500 text-neutral-0 hover:bg-primary-400 active:bg-primary-800 disabled:bg-primary-950 ' +
         'hover:shadow-primary-400 active:shadow-primary-800 focus:shadow-primary-800 ' +
