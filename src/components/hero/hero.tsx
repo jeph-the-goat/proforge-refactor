@@ -16,7 +16,7 @@ const EventBarContent: EventBarProps = {
 
 function Hero() {
   return (
-    <section className="h-screen w-full bg-neutral-950 flex flex-col justify-center items-center gap-10 px-9xl">
+    <section className="h-screen w-full bg-neutral-950 flex flex-col justify-center items-center gap-10 p-9xl">
       {/* Top Info Bar */}
       <EventBar {...EventBarContent} />
       {/* Main Content */}
