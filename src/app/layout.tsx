@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./global.css";
+import { SpotlightSVG } from "@/components/effects/spotlight";
 import { NavigationBar } from "@/components/navigation/NavigationBar";
 import { Footer } from "@/components/navigation/Footer";
 
@@ -21,13 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased relative bg-neutral-950`}>
+        {/* Spotlight as background */}
         <NavigationBar />
         <main>
           {children}
-        </main> 
+        </main>
         <Footer />
       </body>
     </html>

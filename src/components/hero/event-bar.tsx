@@ -1,8 +1,6 @@
 import LinkedButton from '../ui/LinkedButton';
 import Avatar from '../ui/Avatar';
 
-
-
 export type EventBarProps = {
   infoText: string;
   linkText: string;

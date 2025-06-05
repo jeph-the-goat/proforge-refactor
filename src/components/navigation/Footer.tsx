@@ -18,7 +18,7 @@ const SocialMediaIconContainer = () => {
 
 const FooterCTA = () => {
   return (
-    <div className="flex flex-col px-9xl z-10">
+    <div className="flex flex-col py-8xl px-9xl">
       <div className="flex flex-col gap-2 bg-neutral-950 border border-primary-500 rounded-xl overflow-hidden">
         <div className="flex p-7xl flex-col items-center justify-center gap-5xl self-stretch relative">
           <FooterCTAImage />
@@ -41,13 +41,13 @@ export const CTA = () => {
   return (
     <div className="relative w-full">
       {/* Background split */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 pointer-events-none z-0">
         <div className="h-1/2 bg-neutral-950 w-full" />
         <div className="h-1/2 bg-neutral-900 w-full" />
       </div>
 
       {/* CTA content on top */}
-      <div className="relative z-10">
+      <div className="relative">
         <FooterCTA />
       </div>
     </div>
@@ -58,7 +58,7 @@ export default function Footer() {
   return (
     <div className="relative w-full">
       <CTA />
-      <footer className="bg-neutral-900 w-full relative z-10">
+      <footer className="bg-neutral-900 w-full relative">
         <div className="flex flex-col gap-16 px-[140px] py-[120px]">
           <div className="self-stretch inline-flex justify-start items-center gap-14">
           {/* Top Row: Logo & Socials */}
