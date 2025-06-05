@@ -122,6 +122,7 @@ module.exports = {
         '5xl': '56px',
         '6xl': '64px',
         '7xl': '80px',
+        '9xl': '140px',
         margin: '140px',
       },
       borderRadius: {

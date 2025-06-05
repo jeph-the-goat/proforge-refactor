@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '@/components/ui/Logo'
+import { Logo} from '@/components/ui/Logo'
 import LinkedButton from '@/components/ui/LinkedButton'
 import Button from '@/components/ui/Button'
 
@@ -8,7 +8,12 @@ function NavigationBar() {
     <div className="bg-neutral-950 w-full flex flex-col items-center p-2 gap-2 h-[80px] px-36 pt-6">
       <div className="p-2 bg-neutral-400/10 rounded-2xl outline outline-1 outline-offset-[-1px] outline-neutral-400/10 backdrop-blur-xl inline-flex justify-start items-center gap-10">
         <div className="pl-2 inline-flex flex-col justify-start items-start gap-2">
-          <Logo type="icon-text" color="#fff" />
+        <div className='inline-flex items-center gap-1.5 w-24'>
+          <Logo className="text-neutral-0"/>
+          <span className="text-neutral-0 text-lg font-semibold font-['Inter'] leading-loose">
+            Nexora
+          </span>
+        </div>
         </div>
         <div className="self-stretch inline-flex justify-center items-center gap-10">
           <LinkedButton size="medium" variant="white" href="/">Home</LinkedButton>
@@ -32,4 +37,4 @@ function NavigationBar() {
   )
 }
 
-export default NavigationBar
+export { NavigationBar }
