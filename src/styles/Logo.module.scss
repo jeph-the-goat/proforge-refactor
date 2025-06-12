@@ -1,0 +1,16 @@
+.cLogo {
+  &:global {
+    &.c-logo {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 91px;
+
+      >svg {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

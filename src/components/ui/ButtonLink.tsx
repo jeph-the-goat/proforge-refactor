@@ -1,17 +1,20 @@
-'use client';
-import {ButtonHTMLAttributes} from 'react';
+import Link, {LinkProps} from "next/link";
 import clsx from "clsx";
 
 import {cButtonProps} from "@/types";
 
-interface ButtonProps extends cButtonProps, ButtonHTMLAttributes<HTMLButtonElement>{
-  type?: "reset" | "submit";
+interface ButtonLinkProps extends cButtonProps, LinkProps{
+  href: string,
+  isExternal?: boolean;
+  isDisabled?: boolean;
 }
 
-export const Button = (
+export const ButtonLink = (
   {
+    href,
+    isExternal,
+    isDisabled,
     extraClassName,
-    type,
     btnText,
     btnTitle,
     children,
@@ -21,12 +24,14 @@ export const Button = (
     icon,
     iconPlacement,
     ...rest
-  }:ButtonProps) => {
+  }:ButtonLinkProps) => {
 
   return (
-    <button
-      type={type? type : "button"}
+    <Link
       className={clsx("c-button", extraClassName)}
+      href={href? href : "/"}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? 'noreferrer noopener': undefined}
       data-color={btnColor}
       data-variant={btnVariant}
       data-size={btnSize}
@@ -50,6 +55,6 @@ export const Button = (
         </i>
       )}
 
-    </button>
+    </Link>
   );
 };

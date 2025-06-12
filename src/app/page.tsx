@@ -1,11 +1,11 @@
-import Hero from '@/components/hero/hero'
-import SocialProof from '@/components/SocialProof'
+import HomeSectionHero from "@/components/HomeSectionHero";
+import {HomeSectionSocialProof} from "@/components";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center bg-neutral-950">
-      <Hero />
-      <SocialProof />
-    </div>
+    <>
+     <HomeSectionHero/>
+      <HomeSectionSocialProof/>
+    </>
   );
 }

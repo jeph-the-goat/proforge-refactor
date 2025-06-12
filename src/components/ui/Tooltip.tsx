@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import TooltipIcon from '@/icons/TooltipIcon'
 
 interface TooltipProps {
   description: string;
@@ -36,7 +35,6 @@ function Tooltip({ description }: TooltipProps) {
           {description}
         </span>
       )}
-      <TooltipIcon style={{ marginLeft: 2, cursor: 'pointer' }} />
     </span>
   )
 }

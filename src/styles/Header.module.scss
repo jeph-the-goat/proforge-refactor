@@ -1,0 +1,51 @@
+.cHeader {
+  &:global {
+    &.c-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9995;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      padding: var(--px24) 1em;
+
+      @media (max-width: 991px) {
+        padding: 0.5em 1em;
+      }
+    }
+  }
+
+  :global {
+    .c-header {
+      &-wrapper {
+        display: grid;
+        grid-template-columns: 91px 1fr 91px;
+        align-items: center;
+        gap: var(--px8);
+        width: 100%;
+        max-width: 962px; //962px
+        margin: 0 auto;
+        padding: var(--px8);
+        background-color: hsl(from var(--neutral-400) h s l /10%);
+        border: 1px solid hsl(from var(--neutral-400) h s l /10%);
+        border-radius: 1em;
+        backdrop-filter: blur(56px);
+
+        .c-nav.c-desktop {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: clamp(1em, 40/1440 * 100vw, var(--px40));
+        }
+      }
+
+      @media (max-width: 991px) {
+        &-wrapper {
+          display: flex;
+        }
+      }
+    }
+  }
+}
