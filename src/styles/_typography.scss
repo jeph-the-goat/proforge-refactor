@@ -50,7 +50,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: var(--px64);
+  font-size: clamp(var(--px28), 64/1440 * 100vw, var(--px64));
   line-height: 1.125em; //72px @64px
   letter-spacing: -0.046em; //-3px @64px
 }

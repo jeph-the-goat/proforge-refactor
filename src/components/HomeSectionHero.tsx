@@ -16,7 +16,7 @@ export const HomeSectionHero = () => {
 
           <div className='c-home-section-hero-grid-text'>
 
-            <h1 className="c-gradient-text">
+            <h1 className="h2 c-gradient-text">
               Revolutionize Web3 Development
             </h1>
 
@@ -25,9 +25,18 @@ export const HomeSectionHero = () => {
             </p>
 
             <div className="c-button-container">
-              <ButtonLink href='/' btnText='Get Started'/>
 
-              <ButtonLink href='/' btnColor='white' btnText='Learn More'/>
+              <ButtonLink
+                href='/'
+                btnText='Get Started'
+              />
+
+              <ButtonLink
+                href='/'
+                btnColor='white'
+                btnText='Learn More'
+              />
+
             </div>
 
           </div>
