@@ -6,7 +6,7 @@ export const HomeSectionBenefits = () => {
   return (
     <section className={clsx("c-home-section-benefits")}>
 
-      <div className="div c-container">
+      <div className="c-container">
 
         <SectionTitle
           leadText="Benefits"
@@ -15,8 +15,18 @@ export const HomeSectionBenefits = () => {
           paragraph="We take the headaches out of building Web3 projects, so you can focus on creating."
         />
 
-        <div className="c-home-section-benefits-grid">
+        <div className="c-home-section-benefits-body">
 
+          <div className="c-home-section-benefits-image">
+            {/*<img src="" alt=""/>*/}
+
+          </div>
+
+            <div className="c-home-section-benefits-grid">
+
+
+
+            </div>
 
         </div>
 

@@ -65,5 +65,3 @@ export const HomeSectionHero = () => {
     </section>
   );
 };
-
-export default HomeSectionHero;

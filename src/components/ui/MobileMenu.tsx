@@ -14,7 +14,7 @@ export const MobileMenu = () => {
   const isMobile = useMediaQuerySafe('(max-width: 991px)');
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const handleToggleOpen = useCallback(() => {
     setMobileMenuOpen(mobileMenuOpen => !mobileMenuOpen)
@@ -33,7 +33,7 @@ export const MobileMenu = () => {
     }
   }, [setMobileMenuOpen, mobileMenuOpen, isMobile])
 
-  useOnClickOutside(mobileMenuRef, handleClose)
+  useOnClickOutside(mobileMenuRef as React.RefObject<HTMLElement>, handleClose);
 
   return (
     <div

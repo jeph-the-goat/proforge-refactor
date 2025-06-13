@@ -1,0 +1,99 @@
+.cHomeSectionFeatures {
+  &:global {
+    &.c-home-section-features {
+      padding: clamp(var(--px40), 64/1440*100vw, var(--px64)) 1em;
+    }
+  }
+
+  :global {
+    .c-home-section-features {
+      &-wrapper {
+        width: 100%;
+        max-width: 1312px; /* 1312px */
+        margin: 0 auto;
+        padding: clamp(var(--px40), 80/1440*100vw, var(--px80)) 1em;
+        background-color: var(--neutral-900);
+        border-radius: var(--px20);
+
+        > .c-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: clamp(var(--px32), 64/1440*100vw, var(--px64));
+          text-align: center;
+
+          .c-section-title {
+            --lead-bg-color: var(--neutral-800);
+            align-items: center;
+          }
+        }
+      }
+
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: stretch;
+        gap: clamp(1em, 24/1440*100vw, var(--px24)) clamp(1em, 32/1440*100vw, var(--px32));
+
+        @media(min-width: 767px) {
+          grid-template-columns: repeat(2, 1fr);
+          align-items: stretch;
+
+          .c-home-section-features-grid-card {
+            &:nth-child(3n+1) {
+              grid-column: span 2;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              align-items: stretch;
+              height: auto;
+              min-height: 300px;
+
+              .c-home-section-features-grid-card-body {
+                justify-content: center;
+              }
+            }
+
+            &:nth-child(6n+1) {
+              .c-home-section-features-grid-card-body {
+                order: -1;
+              }
+            }
+          }
+        }
+
+        &-card {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          background-color: var(--neutral-950);
+          border-radius: 1em;
+          overflow: hidden;
+
+          &-body {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px12);
+            padding: clamp(var(--px20), 40/1440*100vw, var(--px40));
+
+            >p {
+              margin-bottom: 0;
+            }
+          }
+
+          &-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import React, {ReactNode} from 'react';
 import {clsx} from "clsx";
 
 interface SectionTitleProps {
+  alignment?: "left";
   leadText?: string;
   leadIcon?: ReactNode;
   headingTag?: "h1"
@@ -15,6 +16,7 @@ interface SectionTitleProps {
 
 export const SectionTitle = (
   {
+    alignment,
     leadText,
     leadIcon,
     headingTag,
@@ -23,7 +25,10 @@ export const SectionTitle = (
     paragraph
   }:SectionTitleProps) => {
   return (
-    <div className={clsx(styles.cSectionTitle, "c-section-title")}>
+    <div
+      className={clsx(styles.cSectionTitle, "c-section-title")}
+      data-alignment={alignment}
+    >
 
       {leadText && (
         <div className="c-section-title-lead">

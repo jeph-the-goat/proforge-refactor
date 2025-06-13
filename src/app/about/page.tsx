@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import {clsx} from "clsx";
+import {AboutSectionHero} from "@/components";
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -11,10 +11,9 @@ export const metadata: Metadata = {
 };
 function About() {
   return (
-    <div className={clsx("c-about")}>
-      <h1>About Us</h1>
-      <p>Learn more about our company.</p>
-    </div>
+    <>
+      <AboutSectionHero/>
+    </>
   );
 }
 

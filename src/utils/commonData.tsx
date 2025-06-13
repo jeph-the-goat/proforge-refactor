@@ -1,17 +1,16 @@
-import {IcnFacebook, IcnInstagram, IcnLinkedin, IcnX} from "../../public/icons";
+import {IcnFacebook, IcnInstagram, IcnLinkedin, IcnX} from "@assets/icons";
+
 
 export const NavItems = [
   { label: "Home", url: "/" },
-  { label: "About Us", url: "/about-us" },
+  { label: "About Us", url: "/about" },
   { label: "Pricing", url: "/pricing" },
   { label: "Blog", url: "/blog" },
-  { label: "Integration", url: "/intergration" },
+  { label: "Integration", url: "/integration" },
   { label: "FAQ", url: "/faq" },
   { label: "Contact", url: "/contact" }
 ];
 
-
-// Social Links Array
 export const SocialLinkNavItems = [
   {
     label: "X",
@@ -35,7 +34,6 @@ export const SocialLinkNavItems = [
   }
 ];
 
-// Footer Menu Items Array
 export const FooterNavItems = [
   {
     id: 1,
@@ -143,7 +141,6 @@ export const FooterNavItems = [
   }
 ];
 
-// Footer Legal Items Array
 export const FooterLegalNavItems = [
   {
     label: "Privacy Policy",
@@ -159,5 +156,83 @@ export const FooterLegalNavItems = [
     label: "Security Policy",
     url: "/security-policy",
     isExternal: false
+  }
+];
+
+
+export const SectionLogoBannerList = [
+  {
+    title: "Discord",
+    image: "/images/logo-discord.svg"
+  },
+  {
+    title: "Square",
+    image: "/images/logo-square.svg"
+  },
+  {
+    title: "Slack",
+    image: "/images/logo-slack.svg"
+  },
+  {
+    title: "GitHub",
+    image: "/images/logo-github.svg"
+  },
+  {
+    title: "GitLab",
+    image: "/images/logo-gitlab.svg"
+  },
+  {
+    title: "Framer",
+    image: "/images/logo-framer.svg"
+  },
+  {
+    title: "Google",
+    image: "/images/logo-google.svg"
+  },
+  {
+    title: "Coinbase",
+    image: "/images/logo-coinbase.svg"
+  },
+  {
+    title: "Stripe",
+    image: "/images/logo-stripe.svg"
+  },
+];
+
+export const SectionTestimonialList = [
+  {
+    quote: "As a solo developer, I always struggled with juggling tools. This platform has been a game-changer, it's like having a whole team in one app!",
+    image: "https://i.pravatar.cc/150?img=21",
+    name: "Jordan M.",
+    jobTitle: "Indie Developer",
+    function: "Solo Developer"
+  },
+  {
+    quote: "Their community support is top-notch. I got answers to my questions in minutes, and their guides are super helpful for beginners and pros alike.",
+    image: "https://i.pravatar.cc/150?img=2",
+    name: "Evan K.",
+    jobTitle: "Smart Contract Developer",
+    function: "Community Advocate"
+  },
+  {
+    quote: "We needed to build and launch our dApp fast, and this platform delivered. The AI-driven contract builder saved us weeks of work!",
+    image: "https://i.pravatar.cc/150?img=6",
+    name: "Rachel T.",
+    jobTitle: "Founder of NovaChain",
+    function: "Startup Founder"
+  },
+  {
+    quote: "Our team of 20 used to spend hours syncing across platforms. Now, we collaborate effortlessly and deploy in half the time. This is a must-have!",
+    image: "https://i.pravatar.cc/150?img=10",
+    name: "Michael L.",
+    jobTitle: "Lead Engineer at Decentro Labs",
+    function: "Enterprise Team Lead"
+  },
+  {
+    quote: "As someone new to Web3, I found the tools easy to use and incredibly powerful. The interactive demo was the perfect introduction!",
+    image: "https://i.pravatar.cc/150?img=32",
+    name: "Sofia G.",
+    jobTitle: "Blockchain Enthusiast",
+    function: "Web3 Enthusiast"
   }
 ];

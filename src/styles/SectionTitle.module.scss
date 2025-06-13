@@ -1,15 +1,24 @@
 .cSectionTitle {
   &:global{
     &.c-section-title {
+      --lead-bg-color: var(--neutral-900);
+
       display: flex;
       flex-direction: column;
+      align-items: center;
       row-gap: var(--px12);
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
 
       .c-section-title-lead {
         display: inline-flex;
         align-items: center;
         column-gap: var(--px6);
         margin-bottom: var(--px12);
+        padding: var(--px4) var(--px8);
+        background-color: var(--lead-bg-color);
+        border-radius: var(--px8);
 
         i {
           width: 1em;
@@ -20,9 +29,18 @@
 
       p {
         width: 100%;
-        max-width: 481px;
-        margin-bottom: 0;
+        margin: 0 auto;
         color: var(--neutral-300);
+      }
+
+      &[data-alignment="left"] {
+        align-items: flex-start;
+        margin: unset;
+        text-align: left;
+
+        >p {
+          margin: 0;
+        }
       }
     }
   }

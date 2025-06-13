@@ -50,33 +50,33 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: clamp(var(--px28), 64/1440 * 100vw, var(--px64));
+  font-size: clamp(var(--px32), 64/1440 * 100vw, var(--px64));
   line-height: 1.125em; //72px @64px
   letter-spacing: -0.046em; //-3px @64px
 }
 
 h3, .h3 {
-  font-size: clamp(var(--px24), 50/1440 * 100vw, var(--px50));
+  font-size: clamp(var(--px28), 50/1440 * 100vw, var(--px50));
   line-height: 1.200em; //60px @50px
   letter-spacing: -0.060em; //-3px @50px
 }
 
 h4, .h4 {
-  font-size: var(--px40);
+  font-size: clamp(var(--px24), 40/1440*100vw ,var(--px40));
   line-height: 1.250em; //50px @40px
   letter-spacing: -0.075em; //-3px @40px
 }
 
 h5, .h5 {
-  font-size: var(--px32);
+  font-size: clamp(var(--px20), 32/1440*100vw, var(--px32));
   line-height: 1.300em; //42px @32px
   letter-spacing: -0.093em; //-3px @32px
 }
 
 h6, .h6 {
-  font-size: var(--px20);
-  line-height: 1.400em; //28px @20px
-  letter-spacing: -0.100em; //-2px @20px
+  font-size: clamp(var(--px18), 24/1440*100vw, var(--px24));
+  line-height: 1.400em; //28px @24px
+  letter-spacing: -0.02em; //-2% @24px
 }
 
 .c-gradient-text {

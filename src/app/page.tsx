@@ -1,28 +1,29 @@
 import {
   HomeSectionHero,
-  HomeSectionBanner,
+  SectionLogoBanner,
   HomeSectionFeatures,
   HomeSectionBenefits,
   HomeSectionIntegration,
-  HomeSectionTestimonial,
+  SectionTestimonial,
   HomeSectionPricing,
   HomeSectionSecurity,
-  HomeSectionBlog
+  HomeSectionBlog,
+  SectionFooterBanner,
 } from "@/components";
-
 
 export default function Home() {
   return (
     <>
-     <HomeSectionHero/>
-      <HomeSectionBanner/>
+      <HomeSectionHero/>
+      <SectionLogoBanner/>
       <HomeSectionFeatures/>
       <HomeSectionBenefits/>
       <HomeSectionIntegration/>
-      <HomeSectionTestimonial/>
+      <SectionTestimonial/>
       <HomeSectionPricing/>
       <HomeSectionSecurity/>
       <HomeSectionBlog/>
+      <SectionFooterBanner/>
     </>
   );
 }

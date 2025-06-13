@@ -1,0 +1,119 @@
+.cSectionTestimonial {
+  &:global {
+    &.c-section-testimonial {
+      display: flex;
+      flex-direction: column;
+      row-gap: clamp(var(--px40), 64/1440*100vw, var(--px64));
+      padding: clamp(var(--px40), 120/1440*100vw, 120px) 0;
+    }
+  }
+
+  :global {
+    .c-section-testimonial {
+      &-header {
+        padding: 0 1em;
+      }
+
+      &-slider {
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        overflow: hidden;
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          z-index: 2;
+          display: block;
+          width: 15%;
+          height: 100%;
+        }
+
+        &:before {
+          left: 0;
+          background: linear-gradient(270deg, rgba(14, 18, 27, 0) 0%, #0E121B 100%);
+        }
+
+        &:after {
+          right: 0;
+          background: linear-gradient(270deg, #0E121B 0%, rgba(14, 18, 27, 0) 100%);
+        }
+
+
+        .swiper {
+          .swiper-wrapper {
+            align-items: stretch;
+          }
+
+          .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            padding: 0 clamp(0.5em, 16/1440*100vw, 1em);
+            width: clamp(300px, 458/1440*100vw, 458px) !important;
+            min-height: 500px;
+          }
+        }
+
+        &-card {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px24);
+          padding: clamp(var(--px20), 40/1440*100vw, var(--px40));
+          background-color: var(--neutral-900);
+          border-radius: var(--px20);
+
+          &-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: var(--px24);
+
+            >.h6 {
+              margin-bottom: 0;
+            }
+          }
+
+          &-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--px4) var(--px8);
+            background-color: var(--neutral-950);
+            border-radius: var(--px8);
+            font-weight: 600;
+          }
+
+          &-footer {
+            display: flex;
+            align-items: center;
+            column-gap: 1em;
+
+            span {
+              display: flex;
+              flex-direction: column;
+
+              em,
+              small {
+                display: block;
+                line-height: 1.2em;
+              }
+
+              em {
+                font-weight: 600;
+                font-style: normal;
+              }
+
+              small {
+                font-size: var(--px14);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

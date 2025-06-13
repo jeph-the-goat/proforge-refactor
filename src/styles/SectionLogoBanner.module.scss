@@ -1,0 +1,44 @@
+.cSectionLogoBanner {
+  &:global{
+    &.c-section-logo-banner {
+      padding: var(--px40) 1em;
+
+      >.c-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        row-gap: clamp(var(--px24), 32/1440 * 100vw, var(--px32));
+
+        >p {
+          margin-bottom: 0;
+          color: var(--neutral-300);
+        }
+      }
+    }
+  }
+
+  :global{
+    .c-section-logo-banner {
+      &-grid {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: clamp(1em, 40/1440*100vw, var(--px40)) clamp(var(--px24), 64/1440*100vw, var(--px64));
+
+        &-item {
+          width: 100%;
+          max-width: 113px;
+          aspect-ratio: 113/30;
+
+          > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}

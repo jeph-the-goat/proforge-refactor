@@ -7,4 +7,8 @@ export * from "./Header";
 export * from "./HeaderNavItems";
 export * from "./Logo";
 export * from "./MobileMenu";
+
+export * from "./SectionFooterBanner";
+export * from "./SectionLogoBanner";
+export * from "./SectionTestimonial";
 export * from "./SectionTitle";

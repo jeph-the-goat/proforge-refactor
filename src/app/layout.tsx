@@ -1,3 +1,8 @@
+import 'swiper/css';
+import 'swiper/css/free-mode';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+// import 'swiper/css/scrollbar';
 import "@/styles/index.scss";
 
 import type { Metadata } from "next";
