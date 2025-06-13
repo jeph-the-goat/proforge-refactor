@@ -27,7 +27,7 @@ export const Button = (
     <button
       type={type? type : "button"}
       className={clsx("c-button", extraClassName)}
-      data-color={btnColor}
+      data-color={btnColor? btnColor : "default"}
       data-variant={btnVariant}
       data-size={btnSize}
       data-icon-placement={iconPlacement}

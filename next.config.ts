@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      ...(process.env.NODE_ENV === 'development'
+        ? [{ protocol: 'https', hostname: '**' }]
+        : []),
+      // Add your production domains here when needed
+    ],
+  },
+
   sassOptions: {
     sourceMap: true,
   },

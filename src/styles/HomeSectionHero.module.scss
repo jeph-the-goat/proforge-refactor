@@ -1,7 +1,7 @@
 .cHomeSectionHero {
   &:global {
     &.c-home-section-hero {
-      padding: clamp(7em, 232/1440 * 100vw, 232px) 1em 0;
+      padding: clamp(6.625em, 200/1440 * 100vw, 12.5em) 1em 0; //106-200px
     }
   }
 
@@ -9,18 +9,37 @@
     .c-home-section-hero {
       &-grid {
         display: grid;
-        grid-template-columns: 1fr 0.6fr;
-        gap: 3em 1em;
+        grid-template-columns: 1fr;
+        align-items: center;
+        gap: clamp(var(--px24), 32/1440 * 100vw, var(--px32));
 
         &-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
 
-          p {
+          .c-event-bar {
+            margin-bottom: var(--px30);
+          }
+
+          .c-section-title {
             width: 100%;
-            max-width: 484px;
+            max-width: clamp(25em, 762/1440 * 100vw, 47.625em);//400-762px
+            margin: 0 auto;
+
+            p {
+              width: 100%;
+              max-width: 30.0625em; //481px
+              margin-left: auto;
+              margin-right: auto;
+            }
           }
 
           .c-button-container {
-
+            justify-content: center;
+            margin-top: clamp(var(--px24), 54/1440 * 100vw, 54px);
           }
         }
 
@@ -28,10 +47,6 @@
           display: flex;
           align-items: center;
           justify-content: center;
-
-          img {
-            max-width: 465px;
-          }
         }
       }
 

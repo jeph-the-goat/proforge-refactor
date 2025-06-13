@@ -2,7 +2,6 @@ import "@/styles/index.scss";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SpotlightSVG } from "@/components/spotlight";
 import {Footer, Header} from "@/components";
 
 

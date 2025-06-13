@@ -1,10 +1,11 @@
 import styles from "@/styles/HomeSectionHero.module.scss";
-import HeroImage from "@assets/images/home-hero-image.svg";
 import React from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";
 
-import {ButtonLink} from "@/components/ui";
+import {DummyUserList} from "@/utils";
+import {ButtonLink, EventBar} from "@/components/ui";
+import {SectionTitle} from "@/components/ui/SectionTitle";
 
 export const HomeSectionHero = () => {
   return (
@@ -16,13 +17,18 @@ export const HomeSectionHero = () => {
 
           <div className='c-home-section-hero-grid-text'>
 
-            <h1 className="h2 c-gradient-text">
-              Revolutionize Web3 Development
-            </h1>
+            <EventBar
+              text="Level Up Your Web3 Game"
+              linkUrl="/"
+              linkText="Join Free Webinar"
+              users={DummyUserList}
+            />
 
-            <p>
-              From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development.
-            </p>
+            <SectionTitle
+              headingTag="h1"
+              title="Revolutionize Web3 Development"
+              paragraph="From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development."
+            />
 
             <div className="c-button-container">
 
@@ -33,7 +39,7 @@ export const HomeSectionHero = () => {
 
               <ButtonLink
                 href='/'
-                btnColor='white'
+                btnColor='dark'
                 btnText='Learn More'
               />
 
@@ -44,10 +50,10 @@ export const HomeSectionHero = () => {
           <div className="c-home-section-hero-grid-image">
 
             <Image
-              src="/images/home-hero-image.svg"
+              src="/images/home-hero-img-x1.webp"
               alt="Revolutionize Web3 Development"
-              width={465}
-              height={417}
+              width={1160}
+              height={500}
             />
 
           </div>

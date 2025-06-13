@@ -6,7 +6,7 @@ import {clsx} from "clsx";
 interface HeaderNavItemsProps {
   extraClassName?: string;
 }
-const HeaderNavItems = ({extraClassName}: HeaderNavItemsProps) => {
+export const HeaderNavItems = ({extraClassName}: HeaderNavItemsProps) => {
   return (
     <nav className={clsx("c-nav", extraClassName)}>
       {NavItems.map((navLink, navLinkIdx) => (
@@ -21,5 +21,3 @@ const HeaderNavItems = ({extraClassName}: HeaderNavItemsProps) => {
     </nav>
   );
 };
-
-export default HeaderNavItems;

@@ -1,11 +1,28 @@
-import HomeSectionHero from "@/components/HomeSectionHero";
-import {HomeSectionSocialProof} from "@/components";
+import {
+  HomeSectionHero,
+  HomeSectionBanner,
+  HomeSectionFeatures,
+  HomeSectionBenefits,
+  HomeSectionIntegration,
+  HomeSectionTestimonial,
+  HomeSectionPricing,
+  HomeSectionSecurity,
+  HomeSectionBlog
+} from "@/components";
+
 
 export default function Home() {
   return (
     <>
      <HomeSectionHero/>
-      <HomeSectionSocialProof/>
+      <HomeSectionBanner/>
+      <HomeSectionFeatures/>
+      <HomeSectionBenefits/>
+      <HomeSectionIntegration/>
+      <HomeSectionTestimonial/>
+      <HomeSectionPricing/>
+      <HomeSectionSecurity/>
+      <HomeSectionBlog/>
     </>
   );
 }

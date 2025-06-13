@@ -7,9 +7,7 @@ import { useOnClickOutside } from 'usehooks-ts';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import {Button} from "@/components";
-import HeaderNavItems from "@/components/ui/HeaderNavItems";
-
+import {Button, HeaderNavItems} from "@/components";
 
 
 export const MobileMenu = () => {

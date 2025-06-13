@@ -4,8 +4,7 @@ import React from 'react'
 import {clsx} from "clsx";
 
 import {useMediaQuerySafe} from "@/hooks";
-import {Button, Logo, MobileMenu} from "@/components";
-import HeaderNavItems from "@/components/ui/HeaderNavItems";
+import {Button, Logo, HeaderNavItems, MobileMenu} from "@/components";
 
 export const Header = () => {
   const isMobile = useMediaQuerySafe('(max-width: 991px)');

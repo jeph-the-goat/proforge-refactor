@@ -1,0 +1,29 @@
+.cSectionTitle {
+  &:global{
+    &.c-section-title {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--px12);
+
+      .c-section-title-lead {
+        display: inline-flex;
+        align-items: center;
+        column-gap: var(--px6);
+        margin-bottom: var(--px12);
+
+        i {
+          width: 1em;
+          height: 1em;
+          color: var(--primary-500);
+        }
+      }
+
+      p {
+        width: 100%;
+        max-width: 481px;
+        margin-bottom: 0;
+        color: var(--neutral-300);
+      }
+    }
+  }
+}
