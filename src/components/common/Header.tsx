@@ -1,5 +1,5 @@
 'use client';
-import styles from '@/styles/Header.module.scss';
+import styles from '@/styles/common/Header.module.scss';
 import React from 'react'
 import {clsx} from "clsx";
 

@@ -1,21 +1,20 @@
-import styles from "@/styles/PrivacyPolicySectionHero.module.scss";
+import styles from "@/styles/PrivacySectionHero.module.scss";
 import React from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";
 
 import {DummyUserList} from "@/utils";
-import {ButtonLink, EventBar} from "@/components/ui";
-import {SectionTitle} from "@/components/ui/SectionTitle";
+import {ButtonLink, EventBar, SectionTitle} from "src/components/common";
 
-export const PrivacyPolicySectionHero = () => {
+export const PrivacySectionHero = () => {
   return (
-    <section className={clsx(styles.cPrivacyPolicySectionHero, "c-privacy-policy-section-hero")}>
+    <section className={clsx(styles.cPrivacySsectionHero, "c-privacy-section-hero")}>
 
       <div className="c-container">
 
-        <div className="c-privacy-policy-section-hero-grid">
+        <div className="c-privacy-section-hero-grid">
 
-          <div className='c-privacy-policy-section-hero-grid-text'>
+          <div className='c-privacy-section-hero-grid-text'>
 
             <EventBar
               text="Level Up Your Web3 Game"
@@ -47,7 +46,7 @@ export const PrivacyPolicySectionHero = () => {
 
           </div>
 
-          <div className="c-privacy-policy-section-hero-grid-image">
+          <div className="c-privacy-section-hero-grid-image">
 
             <Image
               src="/images/home-hero-img-x1.webp"

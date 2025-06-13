@@ -1,5 +1,5 @@
 'use client';
-import styles from "@/styles/SectionTestimonial.module.scss";
+import styles from "@/styles/common/SectionTestimonial.module.scss";
 
 import React from 'react';
 import {clsx} from "clsx";

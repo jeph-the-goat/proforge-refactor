@@ -1,4 +1,4 @@
-import styles from "@/styles/EventBar.module.scss";
+import styles from "@/styles/common/EventBar.module.scss";
 import {IcnChevronRight} from "@assets/icons";
 
 import {clsx} from "clsx";

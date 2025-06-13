@@ -1,4 +1,4 @@
-export * from "./ui";
+export * from "./common";
 export * from "./form-elements";
 
 export * from "./HomeSectionBenefits";
@@ -8,11 +8,11 @@ export * from "./HomeSectionHero";
 export * from "./HomeSectionIntegration";
 export * from "./HomeSectionPricing";
 export * from "./HomeSectionSecurity";
-export * from "./ui/SectionTestimonial";
+export * from "@/components/common/SectionTestimonial";
 
 export * from "./AboutSectionHero";
-export * from "./PrivacyPolicySectionHero";
-export * from "./TermsConditionsSectionHero";
+export * from "./PrivacySectionHero";
+export * from "./TermsSectionHero";
 export * from "./FaqSectionHero";
 export * from "./IntegrationSectionHero";
 export * from "./PricingSectionHero";

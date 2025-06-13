@@ -4,8 +4,7 @@ import {clsx} from "clsx";
 import Image from "next/image";
 
 import {DummyUserList} from "@/utils";
-import {ButtonLink, EventBar} from "@/components/ui";
-import {SectionTitle} from "@/components/ui/SectionTitle";
+import {ButtonLink, EventBar, SectionTitle} from "src/components/common";
 
 export const BlogSectionHero = () => {
   return (

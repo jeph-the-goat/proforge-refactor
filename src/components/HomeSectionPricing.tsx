@@ -1,6 +1,6 @@
 import React from 'react';
 import {clsx} from "clsx";
-import {SectionTitle} from "@/components/ui/SectionTitle";
+import {SectionTitle} from "@/components/common";
 
 export const HomeSectionPricing = () => {
   return (

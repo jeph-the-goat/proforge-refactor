@@ -1,5 +1,5 @@
 import React from 'react'
-import Tooltip from '@/components/ui/Tooltip'
+import Tooltip from '@/components/common/Tooltip'
 
 interface LabelProps extends React.HTMLAttributes<HTMLLabelElement> {
   label: string;

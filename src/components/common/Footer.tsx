@@ -1,4 +1,4 @@
-import styles from "@/styles/Footer.module.scss";
+import styles from "@/styles/common/Footer.module.scss";
 import React from 'react'
 import {clsx} from "clsx";
 

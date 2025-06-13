@@ -3,7 +3,9 @@ import {IcnBolt} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
-import {SectionTitle} from "@/components/ui/SectionTitle";
+
+import {SectionTitle} from "@/components/common";
+
 import {HomeFeatureCardList} from "@/utils";
 
 export const HomeSectionFeatures = () => {

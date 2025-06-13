@@ -1,4 +1,4 @@
-import styles from "@/styles/Logo.module.scss";
+import styles from "@/styles/common/Logo.module.scss";
 import NexoraLogo from "@assets/images/nexora-logo.svg";
 
 import React from 'react'

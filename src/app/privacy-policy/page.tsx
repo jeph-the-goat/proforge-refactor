@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PrivacyPolicySectionHero } from "@/components";
+import { PrivacySectionHero } from "@/components";
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 function PrivacyPolicy() {
   return (
     <>
-      <PrivacyPolicySectionHero/>
+      <PrivacySectionHero/>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import styles from "@/styles/SectionTitle.module.scss";
+import styles from "@/styles/common/SectionTitle.module.scss";
 import {IcnStar} from "@assets/icons";
 
 import React, {ReactNode} from 'react';

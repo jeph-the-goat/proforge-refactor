@@ -1,7 +1,6 @@
 import React from 'react';
 import {clsx} from "clsx";
-import {SectionTitle} from "@/components/ui/SectionTitle";
-import {ButtonLink} from "@/components/ui";
+import {ButtonLink, SectionTitle} from "src/components/common";
 
 export const HomeSectionIntegration = () => {
   return (

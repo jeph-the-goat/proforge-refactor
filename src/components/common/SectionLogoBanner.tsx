@@ -1,4 +1,4 @@
-import styles from "@/styles/SectionLogoBanner.module.scss";
+import styles from "@/styles/common/SectionLogoBanner.module.scss";
 
 import {clsx} from "clsx";
 import Image from "next/image";

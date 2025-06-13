@@ -1,4 +1,4 @@
-import styles from "@/styles/Avatar.module.scss";
+import styles from "@/styles/common/Avatar.module.scss";
 import Image from 'next/image'
 import {clsx} from "clsx";
 

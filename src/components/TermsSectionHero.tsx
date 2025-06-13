@@ -1,21 +1,20 @@
-import styles from "@/styles/TermsConditionsSectionHero.module.scss";
+import styles from "@/styles/TermsSectionHero.module.scss";
 import React from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";
 
 import {DummyUserList} from "@/utils";
-import {ButtonLink, EventBar} from "@/components/ui";
-import {SectionTitle} from "@/components/ui/SectionTitle";
+import {ButtonLink, EventBar, SectionTitle} from "src/components/common";
 
-export const TermsConditionsSectionHero = () => {
+export const TermsSectionHero = () => {
   return (
-    <section className={clsx(styles.cTermsConditionsSectionHero, "c-terms-conditions-section-hero")}>
+    <section className={clsx(styles.cTermsSectionHero, "c-terms-section-hero")}>
 
       <div className="c-container">
 
-        <div className="c-terms-conditions-section-hero-grid">
+        <div className="c-terms-section-hero-grid">
 
-          <div className='c-terms-conditions-section-hero-grid-text'>
+          <div className='c-terms-section-hero-grid-text'>
 
             <EventBar
               text="Level Up Your Web3 Game"
@@ -47,7 +46,7 @@ export const TermsConditionsSectionHero = () => {
 
           </div>
 
-          <div className="c-terms-conditions-section-hero-grid-image">
+          <div className="c-terms-section-hero-grid-image">
 
             <Image
               src="/images/home-hero-img-x1.webp"
