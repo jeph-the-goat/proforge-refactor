@@ -1,7 +1,8 @@
 .cFooter {
   &:global {
     &.c-footer {
-      padding: 0 1em clamp(var(--px56), 120 / 1440 * 100vw, 7.5em); //56-120px
+      padding: clamp(var(--px56), 120 / 1440 * 100vw, 7.5em) 1em; //56-120px
+      background-color: var(--neutral-900);
 
       >.c-container {
         display: flex;

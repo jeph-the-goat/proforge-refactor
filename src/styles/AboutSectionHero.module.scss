@@ -21,12 +21,8 @@
           justify-content: center;
           text-align: center;
 
-          .c-event-bar {
-            margin-bottom: var(--px30);
-          }
-
           .c-section-title {
-            max-width: clamp(25em, 762/1440 * 100vw, 47.625em);//400-762px
+            max-width: clamp(25em, 663/1440 * 100vw, 41.4375em);//400-663px
 
             p {
               max-width: 30.0625em; //481px
