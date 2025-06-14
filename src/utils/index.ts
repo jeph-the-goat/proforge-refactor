@@ -4,4 +4,5 @@ export * from "./commonData";
 export * from "./dummyData";
 
 export * from "./homeData";
+export * from "./faqData";
 

@@ -1,0 +1,71 @@
+.cAccordion {
+  &:global {
+    &.c-accordion {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1em;
+
+      .c-accordion-item {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--neutral-700);
+        border-radius: var(--px12);
+        background-color: var(--neutral-950);
+        transition: border-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+        &.is-open {
+          background-color: var(--neutral-900);
+          border-color: var(--primary-500);
+        }
+
+        > .c-button[data-variant="link"] {
+          --btn-gap: 1em;
+          --btn-padding-x: 24px;
+          --btn-padding-y: 24px;
+          --btn-font-size: clamp(var(--px18), 24/1440*100vw, var(--px24));
+          --btn-icon-size: 10px;
+
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          max-width: 100%;
+          font-weight: 600;
+          text-align: left;
+          letter-spacing: -0.02em; //-2% @24px
+
+          &:hover,
+          &:focus,
+          &:active {
+            text-decoration: none;
+          }
+
+          &.is-open {
+
+          }
+        }
+
+        .c-accordion-item-content {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 0fr;
+          opacity: 0;
+          transition: grid-template-rows 0.4s ease, opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+          &.is-open {
+            grid-template-rows: 1fr;
+            opacity: 1;
+          }
+
+          &-wrapper {
+            //padding: 1em;
+                 overflow: hidden;
+          }
+
+          &-inner {
+            padding: 24px;
+          }
+        }
+      }
+    }
+  }
+}

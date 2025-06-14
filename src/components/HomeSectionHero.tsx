@@ -4,63 +4,56 @@ import {clsx} from "clsx";
 import Image from "next/image";
 
 import {DummyUserList} from "@/utils";
-import {ButtonLink, EventBar, SectionTitle} from "src/components/common";
+
+import {ButtonLink, EventBar, SectionHero, SectionTitle} from "src/components/common";
 
 export const HomeSectionHero = () => {
   return (
-    <section className={clsx(styles.cHomeSectionHero, "c-home-section-hero")}>
+    <SectionHero extraClassName={clsx(styles.cHomeSectionHero, "c-home-section-hero")}>
 
-      <div className="c-container">
+      <div className='c-section-hero-grid-text'>
 
-        <div className="c-home-section-hero-grid">
+        <EventBar
+          text="Level Up Your Web3 Game"
+          linkUrl="/"
+          linkText="Join Free Webinar"
+          users={DummyUserList}
+        />
 
-          <div className='c-home-section-hero-grid-text'>
+        <SectionTitle
+          headingTag="h1"
+          title="Revolutionize Web3 Development"
+          paragraph="From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development."
+        />
 
-            <EventBar
-              text="Level Up Your Web3 Game"
-              linkUrl="/"
-              linkText="Join Free Webinar"
-              users={DummyUserList}
-            />
+        <div className="c-button-container">
 
-            <SectionTitle
-              headingTag="h1"
-              title="Revolutionize Web3 Development"
-              paragraph="From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development."
-            />
+          <ButtonLink
+            href='/'
+            btnText='Get Started'
+          />
 
-            <div className="c-button-container">
-
-              <ButtonLink
-                href='/'
-                btnText='Get Started'
-              />
-
-              <ButtonLink
-                href='/'
-                btnColor='dark'
-                btnText='Learn More'
-              />
-
-            </div>
-
-          </div>
-
-          <div className="c-home-section-hero-grid-image">
-
-            <Image
-              src="/images/home-hero-img-x1.webp"
-              alt="Revolutionize Web3 Development"
-              width={1160}
-              height={500}
-            />
-
-          </div>
+          <ButtonLink
+            href='/'
+            btnColor='dark'
+            btnText='Learn More'
+          />
 
         </div>
 
       </div>
 
-    </section>
+      <div className="c-section-hero-grid-image">
+
+        <Image
+          src="/images/home-hero-img-x1.webp"
+          alt="Revolutionize Web3 Development"
+          width={1160}
+          height={500}
+        />
+
+      </div>
+
+    </SectionHero>
   );
 };

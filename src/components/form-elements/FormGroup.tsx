@@ -1,0 +1,68 @@
+import styles from "@/styles/common/FormGroup.module.scss";
+
+import {ReactNode, Ref} from "react";
+import clsx from "clsx";
+
+import {cFormGroupProps} from "@/types";
+
+interface FormGroupProps extends cFormGroupProps {
+  name: string;
+  children: ReactNode;
+  ref?: Ref<HTMLDivElement>;
+}
+
+export const FormGroup = (
+  {
+    extraClassName,
+    labelText,
+    labelIsHidden,
+    name,
+    children,
+    inputGroupIcon,
+    inputGroupText,
+    hasErrors,
+    errorText,
+    ref,
+  }: FormGroupProps
+) => {
+  return (
+    <div
+      ref={ref}
+      className={clsx(styles.cFormGroup, "c-form-group", extraClassName)}
+    >
+      <label
+        htmlFor={`id_${name}`}
+        className={clsx(
+          "c-form_label",
+          labelIsHidden && "c-visually-hidden"
+        )}
+      >
+        {labelText}
+      </label>
+
+      <div className="c-form-group-wrapper">
+
+        <div className="c-form-group-input">
+
+          {inputGroupIcon && (
+            <i className="c-form-group-input-icon">
+              {inputGroupIcon}
+            </i>
+          )}
+
+          {children}
+
+        </div>
+
+        {inputGroupText}
+
+      </div>
+
+      {hasErrors && (
+        <small className="c-form-group-error">
+          {(errorText as string)}
+        </small>
+      )}
+    </div>
+  );
+}

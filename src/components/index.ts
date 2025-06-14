@@ -1,5 +1,6 @@
 export * from "./common";
 export * from "./form-elements";
+export * from "./forms";
 
 export * from "./HomeSectionBenefits";
 export * from "./HomeSectionBlog";

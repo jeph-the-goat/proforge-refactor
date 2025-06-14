@@ -1,0 +1,28 @@
+.cFaqSectionAccordion {
+  &:global {
+    &.c-faq-section-accordion {
+      padding: 1em 1em clamp(var(--px40), 80/1440*100vw, var(--px80));
+
+      .c-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: clamp(var(--px40), 120/1440*100vw, 120px);
+      }
+    }
+  }
+
+  :global {
+    .c-faq-section-accordion {
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        @media(min-width: 992px) {
+          grid-template-columns: 0.4fr 1fr;
+          align-items: stretch;
+          column-gap: var(--px32);
+        }
+      }
+    }
+  }
+}

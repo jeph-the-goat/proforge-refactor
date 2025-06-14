@@ -3,6 +3,7 @@ import React from 'react';
 import {clsx} from "clsx";
 
 import {SectionTitle} from "src/components/common";
+import {ContactForm} from "@/components/forms";
 
 export const ContactSectionHero = () => {
   return (
@@ -36,9 +37,7 @@ export const ContactSectionHero = () => {
           </div>
 
           <div className="c-contact-section-hero-grid-form">
-
-            form here
-
+            <ContactForm/>
           </div>
 
         </div>
