@@ -1,10 +1,8 @@
 import styles from "@/styles/ContactSectionHero.module.scss";
 import React from 'react';
 import {clsx} from "clsx";
-import Image from "next/image";
 
-import {DummyUserList} from "@/utils";
-import {ButtonLink, EventBar, SectionTitle} from "src/components/common";
+import {SectionTitle} from "src/components/common";
 
 export const ContactSectionHero = () => {
   return (
@@ -16,44 +14,30 @@ export const ContactSectionHero = () => {
 
           <div className='c-contact-section-hero-grid-text'>
 
-            <EventBar
-              text="Level Up Your Web3 Game"
-              linkUrl="/"
-              linkText="Join Free Webinar"
-              users={DummyUserList}
-            />
-
             <SectionTitle
+              alignment="left"
               headingTag="h1"
-              title="Revolutionize Web3 Development"
-              paragraph="From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development."
+              title="We’re Here to Help"
+              paragraph="Have a question, need support, or want to partner with us? We’d love to hear from you."
             />
 
-            <div className="c-button-container">
+            <div className="c-contact-section-hero-list">
 
-              <ButtonLink
-                href='/'
-                btnText='Get Started'
-              />
+              <p>
+                Prefer to send us a message directly?
+              </p>
 
-              <ButtonLink
-                href='/'
-                btnColor='dark'
-                btnText='Learn More'
-              />
+              <ul>
+                <li>list here</li>
+              </ul>
 
             </div>
 
           </div>
 
-          <div className="c-contact-section-hero-grid-image">
+          <div className="c-contact-section-hero-grid-form">
 
-            <Image
-              src="/images/home-hero-img-x1.webp"
-              alt="Revolutionize Web3 Development"
-              width={1160}
-              height={500}
-            />
+            form here
 
           </div>
 

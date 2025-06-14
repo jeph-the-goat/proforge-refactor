@@ -12,7 +12,6 @@ export const HomeSectionIntegration = () => {
           img here
         </div>
 
-
         <SectionTitle
           leadText="Integration"
           headingClass="h3"

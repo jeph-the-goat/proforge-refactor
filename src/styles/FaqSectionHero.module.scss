@@ -10,7 +10,7 @@
     .c-faq-section-hero {
       &-grid {
         display: grid;
-        grid-template-columns: 1fr 0.6fr;
+        grid-template-columns: 1fr;
         align-items: center;
         gap: clamp(var(--px24), 32/1440 * 100vw, var(--px32));
 
