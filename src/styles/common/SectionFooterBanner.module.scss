@@ -10,7 +10,7 @@
         flex-direction: column;
         align-items: center;
         row-gap: clamp(var(--px24), 40/1440*100vw, var(--px40));
-        padding: clamp(var(--px40), 80/1440*100vw, var(--px80)) clamp(var(--px20), 80/1440*100vw, var(--px80));
+        padding: var(--from-80-to-40px) clamp(var(--px20), 80/1440*100vw, var(--px80));
         background-color: var(--neutral-950);
         border-radius: var(--px20);
         text-align: center;
@@ -58,8 +58,7 @@
         >img {
           position: absolute;
           inset: 0;
-          width: 100%;
-          max-width: 100%;
+          height: auto;
           margin: auto;
         }
       }

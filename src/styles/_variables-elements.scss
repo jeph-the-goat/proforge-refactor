@@ -3,7 +3,18 @@
   --body-color: var(--neutral-0);
   --body-font-size: 16px;
 
-  --header-height: 106px;
+  --header-height: var(--px106);
+
+  --from-120-to-40px: clamp(var(--px40), 120/1440*100vw, 120px);
+  --from-80-to-40px: clamp(var(--px40), 80/1440*100vw, var(--px80));
+  --from-64-to-40px: clamp(var(--px40), 64/1440*100vw, var(--px64));
+
+  --from-40-to-20px: clamp(var(--px20), 40/1440*100vw, var(--px40));
+
+  --from-32-to-24px: clamp(var(--px24), 32/1440*100vw, var(--px32));
+  --from-32-to-16px: clamp(1em, 32/1440*100vw, var(--px32));
+
+  --from-24-to-16px: clamp(1em, 24/1440*100vw, var(--px24));
 
   @media(max-width: 991px) {
     --header-height: 74px;

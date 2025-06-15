@@ -11,7 +11,7 @@ export const NavItems = [
   { label: "Contact", url: "/contact" }
 ];
 
-export const SocialLinkNavItems = [
+export const SocialNavItems = [
   {
     label: "X",
     url: "https://twitter.com/nexora",
@@ -141,7 +141,7 @@ export const FooterNavItems = [
   }
 ];
 
-export const FooterLegalNavItems = [
+export const LegalNavItems = [
   {
     label: "Privacy Policy",
     url: "/privacy-policy",

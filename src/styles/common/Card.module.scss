@@ -1,0 +1,49 @@
+.cCard {
+  &:global {
+    &.c-card {
+      --card-padding: clamp(var(--px20), 24/1440*100vw, var(--px24));
+      --card-bg-color: var(--neutral-900);
+      --card-border-radius: 1em;
+      --card-icon-size: var(--px48);
+      --card-icon-bg-color: var(--neutral-950);
+      --card-icon-color: var(--primary-500);
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap:  var(--from-32-to-24px);
+      padding: var(--card-padding);
+      background: var(--card-bg-color);
+      border-radius: var(--card-border-radius);
+      text-align: left;
+
+      i {
+        width: var(--card-icon-size);
+        height: var(--card-icon-size);
+        background-color: var(--card-icon-bg-color);
+        border-radius: 50%;
+        color: var(--card-icon-color);
+
+        svg {
+          max-width: var(--px20);
+          max-height: var(--px20);
+        }
+      }
+
+      .c-card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px12);
+
+        p {
+          margin-bottom: 0;
+
+          &:last-child {
+            color: var(--neutral-300);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,38 +1,50 @@
+import styles from "@/styles/HomeSectionBenefits.module.scss";
+
 import React from 'react';
 import {clsx} from "clsx";
-import {SectionTitle} from "@/components/common";
+import Image from "next/image";
+
+import {HomeBenefits} from "@/utils";
+import {Card, Section} from "@/components/common";
 
 
 export const HomeSectionBenefits = () => {
   return (
-    <section className={clsx("c-home-section-benefits")}>
+    <Section
+      extraClassName={clsx(styles.cHomeSectionBenefits, "c-home-section-benefits")}
+      leadText="Benefits"
+      headingClass="h3"
+      title="Why Developers and Teams Love Us"
+      paragraph="We take the headaches out of building Web3 projects, so you can focus on creating."
+    >
 
-      <div className="c-container">
+      <div className="c-home-section-benefits-body">
 
-        <SectionTitle
-          leadText="Benefits"
-          headingClass="h3"
-          title="Why Developers and Teams Love Us"
-          paragraph="We take the headaches out of building Web3 projects, so you can focus on creating."
-        />
+        <div className="c-home-section-benefits-image">
+          <Image
+            src="/images/home-benefits-image-x1.webp"
+            alt="Why Developers and Teams Love Us"
+            width={1160}
+            height={500}
+            />
 
-        <div className="c-home-section-benefits-body">
+        </div>
 
-          <div className="c-home-section-benefits-image">
-            {/*<img src="" alt=""/>*/}
+        <div className="c-home-section-benefits-grid">
 
-          </div>
-
-            <div className="c-home-section-benefits-grid">
-
-
-
-            </div>
+          {HomeBenefits.map((benefit, benefitIdx) => (
+            <Card
+              key={benefitIdx}
+              icon={benefit.icon}
+              title={benefit.title}
+              text={benefit.text}
+            />
+          ))}
 
         </div>
 
       </div>
 
-    </section>
+    </Section>
   );
 };

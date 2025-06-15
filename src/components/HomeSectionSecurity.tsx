@@ -1,47 +1,34 @@
+import styles from "@/styles/HomeSectionSecurity.module.scss";
 import {IcnLock} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
-import {HomeSecurityFeatures} from "@/utils";
-import {SectionTitle} from "@/components/common";
+import {HomeSecurity} from "@/utils";
+import {Card, Section} from "@/components/common";
 
 export const HomeSectionSecurity = () => {
   return (
-    <section className={clsx("c-home-section-security")}>
+    <Section
+      extraClassName={clsx(styles.cHomeSectionSecurity, "c-home-section-security")}
+      leadIcon={<IcnLock/>}
+      leadText="Security"
+      headingClass="h3"
+      title="Your Data, Locked Tight"
+      paragraph="Get the tools, documentation, and community support you need to master Web3 development."
+    >
 
-      <div className="c-container">
+      <div className="c-home-section-security-grid">
 
-        <SectionTitle
-          leadIcon={<IcnLock/>}
-          leadText="Security"
-          headingClass="h3"
-          title="Your Data, Locked Tight"
-          paragraph="Get the tools, documentation, and community support you need to master Web3 development."
-        />
-
-        <div className="c-home-section-security-grid">
-
-          {HomeSecurityFeatures.map((security, securityIdx) => (
-            <article
-              key={securityIdx}
-            >
-              <i>{security.icon}</i>
-
-              <p>
-                {security.title}
-              </p>
-
-              <p>
-                {security.text}
-              </p>
-
-            </article>
-          ))}
-
-        </div>
-
+        {HomeSecurity.map((security, securityIdx) => (
+          <Card
+            key={securityIdx}
+            icon={security.icon}
+            title={security.title}
+            text={security.text}
+          />
+        ))}
       </div>
 
-    </section>
+    </Section>
   );
 };

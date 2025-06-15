@@ -36,7 +36,7 @@
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
-        gap: clamp(var(--px24), 32/1440 * 100vw, var(--px32));
+        gap: var(--from-32-to-24px);
 
         &-text {
           display: flex;

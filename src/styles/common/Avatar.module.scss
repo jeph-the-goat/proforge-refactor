@@ -12,6 +12,10 @@
       border-radius: 50%;
       overflow: hidden;
 
+      &[data-size="lg"] {
+        --avatar-size: 150px;
+      }
+
       &[data-size="md"] {
         --avatar-size: var(--px40);
       }

@@ -1,47 +1,47 @@
-import {IcnBank, IcnCryptocurrency, IcnUsers} from "@assets/icons";
+import {IcnArchive, IcnBank, IcnCode, IcnCryptocurrency, IcnSpeedometer, IcnUsers} from "@assets/icons";
 
-export const HomeFeatureCardList = [
+export const HomeFeatures = [
   {
     title: "Hop Across Blockchains",
-    paragraph: "Navigate logging platforms, Connect to Ethereum, Solana, Binance Smart Chain, and more in one smooth dashboard.",
+    text: "Navigate logging platforms, Connect to Ethereum, Solana, Binance Smart Chain, and more in one smooth dashboard.",
     image: "/images/home-feature-1-x1.webp"
   },
   {
     title: "Your Contract Co-Pilot",
-    paragraph: "Let AI handle the heavy lifting of smart contracts, build secure and efficient code without the guesswork.",
+    text: "Let AI handle the heavy lifting of smart contracts, build secure and efficient code without the guesswork.",
     image: "/images/home-feature-2-x1.webp"
   },
   {
     title: "Your Data, Your Rules",
-    paragraph: "Keep an eagle eye on transactions, gas fees, and performance with real-time analytics that are as sharp as they are beautiful.",
+    text: "Keep an eagle eye on transactions, gas fees, and performance with real-time analytics that are as sharp as they are beautiful.",
     image: "/images/home-feature-3-x1.webp"
   },
   {
     title: "Launch Like a Rocket",
-    paragraph: "Deploy scalable nodes faster than you can say 'blockchain!' Zero stress, all speed.",
+    text: "Deploy scalable nodes faster than you can say 'blockchain!' Zero stress, all speed.",
     image: "/images/home-feature-4-x1.webp"
   }
 ];
 
-const HomeBenefitsFeatures = [
+export const HomeBenefits = [
   {
-    icon: "💻",
+    icon: <IcnArchive/>,
     title: "Everything in One Place",
-    paragraph: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
+    text: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
   },
   {
-    icon: "⚙️",
-    title: "Everything in One Place",
-    paragraph: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
+    icon: <IcnSpeedometer/>,
+    title: "Built for Speed and Scale",
+    text: "Whether you're a solo dev or a global team, our tools are optimized for fast development and effortless scaling.",
   },
   {
-    icon: "💻",
-    title: "Everything in One Place",
-    paragraph: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
+    icon: <IcnCode/>,
+    title: "Collaboration Made Easy",
+    text: "Coordinate with your team like a pro. Share progress, manage tasks, and deploy projects together without breaking a sweat.",
   }
 ];
 
-export const HomeSecurityFeatures = [
+export const HomeSecurity = [
   {
     icon: <IcnBank/>,
     title: "Bank-Level Encryption",

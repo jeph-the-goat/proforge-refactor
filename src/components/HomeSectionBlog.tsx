@@ -1,13 +1,15 @@
 import styles from "@/styles/HomeSectionBlog.module.scss";
-import {IcnAward} from "@assets/icons";
+import {IcnArrowUpRight, IcnAward} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { format } from 'date-fns'
 
 import {BlogPosts} from "@/utils";
 
-import {ButtonLink, SectionTitle} from "@/components/common";
-import Image from "next/image";
+import {ButtonLink, Section} from "@/components/common";
 
 export const HomeSectionBlog = () => {
   const latestPosts = BlogPosts
@@ -15,54 +17,69 @@ export const HomeSectionBlog = () => {
     .slice(0, 4);
 
   return (
-    <section className={clsx(styles.cHomeSectionBlog, "c-home-section-blog")}>
+    <Section
+      extraClassName={clsx(styles.cHomeSectionBlog, "c-home-section-blog")}
+      leadIcon={<IcnAward/>}
+      leadText="Blog"
+      headingClass="h3"
+      title="Learn, Share, and Stay Ahead"
+      paragraph="Get the tools, documentation, and community support you need to master Web3 development."
+    >
 
-      <div className="c-container">
-
-        <SectionTitle
-          leadIcon={<IcnAward/>}
-          leadText="Blog"
-          headingClass="h3"
-          title="Learn, Share, and Stay Ahead"
-          paragraph="Get the tools, documentation, and community support you need to master Web3 development."
-        />
+      <div className="c-home-section-blog-content">
 
         <div className="c-home-section-blog-grid">
-          {latestPosts.map((post) => (
-            <article
+
+          {latestPosts.map((post, postIdx) => (
+            <Link
               key={post.id}
-              className="c-home-section-blog-grid-card"
+              className={clsx(
+                "c-home-section-blog-grid-card",
+                postIdx === 0? "featured": "default"
+              )}
+              href={`/blog/${post.id}`}
+              title={`Read more about: ${post.title}`}
+              aria-label={`Read more about: ${post.title}`}
             >
-              <div className="c-home-section-blog-grid-card-image">
+              <span className="c-home-section-blog-grid-card-image">
                 <Image
                   src="/images/blog-placeholder-image-x1.webp"
                   alt={post.title}
                   width={366}
                   height={222}
                 />
-              </div>
+              </span>
 
-              <div className="c-home-section-blog-grid-card-body">
-                <small>{post.date}</small>
+              <span className="c-home-section-blog-grid-card-body">
 
-                <p className="h6">{post.title}</p>
+                <time dateTime={post.date}>
+                  {format(new Date(post.date), 'MMMM d, yyyy')}
+                </time>
 
-                <ButtonLink
-                  href={`/blog/${post.id}`}
-                  btnVariant="link"
-                  btnTitle={`Read more about: ${post.title}`}
-                  btnText="Read More"
-                />
+                <span className="h6">
+                  {post.title}
+                </span>
 
-              </div>
+                <span className="c-button" data-variant="link">
+                  <span className="c-button-label">Read More</span>
+                  <i className="c-button-icon"><IcnArrowUpRight/></i>
+                </span>
 
-            </article>
+              </span>
+
+            </Link>
           ))}
 
         </div>
 
+        <ButtonLink
+          href="/blog"
+          btnText="See More"
+          btnColor="dark"
+        />
+
       </div>
 
-    </section>
+    </Section>
   );
 };

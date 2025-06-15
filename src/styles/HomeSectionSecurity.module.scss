@@ -1,13 +1,17 @@
 .cHomeSectionSecurity {
   &:global {
     &.c-home-section-security {
-
+      padding-top: var(--from-120-to-40px);
     }
   }
 
   :global {
     .c-home-section-security {
-
+      &-grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: var(--from-32-to-16px);
+      }
     }
   }
 }

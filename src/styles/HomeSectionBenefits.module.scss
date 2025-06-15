@@ -1,13 +1,66 @@
 .cHomeSectionBenefits {
-  &:global {
-    &.c-home-section-benefits {
-
-    }
-  }
-
   :global {
     .c-home-section-benefits {
+      &-body {
+        border: 1px solid var(--neutral-700);
+        border-radius: 1em;
+        overflow: hidden;
+      }
 
+      &-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        background-color: var(--neutral-950);
+        aspect-ratio: 1160/500;
+      }
+
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        @media(min-width: 767px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .c-card {
+          --card-border-radius: 0;
+          --card-bg-color: var(--neutral-900);
+          --card-icon-bg-color: var(--neutral-800);
+          --card-icon-color: var(--neutral-0);
+
+          position: relative;
+          border-top: 1px solid var(--neutral-700);
+          transition: background 0.3s ease;
+
+          &:before,
+          &:after {
+           content: "";
+           position: absolute;
+            display: block;
+            width: 100%;
+          }
+
+          &:before {
+            top: -1px;
+            left: 0;
+            height: 1px;
+            max-width: 0;
+            background-color: var(--primary-500);
+            transition: max-width 0.3s ease;
+          }
+
+          &:hover {
+            --card-bg-color: linear-gradient(180deg, #181B25 0%, #222530 100%);
+
+            &:before {
+              max-width: 100%;
+            }
+          }
+        }
+      }
     }
   }
 }

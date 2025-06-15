@@ -4,57 +4,52 @@ import {IcnBolt} from "@assets/icons";
 import React from 'react';
 import {clsx} from "clsx";
 
-import {SectionTitle} from "@/components/common";
+import {HomeFeatures} from "@/utils";
 
-import {HomeFeatureCardList} from "@/utils";
+import {Section} from "@/components/common";
 
 export const HomeSectionFeatures = () => {
   return (
-    <section className={clsx(styles.cHomeSectionFeatures, "c-home-section-features")}>
+    <Section
+      extraClassName={clsx(styles.cHomeSectionFeatures, "c-home-section-features")}
+      addWrapper
+      leadIcon={<IcnBolt/>}
+      leadText="Features"
+      headingClass="h3"
+      title="Tools That Feel Like Superpowers"
+      paragraph="The only platform you’ll ever need for seamless Web3 development."
+    >
+      <div className="c-home-section-features-grid">
 
-      <div className="c-home-section-features-wrapper">
+        {HomeFeatures.map((feature, featureIdx) => (
+          <article
+            key={featureIdx}
+            className="c-home-section-features-grid-card"
+          >
+            <div className="c-home-section-features-grid-card-image">
+              <img
+                src={feature.image}
+                alt={feature.title}
+              />
+            </div>
 
-        <div className="c-container">
+            <div className="c-home-section-features-grid-card-body">
 
-          <SectionTitle
-            leadIcon={<IcnBolt/>}
-            leadText="Features"
-            headingClass="h3"
-            title="Tools That Feel Like Superpowers"
-            paragraph="The only platform you’ll ever need for seamless Web3 development."
-          />
+              <p className="h6">
+                {feature.title}
+              </p>
 
-          <div className="c-home-section-features-grid">
+              <p className="c-home-section-features-grid-card-paragraph">
+                {feature.text}
+              </p>
 
-            {HomeFeatureCardList.map((feature, featureIdx) => (
-              <article
-                key={featureIdx}
-                className="c-home-section-features-grid-card"
-              >
-               <div className="c-home-section-features-grid-card-image">
-                <img src={feature.image} alt={feature.title}/>
-               </div>
+            </div>
 
-                <div className="c-home-section-features-grid-card-body">
-                  <p className="h6">
-                    {feature.title}
-                  </p>
-
-                  <p className="c-home-section-features-grid-card-paragraph">
-                    {feature.paragraph}
-                  </p>
-
-                </div>
-
-              </article>
-            ))}
-
-          </div>
-
-        </div>
+          </article>
+        ))}
 
       </div>
 
-    </section>
+    </Section>
   );
 };

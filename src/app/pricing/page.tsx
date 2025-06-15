@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
-import {PricingSectionHero, SectionFooterBanner, SectionLogoBanner} from "@/components";
+import {
+  PricingSectionCompare,
+  PricingSectionHero,
+  PricingSectionPlans,
+  SectionFooterBanner,
+  SectionLogoBanner
+} from "@/components";
+
 
 export const metadata: Metadata = {
   title: 'Pricing',
@@ -13,7 +20,9 @@ function Pricing() {
   return (
     <>
       <PricingSectionHero/>
+      <PricingSectionPlans/>
       <SectionLogoBanner/>
+      <PricingSectionCompare/>
       <SectionFooterBanner/>
     </>
   );

@@ -1,18 +1,9 @@
 import styles from "@/styles/common/SectionTitle.module.scss";
 import {IcnStar} from "@assets/icons";
 
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {clsx} from "clsx";
-
-interface SectionTitleProps {
-  alignment?: "left";
-  leadText?: string;
-  leadIcon?: ReactNode;
-  headingTag?: "h1"
-  headingClass?: string;
-  title: string;
-  paragraph?: string;
-}
+import {SectionTitleProps} from "@/types";
 
 export const SectionTitle = (
   {

@@ -6,7 +6,7 @@ interface AvatarProps {
   extraClassName?: string;
   image: string;
   alt: string;
-  size?: 'xs' | 'sm' | 'md'; // xs:28px sm:32px md:40px default:48px
+  size?: 'xs' | 'sm' | 'md'| 'lg'; // xs:28px sm:32px md:40px default:48px lg:150px
 }
 
 export const Avatar = (
@@ -23,6 +23,8 @@ export const Avatar = (
         return 32;
       case 'md':
         return 40;
+      case 'lg':
+        return 150;
       default:
         return 48;
     }

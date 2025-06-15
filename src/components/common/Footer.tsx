@@ -2,7 +2,7 @@ import styles from "@/styles/common/Footer.module.scss";
 import React from 'react'
 import {clsx} from "clsx";
 
-import {FooterLegalNavItems, FooterNavItems, SocialLinkNavItems} from "@/utils";
+import {LegalNavItems, FooterNavItems, SocialNavItems} from "@/utils";
 import {ButtonLink, Logo} from "@/components";
 
 export const Footer = () => {
@@ -22,7 +22,7 @@ export const Footer = () => {
         </div>
 
         <div className="c-footer-social">
-          {SocialLinkNavItems.map((socialLink, socialLinkIdx) => (
+          {SocialNavItems.map((socialLink, socialLinkIdx) => (
             <ButtonLink
               key={socialLinkIdx}
               extraClassName="c-footer-social-link"
@@ -68,7 +68,7 @@ export const Footer = () => {
           <span>©️2025 All Rights Reserved</span>
 
           <div className="c-footer-legal">
-            {FooterLegalNavItems.map((legalLink, legalLinkIdx) => (
+            {LegalNavItems.map((legalLink, legalLinkIdx) => (
               <ButtonLink
                 key={legalLinkIdx}
                 href={legalLink.url}

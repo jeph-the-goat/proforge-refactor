@@ -1,4 +1,5 @@
 import IcnArchiveSvg from "./icn-archive.svg";
+import IcnArrowRightUpSvg from "./icn-arrow-up-right.svg";
 import IcnAwardSvg from "./icn-award.svg";
 import IcnBankSvg from "./icn-bank.svg";
 import IcnBoltSvg from "./icn-bolt.svg";
@@ -22,6 +23,7 @@ import IcnWindowSvg from "./icn-window.svg";
 import IcnXSvg from "./icn-x.svg";
 
 export const IcnArchive = IcnArchiveSvg;
+export const IcnArrowUpRight = IcnArrowRightUpSvg
 export const IcnAward = IcnAwardSvg;
 export const IcnBank = IcnBankSvg;
 export const IcnBolt = IcnBoltSvg;
