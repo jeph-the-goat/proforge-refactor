@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import {BlogSectionHero, SectionFooterBanner} from "@/components";
+import {BlogSectionGrid, BlogSectionHero, SectionFooterBanner} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -13,6 +13,7 @@ function Blog() {
   return (
     <>
       <BlogSectionHero/>
+      <BlogSectionGrid/>
       <SectionFooterBanner/>
     </>
   );

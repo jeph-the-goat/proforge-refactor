@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import {FaqSectionHero, SectionFooterBanner} from "@/components";
-import FaqSectionAccordion from "@/components/FaqSectionAccordion";
+import {FaqSectionAccordion, FaqSectionHero, SectionFooterBanner} from "@/components";
+
 
 export const metadata: Metadata = {
   title: 'Faq',

@@ -1,3 +1,4 @@
+import {IcnBank, IcnCryptocurrency, IcnUsers} from "@assets/icons";
 
 export const HomeFeatureCardList = [
   {
@@ -22,20 +23,38 @@ export const HomeFeatureCardList = [
   }
 ];
 
-const HomeBenefitsCardList = [
+const HomeBenefitsFeatures = [
   {
+    icon: "💻",
     title: "Everything in One Place",
     paragraph: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
-    icon: "💻"
   },
   {
+    icon: "⚙️",
     title: "Everything in One Place",
     paragraph: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
-    icon: "⚙️"
   },
   {
+    icon: "💻",
     title: "Everything in One Place",
     paragraph: "Stop juggling platforms! Access blockchains, automate smart contracts, and track analytics, all from one sleek dashboard.",
-    icon: "💻"
+  }
+];
+
+export const HomeSecurityFeatures = [
+  {
+    icon: <IcnBank/>,
+    title: "Bank-Level Encryption",
+    text: "Your data is encrypted in transit and at rest, ensuring the highest level of security."
+  },
+  {
+    icon: <IcnCryptocurrency/>,
+    title: "Built-In Smart Contract Audits",
+    text: "Our automated tools scan for vulnerabilities, helping you deploy safer smart contracts."
+  },
+  {
+    icon: <IcnUsers/>,
+    title: "Role-Based Access Control",
+    text: "Easily manage permissions and keep your projects in the right hands."
   }
 ];

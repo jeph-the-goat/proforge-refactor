@@ -31,7 +31,7 @@ const FilterList = [
   },
 ];
 
-const FaqSectionAccordion = () => {
+export const FaqSectionAccordion = () => {
   return (
     <section className={clsx(styles.cFaqSectionAccordion, "c-faq-section-accordion")}>
 
@@ -65,5 +65,3 @@ const FaqSectionAccordion = () => {
     </section>
   );
 };
-
-export default FaqSectionAccordion;

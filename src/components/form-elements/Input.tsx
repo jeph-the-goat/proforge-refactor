@@ -12,17 +12,19 @@ export const Input =(
     placeholder,
     hasErrors,
     errorText,
+    inputGroupIcon,
     inputGroupText,
     ...rest
   }: InputProps) => {
   return (
     <FormGroup
-      extraClassName={`c-form-group_${type}`}
+      extraClassName={`c-form-group-${type}`}
       name={name}
       labelText={labelText}
       labelIsHidden={labelIsHidden}
       hasErrors={hasErrors}
       errorText={errorText}
+      inputGroupIcon={inputGroupIcon}
       inputGroupText={inputGroupText}
     >
       <input

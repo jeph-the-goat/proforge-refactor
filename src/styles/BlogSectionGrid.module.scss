@@ -1,0 +1,176 @@
+.cBlogSectionGrid {
+  &:global {
+    &.c-blog-section-grid {
+      padding: 0 1em clamp(var(--px40), 64/1440*100vw, var(--px64));
+
+      .c-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: clamp(var(--px40), 120/1440*100vw, 120px);
+      }
+    }
+  }
+
+  :global {
+    .c-blog-section-grid {
+      &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: var(--px24);
+        width: 100%;
+        max-width: 564px;
+        margin: 0 auto;
+
+        .c-form-group-search {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .c-button-container {
+          display: flex;
+          justify-content: center;
+
+          .c-form-group + .c-form-group {
+            margin-top: 0;
+          }
+        }
+      }
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: clamp(1em, 32/1440*100vw, var(--px32));
+      }
+
+      &-cards {
+        display: grid;
+        align-items: stretch;
+        grid-template-columns: 1fr;
+        gap: clamp(1em, 32/1440*100vw, var(--px32));
+
+        @media(min-width: 576px) {
+          grid-template-columns: repeat(2,1fr);
+        }
+
+        @media(min-width: 767px) {
+          grid-template-columns: repeat(3,1fr);
+        }
+      }
+
+      &-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 1px;
+        border-radius: 1em;
+        overflow: hidden;
+        isolation: isolate;
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          display: block;
+          width: 100%;
+          height: 100%;
+          margin: auto;
+          border: 1px solid transparent;
+          border-radius: 1em;
+          mask:
+            linear-gradient(to right, black 100%, black 100%) content-box,
+            linear-gradient(to right, black 100%, black 100%);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          transition: opacity 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        &:before {
+          opacity: 1;
+          background: var(--neutral-700) border-box;
+        }
+
+        &:after {
+          opacity: 0;
+          background: linear-gradient(180deg, #4C1EE3 0%, #2B303B 100%) border-box;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+          box-shadow: 0 0 10px 0 rgba(76, 30, 227, 0.3);
+
+          &:before {
+            opacity: 0;
+          }
+
+          &:after {
+            opacity: 1;
+          }
+        }
+
+
+        &-image {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 100%;
+          aspect-ratio: 366/222;
+          background-color: var(--neutral-950);
+
+          >img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &-body {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          row-gap: clamp(var(--px20), 40/1440*100vw, var(--px40));
+          padding: clamp(1em, 32/1440*100vw, var(--px32));
+
+          small {
+            margin-top: auto;
+            color: var(--neutral-300);
+            font-size: 1em;
+          }
+        }
+      }
+
+      &-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+
+        .c-pagination-button {
+          &.previous {
+            margin-right: 1em;
+          }
+
+          &.index {
+            &.is-active {
+              --btn-bg-color: var(--neutral-900);
+              --btn-border-color: var(--neutral-900);
+              --btn-box-shadow: none;
+              --btn-hover-bg-color: var(--neutral-600);
+              --btn-hover-border-color: var(--neutral-600);
+              --btn-hover-box-shadow: none;
+            }
+          }
+
+          &.next {
+            margin-left: 1em;
+          }
+        }
+      }
+    }
+  }
+}

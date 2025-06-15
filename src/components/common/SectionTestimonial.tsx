@@ -9,22 +9,25 @@ import { FreeMode, Autoplay } from 'swiper/modules';
 import {SectionTestimonialList} from "@/utils";
 
 import {SectionTitle, Avatar} from "@/components";
+import {IcnUsers} from "@assets/icons";
 
 export const SectionTestimonial = () => {
   return (
     <section className={clsx(styles.cSectionTestimonial, "c-section-testimonial")}>
 
       <div className="c-section-testimonial-header">
+
         <div className="c-container">
 
           <SectionTitle
+            leadIcon={<IcnUsers/>}
             leadText="Testimonials"
             headingClass="h3"
             title="Real Success, Real People"
             paragraph="Trusted by developers and enterprises worldwide. See how we’ve helped them achieve their Web3 goals."
           />
-
         </div>
+
       </div>
 
       <div className="c-section-testimonial-slider">

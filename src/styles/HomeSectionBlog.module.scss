@@ -1,13 +1,31 @@
 .cHomeSectionBlog {
   &:global {
     &.c-home-section-blog {
-
+      .c-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: clamp(var(--px40), 64/1440*100vw, var(--px64));
+      }
     }
   }
 
   :global {
     .c-home-section-blog {
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+                "featured card1"
+                "featured card2"
+                "featured card3";
 
+        &-card {
+          &:nth-child(2) { grid-area: card1; }
+          &:nth-child(3) { grid-area: card2; }
+          &:nth-child(4) { grid-area: card3; }
+        }
+      }
     }
   }
 }

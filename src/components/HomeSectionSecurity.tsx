@@ -1,5 +1,8 @@
+import {IcnLock} from "@assets/icons";
+
 import React from 'react';
 import {clsx} from "clsx";
+import {HomeSecurityFeatures} from "@/utils";
 import {SectionTitle} from "@/components/common";
 
 export const HomeSectionSecurity = () => {
@@ -9,6 +12,7 @@ export const HomeSectionSecurity = () => {
       <div className="c-container">
 
         <SectionTitle
+          leadIcon={<IcnLock/>}
           leadText="Security"
           headingClass="h3"
           title="Your Data, Locked Tight"
@@ -17,6 +21,22 @@ export const HomeSectionSecurity = () => {
 
         <div className="c-home-section-security-grid">
 
+          {HomeSecurityFeatures.map((security, securityIdx) => (
+            <article
+              key={securityIdx}
+            >
+              <i>{security.icon}</i>
+
+              <p>
+                {security.title}
+              </p>
+
+              <p>
+                {security.text}
+              </p>
+
+            </article>
+          ))}
 
         </div>
 

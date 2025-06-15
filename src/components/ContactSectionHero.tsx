@@ -2,8 +2,9 @@ import styles from "@/styles/ContactSectionHero.module.scss";
 import React from 'react';
 import {clsx} from "clsx";
 
-import {SectionTitle} from "src/components/common";
+import {ButtonLink, SectionTitle} from "src/components/common";
 import {ContactForm} from "@/components/forms";
+import {ContactInfo} from "@/utils";
 
 export const ContactSectionHero = () => {
   return (
@@ -29,7 +30,22 @@ export const ContactSectionHero = () => {
               </p>
 
               <ul>
-                <li>list here</li>
+                {ContactInfo.map((info, infoIdx) => (
+                  <li key={infoIdx}>
+                    <i>{info.icon}</i>
+
+                    <div>
+                      <span>{info.title}</span>
+                      <span>{info.text}</span>
+                      <ButtonLink
+                        href={`mailto:${info.url}`}
+                        isExternal
+                        btnText={info.url}
+                        btnVariant="link"
+                      />
+                    </div>
+                  </li>
+                ))}
               </ul>
 
             </div>

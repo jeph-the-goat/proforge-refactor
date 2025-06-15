@@ -1,3 +1,5 @@
+import {IcnDollarSign} from "@assets/icons";
+
 import React from 'react';
 import {clsx} from "clsx";
 import {SectionTitle} from "@/components/common";
@@ -9,6 +11,7 @@ export const HomeSectionPricing = () => {
       <div className="div c-container">
 
         <SectionTitle
+          leadIcon={<IcnDollarSign/>}
           leadText="Pricing"
           headingClass="h3"
           title="Fair Pricing for Every Stage"

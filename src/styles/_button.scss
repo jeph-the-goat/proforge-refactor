@@ -1,7 +1,7 @@
 .c-button {
-  --btn-min-width: 155px;
-  --btn-min-height: 52px;
-  --btn-padding-x: 1em;
+  --btn-min-width: unset;
+  --btn-min-height: var(--px52);
+  --btn-padding-x: var(--px28);
   --btn-padding-y: 0.25em;
   --btn-gap: var(--px8);
   --btn-bg-color: var(--primary-500);
@@ -48,7 +48,7 @@
   appearance: none;
   cursor: pointer;
   isolation: isolate;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 1s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover,
   &:focus:not(:focus-visible),
@@ -65,7 +65,7 @@
   }
 
   &:disabled {
-    opacity: 0.48;
+    cursor: default;
     pointer-events: none;
   }
 
@@ -158,8 +158,11 @@
       0px 16px 24px -8px #181B251A,
       0px 0px 0px 1px var(--neutral-800);
 
-    &:active {
-
+    &:disabled {
+      --btn-bg-color: var(--neutral-900);
+      --btn-border-color: var(--neutral-900);
+      --btn-color: var(--neutral-500);
+      --btn-box-shadow: none;
     }
   }
 
@@ -175,10 +178,6 @@
 
     transition: opacity 0.3s ease;
 
-    &:before {
-      display: none;
-    }
-
     &:hover,
     &:focus,
     &:active {
@@ -189,12 +188,14 @@
   &[data-size="md"] {
     --btn-min-width: unset;
     --btn-min-height: var(--px40);
+    --btn-padding-x: var(--px12);
     --btn-size: var(--px40);
   }
 
   &[data-size="sm"] {
     --btn-min-width: unset;
     --btn-min-height: var(--px32);
+    --btn-padding-x: var(--px12);
     --btn-size: var(--px32);
   }
 
@@ -238,6 +239,11 @@
     &:active {
       text-decoration: underline;
     }
+  }
+
+  &[type="submit"] {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

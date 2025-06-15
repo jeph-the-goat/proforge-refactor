@@ -17,7 +17,6 @@ export const InputTextarea = (
     placeholder,
     hasErrors,
     errorText,
-    inputGroupIcon,
     inputGroupText,
     ...rest
   }: InputTextareaProps) => {

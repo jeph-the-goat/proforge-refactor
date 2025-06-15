@@ -1,9 +1,18 @@
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+'use client';
+
+import React, { useState } from 'react';
 import * as yup from 'yup';
 
 import {Button, Input, InputTextarea} from "@/components";
 
+// Interface for form data
+interface ContactFormData {
+  fullName: string;
+  email: string;
+  message: string;
+}
+
+// Validation schema with yup
 const contactSchema = yup.object({
   fullName: yup
     .string()
@@ -20,98 +29,122 @@ const contactSchema = yup.object({
     .max(500, 'Message cannot exceed 500 characters'),
 });
 
-type ContactFormData = yup.InferType<typeof contactSchema>;
-
 export const ContactForm = () => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<ContactFormData>({
-    resolver: async (data) => {
-      try {
-        const validatedData = await contactSchema.validate(data, { abortEarly: false });
-        return { values: validatedData, errors: {} };
-      } catch (error) {
-        if (error instanceof yup.ValidationError) {
-          const fieldErrors: Record<string, any> = {};
-          error.inner.forEach((err) => {
-            if (err.path) {
-              fieldErrors[err.path] = { type: 'validation', message: err.message };
-            }
-          });
-          return { values: {}, errors: fieldErrors };
-        }
-        return { values: {}, errors: {} };
-      }
-    },
+  const [formData, setFormData] = useState<ContactFormData>({
+    fullName: '',
+    email: '',
+    message: ''
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    // In development mode, display data in alert
-    alert(JSON.stringify(data, null, 2));
-    // Reset form after submission
-    reset();
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
+
+  const handleInputChange = (field: keyof ContactFormData, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: undefined
+      }));
+    }
+  };
+
+  const handleTextareaChange = (field: keyof ContactFormData, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: undefined
+      }));
+    }
+  };
+
+  const validateForm = async (): Promise<boolean> => {
+    try {
+      await contactSchema.validate(formData, { abortEarly: false });
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof yup.ValidationError) {
+        const fieldErrors: Partial<ContactFormData> = {};
+        error.inner.forEach((err) => {
+          if (err.path) {
+            fieldErrors[err.path as keyof ContactFormData] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+      }
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const isValid = await validateForm();
+    
+    if (isValid) {
+      // In development mode, display data in alert
+      alert(JSON.stringify(formData, null, 2));
+      
+      // Reset form after submission
+      setFormData({
+        fullName: '',
+        email: '',
+        message: ''
+      });
+      setErrors({});
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+    <form onSubmit={handleSubmit} className="contact-form" noValidate>
+      <Input
+        type="text"
+        name="fullName"
+        labelText="Full Name"
+        placeholder="Enter your full name"
+        hasErrors={!!errors.fullName}
+        errorText={errors.fullName}
+        value={formData.fullName}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('fullName', e.target.value)}
+      />
 
-        <Controller
-          name="fullName"
-          control={control}
-          render={({ field: { name, ...fieldProps } }) => (
-            <Input
-              type="text"
-              name="fullName"
-              labelText="Full Name"
-              placeholder="Enter your full name"
-              hasErrors={!!errors.fullName}
-              errorText={errors.fullName?.message}
-              {...fieldProps}
-            />
-          )}
-        />
+      <Input
+        type="email"
+        name="email"
+        labelText="Email"
+        placeholder="Enter your email address"
+        hasErrors={!!errors.email}
+        errorText={errors.email}
+        value={formData.email}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('email', e.target.value)}
+      />
 
-        <Controller
-          name="email"
-          control={control}
-          render={({ field: { name, ...fieldProps } }) => (
-            <Input
-              type="email"
-              name="email"
-              labelText="Email"
-              placeholder="Enter you email address"
-              hasErrors={!!errors.email}
-              errorText={errors.email?.message}
-              {...fieldProps}
-            />
-          )}
-        />
-        
-
-      <Controller
+      <InputTextarea
         name="message"
-        control={control}
-        render={({ field: { name, ...fieldProps } }) => (
-          <InputTextarea
-            name="message"
-            labelText="Message"
-            placeholder="How can we help you?"
-            rows={6}
-            hasErrors={!!errors.message}
-            errorText={errors.message?.message}
-            {...fieldProps}
-          />
-        )}
+        labelText="Message"
+        placeholder="How can we help you?"
+        rows={6}
+        hasErrors={!!errors.message}
+        errorText={errors.message}
+        value={formData.message}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleTextareaChange('message', e.target.value)}
       />
 
       <Button
         type="submit"
         btnText="Send Message"
       />
-
     </form>
   );
 };

@@ -4,5 +4,7 @@ export * from "./commonData";
 export * from "./dummyData";
 
 export * from "./homeData";
+export * from "./blogData";
 export * from "./faqData";
+export * from "./contactData";
 

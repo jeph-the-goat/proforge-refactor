@@ -19,11 +19,13 @@ export const Header = () => {
           <HeaderNavItems extraClassName='c-desktop'/>
         )}
 
-        <Button
-          btnColor="white"
-          btnSize="md"
-          btnText="Login"
-        />
+        <div className="c-header-button-wrapper">
+          <Button
+            btnColor="white"
+            btnSize="md"
+            btnText="Login"
+          />
+        </div>
 
         <MobileMenu/>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import {clsx} from "clsx";
 import {ButtonLink, SectionTitle} from "src/components/common";
+import {IcnPullRequest} from "@assets/icons";
 
 export const HomeSectionIntegration = () => {
   return (
@@ -13,6 +14,7 @@ export const HomeSectionIntegration = () => {
         </div>
 
         <SectionTitle
+          leadIcon={<IcnPullRequest/>}
           leadText="Integration"
           headingClass="h3"
           title="Seamlessly Connect to the Ecosystem"
