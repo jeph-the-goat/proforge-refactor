@@ -1,10 +1,14 @@
 .cSection {
   &:global {
     &.c-section {
-      padding: var(--from-120-to-40px) 1em;
+      --section-padding-top: var(--from-120-to-40px);
+      --section-padding-bottom: var(--from-120-to-40px);
+
+      padding: var(--section-padding-top) 1em var(--section-padding-bottom);
 
       &:has(.c-section-wrapper) {
-        padding: var(--from-64-to-40px) 1em;
+        --section-padding-top: var(--from-64-to-40px);
+        --section-padding-bottom: var(--from-64-to-40px);
       }
 
       .c-container {

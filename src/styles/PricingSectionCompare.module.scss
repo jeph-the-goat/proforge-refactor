@@ -1,0 +1,209 @@
+.cPricingSectionCompare {
+  &:global {
+    &.c-pricing-section-compare.c-section:has(.c-section-wrapper) {
+      --section-padding-top: var(--from-40-to-24px);
+    }
+  }
+
+  :global {
+    .c-pricing-section-compare {
+      &-content {
+        width: 100%;
+        max-width: 100%;
+
+        .c-table {
+          width: 100%;
+          max-width: 100%;
+          height: 1px;
+          table-layout: fixed;
+          border-spacing: var(--from-24-to-16px) 0;
+          border-collapse: separate;
+
+          tr {
+            position: relative;
+          }
+
+          th, td {
+            border: 0;
+            text-align: left;
+
+            &:not(:first-child) {
+              background-color: var(--neutral-950);
+              padding: var(--from-24-to-16px);
+            }
+
+            &:first-child {
+              color: var(--neutral-300);
+              padding: var(--from-24-to-16px) 0;
+            }
+          }
+
+          th {
+            border: 0;
+            font-weight: normal;
+
+            &:first-child {
+              vertical-align: bottom;
+            }
+
+            &:not(:first-child) {
+              border-radius: 1em 1em 0 0;
+
+              .c-table-cell {
+                display: flex;
+                flex-direction: column;
+                row-gap: 1em;
+
+                &-icon {
+                  width: var(--px40);
+                  height: var(--px40);
+
+                  svg {
+                    max-width: var(--px28);
+                    max-height: var(--px28);
+                  }
+                }
+
+                &-text {
+                  display: flex;
+                  flex-direction: column;
+                  row-gap: var(--px4);
+
+                  p {
+                    margin-bottom: 0;
+                  }
+                }
+
+                .c-button {
+                  width: 100%;
+                  max-width: 100%;
+                }
+              }
+            }
+          }
+
+          td {
+            &:first-child {
+              .c-table-cell {
+                &:before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  width: 100%;
+                  max-width: 100%;
+                  height: 1px;
+                  background-color: var(--neutral-700);
+                }
+              }
+            }
+          }
+
+          tbody tr:last-child {
+            td:not(:first-child) {
+              border-radius: 0 0 1em 1em;
+            }
+          }
+        }
+      }
+
+      &-grid {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+      }
+
+      &-card {
+        background-color: var(--neutral-950);
+        border-radius: 1em;
+        text-align: left;
+        overflow: hidden;
+
+        &-header {
+          display: flex;
+          flex-direction: column;
+          row-gap: 1em;
+          padding: var(--from-24-to-16px);
+          background-color: var(--neutral-950);
+          border-bottom: 1px solid var(--neutral-700);
+        }
+
+        &-icon {
+          width: var(--px40);
+          height: var(--px40);
+
+          svg {
+            max-width: var(--px28);
+            max-height: var(--px28);
+          }
+        }
+
+        &-info {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px4);
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+
+        &-cta {
+          .c-button {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+
+        //&-body {
+        //  padding: 0 var(--from-24-to-16px) var(--from-24-to-16px);
+        //}
+
+        &-features {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+        }
+
+        &-feature {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: nowrap;
+          padding: 0.5em var(--from-24-to-16px);
+          text-align: left;
+
+          &:not(:first-child) {
+            border-top: 1px solid var(--neutral-800);
+          }
+
+          &-label {
+            margin: 0;
+            color: var(--neutral-300);
+            font-weight: normal;
+          }
+
+          &-value {
+            margin: 0;
+            text-align: right;
+
+            .feature-not-included {
+              color: var(--neutral-500);
+              display: flex;
+              align-items: center;
+              gap: var(--px8);
+
+              .icon-cross {
+                color: var(--red-500);
+              }
+            }
+
+            .feature-included {
+              // Inherits default text color
+            }
+          }
+        }
+      }
+    }
+  }
+}

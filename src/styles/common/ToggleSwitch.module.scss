@@ -107,6 +107,33 @@
             &.checked {
               font-weight: normal;
               color: var(--neutral-400);
+
+              .c-toggle-switch-label-badge {
+                flex-shrink: 0;
+                display: inline-flex;
+                align-items: center;
+                gap: var(--px4);
+                padding: 2px var(--px4);
+                background-color: var(--neutral-700);
+                border-radius: var(--px4);
+
+                em, span {
+                  font-size: var(--px12);
+                  font-weight: 600 !important;
+                  line-height: 1em;
+                }
+
+                em {
+                  font-style: normal;
+                  color: var(--neutral-400);
+                }
+                span {
+                  padding: 4px; //4px @12px
+                  background-color: var(--neutral-950);
+                  border-radius: 4px;
+                  color: var(--neutral-0);
+                }
+              }
             }
           }
 

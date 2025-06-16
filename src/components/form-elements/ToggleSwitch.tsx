@@ -16,8 +16,6 @@ export const ToggleSwitch =(
     labelText,
     labelIsHidden,
     name,
-    onChange,
-    checked,
     toggleSwitchStyle,
     labelCheckedText,
     ...rest
@@ -32,8 +30,6 @@ export const ToggleSwitch =(
         type="checkbox"
         name={name}
         id={`id_${name}`}
-        checked={checked}
-        onChange={onChange}
         {...rest}
       />
 

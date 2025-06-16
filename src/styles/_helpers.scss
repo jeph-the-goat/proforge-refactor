@@ -17,6 +17,18 @@
   }
 }
 
+@media (max-width: 767px) {
+  .c-phablet-down {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-phablet-up {
+    display: none !important;
+  }
+}
+
 .c-visually-hidden {
   position: absolute !important;
   width: 1px !important;

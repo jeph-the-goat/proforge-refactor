@@ -13,16 +13,7 @@
     .c-pricing-plans {
       &-header {
         .c-toggle-switch {
-          .c-toggle-switch-label-badge {
-            flex-shrink: 0;
-            display: inline-flex;
-            background-color: var(--neutral-700);
-            border-radius: var(--px4);
 
-            em, span {
-              font-size: var(--px12);
-            }
-          }
         }
       }
 

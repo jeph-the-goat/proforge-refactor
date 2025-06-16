@@ -1,0 +1,24 @@
+.cPricingSectionPlans {
+  &:global {
+    &.c-pricing-section-plans.c-section {
+      --section-padding-top: 0;
+      --section-padding-bottom: var(--from-40-to-24px);
+
+      .c-pricing-plans-header {
+        .c-toggle-switch {
+          background-color: var(--neutral-900);
+
+          &-label-toggler {
+            background-color: var(--neutral-800);
+          }
+        }
+      }
+
+      .c-pricing-plans-grid {
+        .c-pricing-plans-card.enterprise {
+          background-color: var(--neutral-900);
+        }
+      }
+    }
+  }
+}

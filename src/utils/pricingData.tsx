@@ -1,93 +1,20 @@
 import IcnStarter from "@assets/images/icn-pricing-starter.svg";
 import IcnPro from "@assets/images/icn-pricing-pro.svg";
 import IcnEnterprise from "@assets/images/icn-pricing-business.svg";
+import { ReactNode } from "react";
+import { cButtonColors } from "@/types";
 
-import {ReactNode} from "react";
-import {cButtonColors} from "@/types";
-
-export interface PricingPlanProps extends cButtonColors {
+export interface PlanProps extends cButtonColors {
   id: string;
-  icon: ReactNode;
-  mostPopular: boolean;
   name: string;
   description: string;
   price: string;
   priceAmount: number | null;
   period: string | null;
+  btnText: string;
   popular: boolean;
+  icon: ReactNode;
   features: string[];
-  btnText: string;
-}
-
-export const Pricings: PricingPlanProps[] = [
-  {
-    id: 'starter',
-    icon: <IcnStarter/>,
-    mostPopular: false,
-    name: 'Starter',
-    description: 'Perfect for individual developers and small projects.',
-    price: 'Free',
-    priceAmount: 0,
-    period: null,
-    popular: false,
-    features: [
-      'Connect up to 2 blockchains',
-      'Basic smart contract automation',
-      'Limited API requests (10k/month)',
-      'Community support'
-    ],
-    btnText: 'Start for Free',
-    btnColor: undefined,
-  },
-  {
-    id: 'pro',
-    icon: <IcnPro/>,
-    mostPopular: true,
-    name: 'Pro',
-    description: 'Great for startups and teams ready to scale.',
-    price: '$99',
-    priceAmount: 99,
-    period: 'month',
-    popular: true,
-    features: [
-      'Connect up to 5 blockchains',
-      'Advanced smart contract automation',
-      'Unlimited API requests',
-      'Real-time analytics dashboard',
-      'Priority support'
-    ],
-    btnText: 'Go Pro',
-    btnColor: 'dark'
-  },
-  {
-    id: 'enterprise',
-    icon: <IcnEnterprise/>,
-    mostPopular: false,
-    name: 'Enterprise',
-    description: 'Tailored for large teams and enterprise-grade projects.',
-    price: 'Custom Pricing',
-    priceAmount: null,
-    period: null,
-    popular: false,
-    features: [
-      'Unlimited blockchain connections',
-      'AI-powered contract builder',
-      'Dedicated account manager',
-      'Custom integrations',
-      'Enterprise-level security & compliance'
-    ],
-    btnText: 'Contact Us',
-    btnColor: 'white'
-  }
-];
-
-
-export interface ComparePlansProps extends cButtonColors{
-  id: string;
-  name: string;
-  price: string;
-  btnText: string;
-  popular: boolean;
   bestFor: string;
   blockchainConnections: string;
   smartContractAutomation: string;
@@ -96,21 +23,27 @@ export interface ComparePlansProps extends cButtonColors{
   support: string;
   customIntegrations: string;
   securityCompliance: string;
-  [key: string]: string | boolean | undefined;
+  [key: string]: string | number | boolean | ReactNode | string[] | null | undefined;
 }
 
-export interface ComparePlansLabelProps {
-  [key: string]: string;
-}
-
-export const ComparePlans: ComparePlansProps[] = [
+export const Plans: PlanProps[] = [
   {
     id: 'starter',
     name: 'Starter',
+    description: 'Perfect for individual developers and small projects.',
     price: 'Free',
+    priceAmount: 0,
+    period: null,
     btnText: 'Start for Free',
     btnColor: undefined,
     popular: false,
+    icon: <IcnStarter/>,
+    features: [
+      'Connect up to 2 blockchains',
+      'Basic smart contract automation',
+      'Limited API requests (10k/month)',
+      'Community support'
+    ],
     bestFor: 'Beginners & small teams',
     blockchainConnections: 'Connect up to 2 blockchains',
     smartContractAutomation: 'Basic',
@@ -123,10 +56,21 @@ export const ComparePlans: ComparePlansProps[] = [
   {
     id: 'pro',
     name: 'Pro',
-    price: '$99/month',
+    description: 'Great for startups and teams ready to scale.',
+    price: '$99',
+    priceAmount: 99,
+    period: 'month',
     btnText: 'Go Pro',
     btnColor: 'dark',
     popular: true,
+    icon: <IcnPro/>,
+    features: [
+      'Connect up to 5 blockchains',
+      'Advanced smart contract automation',
+      'Unlimited API requests',
+      'Real-time analytics dashboard',
+      'Priority support'
+    ],
     bestFor: 'Growing teams & businesses',
     blockchainConnections: 'Connect up to 5 blockchains',
     smartContractAutomation: 'Advanced',
@@ -139,10 +83,21 @@ export const ComparePlans: ComparePlansProps[] = [
   {
     id: 'enterprise',
     name: 'Enterprise',
-    price: 'Custom Price',
+    description: 'Tailored for large teams and enterprise-grade projects.',
+    price: 'Custom Pricing',
+    priceAmount: null,
+    period: null,
     btnText: 'Contact Us',
     btnColor: 'white',
     popular: false,
+    icon: <IcnEnterprise/>,
+    features: [
+      'Unlimited blockchain connections',
+      'AI-powered contract builder',
+      'Dedicated account manager',
+      'Custom integrations',
+      'Enterprise-level security & compliance'
+    ],
     bestFor: 'Large enterprises',
     blockchainConnections: 'Unlimited blockchain',
     smartContractAutomation: 'AI-powered contract builder',
@@ -153,6 +108,10 @@ export const ComparePlans: ComparePlansProps[] = [
     securityCompliance: 'Enterprise-level security'
   }
 ];
+
+export interface ComparePlansLabelProps {
+  [key: string]: string;
+}
 
 export const ComparePlansLabels:ComparePlansLabelProps = {
   bestFor: 'Best For',

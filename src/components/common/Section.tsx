@@ -56,16 +56,17 @@ export const Section = (
         </div>
       ):(
         <div className="c-container">
-
-          <SectionTitle
-            alignment={alignment}
-            leadIcon={leadIcon}
-            leadText={leadText}
-            headingClass={headingClass}
-            headingTag={headingTag}
-            title={title}
-            paragraph={paragraph}
-          />
+          {!hideSectionTitle && (
+            <SectionTitle
+              alignment={alignment}
+              leadIcon={leadIcon}
+              leadText={leadText}
+              headingClass={headingClass}
+              headingTag={headingTag}
+              title={title}
+              paragraph={paragraph}
+            />
+          )}
 
           {!uncontainedChildren &&(children)}
 
