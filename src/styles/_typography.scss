@@ -45,38 +45,38 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: clamp(var(--px36), 72/1440 * 100vw,var(--px72));
+  font-size: var(--font-size-h1);
   line-height: 1.111em; //80px @72px
   letter-spacing: -0.055em; //-4px @72px
 }
 
 h2, .h2 {
-  font-size: clamp(var(--px32), 64/1440 * 100vw, var(--px64));
+  font-size: var(--font-size-h2);
   line-height: 1.125em; //72px @64px
   letter-spacing: -0.046em; //-3px @64px
 }
 
 h3, .h3 {
-  font-size: clamp(var(--px28), 50/1440 * 100vw, var(--px50));
+  font-size:var(--font-size-h3) ;
   line-height: 1.200em; //60px @50px
   letter-spacing: -0.060em; //-3px @50px
 }
 
 h4, .h4 {
-  font-size: clamp(var(--px24), 40/1440*100vw ,var(--px40));
+  font-size: var(--font-size-h4);
   line-height: 1.250em; //50px @40px
   letter-spacing: -0.075em; //-3px @40px
 }
 
 h5, .h5 {
-  font-size: clamp(var(--px20), 32/1440*100vw, var(--px32));
+  font-size: var(--font-size-h5);
   line-height: 1.300em; //42px @32px
   letter-spacing: -0.093em; //-3px @32px
 }
 
 h6, .h6 {
-  font-size: clamp(var(--px18), 24/1440*100vw, var(--px24));
-  line-height: 1.400em; //28px @24px
+  font-size: var(--font-size-h6);
+  line-height: 1.333em; //32px @24px
   letter-spacing: -0.02em; //-2% @24px
 }
 

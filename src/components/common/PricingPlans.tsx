@@ -5,6 +5,7 @@ import {clsx} from "clsx";
 import {Pricings} from "@/utils";
 import {IcnBolt, IcnCircleCheck} from "@assets/icons";
 import {Button, ButtonLink} from "@/components";
+import {ToggleSwitch} from "@/components/form-elements/ToggleSwitch";
 
 
 export const PricingPlans = () => {
@@ -12,7 +13,20 @@ export const PricingPlans = () => {
     <div className={clsx(styles.cPricingPlans, "c-pricing-plans")}>
 
       <div className="c-pricing-plans-header">
-        toggler here
+        <ToggleSwitch
+          toggleSwitchStyle="duo"
+          name="ya bitch"
+          labelText="Monthly"
+          labelCheckedText={
+          <>
+          <span>Annual</span>
+            <span className="c-toggle-switch-label-badge">
+              <em>save</em>
+              <span>20%</span>
+            </span>
+          </>
+        }
+        />
 
       </div>
 
@@ -30,7 +44,7 @@ export const PricingPlans = () => {
                 {plan.mostPopular && (
                   <span>
                     <i><IcnBolt/></i>
-                    <span>Most popular</span>
+                    <span>Popular!</span>
                   </span>
                 )}
 
@@ -47,8 +61,16 @@ export const PricingPlans = () => {
             </div>
 
             <div className="c-pricing-plans-card-body">
-              <p className="h4">
-                {plan.name}
+
+              <p>
+                <span className={clsx("h4", plan.id !== "pro" && "c-gradient-text")}>
+                  {plan.price}
+                </span>
+                {plan.period && (
+                  <sub className="h6">
+                    /{plan.period}
+                  </sub>
+                )}
               </p>
 
               <ul>

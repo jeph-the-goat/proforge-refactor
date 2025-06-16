@@ -5,10 +5,18 @@
 
   --header-height: var(--px106);
 
+  --font-size-h1: clamp(var(--px36), 72/1440 * 100vw,var(--px72));
+  --font-size-h2: clamp(var(--px32), 64/1440 * 100vw, var(--px64));
+  --font-size-h3: clamp(var(--px28), 50/1440 * 100vw, var(--px50));
+  --font-size-h4: clamp(var(--px24), 40/1440*100vw ,var(--px40));
+  --font-size-h5: clamp(var(--px20), 32/1440*100vw, var(--px32));
+  --font-size-h6: clamp(var(--px18), 24/1440*100vw, var(--px24));
+
   --from-120-to-40px: clamp(var(--px40), 120/1440*100vw, 120px);
   --from-80-to-40px: clamp(var(--px40), 80/1440*100vw, var(--px80));
   --from-64-to-40px: clamp(var(--px40), 64/1440*100vw, var(--px64));
 
+  --from-40-to-24px: clamp(var(--px24), 40/1440*100vw, var(--px40));
   --from-40-to-20px: clamp(var(--px20), 40/1440*100vw, var(--px40));
 
   --from-32-to-24px: clamp(var(--px24), 32/1440*100vw, var(--px32));
