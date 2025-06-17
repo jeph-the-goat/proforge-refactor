@@ -1,10 +1,10 @@
 import styles from "@/styles/common/Section.module.scss";
-import React, {ReactNode} from 'react';
-import {clsx} from "clsx";
-import {SectionTitleProps} from "@/types";
-import {SectionTitle} from "@/components";
+import React, { ReactNode } from 'react';
+import { clsx } from "clsx";
+import { SectionTitleProps } from "@/types";
+import { SectionTitle } from "@/components";
 
-interface SectionProps extends SectionTitleProps{
+interface SectionProps extends SectionTitleProps {
   extraClassName?: string;
   addWrapper?: boolean;
   hideSectionTitle?: boolean;
@@ -12,68 +12,64 @@ interface SectionProps extends SectionTitleProps{
   children?: ReactNode;
 }
 
-export const Section = (
-  {
-    extraClassName,
-    addWrapper,
-    hideSectionTitle,
-    alignment,
-    leadText,
-    leadIcon,
-    headingTag,
-    headingClass,
-    title,
-    paragraph,
-    uncontainedChildren,
-    children,
-  }:SectionProps) => {
-  return (
-    <section className={clsx(styles.cSection,"c-section", extraClassName)}>
+export const Section = ({
+  extraClassName,
+  addWrapper,
+  hideSectionTitle,
+  alignment,
+  leadText,
+  leadIcon,
+  headingTag,
+  headingClass,
+  title,
+  paragraph,
+  uncontainedChildren,
+  children,
+}: SectionProps) => {
+  const sectionTitle = !hideSectionTitle && (
+    <SectionTitle
+      alignment={alignment}
+      leadIcon={leadIcon}
+      leadText={leadText}
+      headingClass={headingClass}
+      headingTag={headingTag}
+      title={title}
+      paragraph={paragraph}
+    />
+  );
 
-      {addWrapper? (
+  const containedContent = (
+    <div className="c-container">
+      {sectionTitle}
+      {!uncontainedChildren && children}
+    </div>
+  );
+
+  const renderContent = () => {
+    if (addWrapper) {
+      return (
         <div className="c-section-wrapper">
-
-          <div className="c-container">
-
-            {!hideSectionTitle && (
-              <SectionTitle
-                alignment={alignment}
-                leadIcon={leadIcon}
-                leadText={leadText}
-                headingClass={headingClass}
-                headingTag={headingTag}
-                title={title}
-                paragraph={paragraph}
-              />
-            )}
-
-            {!uncontainedChildren &&(children)}
-
-          </div>
-
-          {uncontainedChildren &&(children)}
-
+          {containedContent}
+          {uncontainedChildren && children}
         </div>
-      ):(
-        <div className="c-container">
-          {!hideSectionTitle && (
-            <SectionTitle
-              alignment={alignment}
-              leadIcon={leadIcon}
-              leadText={leadText}
-              headingClass={headingClass}
-              headingTag={headingTag}
-              title={title}
-              paragraph={paragraph}
-            />
-          )}
+      );
+    }
 
-          {!uncontainedChildren &&(children)}
+    if (uncontainedChildren && hideSectionTitle) {
+      return children;
+    }
 
-        </div>
-      )}
+    return (
+      <>
+        {containedContent}
+        {uncontainedChildren && children}
+      </>
+    );
+  };
 
-      {uncontainedChildren &&(children)}
+  return (
+    <section className={clsx(styles.cSection, "c-section", extraClassName)}>
+      {renderContent()}
     </section>
   );
 };

@@ -1,12 +1,16 @@
+import {IcnPullRequest} from "@assets/icons";
+
 import React from 'react';
 import {clsx} from "clsx";
-import {ButtonLink, SectionTitle} from "src/components/common";
-import {IcnPullRequest} from "@assets/icons";
+import {ButtonLink, Section, SectionTitle} from "src/components/common";
 
 export const HomeSectionIntegration = () => {
   return (
-    <section className={clsx("c-home-section-integration")}>
-
+    <Section
+      extraClassName={clsx("c-home-section-integration")}
+      uncontainedChildren
+      hideSectionTitle
+    >
       <div className="c-container">
 
         <div className="c-home-section-integration-image top">
@@ -22,7 +26,7 @@ export const HomeSectionIntegration = () => {
         />
 
         <ButtonLink
-          href="/"
+          href="/integration"
           btnText="See All Integration"
         />
 
@@ -32,6 +36,6 @@ export const HomeSectionIntegration = () => {
 
       </div>
 
-    </section>
+    </Section>
   );
 };
