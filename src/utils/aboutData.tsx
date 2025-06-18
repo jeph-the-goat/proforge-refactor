@@ -1,17 +1,21 @@
+import IcnGradientUsers from "@assets/images/icn-users-gradient.svg";
+import IcnGradientGlobe from "@assets/images/icn-globe-gradient.svg";
+import IcnGradientCryptocurrency from "@assets/images/icn-cryptocurrency-gradient.svg";
+import {IcnDiamond, IcnShield, IcnUsers} from "@assets/icons";
 
 export const AboutStats = [
   {
-    icon: "👨‍💻",
+    icon: <IcnGradientUsers/>,
     value: "5,000+",
     label: "Developers Empowered",
   },
   {
-    icon: "🌐",
+    icon: <IcnGradientGlobe/>,
     value: "99.9%",
     label: "Uptime Guarantee",
   },
   {
-    icon: "🔗",
+    icon: <IcnGradientCryptocurrency/>,
     value: "50+",
     label: "Integrations",
   }
@@ -19,17 +23,17 @@ export const AboutStats = [
 
 export const AboutValues = [
   {
-    icon: "💎",
+    icon: <IcnDiamond/>,
     title: "Innovation First",
     text: "We prioritize forward-thinking solutions.",
   },
   {
-    icon: "👥",
+    icon: <IcnUsers/>,
     title: "Community-Driven",
     text: "We listen, learn, and grow with our community.",
   },
   {
-    icon: "🛡️",
+    icon: <IcnShield/>,
     title: "Uncompromising Security",
     text: "Trust and security drive everything we build.",
   }

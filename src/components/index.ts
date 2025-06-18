@@ -22,6 +22,9 @@ export * from "./PricingSectionCompare";
 export * from "./BlogSectionHero";
 export * from "./BlogSectionGrid";
 
+export * from "./BlogSingleSectionContent";
+export * from "./BlogSingleSectionRelated";
+
 export * from "./IntegrationSectionHero";
 
 export * from "./FaqSectionHero";

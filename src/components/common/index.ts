@@ -8,6 +8,7 @@ export * from "./EventBar";
 export * from "./Footer";
 export * from "./Header";
 export * from "./HeaderNavItems";
+export * from "./IconBox";
 export * from "./Logo";
 export * from "./MobileMenu";
 

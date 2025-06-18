@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { TermsConditionsSectionHero } from "@/components";
+import {TermsSectionHero} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Terms and conditions',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 function TermsConditions() {
   return (
     <>
-      <TermsConditionsSectionHero/>
+      <TermsSectionHero/>
     </>
   );
 }

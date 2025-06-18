@@ -1,0 +1,24 @@
+.cAboutSectionValues {
+  :global {
+    .c-about-section-values {
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-24-to-16px);
+        width: 100%;
+        max-width: 100%;
+
+        @media(min-width: 768px) {
+          grid-template-columns: repeat(3,1fr);
+        }
+
+        &-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: var(--px24);
+        }
+      }
+    }
+  }
+}

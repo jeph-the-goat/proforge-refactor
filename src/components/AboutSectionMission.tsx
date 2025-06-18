@@ -1,28 +1,46 @@
-import {IcnLock} from "@assets/icons";
+import styles from "@/styles/AboutSectionMission.module.scss";
+import {IcnTriangle} from "@assets/icons";
+import Ornament from "@assets/images/box-ornament.svg";
+
 import React from 'react';
 import {clsx} from "clsx";
-import {Section} from "@/components/common";
+
+import {AboutStats} from "@/utils";
+
+import {IconBox, Section} from "@/components/common";
 
 export const AboutSectionMission = () => {
   return (
     <Section
-      extraClassName={clsx( "c-about-section-mission")}
-      leadIcon={<IcnLock/>}
+      extraClassName={clsx(styles.cAboutSectionMission, "c-about-section-mission")}
+      addWrapper
+      leadIcon={<IcnTriangle/>}
       leadText="Our Mission"
       headingClass="h4"
       title="We believe the future of the internet is decentralized. Our mission is to create powerful tools and infrastructure that help developers and teams unlock the full potential of Web3 technology."
     >
 
-      <div className="c-about-section-mission-stats">
+      <div className="c-about-section-mission-grid">
+        {AboutStats.map((stat, statIdx) => (
+          <article key={statIdx} className="c-about-section-mission-grid-card">
 
-        <article>
-          <i></i>
+            <IconBox
+              icon={stat.icon}
+            />
 
-          <p></p>
+            <div className="c-about-section-mission-grid-card-body">
+              <p className="h5">
+                {stat.value}
+              </p>
 
-          <small></small>
+              <p>
+                {stat.label}
+              </p>
+            </div>
 
-        </article>
+          </article>
+
+        ))}
 
       </div>
 

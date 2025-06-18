@@ -28,7 +28,7 @@ export const ButtonLink = (
 
   return (
     <Link
-      className={clsx("c-button", extraClassName)}
+      className={clsx("c-button", extraClassName, isDisabled && "is-disabled")}
       href={href? href : "/"}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? 'noreferrer noopener': undefined}

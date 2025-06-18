@@ -120,7 +120,7 @@ export const BlogSectionGrid = () => {
                 <Link
                   key={blog.id}
                   className="c-blog-section-grid-card"
-                  href={`/${blog.id}`}
+                  href={`/blog/${blog.id}`}
                   title={`Read more about: ${blog.title}`}
                   aria-label={`Read more about: ${blog.title}`}
                 >

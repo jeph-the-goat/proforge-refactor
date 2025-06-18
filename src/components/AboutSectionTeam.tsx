@@ -1,3 +1,4 @@
+import styles from "@/styles/AboutSectionTeam.module.scss"
 import {IcnUsers} from "@assets/icons";
 import React from 'react';
 import {clsx} from "clsx";
@@ -7,7 +8,7 @@ import {AboutTeamMembers} from "@/utils/aboutData";
 export const AboutSectionTeam = () => {
   return (
     <Section
-      extraClassName={clsx( "c-about-section-team")}
+      extraClassName={clsx(styles.cAboutSectionTeam, "c-about-section-team")}
       leadIcon={<IcnUsers/>}
       leadText="Meet the team"
       headingClass="h3"
@@ -18,7 +19,8 @@ export const AboutSectionTeam = () => {
       <div className="c-about-section-team-grid">
 
         {AboutTeamMembers.map((member, memberIdx) => (
-          <article>
+          <article key={memberIdx} className="c-about-section-team-grid-card">
+
             <Avatar
               image="https://i.pravatar.cc/150?img=49"
               alt={member.name}

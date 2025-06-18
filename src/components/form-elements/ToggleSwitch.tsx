@@ -1,6 +1,5 @@
 import styles from "@/styles/common/ToggleSwitch.module.scss";
 import clsx from "clsx";
-import {cFormGroupProps} from "@/types";
 import {HTMLProps, ReactNode} from "react";
 
 interface ToggleSwitchProps extends HTMLProps<HTMLInputElement> {

@@ -1,4 +1,5 @@
-import {IcnLock} from "@assets/icons";
+import styles from "@/styles/AboutSectionValues.module.scss";
+import {IcnThumb} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
@@ -10,8 +11,8 @@ import {Card, Section} from "@/components/common";
 export const AboutSectionValues = () => {
   return (
     <Section
-      extraClassName={clsx( "c-about-section-values")}
-      leadIcon={<IcnLock/>}
+      extraClassName={clsx(styles.cAboutSectionValues, "c-about-section-values")}
+      leadIcon={<IcnThumb/>}
       leadText="Our Values"
       headingClass="h3"
       title="Guided by Innovation, Collaboration, and Trust"
