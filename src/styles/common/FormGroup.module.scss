@@ -12,10 +12,6 @@
 
       text-align: left;
 
-      + .c-form-group {
-        margin-top: 1em;
-      }
-
       label {
         display: block;
         margin-bottom: var(--px4);
@@ -120,6 +116,11 @@
         }
       }
 
+      &.c-form-group-search {
+        width: 100%;
+        max-width: 439px;
+      }
+
       &.c-form-group-check {
         display: flex;
         align-items: center;
@@ -127,6 +128,8 @@
 
         label {
           margin-bottom: 0;
+          width: 100%;
+          max-width: 100%;
           font-weight: normal;
 
           &.is-button {

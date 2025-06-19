@@ -1,13 +1,7 @@
 .cFaqSectionAccordion {
   &:global {
-    &.c-faq-section-accordion {
-      padding: 1em 1em var(--from-80-to-40px);
-
-      .c-container {
-        display: flex;
-        flex-direction: column;
-        row-gap: var(--from-120-to-40px);
-      }
+    &.c-faq-section-accordion.c-section {
+      padding: 0 1em var(--from-80-to-40px);
     }
   }
 
@@ -16,11 +10,11 @@
       &-grid {
         display: grid;
         grid-template-columns: 1fr;
+        column-gap: var(--from-56-to-16px);
 
         @media(min-width: 992px) {
-          grid-template-columns: 0.4fr 1fr;
+          grid-template-columns: 0.448fr 1fr;
           align-items: stretch;
-          column-gap: var(--px32);
         }
       }
     }

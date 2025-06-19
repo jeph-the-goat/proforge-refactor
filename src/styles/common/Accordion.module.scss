@@ -20,10 +20,10 @@
 
         > .c-button[data-variant="link"] {
           --btn-gap: 1em;
-          --btn-padding-x: 24px;
-          --btn-padding-y: 24px;
-          --btn-font-size: clamp(var(--px18), 24/1440*100vw, var(--px24));
-          --btn-icon-size: 10px;
+          --btn-padding-x: var(--from-24-to-16px);
+          --btn-padding-y: var(--from-24-to-16px);
+          --btn-font-size: 1em;
+          --btn-icon-size: var(--px12);
 
           display: flex;
           justify-content: space-between;
@@ -33,14 +33,48 @@
           text-align: left;
           letter-spacing: -0.02em; //-2% @24px
 
+          .c-button-label {
+            font-size: clamp(var(--px18), 24/1440*100vw, var(--px24));
+          }
+
           &:hover,
           &:focus,
           &:active {
             text-decoration: none;
           }
 
-          &.is-open {
+          .c-button-icon {
+            position: relative;
+            overflow: hidden;
 
+            &:before,
+            &:after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              width: var(--px12);
+              height: 1px;
+              margin: auto;
+              background-color: currentColor;
+              transition: transform 0.3s ease, background-color 0.3s ease;
+            }
+
+            &:after {
+              transform: rotate(90deg);
+            }
+          }
+
+          &.is-open {
+            .c-button-icon {
+              &:before {
+                background-color: transparent;
+              }
+
+              &:after{
+                transform: rotate(0deg);
+                background-color: var(--neutral-400);
+              }
+            }
           }
         }
 
@@ -49,6 +83,7 @@
           grid-template-columns: 1fr;
           grid-template-rows: 0fr;
           opacity: 0;
+          text-align: left;
           transition: grid-template-rows 0.4s ease, opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
           &.is-open {
@@ -57,12 +92,11 @@
           }
 
           &-wrapper {
-            //padding: 1em;
-                 overflow: hidden;
+            overflow: hidden;
           }
 
           &-inner {
-            padding: 24px;
+            padding: var(--from-24-to-16px);
           }
         }
       }

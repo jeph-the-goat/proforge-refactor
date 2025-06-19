@@ -48,7 +48,7 @@ export const Accordion = ({ accordionItems, name }: AccordionProps) => {
             extraClassName={clsx("c-accordion-item-toggle", openIndex === `${name}-${accordionIdx}` && 'is-open')}
             btnText={accordion.title}
             btnVariant="link"
-            icon={<span className="c-accordion-item-toggle-icon"/>}
+            icon={<span/>}
             aria-expanded={openIndex === `${name}-${accordionIdx}`}
             onClick={() => handleToggleOpen(accordionIdx)}
           />

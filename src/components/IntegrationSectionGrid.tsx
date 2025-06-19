@@ -13,14 +13,11 @@ export const IntegrationSectionGrid = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all-integrations');
 
-  // Filter integrations based on search term and category
   const filteredIntegrations = IntegrationCards.filter(integration => {
-    // Search filter - check title and text
     const matchesSearch = searchTerm === '' ||
       integration.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       integration.text.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // Category filter
     const matchesCategory = selectedCategory === 'all-integrations' ||
       integration.category === selectedCategory;
 
@@ -93,12 +90,18 @@ export const IntegrationSectionGrid = () => {
             />
 
             <IntegrationBanner extraClassName="c-desktop" />
+
           </div>
+
         </div>
 
         <div className="c-integration-section-grid-content-cards">
 
-          <div className="c-integration-section-grid-content-cards-wrapper">
+          <div className={clsx(
+            "c-integration-section-grid-content-cards-wrapper",
+            filteredIntegrations.length > 0 && filteredIntegrations.length < 2 && "is-contained"
+          )}
+          >
 
             {filteredIntegrations.length > 0 ? (
               filteredIntegrations.map((integration, integrationIdx) => (

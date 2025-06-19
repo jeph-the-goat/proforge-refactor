@@ -34,10 +34,6 @@
               row-gap: var(--from-32-to-16px);
             }
 
-            .c-form-group + .c-form-group {
-              margin-top: 0;
-            }
-
             .c-button-group {
               display: flex;
               flex-direction: column;
@@ -48,6 +44,7 @@
                   justify-content: flex-start;
                   width: 100%;
                   max-width: 100%;
+                  border: 0;
                   text-align: left;
                 }
               }
@@ -72,9 +69,13 @@
         &-cards {
           &-wrapper {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 0.5fr));
-            align-items: stretch;
+            grid-template-columns: 1fr;
             gap: var(--from-32-to-16px);
+
+            @media(min-width: 576px) {
+              align-items: stretch;
+              grid-template-columns: repeat(2, 1fr);
+            }
 
             .c-card {
               background-color: transparent;

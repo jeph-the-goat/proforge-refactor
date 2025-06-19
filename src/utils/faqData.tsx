@@ -88,7 +88,7 @@ export const FaqList: FAQItem[] = [
   }
 ];
 
-const FilterList = [
+export const FaqFilters = [
   {
     label: "All Questions",
     value: "all",

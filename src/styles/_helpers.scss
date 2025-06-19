@@ -5,6 +5,12 @@
   gap: var(--px12);
 }
 
+.c-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--px8);
+}
+
 @media (max-width: 991px) {
   .c-desktop {
     display: none !important;
