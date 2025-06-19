@@ -21,11 +21,14 @@ export * from "./PricingSectionCompare";
 
 export * from "./BlogSectionHero";
 export * from "./BlogSectionGrid";
+export * from "./BlogSectionBanner";
 
 export * from "./BlogSingleSectionContent";
 export * from "./BlogSingleSectionRelated";
 
 export * from "./IntegrationSectionHero";
+export * from "./IntegrationSectionGrid";
+export * from "./IntergrationBanner";
 
 export * from "./FaqSectionHero";
 export * from "./FaqSectionAccordion";

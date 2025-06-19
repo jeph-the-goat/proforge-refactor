@@ -31,6 +31,7 @@ export const Input =(
         type={type? type : "text"}
         id={`id_${name}`}
         placeholder={placeholder? placeholder : ""}
+        aria-invalid={!!hasErrors}
         {...rest}
       />
 

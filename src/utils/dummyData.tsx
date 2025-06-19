@@ -1,3 +1,18 @@
+export const DummyOptions = [
+  {
+    label: "Vanilla",
+    value: "vanilla"
+  },
+  {
+    label: "Strawberry",
+    value: "strawberry"
+  },
+    {
+    label: "Chocolate",
+    value: "chocolate"
+  },
+]
+
 export const DummyUserList = [
   {
     id: "1",

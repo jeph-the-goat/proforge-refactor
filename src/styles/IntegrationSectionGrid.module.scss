@@ -1,0 +1,88 @@
+.cIntegrationSectionGrid {
+  &:global {
+    &.c-integration-section-grid.c-section {
+      padding-top: 40px;
+    }
+  }
+
+  :global {
+    .c-integration-section-grid {
+      &-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-56-to-16px);
+        width: 100%;
+        max-width: 100%;
+
+        @media(min-width: 992px) {
+          grid-template-columns: 0.448fr 1fr;
+          align-items: stretch;
+        }
+
+        &-sidebar {
+          text-align: left;
+
+          &-wrapper {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px8);
+
+            @media(min-width: 992px) {
+              position: sticky;
+              top: calc(var(--header-height) + 1em);
+              left: 0;
+              row-gap: var(--from-32-to-16px);
+            }
+
+            .c-form-group + .c-form-group {
+              margin-top: 0;
+            }
+
+            .c-button-group {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px8);
+
+              .c-form-group {
+                label {
+                  justify-content: flex-start;
+                  width: 100%;
+                  max-width: 100%;
+                  text-align: left;
+                }
+              }
+            }
+
+            .c-banner {
+              &-wrapper {
+                align-items: flex-start;
+                padding: var(--from-24-to-16px);
+                border-radius: var(--px12);
+                text-align: left;
+
+                .c-button {
+                  width: 100%;
+                  max-width: 100%;
+                }
+              }
+            }
+          }
+        }
+
+        &-cards {
+          &-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 0.5fr));
+            align-items: stretch;
+            gap: var(--from-32-to-16px);
+
+            .c-card {
+              background-color: transparent;
+              border: 1px solid var(--neutral-700);
+            }
+          }
+        }
+      }
+    }
+  }
+}

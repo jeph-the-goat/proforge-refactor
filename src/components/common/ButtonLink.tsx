@@ -36,8 +36,8 @@ export const ButtonLink = (
       data-variant={btnVariant}
       data-size={btnSize}
       data-icon-placement={iconPlacement}
-      title={btnTitle? btnTitle : btnText}
-      aria-label={btnTitle? btnTitle : btnText}
+      title={btnTitle? `View ${btnTitle}` : `View ${btnText}`}
+      aria-label={btnTitle? `View ${btnTitle}` : `View ${btnText}`}
       {...rest}
     >
 

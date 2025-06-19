@@ -1,6 +1,5 @@
 import styles from "@/styles/AboutSectionMission.module.scss";
 import {IcnTriangle} from "@assets/icons";
-import Ornament from "@assets/images/box-ornament.svg";
 
 import React from 'react';
 import {clsx} from "clsx";

@@ -10,6 +10,8 @@
       --input-border-radius: var(--px8);
       --input-placeholder-color: var(--neutral-400);
 
+      text-align: left;
+
       + .c-form-group {
         margin-top: 1em;
       }
@@ -104,6 +106,10 @@
           border-color: var(--primary-500);
         }
 
+        &.is-invalid {
+          border-color: var(--error-500);
+        }
+
         &-icon {
           color: var(--input-placeholder-color);
 
@@ -144,7 +150,29 @@
       }
 
       &.c-form-group-textarea {
+        .c-form-group-input {
+          padding: 0;
 
+          textarea {
+            padding: 1em;
+          }
+        }
+      }
+
+      &.c-form-group-select {
+        .c-form-group-input {
+          position: relative;
+          padding: 0;
+
+           &:has(.c-select-trigger[data-state="open"]) {
+            border-color: var(--primary-500);
+          }
+        }
+      }
+
+      .c-form-group-error {
+        font-size: var(--px14);
+        color: var(--error-500);
       }
     }
   }

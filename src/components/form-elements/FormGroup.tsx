@@ -42,7 +42,7 @@ export const FormGroup = (
 
       <div className="c-form-group-wrapper">
 
-        <div className="c-form-group-input">
+        <div className={clsx("c-form-group-input", hasErrors && "is-invalid")}>
 
           {inputGroupIcon && (
             <i className="c-form-group-input-icon">

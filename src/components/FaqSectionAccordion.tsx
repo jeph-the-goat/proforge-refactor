@@ -4,32 +4,6 @@ import {clsx} from "clsx";
 import {FaqList} from "@/utils";
 import {Accordion} from "@/components/common";
 
-const FilterList = [
-  {
-    label: "All Questions",
-    value: "all",
-  },
-  {
-    label: "General",
-    value: "general",
-  },
-  {
-    label: "Pricing & Plans",
-    value: "pricing-plans",
-  },
-  {
-    label: "Security",
-    value: "security",
-  },
-  {
-    label: "Integrations",
-    value: "integrations",
-  },
-  {
-    label: "Support",
-    value: "support",
-  },
-];
 
 export const FaqSectionAccordion = () => {
   return (

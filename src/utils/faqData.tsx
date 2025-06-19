@@ -87,3 +87,30 @@ export const FaqList: FAQItem[] = [
     )
   }
 ];
+
+const FilterList = [
+  {
+    label: "All Questions",
+    value: "all",
+  },
+  {
+    label: "General",
+    value: "general",
+  },
+  {
+    label: "Pricing & Plans",
+    value: "pricing-plans",
+  },
+  {
+    label: "Security",
+    value: "security",
+  },
+  {
+    label: "Integrations",
+    value: "integrations",
+  },
+  {
+    label: "Support",
+    value: "support",
+  },
+];

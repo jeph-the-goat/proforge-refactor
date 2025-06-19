@@ -15,13 +15,12 @@
   --from-120-to-40px: clamp(var(--px40), 120/1440*100vw, 120px);
   --from-80-to-40px: clamp(var(--px40), 80/1440*100vw, var(--px80));
   --from-64-to-40px: clamp(var(--px40), 64/1440*100vw, var(--px64));
-
+  --from-56-to-24px: clamp(var(--px24), 56/1440*100vw, var(--px56));
+  --from-56-to-16px: clamp(1em, 56/1440*100vw, var(--px56));
   --from-40-to-24px: clamp(var(--px24), 40/1440*100vw, var(--px40));
   --from-40-to-20px: clamp(var(--px20), 40/1440*100vw, var(--px40));
-
   --from-32-to-24px: clamp(var(--px24), 32/1440*100vw, var(--px32));
   --from-32-to-16px: clamp(1em, 32/1440*100vw, var(--px32));
-
   --from-24-to-16px: clamp(1em, 24/1440*100vw, var(--px24));
 
   @media(max-width: 991px) {

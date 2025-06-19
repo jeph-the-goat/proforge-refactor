@@ -1,18 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import {Button, Input, InputTextarea} from "@/components";
+import {Button, Input, InputSelect, InputTextarea} from "@/components";
 
-// Interface for form data
+import {DummyOptions} from "@/utils";
+
 interface ContactFormData {
   fullName: string;
   email: string;
+  subject: string;
   message: string;
 }
 
-// Validation schema with yup
 const contactSchema = yup.object({
   fullName: yup
     .string()
@@ -22,6 +25,9 @@ const contactSchema = yup.object({
     .string()
     .required('Email is required')
     .email('Please enter a valid email'),
+  subject: yup
+    .string()
+    .required('Subject is required'),
   message: yup
     .string()
     .required('Message is required')
@@ -30,121 +36,101 @@ const contactSchema = yup.object({
 });
 
 export const ContactForm = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    fullName: '',
-    email: '',
-    message: ''
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<ContactFormData>({
+    resolver: yupResolver(contactSchema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      subject: '',
+      message: ''
+    }
   });
 
-  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
-
-  const handleInputChange = (field: keyof ContactFormData, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({
-        ...prev,
-        [field]: undefined
-      }));
-    }
-  };
-
-  const handleTextareaChange = (field: keyof ContactFormData, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({
-        ...prev,
-        [field]: undefined
-      }));
-    }
-  };
-
-  const validateForm = async (): Promise<boolean> => {
-    try {
-      await contactSchema.validate(formData, { abortEarly: false });
-      setErrors({});
-      return true;
-    } catch (error) {
-      if (error instanceof yup.ValidationError) {
-        const fieldErrors: Partial<ContactFormData> = {};
-        error.inner.forEach((err) => {
-          if (err.path) {
-            fieldErrors[err.path as keyof ContactFormData] = err.message;
-          }
-        });
-        setErrors(fieldErrors);
-      }
-      return false;
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const isValid = await validateForm();
-    
-    if (isValid) {
-      // In development mode, display data in alert
-      alert(JSON.stringify(formData, null, 2));
-      
-      // Reset form after submission
-      setFormData({
-        fullName: '',
-        email: '',
-        message: ''
-      });
-      setErrors({});
-    }
+  const onSubmit = (data: ContactFormData) => {
+    alert(JSON.stringify(data, null, 2));
+    reset(); // Reset form after submission
   };
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form" noValidate>
-      <Input
-        type="text"
+    <form onSubmit={handleSubmit(onSubmit)} className="contact-form" noValidate>
+      <Controller
         name="fullName"
-        labelText="Full Name"
-        placeholder="Enter your full name"
-        hasErrors={!!errors.fullName}
-        errorText={errors.fullName}
-        value={formData.fullName}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('fullName', e.target.value)}
+        control={control}
+        render={({ field }) => (
+          <Input
+            type="text"
+            name={field.name}
+            labelText="Full Name"
+            placeholder="Enter your full name"
+            hasErrors={!!errors.fullName}
+            errorText={errors.fullName?.message}
+            value={field.value}
+            onChange={field.onChange}
+          />
+        )}
       />
 
-      <Input
-        type="email"
+      <Controller
         name="email"
-        labelText="Email"
-        placeholder="Enter your email address"
-        hasErrors={!!errors.email}
-        errorText={errors.email}
-        value={formData.email}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('email', e.target.value)}
+        control={control}
+        render={({ field }) => (
+          <Input
+            type="email"
+            name={field.name}
+            labelText="Email"
+            placeholder="Enter your email address"
+            hasErrors={!!errors.email}
+            errorText={errors.email?.message}
+            value={field.value}
+            onChange={field.onChange}
+          />
+        )}
       />
 
-      <InputTextarea
+      <Controller
+        name="subject"
+        control={control}
+        render={({ field }) => {
+          console.log('Passing to InputSelect - value:', field.value);
+          console.log('Passing to InputSelect - onChange:', field.onChange);
+          return (
+            <InputSelect
+              name={field.name}
+              options={DummyOptions}
+              labelText="Subject"
+              placeholder="What’s your message about?"
+              value={field.value}
+              onValueChange={field.onChange}
+              hasErrors={!!errors.subject}
+              errorText={errors.subject?.message}
+            />
+          );
+        }}
+      />
+
+      <Controller
         name="message"
-        labelText="Message"
-        placeholder="How can we help you?"
-        rows={6}
-        hasErrors={!!errors.message}
-        errorText={errors.message}
-        value={formData.message}
-        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleTextareaChange('message', e.target.value)}
+        control={control}
+        render={({ field }) => (
+          <InputTextarea
+            name={field.name}
+            labelText="Message"
+            placeholder="How can we help you?"
+            rows={6}
+            hasErrors={!!errors.message}
+            errorText={errors.message?.message}
+            value={field.value}
+            onChange={field.onChange}
+          />
+        )}
       />
 
-      <Button
-        type="submit"
-        btnText="Send Message"
-      />
+      <Button type="submit" btnText="Send Message" />
     </form>
   );
 };

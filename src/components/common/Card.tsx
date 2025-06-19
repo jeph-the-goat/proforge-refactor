@@ -23,7 +23,9 @@ export const Card = (
       {useIconBox? (
         <IconBox icon={icon}/>
       ):(
-        <i>{icon}</i>
+        <i className="c-card-icon">
+          {icon}
+        </i>
       )}
 
       <div className="c-card-body">

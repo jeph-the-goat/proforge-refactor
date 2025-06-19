@@ -1,13 +1,13 @@
 'use client';
 import styles from "@/styles/PricingSectionCompare.module.scss";
-import {IcnCircleMinus, IcnFilter} from "@assets/icons";
+import {IcnCircleHelp, IcnCircleMinus, IcnFilter} from "@assets/icons";
 import IcnProDark from "@assets/images/icn-pricing-pro-dark.svg";
 
 import React from 'react';
 import { clsx } from "clsx";
 
 import { Plans, ComparePlansLabels } from "@/utils";
-import {Button, ButtonLink, Section} from "@/components";
+import {Banner, Button, ButtonLink, Section} from "@/components";
 import {useMediaQuerySafe} from "@/hooks";
 
 
@@ -200,6 +200,19 @@ export const PricingSectionCompare = () => {
         )}
 
       </div>
+
+      <Banner
+        bgColor="var(--neutral-800)"
+        icon={<IcnCircleHelp/>}
+        title="Not sure which plan is right for you?"
+        paragraph="Contact our team to learn more."
+      >
+        <ButtonLink
+          href="/contact"
+          btnText="Contact Us"
+        />
+
+      </Banner>
 
     </Section>
   );

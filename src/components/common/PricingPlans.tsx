@@ -6,11 +6,11 @@ import { IcnBolt, IcnCircleCheck } from "@assets/icons";
 import React, { useState } from 'react';
 import { clsx } from "clsx";
 
-import { Plans } from "@/utils";
+import {PlanProps, Plans} from "@/utils";
 
 import {Button, ButtonLink, ToggleSwitch} from "@/components";
 
-const getAnnualPrice = (plan: any): { price: string; amount: number | null } => {
+const getAnnualPrice = (plan: PlanProps): { price: string; amount: number | null } => {
   if (plan.priceAmount === null || plan.priceAmount === 0) {
     return { price: plan.price, amount: plan.priceAmount }; // Keep original for Free/Custom
   }

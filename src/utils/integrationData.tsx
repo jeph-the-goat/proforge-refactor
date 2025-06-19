@@ -1,80 +1,106 @@
+import IcnBinance from "@assets/images/icn-binance.svg";
+import IcnDataDog from "@assets/images/icn-data-dog.svg";
+import IcnDiscord from "@assets/images/icn-discord.svg";
+import IcnGithub from "@assets/images/icn-github.svg";
+import IcnGoogleAnalytics from "@assets/images/icn-google-analytics.svg";
+import IcnJenkins from "@assets//images/icn-jenkins.svg";
+import IcnPolygon from "@assets/images/icn-polygon.svg";
+import IcnSlack from "@assets/images/icn-slack.svg";
+import IcnSolana from "@assets/images/icn-solana.svg";
+import IcnTrello from "@assets/images/icn-trello.svg";
+
 export const IntegrationCards = [
   {
     id: 'binance-smart-chain',
-    name: 'Binance Smart Chain',
-    description: 'Tap into the BSC ecosystem for faster and more affordable transactions.',
-    icon: '🟡', // Binance logo placeholder
-    category: 'Blockchain Networks'
+    title: 'Binance Smart Chain',
+    text: 'Tap into the BSC ecosystem for faster and more affordable transactions.',
+    icon: <IcnBinance/>,
+    category: 'blockchain-networks'
   },
   {
     id: 'datadog',
-    name: 'Datadog',
-    description: 'Track the performance of your dapps and infrastructure with Datadog\'s advanced monitoring tools.',
-    icon: '🐕', // Datadog logo placeholder
-    category: 'Monitoring & Analytics'
+    title: 'Datadog',
+    text: 'Track the performance of your dapps and infrastructure with Datadog\'s advanced monitoring tools.',
+    icon: <IcnDataDog/>,
+    category: 'monitoring-analytics'
   },
   {
     id: 'discord',
-    name: 'Discord',
-    description: 'Engage your community or team by integrating Discord for real-time discussions.',
-    icon: '💬', // Discord logo placeholder
-    category: 'Communication & Collaboration'
+    title: 'Discord',
+    text: 'Engage your community or team by integrating Discord for real-time discussions.',
+    icon: <IcnDiscord/>,
+    category: 'communication-collaboration'
   },
   {
     id: 'github',
-    name: 'GitHub',
-    description: 'Keep your code organized with seamless GitHub integration for version control and collaboration.',
-    icon: '🐙', // GitHub logo placeholder
-    category: 'Development Tools'
+    title: 'GitHub',
+    text: 'Keep your code organized with seamless GitHub integration for version control and collaboration.',
+    icon: <IcnGithub/>,
+    category: 'development-tools'
   },
   {
     id: 'google-analytics',
-    name: 'Google Analytics',
-    description: 'Engage your community or team by integrating Discord for real-time discussions.',
-    icon: '📊', // Google Analytics logo placeholder
-    category: 'Monitoring & Analytics'
+    title: 'Google Analytics',
+    text: 'Engage your community or team by integrating Discord for real-time discussions.',
+    icon: <IcnGoogleAnalytics/>,
+    category: 'monitoring-analytics'
   },
   {
     id: 'jenkins',
-    name: 'Jenkins',
-    description: 'Automate your build and deployment process with Jenkins CI/CD pipelines.',
-    icon: '👨‍💼', // Jenkins logo placeholder
-    category: 'Development Tools'
+    title: 'Jenkins',
+    text: 'Automate your build and deployment process with Jenkins CI/CD pipelines.',
+    icon: <IcnJenkins/>,
+    category: 'development-tools'
   },
   {
     id: 'polygon',
-    name: 'Polygon',
-    description: 'Scale faster with lower transaction costs using Polygon\'s Layer 2 solution.',
-    icon: '🔷', // Polygon logo placeholder
-    category: 'Blockchain Networks'
+    title: 'Polygon',
+    text: 'Scale faster with lower transaction costs using Polygon\'s Layer 2 solution.',
+    icon: <IcnPolygon/>,
+    category: 'blockchain-networks'
   },
   {
     id: 'slack',
-    name: 'Slack',
-    description: 'Stay in sync with your team by receiving deployment and issue alerts directly in Slack.',
-    icon: '💬', // Slack logo placeholder
-    category: 'Communication & Collaboration'
+    title: 'Slack',
+    text: 'Stay in sync with your team by receiving deployment and issue alerts directly in Slack.',
+    icon: <IcnSlack/>,
+    category: 'communication-collaboration'
   },
   {
     id: 'solana',
-    name: 'Solana',
-    description: 'Build high-speed dapps with Solana\'s lightning-fast blockchain network.',
-    icon: '🌟', // Solana logo placeholder
-    category: 'Blockchain Networks'
+    title: 'Solana',
+    text: 'Build high-speed dapps with Solana\'s lightning-fast blockchain network.',
+    icon: <IcnSolana/>,
+    category: 'blockchain-networks'
   },
   {
     id: 'trello',
-    name: 'Trello',
-    description: 'Manage tasks and workflows by linking Trello boards to your project dashboard.',
-    icon: '📋', // Trello logo placeholder
-    category: 'Communication & Collaboration'
+    title: 'Trello',
+    text: 'Manage tasks and workflows by linking Trello boards to your project dashboard.',
+    icon: <IcnTrello/>,
+    category: 'communication-collaboration'
   }
 ];
 
 export const IntegrationCategories = [
-  'All Integrations',
-  'Blockchain Networks',
-  'Development Tools',
-  'Communication & Collaboration',
-  'Monitoring & Analytics'
+  {
+    value: 'all-integrations',
+    label: 'All Integrations'
+  },
+  {
+    value: 'blockchain-networks',
+    label: 'Blockchain Networks'
+  },
+  {
+    value: 'development-tools',
+    label: 'Development Tools'
+  },
+  {
+    value: 'communication-collaboration',
+    label: 'Communication & Collaboration'
+  },
+  {
+    value: 'monitoring-analytics',
+    label: 'Monitoring & Analytics'
+  }
 ];

@@ -8,6 +8,7 @@ interface InputRadioCheckboxProps extends HTMLProps<HTMLInputElement>{
   name: string;
   isLabelButton?: boolean;
   labelText?: string;
+  hasErrors?: boolean;
   children?: ReactNode;
 }
 
@@ -20,6 +21,7 @@ export const InputRadioCheckbox = (
     checked,
     isLabelButton,
     labelText,
+    hasErrors,
     children,
     ...rest
   }: InputRadioCheckboxProps) => {
@@ -33,6 +35,7 @@ export const InputRadioCheckbox = (
         name={name}
         checked={checked}
         onChange={onChange}
+        aria-invalid={!!hasErrors}
         {...rest}
       />
 

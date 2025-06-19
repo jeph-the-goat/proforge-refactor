@@ -3,6 +3,7 @@ import React from 'react';
 import {clsx} from "clsx";
 
 import {SectionHero, SectionTitle} from "src/components/common";
+import Image from "next/image";
 
 export const IntegrationSectionHero = () => {
   return (
@@ -16,6 +17,16 @@ export const IntegrationSectionHero = () => {
           paragraph="Seamlessly integrate with leading blockchains and your favorite tools to supercharge your Web3 development."
         />
 
+      </div>
+
+
+      <div className="c-section-hero-grid-image">
+        <Image
+          src="/images/integration-hero-image-x2.webp"
+          alt="hello"
+          width={1160}
+          height={409}
+        />
       </div>
 
     </SectionHero>

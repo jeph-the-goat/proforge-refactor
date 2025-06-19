@@ -33,6 +33,7 @@ export const InputTextarea = (
       <textarea
         id={`id_${name}`}
         placeholder={placeholder? placeholder : ""}
+        aria-invalid={!!hasErrors}
         {...rest}
       />
 

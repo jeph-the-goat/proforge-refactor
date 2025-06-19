@@ -3,6 +3,7 @@ import {IcnBolt} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
+import Image from "next/image";
 
 import {HomeFeatures} from "@/utils";
 
@@ -27,9 +28,11 @@ export const HomeSectionFeatures = () => {
             className="c-home-section-features-grid-card"
           >
             <div className="c-home-section-features-grid-card-image">
-              <img
+              <Image
                 src={feature.image}
                 alt={feature.title}
+                width={200}
+                height={200}
               />
             </div>
 

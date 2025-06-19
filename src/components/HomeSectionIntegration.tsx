@@ -3,6 +3,7 @@ import {IcnPullRequest} from "@assets/icons";
 import React from 'react';
 import {clsx} from "clsx";
 import {ButtonLink, Section, SectionTitle} from "src/components/common";
+import Image from "next/image";
 
 export const HomeSectionIntegration = () => {
   return (
@@ -14,7 +15,12 @@ export const HomeSectionIntegration = () => {
       <div className="c-container">
 
         <div className="c-home-section-integration-image top">
-          img here
+          <Image
+            src="/images/home-section-integration-top-x1.webp"
+            alt="Decorative top"
+            width={480}
+            height={183}
+          />
         </div>
 
         <SectionTitle
@@ -31,7 +37,12 @@ export const HomeSectionIntegration = () => {
         />
 
         <div className="c-home-section-integration-image bottom">
-          img here
+          <Image
+            src="/images/home-section-integration-bottom-x1.webp"
+            alt="Decorative bottom"
+            width={480}
+            height={183}
+          />
         </div>
 
       </div>
