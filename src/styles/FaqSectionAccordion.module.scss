@@ -7,6 +7,16 @@
 
   :global {
     .c-faq-section-accordion {
+      &-header {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px12);
+        align-items: center;
+        width: 100%;
+        max-width: 439px;
+        margin: 0 auto;
+      }
+
       &-grid {
         display: grid;
         grid-template-columns: 1fr;

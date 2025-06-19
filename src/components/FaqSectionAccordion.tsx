@@ -15,7 +15,7 @@ export const FaqSectionAccordion = () => {
       extraClassName={clsx(styles.cFaqSectionAccordion, "c-faq-section-accordion")}
       hideSectionTitle
     >
-      <div className="c-faq-section-accordion-search">
+      <div className="c-faq-section-accordion-header">
         <Input
           type="search"
           name="integration_search"
