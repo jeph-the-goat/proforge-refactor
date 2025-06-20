@@ -16,7 +16,7 @@
         margin: 0 auto;
 
         @media(min-width: 992px) {
-                max-width: 439px;
+          max-width: 439px;
         }
       }
 
@@ -31,6 +31,14 @@
         }
 
         &-filters {
+          .c-button-group {
+            @media(min-width: 992px) {
+              position: sticky;
+              top: calc(var(--header-height) + 1em);
+              left: 0;
+            }
+          }
+
           .c-form-group-check label.is-button {
             justify-content: unset;
             text-align: left;

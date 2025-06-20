@@ -56,12 +56,10 @@ export const FaqSectionAccordion = () => {
         </div>
 
         <div className="c-faq-section-accordion-grid-content">
-
           <Accordion
             accordionItems={FaqList}
             name="faq"
           />
-
         </div>
 
       </div>
@@ -76,6 +74,7 @@ export const FaqSectionAccordion = () => {
           <ButtonLink href="/" btnText="Documentation" btnColor="dark"/>
         </div>
       </Banner>
+
     </Section>
   );
 };

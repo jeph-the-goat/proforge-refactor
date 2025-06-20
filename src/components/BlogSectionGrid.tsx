@@ -3,7 +3,7 @@
 import styles from "@/styles/BlogSectionGrid.module.scss";
 import { IcnSearch } from "@assets/icons";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { clsx } from "clsx";
@@ -14,14 +14,12 @@ import { Button } from "@/components/common";
 import { Input, InputRadioCheckbox } from "@/components/form-elements";
 
 export const BlogSectionGrid = () => {
-  const [searchInput, setSearchInput] = useState(""); // What user types
-  const [searchTerm, setSearchTerm] = useState(""); // Active search term
+  const [searchTerm, setSearchTerm] = useState(""); // Single state for search
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
 
   const blogsPerPage = 6;
 
-  // Filter and sort blogs by date (newest first)
   const filteredBlogs = BlogPosts
     .filter((blog) => {
       // Category filter
@@ -36,24 +34,19 @@ export const BlogSectionGrid = () => {
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  // Calculate pagination
   const totalPages = Math.ceil(filteredBlogs.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
   const endIndex = startIndex + blogsPerPage;
   const currentBlogs = filteredBlogs.slice(startIndex, endIndex);
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSearchSubmit = () => {
-    setSearchTerm(searchInput);
-    setCurrentPage(1); // Reset to first page when searching
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
   };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedCategory(e.target.value);
-    setCurrentPage(1); // Reset to first page when changing category
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: number) => {
@@ -84,10 +77,9 @@ export const BlogSectionGrid = () => {
             labelText="Search blog"
             labelIsHidden
             placeholder="Search blog"
-            value={searchInput}
-            onChange={handleSearchInputChange}
+            value={searchTerm}
+            onChange={handleSearchChange}
             inputGroupIcon={<IcnSearch />}
-            inputGroupText={<Button btnText="Search" onClick={handleSearchSubmit} />}
           />
 
           <div className="c-button-container">
