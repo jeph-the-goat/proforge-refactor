@@ -13,8 +13,11 @@
         row-gap: var(--px12);
         align-items: center;
         width: 100%;
-        max-width: 439px;
         margin: 0 auto;
+
+        @media(min-width: 992px) {
+                max-width: 439px;
+        }
       }
 
       &-grid {
@@ -25,6 +28,14 @@
         @media(min-width: 992px) {
           grid-template-columns: 0.448fr 1fr;
           align-items: stretch;
+        }
+
+        &-filters {
+          .c-form-group-check label.is-button {
+            justify-content: unset;
+            text-align: left;
+            border: 0;
+          }
         }
       }
     }

@@ -34,6 +34,7 @@ export * from "./FaqSectionHero";
 export * from "./FaqSectionAccordion";
 
 export * from "./ContactSectionHero";
+export * from "./ContactSectionHeroList";
 
 export * from "./PrivacySectionHero";
 export * from "./TermsSectionHero";
