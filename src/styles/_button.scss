@@ -91,8 +91,8 @@
     }
   }
 
-  &[data-icon-placement="right"] {
-    >span {
+  &[data-icon-placement="left"] {
+    .c-button-icon {
       order: -1;
     }
   }
@@ -240,10 +240,4 @@
       text-decoration: underline;
     }
   }
-
-  //&[type="submit"] {
-  //  width: 100%;
-  //  max-width: 100%;
-  //}
 }
-

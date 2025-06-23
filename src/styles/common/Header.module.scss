@@ -52,6 +52,10 @@
         }
       }
 
+      &-button-wrapper {
+        text-align: right;
+      }
+
       @media (max-width: 991px) {
         &-wrapper {
           display: flex;

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import { BlogPostProps, BlogPosts } from "@/utils";
 
-import {BlogSingleSectionRelated, BlogSingleSectionContent} from "@/components";
+import {BlogSingleSectionRelated, BlogSingleSectionContent, SectionFooterBanner} from "@/components";
 
 interface BlogPostPageProps {
   params: {
@@ -55,6 +55,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       <BlogSingleSectionContent post={post} />
       <BlogSingleSectionRelated/>
+      <SectionFooterBanner/>
     </>
   );
 }

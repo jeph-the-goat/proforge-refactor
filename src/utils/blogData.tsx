@@ -7,7 +7,7 @@ export interface BlogTagProps {
 
 export interface BlogAuthorProps {
   name: string;
-  image?: string;
+  image: string;
 }
 
 export interface BlogPostProps {
@@ -48,10 +48,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "1",
     title: "Exploring the Future of DeFi: Beyond Traditional Finance",
-    image: "/images/blog/defi-future.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
       name: "Sarah Chen",
-      image: "/images/authors/sarah-chen.jpg"
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Discover how decentralized finance is revolutionizing traditional banking and creating new opportunities for financial inclusion worldwide.",
     content: (
@@ -92,10 +92,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "2",
     title: "The Rise of DAOs: A New Model for Collaboration",
-    image: "/images/blog/dao-collaboration.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Marcus Rodriguez",
-      image: "/images/authors/marcus-rodriguez.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Explore how Decentralized Autonomous Organizations are reshaping governance and collaboration in the digital age.",
     content: (
@@ -144,10 +144,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "3",
     title: "The Role of Smart Contracts in Web3 Innovation",
-    image: "/images/blog/smart-contracts.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Alex Thompson",
-      image: "/images/authors/alex-thompson.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Learn how smart contracts are enabling trustless interactions and powering the next generation of decentralized applications.",
     content: (
@@ -205,10 +205,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "4",
     title: "Building Scalable dApps: What You Need to Know",
-    image: "/images/blog/scalable-dapps.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Emma Wilson",
-      image: "/images/authors/emma-wilson.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Discover the key principles and technologies for building decentralized applications that can scale to millions of users.",
     content: (
@@ -273,10 +273,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "5",
     title: "Why User Experience is Key to Web3 Mass Adoption",
-    image: "/images/blog/web3-ux.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Jordan Kim",
-      image: "/images/authors/jordan-kim.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Explore how improved user experience design is crucial for bringing Web3 technologies to mainstream audiences.",
     content: (
@@ -336,10 +336,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "6",
     title: "Enhancing Security in Web3: Best Practices for Developers",
-    image: "/images/blog/web3-security.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "David Park",
-      image: "/images/authors/david-park.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Learn essential security practices to protect your Web3 applications and users from common vulnerabilities and attacks.",
     content: (
@@ -421,10 +421,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "7",
     title: "Decentralization vs. Centralization: Striking the Right Balance",
-    image: "/images/blog/decentralization.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Rachel Zhang",
-      image: "/images/authors/rachel-zhang.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Examine the trade-offs between decentralization and centralization in blockchain systems and how to find the optimal balance.",
     content: (
@@ -504,10 +504,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "8",
     title: "Top 5 Tools Every Web3 Developer Should Use in 2025",
-    image: "/images/blog/web3-tools.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Carlos Rivera",
-      image: "/images/authors/carlos-rivera.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Discover the essential development tools that will streamline your Web3 development workflow and boost productivity in 2025.",
     content: (
@@ -609,10 +609,10 @@ export const BlogPosts: BlogPostProps[] = [
   {
     id: "9",
     title: "How Multi-Chain Integration is Shaping the Future of Web3",
-    image: "/images/blog/multi-chain.jpg",
+    image: "/images/blog-placeholder-image-x1.webp",
     author: {
-      name: "Lisa Wang",
-      image: "/images/authors/lisa-wang.jpg"
+      name: "Sarah Chen",
+      image: "https://i.pravatar.cc/150?img=7"
     },
     excerpt: "Explore how multi-chain architectures are breaking down blockchain silos and creating a more interconnected Web3 ecosystem.",
     content: (

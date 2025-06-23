@@ -15,6 +15,7 @@ interface BlogCardProps {
   headingClass?: string;
   imageWidth?: number;
   imageHeight?: number;
+  hideReadMore?: boolean;
   children?: ReactNode;
 }
 
@@ -25,6 +26,7 @@ export const BlogCard = (
     headingClass,
     imageWidth,
     imageHeight,
+    hideReadMore,
     children
   }: BlogCardProps) => {
   return (
@@ -56,10 +58,12 @@ export const BlogCard = (
           {data.title}
         </span>
 
-        <span className="c-button" data-variant="link">
-          <span className="c-button-label">Read More</span>
-          <i className="c-button-icon"><IcnArrowUpRight/></i>
-        </span>
+        {!hideReadMore && (
+          <span className="c-button" data-variant="link">
+            <span className="c-button-label">Read More</span>
+            <i className="c-button-icon"><IcnArrowUpRight/></i>
+          </span>
+        )}
 
         {children}
 
