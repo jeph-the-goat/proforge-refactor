@@ -9,10 +9,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 
-import { BlogPostProps } from "@/utils";
+import {BlogPostProps, BlogShareButton, BlogShareButtons} from "@/utils";
 import {createActiveSectionTracker, generateTableOfContents, TocItem} from "@/functions";
 
-import { Avatar, Badge, ButtonLink, Section, SectionTitle } from "@/components/common";
+import {Avatar, Badge, Button, ButtonLink, Section, SectionTitle} from "@/components";
 
 interface BlogSingleSectionContentProps {
   post: BlogPostProps;
@@ -52,22 +52,67 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
     };
   }, [allIds]);
 
-  const renderTocItem = (item: TocItem, index: number) => (
-    <li key={`${item.id}-${index}`} className={clsx('toc-item', `level-${item.level}`, item.type)}>
-      <Link
-        href={`#${item.id}`}
-        className={clsx('toc-link', { active: activeId === item.id })}
-      >
-        {item.type === 'list' && <span className="list-indicator">•</span>}
-        {item.text}
-      </Link>
-      {item.subItems && item.subItems.length > 0 && (
-        <ul className="toc-subitems">
-          {item.subItems.map((subItem, subIndex) => renderTocItem(subItem, subIndex))}
-        </ul>
-      )}
-    </li>
-  );
+  const renderTocItem = (item: TocItem, index: number) => {
+    if (item.type === 'heading') {
+      // Render headings as direct links (no li wrapper)
+      return (
+        <Link
+          key={`${item.id}-${index}`}
+          href={`#${item.id}`}
+          className={clsx('toc-heading-link', `level-${item.level}`, {
+            active: activeId === item.id
+          })}
+        >
+          {item.text}
+        </Link>
+      );
+    }
+
+    if (item.type === 'list' && item.subItems && item.subItems.length > 0) {
+      // Render lists as actual ul/ol elements
+      const ListElement = item.listType === 'ordered' ? 'ol' : 'ul';
+
+      return (
+        <ListElement
+          key={`${item.id}-${index}`}
+          className={clsx('toc-list', `toc-${item.listType}-list`)}
+        >
+          {item.subItems.map((listItem, listIndex) => (
+            <li key={`${listItem.id}-${listIndex}`} className="toc-list-item">
+              <Link
+                href={`#${listItem.id}`}
+                className={clsx('toc-list-link', {
+                  active: activeId === listItem.id
+                })}
+              >
+                {listItem.text}
+              </Link>
+            </li>
+          ))}
+        </ListElement>
+      );
+    }
+
+    return null;
+  };
+
+  const handleShare = (button: BlogShareButton) => {
+    const shareUrl = button.getShareUrl(url, title, description);
+
+    if (shareUrl) {
+      window.open(
+        shareUrl,
+        'share-dialog',
+        'width=600,height=400,resizable=yes,scrollbars=yes'
+      );
+    } else if (button.id === 'instagram') {
+      // For Instagram, copy URL to clipboard
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Link copied! You can paste it in your Instagram story or bio.');
+      });
+    }
+  };
+
 
   return (
     <Section
@@ -85,9 +130,11 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
       </div>
 
       <div className="c-blog-single-section-content-header">
-        {post.tags.map((tag) => (
-          <Badge key={tag.value} text={tag.label} />
-        ))}
+        <div className="c-button-container">
+          {post.tags.map((tag) => (
+            <Badge key={tag.value} text={tag.label} />
+          ))}
+        </div>
 
         <SectionTitle
           headingTag="h1"
@@ -129,24 +176,40 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
 
           <div className="c-blog-single-section-content-grid-sidebar-wrapper">
 
-            <div className="c-blog-single-section-content-grid-sidebar-item table">
+            {tocItems.length > 0 && (
+              <div className="c-blog-single-section-content-grid-sidebar-item table">
 
-              <p>
-                <span>Table of Contents</span>
-              </p>
+                <p>
+                  <span>Table of Contents</span>
+                </p>
 
-              {tocItems.length > 0 ? (
-                <ul>
+                <div className="c-blog-single-section-content-grid-sidebar-toc">
                   {tocItems.map((item, index) => renderTocItem(item, index))}
-                </ul>
-              ) : (
-                <p>No headings found in this post</p>
-              )}
+                </div>
 
-            </div>
+              </div>
+            )}
 
             <div className="c-blog-single-section-content-grid-sidebar-item share">
-              share here
+              <p>Share this blog</p>
+
+              <div className="c-button-container">
+                {BlogShareButtons.map((share) => (
+                  <Button
+                    key={share.id}
+                    btnTitle={share.ariaLabel}
+                    btnVariant="icon"
+                    btnColor="ghost"
+                    btnSize="md"
+                    icon={share.icon}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleShare(share);
+                    }}
+                  />
+                ))}
+              </div>
+
             </div>
 
           </div>

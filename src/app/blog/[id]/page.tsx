@@ -54,7 +54,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       <BlogSingleSectionContent post={post} />
-      <BlogSingleSectionRelated/>
+      <BlogSingleSectionRelated currentPost={post}/>
       <SectionFooterBanner/>
     </>
   );

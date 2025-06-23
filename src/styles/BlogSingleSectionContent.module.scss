@@ -85,40 +85,130 @@
         }
 
         &-sidebar {
+          min-width: 0;
+
           &-wrapper {
             display: flex;
             flex-direction: column;
             row-gap: var(--from-24-to-16px);
+
+            @media(min-width: 992px) {
+              position: sticky;
+              top: var(--header-height);
+              left: 0;
+            }
           }
 
           &-item {
             display: flex;
             flex-direction: column;
-            padding: var(--from-24-to-16px);
             background-color: var(--neutral-900);
             border-radius: var(--px12);
 
             &.table {
               row-gap: 1em;
+              padding-bottom: var(--from-24-to-16px);
 
               p {
+                padding: var(--from-24-to-16px) var(--from-24-to-16px) 0;
                 margin-bottom: 0;
-                padding-bottom: 1em;
-                border-bottom: 1px solid var(--neutral-700);
-              }
 
-              > ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-
-                li {
-                  ul, ol {
-                    margin: 0;
-                    padding-left: 1em;
-                    list-style: none;
-                  }
+                span {
+                  display: block;
+                  font-size: var(--px18);
+                  font-weight: 600;
+                  padding-bottom: 16px;
+                  border-bottom: 1px solid var(--neutral-700);
                 }
+              }
+            }
+
+            &.share {
+              align-items: center;
+              padding: var(--from-24-to-16px);
+
+              p {
+                color: var(--neutral-400);
+              }
+            }
+          }
+
+          &-toc {
+            display: flex;
+            flex-direction: column;
+            max-height: 500px;
+            padding: 0 var(--from-24-to-16px);
+            overflow: auto;
+
+            a {
+              display: flex;
+              width: 100%;
+              max-width: 100%;
+            }
+
+            > a {
+              padding: var(--px8) var(--px12);
+              border-radius: var(--px8);
+              transition: background-color 0.3s ease, font-weight 0.3s ease;
+
+              &.active {
+                background-color: var(--neutral-950);
+                font-weight: 600;
+              }
+            }
+
+            > ol,
+            > ul {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              max-width: 100%;
+              margin: 0;
+              padding: 0;
+
+              > li {
+                display: flex;
+                align-items: baseline;
+                width: 100%;
+                max-width: 100%;
+                gap: var(--px8);
+                padding: var(--px8) var(--px12) var(--px8) var(--px24);
+                border-radius: var(--px8);
+                color: currentColor;
+                scroll-margin-top: var(--header-height);
+                transition: background-color 0.3s ease, font-weight 0.3s ease;
+
+                &:before {
+                  color: inherit;
+                }
+
+                &:has(a.active) {
+                  background-color: var(--neutral-950);
+                  font-weight: 600;
+                }
+
+                > a {
+                  display: block;
+                  min-width: 0;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                }
+              }
+            }
+
+            > ol {
+              counter-reset: item;
+
+              > li:before {
+                counter-increment: item;
+                content: counter(item) ".";
+              }
+            }
+
+            > ul {
+              > li:before {
+                content: "•";
               }
             }
           }
@@ -130,14 +220,19 @@
             margin-top: 0;
             margin-bottom: 0.666em; //12px @18px
             font-weight: 600;
+            scroll-margin-top: var(--header-height);
           }
 
           ul, ol {
             padding-left: 1em;
             margin: 0 0 1em;
 
-            li:not(:first-child):not(:only-child) {
-              margin-top: 1em;
+            li {
+              scroll-margin-top: var(--header-height);
+
+              &:not(:first-child):not(:only-child) {
+                margin-top: 1em;
+              }
             }
           }
         }

@@ -7,6 +7,7 @@ export * from "./homeData";
 export * from "./aboutData";
 export * from "./pricingData";
 export * from "./blogData";
+export * from "./blogSingleData";
 export * from "./integrationData";
 export * from "./faqData";
 export * from "./contactData";

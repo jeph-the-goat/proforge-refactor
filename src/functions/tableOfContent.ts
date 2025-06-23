@@ -1,3 +1,4 @@
+// utils/tableOfContents.ts
 import React from 'react';
 
 export interface TocItem {
@@ -5,9 +6,9 @@ export interface TocItem {
   text: string;
   level: number;
   type: 'heading' | 'list';
+  listType?: 'ordered' | 'unordered';
   subItems?: TocItem[];
 }
-
 
 interface ReactElementWithProps extends React.ReactElement {
   props: {
@@ -25,7 +26,6 @@ export const generateId = (text: string): string => {
     .trim()
     .replace(/^-|-$/g, '');
 };
-
 
 const getTextContent = (element: ReactElementWithProps): string => {
   const { children } = element.props;
@@ -58,7 +58,6 @@ const getTextContent = (element: ReactElementWithProps): string => {
   return '';
 };
 
-
 const isHeading = (elementType: string | React.ComponentType): boolean => {
   return typeof elementType === 'string' && /^h[1-6]$/i.test(elementType);
 };
@@ -70,6 +69,7 @@ const isList = (elementType: string | React.ComponentType): boolean => {
 const processElement = (element: ReactElementWithProps, tocItems: TocItem[]): void => {
   const elementType = element.type;
 
+  // Handle headings (h1-h6)
   if (isHeading(elementType)) {
     const level = parseInt((elementType as string).charAt(1));
     const text = getTextContent(element);
@@ -85,6 +85,7 @@ const processElement = (element: ReactElementWithProps, tocItems: TocItem[]): vo
     }
   }
 
+  // Handle lists (ul, ol)
   else if (isList(elementType)) {
     const children = React.Children.toArray(element.props.children);
     children.forEach((child) => {
@@ -96,14 +97,16 @@ const processElement = (element: ReactElementWithProps, tocItems: TocItem[]): vo
           tocItems.push({
             id,
             text: text.trim(),
-            level: elementType === 'ol' ? 7 : 8,
-            type: 'list'
+            level: 0, // Lists don't use levels like headings
+            type: 'list',
+            listType: elementType === 'ol' ? 'ordered' : 'unordered'
           });
         }
       }
     });
   }
 
+  // Recursively process children
   if (element.props.children) {
     const children = React.Children.toArray(element.props.children);
     children.forEach((child) => {
@@ -130,29 +133,65 @@ export const processContentForToc = (content: React.ReactNode): TocItem[] => {
   return tocItems;
 };
 
-export const buildHierarchicalToc = (items: TocItem[]): TocItem[] => {
+export const buildFlatToc = (items: TocItem[]): TocItem[] => {
   const result: TocItem[] = [];
-  const stack: TocItem[] = [];
+  let currentListItems: TocItem[] = [];
+  let currentListType: 'ordered' | 'unordered' | null = null;
 
-  items.forEach(item => {
-    while (stack.length > 0 && stack[stack.length - 1].level >= item.level) {
-      stack.pop();
-    }
-
-    const newItem = { ...item, subItems: [] };
-
-    if (stack.length === 0) {
-      result.push(newItem);
-    } else {
-      const parent = stack[stack.length - 1];
-      if (!parent.subItems) parent.subItems = [];
-      parent.subItems.push(newItem);
-    }
-
+  items.forEach((item, index) => {
     if (item.type === 'heading') {
-      stack.push(newItem);
+      // If we were building a list, finish it first
+      if (currentListItems.length > 0 && currentListType) {
+        result.push({
+          id: `list-${result.length}`,
+          text: '', // Not used for list containers
+          level: 0,
+          type: 'list',
+          listType: currentListType,
+          subItems: [...currentListItems]
+        });
+        currentListItems = [];
+        currentListType = null;
+      }
+
+      // Add heading directly
+      result.push({ ...item, subItems: [] });
+    }
+    else if (item.type === 'list') {
+      // Start a new list or continue current one
+      if (currentListType === null) {
+        currentListType = item.listType!;
+      }
+
+      // If list type changed, finish previous list and start new one
+      if (currentListType !== item.listType) {
+        result.push({
+          id: `list-${result.length}`,
+          text: '',
+          level: 0,
+          type: 'list',
+          listType: currentListType,
+          subItems: [...currentListItems]
+        });
+        currentListItems = [];
+        currentListType = item.listType!;
+      }
+
+      currentListItems.push({ ...item, subItems: [] });
     }
   });
+
+  // Don't forget the last list if there is one
+  if (currentListItems.length > 0 && currentListType) {
+    result.push({
+      id: `list-${result.length}`,
+      text: '',
+      level: 0,
+      type: 'list',
+      listType: currentListType,
+      subItems: [...currentListItems]
+    });
+  }
 
   return result;
 };
@@ -176,6 +215,7 @@ const addIdToElement = (element: ReactElementWithProps, tocItems: TocItem[]): Re
     }
   }
 
+  // Handle list items
   else if (elementType === 'li') {
     const text = getTextContent(element);
     const tocItem = tocItems.find(item =>
@@ -191,6 +231,7 @@ const addIdToElement = (element: ReactElementWithProps, tocItems: TocItem[]): Re
     }
   }
 
+  // Process other elements
   return React.cloneElement(element, {
     ...element.props,
     children: processChildren(element.props.children, tocItems)
@@ -228,7 +269,7 @@ export const addIdsToContent = (content: React.ReactNode, tocItems: TocItem[]): 
 
 export const generateTableOfContents = (content: React.ReactNode) => {
   const flatTocItems = processContentForToc(content);
-  const hierarchicalTocItems = buildHierarchicalToc(flatTocItems);
+  const hierarchicalTocItems = buildFlatToc(flatTocItems); // Using flat structure
   const contentWithIds = addIdsToContent(content, flatTocItems);
 
   return {
