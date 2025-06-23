@@ -23,6 +23,8 @@
   --from-32-to-16px: clamp(1em, 32/1440*100vw, var(--px32));
   --from-24-to-16px: clamp(1em, 24/1440*100vw, var(--px24));
 
+  --hero-padding-top: clamp(6.625em, 200/1440 * 100vw, 12.5em); //106-200px
+
   @media(max-width: 991px) {
     --header-height: 74px;
   }

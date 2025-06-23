@@ -1,7 +1,10 @@
 import styles from "@/styles/common/Section.module.scss";
+
 import React, { ReactNode } from 'react';
 import { clsx } from "clsx";
+
 import { SectionTitleProps } from "@/types";
+
 import { SectionTitle } from "@/components";
 
 interface SectionProps extends SectionTitleProps {
@@ -17,8 +20,8 @@ export const Section = ({
   addWrapper,
   hideSectionTitle,
   alignment,
-  leadText,
-  leadIcon,
+  badgeText,
+  badgeIcon,
   headingTag,
   headingClass,
   title,
@@ -29,8 +32,9 @@ export const Section = ({
   const sectionTitle = !hideSectionTitle && (
     <SectionTitle
       alignment={alignment}
-      leadIcon={leadIcon}
-      leadText={leadText}
+      badgeBgColor={addWrapper? "var(--neutral-800)": undefined}
+      badgeIcon={badgeIcon}
+      badgeText={badgeText}
       headingClass={headingClass}
       headingTag={headingTag}
       title={title}

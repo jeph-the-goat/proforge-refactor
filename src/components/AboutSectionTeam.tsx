@@ -9,8 +9,8 @@ export const AboutSectionTeam = () => {
   return (
     <Section
       extraClassName={clsx(styles.cAboutSectionTeam, "c-about-section-team")}
-      leadIcon={<IcnUsers/>}
-      leadText="Meet the team"
+      badgeIcon={<IcnUsers/>}
+      badgeText="Meet the team"
       headingClass="h3"
       title="The People Behind the Platform"
       paragraph="Our diverse team of experts is united by one vision: to simplify Web3 development."

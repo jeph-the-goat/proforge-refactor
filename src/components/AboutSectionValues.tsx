@@ -12,8 +12,8 @@ export const AboutSectionValues = () => {
   return (
     <Section
       extraClassName={clsx(styles.cAboutSectionValues, "c-about-section-values")}
-      leadIcon={<IcnThumb/>}
-      leadText="Our Values"
+      badgeIcon={<IcnThumb/>}
+      badgeText="Our Values"
       headingClass="h3"
       title="Guided by Innovation, Collaboration, and Trust"
       paragraph="These core values define who we are and how we work."

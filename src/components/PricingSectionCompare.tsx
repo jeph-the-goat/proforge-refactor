@@ -18,8 +18,8 @@ export const PricingSectionCompare = () => {
     <Section
       extraClassName={clsx(styles.cPricingSectionCompare, "c-pricing-section-compare")}
       addWrapper
-      leadIcon={<IcnFilter/>}
-      leadText="Compare"
+      badgeIcon={<IcnFilter/>}
+      badgeText="Compare"
       headingClass="h3"
       title="Compare Our Pricing Plans"
       paragraph="Find the plan that fits your project's needs, whether you're just starting or scaling fast."

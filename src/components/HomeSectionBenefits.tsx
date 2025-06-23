@@ -12,7 +12,7 @@ export const HomeSectionBenefits = () => {
   return (
     <Section
       extraClassName={clsx(styles.cHomeSectionBenefits, "c-home-section-benefits")}
-      leadText="Benefits"
+      badgeText="Benefits"
       headingClass="h3"
       title="Why Developers and Teams Love Us"
       paragraph="We take the headaches out of building Web3 projects, so you can focus on creating."

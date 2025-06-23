@@ -1,8 +1,6 @@
 .cSectionTitle {
   &:global{
     &.c-section-title {
-      --lead-bg-color: var(--neutral-900);
-
       display: inline-flex;
       flex-direction: column;
       align-items: center;
@@ -11,20 +9,9 @@
       margin: 0 auto;
       text-align: center;
 
-      .c-section-title-lead {
-        display: inline-flex;
-        align-items: center;
-        column-gap: var(--px6);
-        margin-bottom: var(--px12);
-        padding: var(--px4) var(--px8);
-        background-color: var(--lead-bg-color);
-        border-radius: var(--px8);
-
-        i {
-          width: 1em;
-          height: 1em;
-          color: var(--primary-500);
-        }
+      .c-badge {
+        --badge-padding-x: var(--px8);
+        --badge-font-weight: normal;
       }
 
       p {

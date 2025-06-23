@@ -9,8 +9,8 @@ export const HomeSectionPricing = () => {
     <Section
       extraClassName={clsx("c-home-section-pricing")}
       addWrapper
-      leadIcon={<IcnDollarSign/>}
-      leadText="Pricing"
+      badgeIcon={<IcnDollarSign/>}
+      badgeText="Pricing"
       headingClass="h3"
       title="Fair Pricing for Every Stage"
       paragraph="Affordable plans for developers, startups, and enterprises. Choose the plan that grows with you."

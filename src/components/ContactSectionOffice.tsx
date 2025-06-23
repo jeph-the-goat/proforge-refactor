@@ -12,8 +12,8 @@ export const ContactSectionOffice = () => {
   return (
     <Section
       extraClassName={clsx(styles.cContactSectionOffice, "c-contact-section-office")}
-      leadText="Our Office"
-      leadIcon={<IcnBuilding/>}
+      badgeText="Our Office"
+      badgeIcon={<IcnBuilding/>}
       headingClass="h3"
       title="Drop by and Say Hello!"
       paragraph="Whether you want to discuss partnerships, learn more about our platform, or just say hi, you’re always welcome at our office."

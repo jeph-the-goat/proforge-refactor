@@ -2,6 +2,8 @@ export * from "./common";
 export * from "./form-elements";
 export * from "./forms";
 
+export * from "./BlogCard";
+
 export * from "./HomeSectionHero";
 export * from "./HomeSectionFeatures";
 export * from "./HomeSectionBenefits";

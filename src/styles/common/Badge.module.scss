@@ -1,0 +1,27 @@
+.cBadge {
+  &:global {
+    &.c-badge {
+      --badge-padding-x: 1em;
+      --badge-font-weight: 600;
+      --badge-icon-color : var(--primary-500);
+
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--px6);
+      padding: var(--px4) var(--badge-padding-x);
+      border-radius: var(--px8);
+      font-weight: 600;
+
+      > i {
+        width: 1em;
+        height: 1em;
+        color: var(--badge-icon-color);
+      }
+
+      >span {
+        font-weight: var(--badge-font-weight);
+      }
+    }
+  }
+}

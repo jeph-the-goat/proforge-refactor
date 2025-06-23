@@ -20,8 +20,8 @@ export const SectionTestimonial = () => {
         <div className="c-container">
 
           <SectionTitle
-            leadIcon={<IcnUsers/>}
-            leadText="Testimonials"
+            badgeIcon={<IcnUsers/>}
+            badgeText="Testimonials"
             headingClass="h3"
             title="Real Success, Real People"
             paragraph="Trusted by developers and enterprises worldwide. See how we’ve helped them achieve their Web3 goals."

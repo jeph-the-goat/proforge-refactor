@@ -1,11 +1,15 @@
-import React from 'react';
-import {Banner} from "@/components/common";
+import styles from "@/styles/BlogSectionBanner.module.scss"
 import {IcnMail} from "@assets/icons";
-import {SubscribeForm} from "@/components/forms/SubscribeForm";
+
+import React from 'react';
+import {clsx} from "clsx";
+
+import {Banner, SubscribeForm} from "@/components";
 
 export const BlogSectionBanner = () => {
   return (
     <Banner
+      extraClassName={clsx(styles.cBlogSectionBanner, "c-blog-section-banner")}
       isSection
       icon={<IcnMail/>}
       title="Stay in the Loop with Web3 News"

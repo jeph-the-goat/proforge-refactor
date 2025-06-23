@@ -24,8 +24,8 @@ export const HomeSectionIntegration = () => {
         </div>
 
         <SectionTitle
-          leadIcon={<IcnPullRequest/>}
-          leadText="Integration"
+          badgeIcon={<IcnPullRequest/>}
+          badgeText="Integration"
           headingClass="h3"
           title="Seamlessly Connect to the Ecosystem"
           paragraph="We integrate effortlessly so you can focus on building, not troubleshooting."

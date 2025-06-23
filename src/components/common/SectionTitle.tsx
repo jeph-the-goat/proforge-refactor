@@ -3,13 +3,17 @@ import {IcnStar} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
+
 import {SectionTitleProps} from "@/types";
+
+import {Badge} from "@/components";
 
 export const SectionTitle = (
   {
     alignment,
-    leadText,
-    leadIcon,
+    badgeBgColor,
+    badgeText,
+    badgeIcon,
     headingTag,
     headingClass,
     title,
@@ -21,11 +25,12 @@ export const SectionTitle = (
       data-alignment={alignment}
     >
 
-      {leadText && (
-        <div className="c-section-title-lead">
-          <i>{leadIcon? leadIcon : (<IcnStar/>)}</i>
-          <span>{leadText}</span>
-        </div>
+      {badgeText && (
+        <Badge
+          bgColor={badgeBgColor}
+          icon={badgeIcon? badgeIcon : <IcnStar/>}
+          text={badgeText}
+        />
       )}
 
       {headingTag === "h1"?(

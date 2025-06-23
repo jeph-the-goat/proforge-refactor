@@ -10,8 +10,8 @@ export const HomeSectionSecurity = () => {
   return (
     <Section
       extraClassName={clsx(styles.cHomeSectionSecurity, "c-home-section-security")}
-      leadIcon={<IcnLock/>}
-      leadText="Security"
+      badgeIcon={<IcnLock/>}
+      badgeText="Security"
       headingClass="h3"
       title="Your Data, Locked Tight"
       paragraph="Get the tools, documentation, and community support you need to master Web3 development."

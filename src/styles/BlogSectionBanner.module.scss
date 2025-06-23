@@ -1,0 +1,26 @@
+.cBlogSectionBanner {
+  &:global {
+    &.c-blog-section-banner.is-section {
+      padding-top: 0;
+
+      .c-banner-wrapper {
+        form {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .c-form-group-email {
+          width: 100%;
+          max-width: 564px;
+          margin: 0 auto;
+        }
+
+        > p {
+          color: var(--neutral-500);
+        }
+      }
+    }
+  }
+}

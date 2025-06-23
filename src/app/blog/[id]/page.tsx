@@ -1,57 +1,60 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { BlogPostProps, BlogPosts } from "@/utils";
+
+import {BlogSingleSectionRelated, BlogSingleSectionContent} from "@/components";
+
 interface BlogPostPageProps {
   params: {
     id: string;
   };
 }
 
+function getBlogPost(id: string): BlogPostProps | undefined {
+  return BlogPosts.find((post: BlogPostProps) => post.id === id);
+}
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  // const post = await getBlogPost(params.id);
-  
+  const post = getBlogPost(params.id);
+
+  if (!post) {
+    return {
+      title: 'Blog Post Not Found',
+      description: 'The requested blog post could not be found.',
+    };
+  }
+
   return {
-    title: `Blog - ${params.id}`,
-    description: `Details about blog ${params.id}`,
+    title: `${post.title} | Blog`,
+    description: post.excerpt || post.title,
     openGraph: {
-      title: `BLog - ${params.id}`,
-      description: `Details about blog ${params.id}`,
+      title: post.title,
+      description: post.excerpt || post.title,
+      type: 'article',
+      publishedTime: post.date,
+      tags: post.tags?.map(tag => tag.label),
     },
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  // const post = await getBlogPost(params.id);
+export async function generateStaticParams(): Promise<Array<{ id: string }>> {
+  return BlogPosts.map((post: BlogPostProps) => ({
+    id: post.id,
+  }));
+}
 
-  // if (!post) {
-  //   notFound();
-  // }
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = getBlogPost(params.id);
+
+  if (!post) {
+    notFound();
+  }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <article className="max-w-4xl mx-auto">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">
-            Article de blog: {params.id}
-          </h1>
-          <div className="text-gray-600">
-            <time dateTime="2024-01-01">1er janvier 2024</time>
-            <span className="mx-2">•</span>
-            <span>5 min de lecture</span>
-          </div>
-        </header>
-        
-        <div className="prose prose-lg max-w-none">
-          <p>
-            Contenu de l'article de blog avec l'ID: {params.id}
-          </p>
-          <p>
-            Ici vous pouvez afficher le contenu complet de l'article de blog.
-            Vous pouvez récupérer les données depuis une API, une base de données,
-            ou des fichiers markdown selon votre architecture.
-          </p>
-        </div>
-      </article>
-    </div>
+    <>
+      <BlogSingleSectionContent post={post} />
+      <BlogSingleSectionRelated/>
+    </>
   );
-} 
+}

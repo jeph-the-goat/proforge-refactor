@@ -14,8 +14,8 @@ export const HomeSectionFeatures = () => {
     <Section
       extraClassName={clsx(styles.cHomeSectionFeatures, "c-home-section-features")}
       addWrapper
-      leadIcon={<IcnBolt/>}
-      leadText="Features"
+      badgeIcon={<IcnBolt/>}
+      badgeText="Features"
       headingClass="h3"
       title="Tools That Feel Like Superpowers"
       paragraph="The only platform you’ll ever need for seamless Web3 development."

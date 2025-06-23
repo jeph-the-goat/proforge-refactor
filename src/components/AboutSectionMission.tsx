@@ -13,8 +13,8 @@ export const AboutSectionMission = () => {
     <Section
       extraClassName={clsx(styles.cAboutSectionMission, "c-about-section-mission")}
       addWrapper
-      leadIcon={<IcnTriangle/>}
-      leadText="Our Mission"
+      badgeIcon={<IcnTriangle/>}
+      badgeText="Our Mission"
       headingClass="h4"
       title="We believe the future of the internet is decentralized. Our mission is to create powerful tools and infrastructure that help developers and teams unlock the full potential of Web3 technology."
     >

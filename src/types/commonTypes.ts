@@ -34,8 +34,9 @@ export interface cInputProps extends HTMLProps<HTMLInputElement>{
 
 export interface SectionTitleProps {
   alignment?: "left";
-  leadText?: string;
-  leadIcon?: ReactNode;
+  badgeBgColor?: string;
+  badgeText?: string;
+  badgeIcon?: ReactNode;
   headingTag?: "h1"
   headingClass?: string;
   title?: string;
