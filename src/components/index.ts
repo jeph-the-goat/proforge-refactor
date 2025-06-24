@@ -2,7 +2,7 @@ export * from "./common";
 export * from "./form-elements";
 export * from "./forms";
 
-export * from "./BlogCard";
+export * from "./AuthSectionForm";
 
 export * from "./HomeSectionHero";
 export * from "./HomeSectionFeatures";
@@ -21,11 +21,14 @@ export * from "./PricingSectionHero";
 export * from "./PricingSectionPlans";
 export * from "./PricingSectionCompare";
 
+export * from "./BlogCard";
+
 export * from "./BlogSectionHero";
 export * from "./BlogSectionGrid";
 export * from "./BlogSectionBanner";
 
 export * from "./BlogSingleSectionContent";
+export * from "./BlogSingleToC";
 export * from "./BlogSingleSectionRelated";
 
 export * from "./IntegrationSectionHero";
@@ -41,3 +44,6 @@ export * from "./ContactSectionOffice";
 
 export * from "./PrivacySectionHero";
 export * from "./TermsSectionHero";
+
+export * from "./NotFoundSection";
+export * from "./NotFoundSectionContent";

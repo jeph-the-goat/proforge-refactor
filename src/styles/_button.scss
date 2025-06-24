@@ -79,13 +79,14 @@
     }
 
     &.c-button-icon-chevron {
-      width: 0.5em;
-      height: 0.5em;
+      width: var(--px10);
+      height: var(--px10);
       transition: transform 0.3s ease;
     }
   }
 
-  &.is-open {
+  &.is-open,
+  &[data-state="open"]{
     i.c-button-icon-chevron {
       transform: rotate(180deg);
     }
@@ -97,7 +98,7 @@
     }
   }
 
-  &[data-color="default"] {
+  &[data-color="default"]:not([data-variant="link"]) {
     position: relative;
 
     &:before {

@@ -1,0 +1,26 @@
+.cSeparator {
+  &:global {
+    &.c-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: var(--px8);
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 100%;
+
+      span {
+        color: var(--neutral-500);
+        font-size: var(--px14);
+      }
+
+      &:before,
+      &:after {
+        flex: 1;
+        content: "";
+        height: 1px;
+        background-color: var(--neutral-700);
+      }
+    }
+  }
+}

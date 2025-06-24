@@ -126,10 +126,38 @@
         }
       }
 
+      &.c-form-group-password {
+        .c-form-group-input >.c-button {
+          --btn-color: var(--input-placeholder-color);
+          --btn-hover-color: var(--neutral-0);
+
+          opacity: 1;
+          transition: color 0.3s ease;
+
+          &:hover,
+          &:focus,
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.c-form-group-textarea {
+        .c-form-group-input {
+          padding: 0;
+
+          textarea {
+            padding: 1em;
+          }
+        }
+      }
+
       &.c-form-group-check {
-        display: flex;
-        align-items: center;
-        column-gap: var(--px8);
+        .c-form-group-wrapper {
+          display: flex;
+          align-items: center;
+          column-gap: var(--px8);
+        }
 
         label {
           margin-bottom: 0;
@@ -154,16 +182,6 @@
         input:checked ~ label.is-button {
           background-color: var(--neutral-900);
           border-color: var(--neutral-900);
-        }
-      }
-
-      &.c-form-group-textarea {
-        .c-form-group-input {
-          padding: 0;
-
-          textarea {
-            padding: 1em;
-          }
         }
       }
 

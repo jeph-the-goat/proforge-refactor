@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import React from "react";
+import {NotFoundSection} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Page Not Found',
@@ -11,8 +13,7 @@ export const metadata: Metadata = {
 
 function NotFound() {
   return (
-    <>
-    </>
+    <NotFoundSection/>
   );
 }
 

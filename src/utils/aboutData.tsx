@@ -1,6 +1,6 @@
-import IcnGradientUsers from "@assets/images/icn-users-gradient.svg";
-import IcnGradientGlobe from "@assets/images/icn-globe-gradient.svg";
-import IcnGradientCryptocurrency from "@assets/images/icn-cryptocurrency-gradient.svg";
+import IcnGradientUsers from "@assets/images/icn-gradient-users.svg";
+import IcnGradientGlobe from "@assets/images/icn-gradient-globe.svg";
+import IcnGradientCryptocurrency from "@assets/images/icn-gradient-cryptocurrency.svg";
 import {IcnDiamond, IcnShield, IcnUsers} from "@assets/icons";
 
 export const AboutStats = [

@@ -12,6 +12,7 @@ export * from "./HeaderNavItems";
 export * from "./IconBox";
 export * from "./Logo";
 export * from "./MobileMenu";
+export * from "./Separator";
 
 export * from "./PricingPlans";
 

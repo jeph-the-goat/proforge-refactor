@@ -1,14 +1,9 @@
 import 'swiper/css';
 import 'swiper/css/free-mode';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import 'swiper/css/scrollbar';
 import "@/styles/index.scss";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import {Footer, Header} from "@/components";
-
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,11 +26,7 @@ export default function RootLayout(
     <html lang="en">
       <body className={inter.variable}>
         <div className="c-body-bg"/>
-        <Header/>
-        <main>
           {children}
-        </main>
-        <Footer />
       </body>
     </html>
   );

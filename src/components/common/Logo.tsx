@@ -7,19 +7,33 @@ import {clsx} from "clsx";
 
 interface LogoProps {
   extraClassName?: string;
+  isDisabled?: boolean; //use when logo is not a link
 }
 export const Logo =(
   {
     extraClassName,
+    isDisabled,
   }: LogoProps) => {
   return (
-    <Link
-      href='/'
-      className={clsx(styles.cLogo, "c-logo", extraClassName)}
-      title="Nexora"
-      aria-label="Nexora"
-    >
-      <NexoraLogo/>
-    </Link>
+    <>
+      {isDisabled? (
+        <span
+          className={clsx(styles.cLogo, "c-logo", extraClassName)}
+          title="Nexora"
+          aria-label="Nexora"
+        >
+          <NexoraLogo/>
+        </span>
+      ):(
+        <Link
+          href='/'
+          className={clsx(styles.cLogo, "c-logo", extraClassName)}
+          title="Nexora"
+          aria-label="Nexora"
+        >
+          <NexoraLogo/>
+        </Link>
+      )}
+    </>
   );
 }

@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
 import { BlogPostProps, BlogPosts } from "@/utils";
-
 import {BlogSingleSectionRelated, BlogSingleSectionContent, SectionFooterBanner} from "@/components";
 
 interface BlogPostPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string; }>;
 }
 
 function getBlogPost(id: string): BlogPostProps | undefined {
@@ -16,7 +12,8 @@ function getBlogPost(id: string): BlogPostProps | undefined {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getBlogPost(params.id);
+  const { id } = await params;
+  const post = getBlogPost(id);
 
   if (!post) {
     return {
@@ -44,8 +41,9 @@ export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   }));
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getBlogPost(params.id);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { id } = await params;
+  const post = getBlogPost(id);
 
   if (!post) {
     notFound();

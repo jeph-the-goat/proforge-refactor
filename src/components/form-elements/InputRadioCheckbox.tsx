@@ -9,6 +9,7 @@ interface InputRadioCheckboxProps extends HTMLProps<HTMLInputElement>{
   isLabelButton?: boolean;
   labelText?: string;
   hasErrors?: boolean;
+  errorText?: string;
   children?: ReactNode;
 }
 
@@ -22,26 +23,36 @@ export const InputRadioCheckbox = (
     isLabelButton,
     labelText,
     hasErrors,
+    errorText,
     children,
     ...rest
   }: InputRadioCheckboxProps) => {
   return (
     <div className={clsx(styles.cFormGroup, "c-form-group", "c-form-group-check")}>
 
-      <input
-        className={clsx(isLabelButton && "c-visually-hidden")}
-        type={type? type : "checkbox"}
-        id={id}
-        name={name}
-        checked={checked}
-        onChange={onChange}
-        aria-invalid={!!hasErrors}
-        {...rest}
-      />
+      <div className="c-form-group-wrapper">
+        <input
+          className={clsx(isLabelButton && "c-visually-hidden")}
+          type={type? type : "checkbox"}
+          id={id}
+          name={name}
+          checked={checked}
+          onChange={onChange}
+          aria-invalid={!!hasErrors}
+          {...rest}
+        />
 
-      <label htmlFor={id} className={clsx(isLabelButton && "is-button")}>
-        {labelText? labelText : children}
-      </label>
+        <label htmlFor={id} className={clsx(isLabelButton && "is-button")}>
+          {labelText? labelText : children}
+        </label>
+
+      </div>
+
+      {hasErrors && (
+        <small className="c-form-group-error">
+          {(errorText as string)}
+        </small>
+      )}
 
     </div>
   );

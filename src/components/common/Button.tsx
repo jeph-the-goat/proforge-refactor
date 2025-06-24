@@ -3,9 +3,11 @@ import {ButtonHTMLAttributes} from 'react';
 import clsx from "clsx";
 
 import {cButtonProps} from "@/types";
+import {IcnChevronDown} from "@assets/icons";
 
 interface ButtonProps extends cButtonProps, ButtonHTMLAttributes<HTMLButtonElement>{
   type?: "reset" | "submit";
+  hasChevronIcon?: boolean;
 }
 
 export const Button = (
@@ -20,6 +22,7 @@ export const Button = (
     btnSize,
     icon,
     iconPlacement,
+    hasChevronIcon,
     ...rest
   }:ButtonProps) => {
 
@@ -47,6 +50,12 @@ export const Button = (
       {icon && (
         <i className="c-button-icon">
           {icon}
+        </i>
+      )}
+
+      {hasChevronIcon && (
+        <i className="c-button-icon-chevron">
+          <IcnChevronDown/>
         </i>
       )}
 

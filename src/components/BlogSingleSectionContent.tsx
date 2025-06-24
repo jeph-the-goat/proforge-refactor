@@ -12,7 +12,7 @@ import { format } from "date-fns";
 import {BlogPostProps, BlogShareButton, BlogShareButtons} from "@/utils";
 import {createActiveSectionTracker, generateTableOfContents, TocItem} from "@/functions";
 
-import {Avatar, Badge, Button, ButtonLink, Section, SectionTitle} from "@/components";
+import {Avatar, Badge, BlogSingleToC, Button, ButtonLink, Section, SectionTitle} from "@/components";
 
 interface BlogSingleSectionContentProps {
   post: BlogPostProps;
@@ -113,6 +113,13 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
     }
   };
 
+  const handleGoBack = () => {
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      window.history.back()
+    } else {
+      window.location.href = '/blog'
+    }
+  }
 
   return (
     <Section
@@ -120,12 +127,12 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
       hideSectionTitle
     >
       <div className="c-blog-single-section-content-nav">
-        <ButtonLink
-          href="/blog"
+        <Button
           btnText="Back"
           btnVariant="link"
           icon={<IcnChevronLeft />}
           iconPlacement="left"
+          onClick={handleGoBack}
         />
       </div>
 
@@ -142,24 +149,28 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
           title={post.title}
         />
 
-        <div className="c-blog-single-section-content-details">
-          {post.author?.image && (
-            <Avatar
-              size="sm"
-              image={post.author.image}
-              alt={post.author.name}
-            />
-          )}
-          <ul>
-            <li className="author-name">{post.author?.name}</li>
-            <li>
-              <time dateTime={post.date}>
-                {format(new Date(post.date), 'MMMM d, yyyy')}
-              </time>
-            </li>
-            <li>6 min read</li>
-          </ul>
-        </div>
+        <ul className="c-blog-single-section-content-details">
+          <li className="author-name">
+            {post.author?.image && (
+              <Avatar
+                size="sm"
+                image={post.author.image}
+                alt={post.author.name}
+              />
+            )}
+            {post.author?.name}
+          </li>
+
+          <li>
+            <time dateTime={post.date}>
+              {format(new Date(post.date), 'MMMM d, yyyy')}
+            </time>
+          </li>
+
+          <li>6 min read</li>
+
+        </ul>
+
       </div>
 
       <div className="c-blog-single-section-content-image">
@@ -172,25 +183,19 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
       </div>
 
       <div className="c-blog-single-section-content-grid">
+
         <aside className="c-blog-single-section-content-grid-sidebar">
 
           <div className="c-blog-single-section-content-grid-sidebar-wrapper">
 
             {tocItems.length > 0 && (
-              <div className="c-blog-single-section-content-grid-sidebar-item table">
-
-                <p>
-                  <span>Table of Contents</span>
-                </p>
-
-                <div className="c-blog-single-section-content-grid-sidebar-toc">
-                  {tocItems.map((item, index) => renderTocItem(item, index))}
-                </div>
-
-              </div>
+              <BlogSingleToC
+                tocItems={tocItems}
+                activeId={activeId}
+              />
             )}
 
-            <div className="c-blog-single-section-content-grid-sidebar-item share">
+            <div className="c-blog-single-section-content-grid-sidebar-share">
               <p>Share this blog</p>
 
               <div className="c-button-container">

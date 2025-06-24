@@ -1,7 +1,7 @@
 .cIntegrationSectionGrid {
   &:global {
     &.c-integration-section-grid.c-section {
-      padding-top: 40px;
+      padding-top: var(--px40);
     }
   }
 
