@@ -62,6 +62,7 @@ export const SignUpForm = () => {
 
   return (
     <AuthSectionForm
+      extraClassName="signup"
       icon={<IcnGradientUserPlus/>}
       title="Ready to Build?"
       text="Sign up and start building today."

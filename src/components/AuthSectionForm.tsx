@@ -31,6 +31,7 @@ export const AuthSectionForm = (
         <div className="c-auth-section-form-wrapper">
 
           <div className="c-auth-section-form-header">
+            <div className="c-auth-section-form-header-bg"/>
 
             <IconBox icon={icon}/>
 
