@@ -113,7 +113,9 @@ export const BlogSectionGrid = () => {
 
             {currentBlogs.length === 0 ? (
               <div className="c-no-results">
-                <p>No blogs found matching your criteria.</p>
+                <p className="c-text-px18 c-gradient-text">
+                  No blogs found matching your criteria.
+                </p>
               </div>
             ) : (
               currentBlogs.map((blog) => (

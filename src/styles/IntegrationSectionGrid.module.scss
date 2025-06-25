@@ -75,6 +75,14 @@
             @media(min-width: 576px) {
               align-items: stretch;
               grid-template-columns: repeat(2, 1fr);
+
+              .c-no-results {
+                grid-column: span 2;
+
+                >p {
+                  margin-bottom: 0;
+                }
+              }
             }
 
             .c-card {

@@ -1,23 +1,20 @@
 .cSectionTestimonial {
   &:global {
-    &.c-section-testimonial {
+    &.c-section-testimonial.c-section {
       display: flex;
       flex-direction: column;
       row-gap: var(--from-64-to-40px);
-      padding: var(--from-120-to-40px) 0;
+      width: 100%;
+      max-width: 100%;
     }
   }
 
   :global {
     .c-section-testimonial {
-      &-header {
-        padding: 0 1em;
-      }
-
       &-slider {
         position: relative;
         width: 100%;
-        max-width: 1440px;
+        max-width: 90em;//1440px
         margin: 0 auto;
         overflow: hidden;
 
@@ -44,6 +41,9 @@
 
 
         .swiper {
+          width: 100%;
+          max-width: 100%;
+
           .swiper-wrapper {
             align-items: stretch;
           }
@@ -53,7 +53,7 @@
             flex-direction: column;
             padding: 0 clamp(0.5em, 16/1440*100vw, 1em);
             width: clamp(300px, 458/1440*100vw, 458px) !important;
-            min-height: 500px;
+            min-height: 31.25em;// 500px
           }
         }
 

@@ -25,8 +25,6 @@ export const ButtonLink = (
     iconPlacement,
     ...rest
   }:ButtonLinkProps) => {
-  console.log('ButtonLink rest props:', rest);
-  console.log('ButtonLink all props:', { href, isExternal, isDisabled, extraClassName, btnText, btnTitle, children, btnColor, btnVariant, btnSize, icon, iconPlacement, ...rest });
 
   return (
     <Link

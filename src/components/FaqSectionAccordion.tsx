@@ -102,8 +102,8 @@ export const FaqSectionAccordion = () => {
           {filteredAndSearchedFaqs.length > 0 ? (
             <Accordion accordionItems={filteredAndSearchedFaqs} name="faq" />
           ) : (
-            <div className="c-faq-no-results">
-              <p className="h6">
+            <div className="c-no-results">
+              <p className="c-text-px18 c-gradient-text">
                 No FAQs found matching your search criteria.
               </p>
             </div>

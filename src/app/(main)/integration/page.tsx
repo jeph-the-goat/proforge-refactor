@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import {IntegrationSectionGrid, IntegrationSectionHero, SectionFooterBanner} from "@/components";
+import {IntegrationSectionGrid, IntegrationSectionHero} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Integration',
@@ -14,7 +14,6 @@ function Integration() {
     <>
       <IntegrationSectionHero/>
       <IntegrationSectionGrid/>
-      <SectionFooterBanner/>
     </>
   );
 }

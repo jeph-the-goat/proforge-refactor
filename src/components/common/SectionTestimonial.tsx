@@ -1,5 +1,6 @@
 'use client';
 import styles from "@/styles/common/SectionTestimonial.module.scss";
+import {IcnUsers} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
@@ -8,27 +9,19 @@ import { FreeMode, Autoplay } from 'swiper/modules';
 
 import {SectionTestimonialList} from "@/utils";
 
-import {SectionTitle, Avatar} from "@/components";
-import {IcnUsers} from "@assets/icons";
+import {Avatar, Section} from "@/components";
 
 export const SectionTestimonial = () => {
   return (
-    <section className={clsx(styles.cSectionTestimonial, "c-section-testimonial")}>
-
-      <div className="c-section-testimonial-header">
-
-        <div className="c-container">
-
-          <SectionTitle
-            badgeIcon={<IcnUsers/>}
-            badgeText="Testimonials"
-            headingClass="h3"
-            title="Real Success, Real People"
-            paragraph="Trusted by developers and enterprises worldwide. See how we’ve helped them achieve their Web3 goals."
-          />
-        </div>
-
-      </div>
+    <Section
+      extraClassName={clsx(styles.cSectionTestimonial, "c-section-testimonial")}
+      uncontainedChildren
+      badgeIcon={<IcnUsers/>}
+      badgeText="Testimonials"
+      headingClass="h3"
+      title="Real Success, Real People"
+      paragraph="Trusted by developers and enterprises worldwide. See how we’ve helped them achieve their Web3 goals."
+    >
 
       <div className="c-section-testimonial-slider">
 
@@ -87,6 +80,6 @@ export const SectionTestimonial = () => {
 
       </div>
 
-    </section>
+    </Section>
   );
 };

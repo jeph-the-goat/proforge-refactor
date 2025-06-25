@@ -117,8 +117,8 @@ export const IntegrationSectionGrid = () => {
                 />
               ))
             ) : (
-              <div className="c-integration-no-results">
-                <p className="h6">
+              <div className="c-no-results">
+                <p className="c-text-px18 c-gradient-text">
                   No integrations found matching your search criteria.
                 </p>
               </div>

@@ -33,7 +33,7 @@ export * from "./BlogSingleSectionRelated";
 
 export * from "./IntegrationSectionHero";
 export * from "./IntegrationSectionGrid";
-export * from "./IntergrationBanner";
+export * from "./IntegrationBanner";
 
 export * from "./FaqSectionHero";
 export * from "./FaqSectionAccordion";

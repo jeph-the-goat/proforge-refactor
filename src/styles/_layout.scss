@@ -6,11 +6,11 @@
   z-index: -3;
   display: block;
   width: 100%;
-  max-width: 935px;
-  max-height: 371px;
+  max-width: 58.4375em; //935px
+  max-height: 23.1875em; //371px
   margin: 0 auto;
   aspect-ratio: 935/371;
-  background-image: url("/images/body-bg.svg");
+  background-image: url("../../public/images/body-bg.svg");
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -25,6 +25,6 @@
 
 .c-container {
   width: 100%;
-  max-width: 1160px;
+  max-width: 72.5em;
   margin: 0 auto;
 }

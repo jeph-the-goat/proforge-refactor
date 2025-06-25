@@ -9,7 +9,7 @@
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: clamp(var(--px24), 56/1440*100vw, var(--px56)) 1em;
+        gap: var(--from-56-to-24px) 1em;
       }
     }
   }
@@ -78,7 +78,7 @@
         justify-content: space-between;
         flex-wrap: wrap-reverse;
         margin-top: var(--px8);
-        padding-top: clamp(var(--px24), 56/1440*100vw, var(--px56));
+        padding-top: var(--from-56-to-24px);
         border-top: 1px solid var(--neutral-700);
         color: var(--neutral-500);
 

@@ -68,7 +68,7 @@
         &-inner {
           display: flex;
           flex-direction: column;
-          max-height: 250px;
+          max-height: 15.625em; //250px
           padding: var(--px8);
           background-color: var(--neutral-900);
           border: 1px solid var(--neutral-700);
