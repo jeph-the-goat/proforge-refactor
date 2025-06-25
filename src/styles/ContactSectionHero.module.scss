@@ -4,6 +4,7 @@
       &-grid {
         &-text {
           row-gap: clamp(var(--px32), 72/1440*100vw, var(--px72));
+
           .c-section-title {
             max-width: clamp(25em, 762/1440 * 100vw, 47.625em);//400-762px
           }
@@ -16,6 +17,10 @@
           width: 100%;
           max-width: 100%;
           text-align: left;
+
+          >p {
+            font-weight: 600;
+          }
 
           p {
             margin-bottom: 0;
