@@ -33,7 +33,7 @@
 
         .c-blog-card[data-card="default"] {
           --blog-card-image-ratio: 366/222;
-          --blog-card_image_max-width: 100%;
+          --blog-card-image-max-width: 100%;
 
           grid-template-columns: 1fr;
           grid-template-rows: auto 1fr;

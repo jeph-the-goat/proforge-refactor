@@ -122,7 +122,21 @@
         width: 100%;
 
         @media(min-width: 992px) {
-          max-width: 439px;
+          max-width: 27.4375em; //439px
+        }
+
+        .c-form-group-search-clear-btn.c-button {
+          --btn-icon-size: var(--px24);
+
+          i.c-button-icon {
+            border-radius: 50%;
+            background-color: var(--neutral-800);
+
+            svg {
+              max-width: var(--px8);
+              max-height: var(--px8);
+            }
+          }
         }
       }
 

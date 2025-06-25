@@ -40,7 +40,7 @@ export const BlogCard = (
       <span className="c-blog-card-image">
 
         <Image
-          src="/images/blog-placeholder-image-x1.webp"
+          src={data.image}
           alt={data.title}
           width={imageWidth? imageWidth: 200}
           height={imageHeight? imageHeight : 150}

@@ -1,4 +1,5 @@
 import {ReactNode} from "react";
+import BlogPlaceholder from "@assets/images/blog-placeholder-image-x1.webp";
 
 export interface BlogTagProps {
   value: string;

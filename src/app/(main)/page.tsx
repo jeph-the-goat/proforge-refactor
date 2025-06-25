@@ -8,7 +8,6 @@ import {
   HomeSectionPricing,
   HomeSectionSecurity,
   HomeSectionBlog,
-  SectionFooterBanner,
 } from "@/components";
 
 
@@ -24,7 +23,6 @@ export default function Home() {
       <HomeSectionPricing/>
       <HomeSectionSecurity/>
       <HomeSectionBlog/>
-      <SectionFooterBanner/>
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import styles from "@/styles/IntegrationSectionGrid.module.scss";
-import { IcnSearch } from "@assets/icons";
+import {IcnFilter, IcnSearch} from "@assets/icons";
 
 import React, { useState } from 'react';
 import { clsx } from "clsx";
@@ -58,6 +58,8 @@ export const IntegrationSectionGrid = () => {
               labelIsHidden
               placeholder="Search integration"
               inputGroupIcon={<IcnSearch />}
+              isClearable={true}
+              onClear={() => setSearchTerm('')}
               value={searchTerm}
               onChange={handleSearchChange}
             />
@@ -84,9 +86,10 @@ export const IntegrationSectionGrid = () => {
               options={IntegrationCategories}
               labelText="Category"
               labelIsHidden
+              inputGroupIcon={<IcnFilter/>}
+              placeholder="Filter..."
               value={selectedCategory}
               onValueChange={handleCategorySelectChange}
-              placeholder="Select"
             />
 
             <IntegrationBanner extraClassName="c-desktop" />

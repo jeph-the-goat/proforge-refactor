@@ -2,7 +2,7 @@
   &:global {
     &.c-blog-card {
       --blog-card-image-ratio: unset;
-      --blog-card_image_max-width: 100%;
+      --blog-card-image-max-width: 100%;
 
       display: grid;
       gap: 1em;
@@ -12,14 +12,19 @@
 
       &[data-card="default"] {
         --blog-card-image-ratio: 1/1;
-        --blog-card_image_max-width: clamp(125px, 200/1440*100vw, var(--px200));
+        --blog-card-image-max-width: clamp(125px, 200/1440*100vw, var(--px200));
 
         grid-template-columns: auto 1fr;
-        align-items: center;
+        align-items: stretch;
 
         @media(min-width: 768px) {
           --blog-card-image-ratio: 200/150;
         }
+
+        .c-blog-card-body {
+          justify-content: center;
+        }
+
       }
 
       &[data-card="featured"] {
@@ -34,8 +39,9 @@
   :global {
     .c-blog-card {
       &-image {
+        display: block;
         width: 100%;
-        max-width: var(--blog-card_image_max-width);
+        max-width: var(--blog-card-image-max-width);
         border-radius: var(--px12);
         aspect-ratio: var(--blog-card-image-ratio);
         overflow: hidden;
