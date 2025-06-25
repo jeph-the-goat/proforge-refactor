@@ -15,7 +15,7 @@
         --blog-card_image_max-width: clamp(125px, 200/1440*100vw, var(--px200));
 
         grid-template-columns: auto 1fr;
-        align-items: stretch;
+        align-items: center;
 
         @media(min-width: 768px) {
           --blog-card-image-ratio: 200/150;

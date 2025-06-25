@@ -1,18 +1,17 @@
 "use client";
-
 import React from 'react';
 
 import {ButtonLink, Footer, Header, NotFoundSectionContent} from "@/components";
 
 export const NotFoundSection = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   if (isAuthenticated) {
     return (
       <>
         <Header/>
         <main>
-          <NotFoundSectionContent>
+          <NotFoundSectionContent extraClassName="is-authenticated">
             <ButtonLink
               href="/"
               btnText="Return to Homepage"
@@ -31,7 +30,7 @@ export const NotFoundSection = () => {
   }
 
   return (
-    <NotFoundSectionContent>
+    <NotFoundSectionContent extraClassName="not-authenticated">
       <ButtonLink
         href="/Login"
         btnText="Return to Login"

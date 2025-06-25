@@ -4,7 +4,7 @@ import React from 'react'
 import {clsx} from "clsx";
 
 import {useMediaQuerySafe} from "@/hooks";
-import {Button, Logo, HeaderNavItems, MobileMenu} from "@/components";
+import {Logo, HeaderNavItems, MobileMenu, ButtonLink} from "@/components";
 
 export const Header = () => {
   const isMobile = useMediaQuerySafe('(max-width: 991px)');
@@ -20,7 +20,8 @@ export const Header = () => {
         )}
 
         <div className="c-header-button-wrapper">
-          <Button
+          <ButtonLink
+            href="/login"
             btnColor="white"
             btnSize="md"
             btnText="Login"

@@ -13,4 +13,5 @@ export * from "./blogSingleData";
 export * from "./integrationData";
 export * from "./faqData";
 export * from "./contactData";
+export * from "./legalData";
 
