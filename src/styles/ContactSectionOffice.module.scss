@@ -1,6 +1,11 @@
 .cContactSectionOffice {
   :global {
     .c-contact-section-office {
+      &-image {
+        width: 100%;
+        max-width: 100%;
+      }
+
       &-grid {
         display: grid;
         grid-template-columns: 1fr;

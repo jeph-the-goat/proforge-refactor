@@ -1,4 +1,5 @@
 import styles from "@/styles/ContactSectionOffice.module.scss";
+import ContactOfficeImage from "@assets/images/contact-office-image-x1.webp";
 import {IcnBuilding} from "@assets/icons";
 
 import React from 'react';
@@ -32,7 +33,7 @@ export const ContactSectionOffice = () => {
 
        <div className="c-contact-section-office-image">
           <Image
-            src="/images/contact-office-image-x1.webp"
+            src={ContactOfficeImage}
             alt="Get direction"
             width={1160}
             height={300}

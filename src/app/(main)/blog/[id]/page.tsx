@@ -53,7 +53,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       <BlogSingleSectionContent post={post} />
       <BlogSingleSectionRelated currentPost={post}/>
-      <SectionFooterBanner/>
     </>
   );
 }
