@@ -42,8 +42,16 @@ export * from "./ContactSectionHero";
 export * from "./ContactSectionHeroList";
 export * from "./ContactSectionOffice";
 
+export * from "./LegalSectionGrid";
+
 export * from "./PrivacySectionHero";
+export * from "./PrivacySectionGrid";
+
 export * from "./TermsSectionHero";
+export * from "./TermsSectionGrid";
+
+export * from "./SecuritySectionHero";
+export * from "./SecuritySectionGrid";
 
 export * from "./NotFoundSection";
 export * from "./NotFoundSectionContent";

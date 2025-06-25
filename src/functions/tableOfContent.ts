@@ -1,4 +1,3 @@
-// utils/tableOfContents.ts
 import React from 'react';
 
 export interface TocItem {
@@ -13,8 +12,7 @@ export interface TocItem {
 interface ReactElementWithProps extends React.ReactElement {
   props: {
     children?: React.ReactNode;
-    [key: string]: any;
-  };
+  } & Record<string, React.ReactNode>;
 }
 
 export const generateId = (text: string): string => {
@@ -138,9 +136,8 @@ export const buildFlatToc = (items: TocItem[]): TocItem[] => {
   let currentListItems: TocItem[] = [];
   let currentListType: 'ordered' | 'unordered' | null = null;
 
-  items.forEach((item, index) => {
+  items.forEach((item) => {
     if (item.type === 'heading') {
-      // If we were building a list, finish it first
       if (currentListItems.length > 0 && currentListType) {
         result.push({
           id: `list-${result.length}`,
@@ -181,7 +178,6 @@ export const buildFlatToc = (items: TocItem[]): TocItem[] => {
     }
   });
 
-  // Don't forget the last list if there is one
   if (currentListItems.length > 0 && currentListType) {
     result.push({
       id: `list-${result.length}`,
@@ -231,7 +227,6 @@ const addIdToElement = (element: ReactElementWithProps, tocItems: TocItem[]): Re
     }
   }
 
-  // Process other elements
   return React.cloneElement(element, {
     ...element.props,
     children: processChildren(element.props.children, tocItems)
@@ -269,7 +264,7 @@ export const addIdsToContent = (content: React.ReactNode, tocItems: TocItem[]): 
 
 export const generateTableOfContents = (content: React.ReactNode) => {
   const flatTocItems = processContentForToc(content);
-  const hierarchicalTocItems = buildFlatToc(flatTocItems); // Using flat structure
+  const hierarchicalTocItems = buildFlatToc(flatTocItems);
   const contentWithIds = addIdsToContent(content, flatTocItems);
 
   return {

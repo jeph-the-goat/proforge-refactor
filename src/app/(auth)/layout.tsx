@@ -1,4 +1,3 @@
-import {Footer, Header} from "@/components";
 
 export default function AuthLayout(
   {

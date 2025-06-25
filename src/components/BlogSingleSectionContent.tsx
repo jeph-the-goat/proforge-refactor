@@ -3,25 +3,22 @@
 import styles from "@/styles/BlogSingleSectionContent.module.scss";
 import { IcnChevronLeft } from "@assets/icons";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { clsx } from "clsx";
 import Image from "next/image";
-import Link from "next/link";
 import { format } from "date-fns";
 
 import {BlogPostProps, BlogShareButton, BlogShareButtons} from "@/utils";
-import {createActiveSectionTracker, generateTableOfContents, TocItem} from "@/functions";
+import {generateTableOfContents, TocItem} from "@/functions";
+import {useScrollSectionTracker} from "@/hooks";
 
-import {Avatar, Badge, BlogSingleToC, Button, ButtonLink, Section, SectionTitle} from "@/components";
+import {Avatar, Badge, BlogSingleToC, Button, Section, SectionTitle} from "@/components";
 
 interface BlogSingleSectionContentProps {
   post: BlogPostProps;
 }
 
 export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps) => {
-  const [activeId, setActiveId] = useState<string>('');
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
   const { tocItems, contentWithIds } = generateTableOfContents(post.content);
 
   const extractIds = (items: TocItem[]): string[] => {
@@ -34,69 +31,19 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
     });
     return ids;
   };
+
   const allIds = extractIds(tocItems);
 
-  useEffect(() => {
-    if (allIds.length === 0) return;
-
-    if (observerRef.current) {
-      observerRef.current.disconnect();
-    }
-
-    observerRef.current = createActiveSectionTracker(allIds, setActiveId);
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [allIds]);
-
-  const renderTocItem = (item: TocItem, index: number) => {
-    if (item.type === 'heading') {
-      // Render headings as direct links (no li wrapper)
-      return (
-        <Link
-          key={`${item.id}-${index}`}
-          href={`#${item.id}`}
-          className={clsx('toc-heading-link', `level-${item.level}`, {
-            active: activeId === item.id
-          })}
-        >
-          {item.text}
-        </Link>
-      );
-    }
-
-    if (item.type === 'list' && item.subItems && item.subItems.length > 0) {
-      // Render lists as actual ul/ol elements
-      const ListElement = item.listType === 'ordered' ? 'ol' : 'ul';
-
-      return (
-        <ListElement
-          key={`${item.id}-${index}`}
-          className={clsx('toc-list', `toc-${item.listType}-list`)}
-        >
-          {item.subItems.map((listItem, listIndex) => (
-            <li key={`${listItem.id}-${listIndex}`} className="toc-list-item">
-              <Link
-                href={`#${listItem.id}`}
-                className={clsx('toc-list-link', {
-                  active: activeId === listItem.id
-                })}
-              >
-                {listItem.text}
-              </Link>
-            </li>
-          ))}
-        </ListElement>
-      );
-    }
-
-    return null;
-  };
+  const activeId = useScrollSectionTracker(allIds);
 
   const handleShare = (button: BlogShareButton) => {
+    // Get current page URL
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+
+    // Use post data for title and description
+    const title = post.title;
+    const description = post.excerpt || `Read "${post.title}" - ${post.author?.name ? `by ${post.author.name}` : 'Latest insights on Web3 development'}`;
+
     const shareUrl = button.getShareUrl(url, title, description);
 
     if (shareUrl) {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import {ContactSectionHero, ContactSectionOffice, SectionFooterBanner} from "@/components";
+import {ContactSectionHero, ContactSectionOffice} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -14,7 +14,6 @@ function Contact() {
     <>
       <ContactSectionHero/>
       <ContactSectionOffice/>
-      <SectionFooterBanner/>
     </>
   );
 }

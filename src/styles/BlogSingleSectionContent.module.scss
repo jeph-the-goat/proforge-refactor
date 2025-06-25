@@ -78,7 +78,7 @@
         text-align: left;
 
         @media(min-width: 992px) {
-          grid-template-columns: 1fr 0.448fr;
+          grid-template-columns: 1fr var(--sidebar-width);
           align-items: stretch;
 
           .c-blog-single-section-content-grid-text {
@@ -96,7 +96,7 @@
 
             @media(min-width: 992px) {
               position: sticky;
-              top: var(--header-height);
+              top: calc(var(--header-height) + 1em);
               left: 0;
             }
           }

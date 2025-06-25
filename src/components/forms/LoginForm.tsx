@@ -56,10 +56,10 @@ export const LoginForm = () => {
     }
   };
 
-  const handleSocialLogin = (provider: string) => {
-    console.log(`${provider} login clicked - implement with chosen auth solution`);
-    // TODO: Implement social login
-  };
+  // const handleSocialLogin = (provider: string) => {
+  //   console.log(`${provider} login clicked - implement with chosen auth solution`);
+  //   // TODO: Implement social login
+  // };
 
   return (
     <AuthSectionForm
@@ -69,7 +69,7 @@ export const LoginForm = () => {
       text="Log in to your dashboard and keep building the future of Web3."
       footNote={
         <>
-          Don't have an account? <ButtonLink href="/sign-up" btnText="Sign Up" btnVariant="link"/>
+        {"Don't have an account?"} <ButtonLink href="/sign-up" btnText="Sign Up" btnVariant="link"/>
         </>
       }
     >

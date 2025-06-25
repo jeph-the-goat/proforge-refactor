@@ -8,7 +8,7 @@ export const createActiveSectionTracker = (
   options?: IntersectionObserverInit
 ): IntersectionObserver => {
   const defaultOptions: IntersectionObserverInit = {
-    rootMargin: '-100px 0px -80% 0px', // Trigger when section is near top of viewport
+    rootMargin: '-120px 0px -75% 0px', // Trigger when section is near top of viewport
     threshold: 0,
     ...options
   };

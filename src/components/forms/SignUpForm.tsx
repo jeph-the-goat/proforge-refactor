@@ -1,5 +1,5 @@
 'use client';
-import { IcnLock, IcnMail} from "@assets/icons";
+import { IcnMail} from "@assets/icons";
 import IcnGradientUserPlus from "@assets/images/icn-gradient-user-plus.svg";
 
 import React from 'react';
@@ -55,10 +55,10 @@ export const SignUpForm = () => {
     }
   };
 
-  const handleSocialSignup = (provider: string) => {
-    console.log(`${provider} signup clicked - implement with chosen auth solution`);
-    // TODO: Implement social signup
-  };
+  // const handleSocialSignup = (provider: string) => {
+  //   console.log(`${provider} signup clicked - implement with chosen auth solution`);
+  //   // TODO: Implement social signup
+  // };
 
   return (
     <AuthSectionForm

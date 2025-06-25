@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import {
-  PricingSectionCompare,
   PricingSectionHero,
   PricingSectionPlans,
-  SectionFooterBanner,
-  SectionLogoBanner
+  SectionLogoBanner,
+  PricingSectionCompare,
 } from "@/components";
 
 
@@ -23,7 +22,6 @@ function Pricing() {
       <PricingSectionPlans/>
       <SectionLogoBanner/>
       <PricingSectionCompare/>
-      <SectionFooterBanner/>
     </>
   );
 }

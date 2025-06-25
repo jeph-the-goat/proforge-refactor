@@ -148,7 +148,7 @@ export const LegalNavItems = [
     isExternal: false
   },
   {
-    label: "Terms & Condition",
+    label: "Terms & Conditions",
     url: "/terms-conditions",
     isExternal: false
   },

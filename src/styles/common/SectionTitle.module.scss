@@ -14,7 +14,7 @@
         --badge-font-weight: normal;
       }
 
-      p {
+      .c-section-title-paragraph {
         width: 100%;
         margin: 0 auto;
         color: var(--neutral-300);
@@ -25,7 +25,7 @@
         margin: unset;
         text-align: left;
 
-        >p {
+        .c-section-title-paragraph {
           margin: 0;
         }
       }

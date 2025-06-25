@@ -87,6 +87,12 @@ h6, .h6 {
   -webkit-text-fill-color: transparent;
 }
 
+.c-text-px18 {
+  font-size: var(--px18);
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
 //LINKS
 a {
   color: inherit;

@@ -10,7 +10,7 @@ export const FaqList: FAQItem[] = [
     title: "What is this platform, and who is it for?",
     content: (
       <>
-        Our platform provides Web3 developers and teams with the essential tools to build, deploy, and manage decentralized applications effortlessly. Whether you're an individual developer, a startup, or an enterprise, we help you scale faster.
+        Our platform provides Web3 developers and teams with the essential tools to build, deploy, and manage decentralized applications effortlessly. Whether {"you're"} an individual developer, a startup, or an enterprise, we help you scale faster.
       </>
     )
   },
@@ -26,7 +26,7 @@ export const FaqList: FAQItem[] = [
     title: "Do you offer a free plan?",
     content: (
       <>
-        Yes, our <a href="/pricing">Starter Plan is completely free</a> and perfect for small projects or individual developers exploring Web3 development.
+        Yes, our <a href='/pricing'>Starter Plan is completely free</a> and perfect for small projects or individual developers exploring Web3 development.
       </>
     )
   },
@@ -66,7 +66,7 @@ export const FaqList: FAQItem[] = [
     title: "Can I connect third-party tools like GitHub or Slack?",
     content: (
       <>
-        Yes, our platform integrates seamlessly with popular tools like <a href="#">GitHub</a>, <a href="#">Slack</a>, and CI/CD pipelines to enhance your workflow.
+        Yes, our platform integrates seamlessly with popular tools like <a href='#'>GitHub</a>, <a href='#'>Slack</a>, and CI/CD pipelines to enhance your workflow.
       </>
     )
   },

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PrivacySectionHero } from "@/components";
+import {PrivacySectionGrid, PrivacySectionHero} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -13,6 +13,7 @@ function PrivacyPolicy() {
   return (
     <>
       <PrivacySectionHero/>
+      <PrivacySectionGrid/>
     </>
   );
 }

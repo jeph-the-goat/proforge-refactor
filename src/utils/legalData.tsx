@@ -9,59 +9,41 @@ export const PrivacyPolicySections = [
     ),
     subItems: [
       {
-        id: "account_information",
-        title: "Account Information",
+        id: "information-you-provide",
+        title: "Information You Provide",
         content: (
           <>
-            <p>Name, email address, company name, billing information, and other details you submit during account creation.</p>
+            <ul>
+              <li>Account Information: Name, email address, company name, billing information, and other details you submit during account creation.</li>
+              <li>Communication Data: Information you provide when contacting us, such as support requests, surveys, or feedback.</li>
+            </ul>
           </>
         )
       },
       {
-        id: "communication_data",
-        title: "Communication Data",
+        id: "information-we-collect-automatically",
+        title: "Information We Collect Automatically",
         content: (
           <>
-            <p>Information you provide when contacting us, such as support requests, surveys, or feedback.</p>
+            <ul>
+            <li>Device Information: IP address, browser type, operating system, and device type.</li>
+              <li>Usage Data: Pages viewed, time spent on pages, clicks, and other browsing behavior on our website.</li>
+              <li>Cookies and Tracking Technologies: Information collected through cookies, pixels, and similar technologies.</li>
+            </ul>
           </>
         )
       },
       {
-        id: "device_information",
-        title: "Device Information",
+        id: "information-from-third-parties",
+        title: "Information from Third Parties",
         content: (
           <>
-            <p>IP address, browser type, operating system, and device type.</p>
+            <ul>
+            <li>Integrations with tools or services may share your data with us, such as authentication or API usage logs.</li>
+            </ul>
           </>
         )
       },
-      {
-        id: "usage_data",
-        title: "Usage Data",
-        content: (
-          <>
-            <p>Pages viewed, time spent on pages, clicks, and other browsing behavior on our website.</p>
-          </>
-        )
-      },
-      {
-        id: "cookies_and_tracking_technologies",
-        title: "Cookies and Tracking Technologies",
-        content: (
-          <>
-            <p>Information collected through cookies, pixels, and similar technologies.</p>
-          </>
-        )
-      },
-      {
-        id: "integrations",
-        title: "Integrations",
-        content: (
-          <>
-            <p>With tools or services may share your data with us, such as authentication or API usage logs.</p>
-          </>
-        )
-      }
     ]
   },
   {
@@ -70,14 +52,14 @@ export const PrivacyPolicySections = [
     content: (
       <>
         <p>We use the information we collect to:</p>
-        <ul>
+        <ol>
           <li>Provide, maintain, and improve our services</li>
           <li>Personalize your user experience and improve functionality</li>
           <li>Process payments and send transactional communications</li>
           <li>Respond to inquiries, offer support, and send updates</li>
           <li>Ensure the security and integrity of our systems</li>
           <li>Comply with legal obligations and resolve disputes</li>
-        </ul>
+        </ol>
       </>
     ),
     subItems: []
@@ -89,9 +71,9 @@ export const PrivacyPolicySections = [
       <>
         <p>We do not sell your personal information. However, we may share your information with:</p>
         <ul>
-          <li><strong>Service Providers:</strong> Trusted third parties who assist us in providing our services (e.g., payment processors, hosting services).</li>
-          <li><strong>Legal Authorities:</strong> When required to comply with legal obligations or protect our rights.</li>
-          <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred.</li>
+          <li>Service Providers: Trusted third parties who assist us in providing our services (e.g., payment processors, hosting services).</li>
+          <li>Legal Authorities: When required to comply with legal obligations or protect our rights.</li>
+          <li>Business Transfers: In the event of a merger, acquisition, or sale of assets, your information may be transferred.</li>
         </ul>
       </>
     ),
@@ -104,9 +86,9 @@ export const PrivacyPolicySections = [
       <>
         <p>Cookies and similar technologies help us enhance your experience. These include:</p>
         <ul>
-          <li><strong>Essential Cookies:</strong> Necessary for the functioning of our website.</li>
-          <li><strong>Analytical Cookies:</strong> Help us understand user behavior.</li>
-          <li><strong>Preference Cookies:</strong> Save your settings and preferences.</li>
+          <li>Essential Cookies: Necessary for the functioning of our website.</li>
+          <li>Analytical Cookies: Help us understand user behavior.</li>
+          <li>Preference Cookies: Save your settings and preferences.</li>
         </ul>
         <p>You can manage your cookie preferences through your browser settings.</p>
       </>
@@ -114,18 +96,18 @@ export const PrivacyPolicySections = [
     subItems: []
   },
   {
-    id: "your_rights",
-    title: "Your Rights",
+    id: "your_data-rights",
+    title: "Your Data Rights",
     content: (
       <>
         <p>Depending on your location, you may have the following rights:</p>
         <ul>
-          <li><strong>Access:</strong> Request a copy of the data we hold about you</li>
-          <li><strong>Correction:</strong> Update or correct inaccurate data</li>
-          <li><strong>Deletion:</strong> Request the deletion of your personal data</li>
-          <li><strong>Opt-out:</strong> Withdraw consent for specific uses, such as marketing emails</li>
+          <li>Access: Request a copy of the data we hold about you</li>
+          <li>Correction: Update or correct inaccurate data</li>
+          <li>Deletion: Request the deletion of your personal data</li>
+          <li>Opt-out: Withdraw consent for specific uses, such as marketing emails</li>
         </ul>
-        <p>To exercise your rights, please contact us at privacy@merex.com</p>
+        <p>To exercise your rights, please contact us at <a href="mailto:privacy@merex.com" target="_blank">privacy@merex.com</a></p>
       </>
     ),
     subItems: []
@@ -187,8 +169,8 @@ export const PrivacyPolicySections = [
       <>
         <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
         <ul>
-          <li><strong>Email:</strong> legal@merex.com</li>
-          <li><strong>Address:</strong> Merex Company, 9330 N Cedar Street, Birmingham 63056</li>
+          <li>Email: <a href="mailto:legal@merex.com" target="_blank">legal@merex.com</a></li>
+          <li>Address: Merex Company, 9330 N Cedar Street, Birmingham 63056</li>
         </ul>
       </>
     ),
@@ -198,120 +180,98 @@ export const PrivacyPolicySections = [
 
 export const TermsConditionsSections = [
   {
-    id: "eligibility_requirements",
-    title: "Eligibility Requirements",
+    id: "use_of_services",
+    title: "Use of Services",
     content: (
       <>
-        <p>To use our Services, you must:</p>
       </>
     ),
     subItems: [
       {
-        id: "age_requirement",
-        title: "Age Requirement",
+        id: "eligibility",
+        title: "Eligibility",
         content: (
           <>
-            <p>Be at least 18 years old</p>
+            <p>To use our Services, you must:</p>
+            <ul>
+              <li>Be at least 18 years old.</li>
+              <li>Provide accurate and up-to-date information during account registration.</li>
+            </ul>
           </>
         )
       },
       {
-        id: "account_information_accuracy",
-        title: "Account Information",
+        id: "prohibited_activities",
+        title: "Prohibited Activities",
         content: (
           <>
-            <p>Provide accurate and up-to-date information during account registration</p>
+            <p>You agree NOT to:</p>
+            <ul>
+              <li>Use the Services for illegal purposes or activities.</li>
+              <li>Attempt to reverse-engineer, exploit, or hack the Services.</li>
+              <li>Transmit malware, spam, or any harmful content.</li>
+              <li>Interfere with the proper functioning of the Services.</li>
+            </ul>
           </>
         )
       }
     ]
   },
   {
-    id: "prohibited_activities",
-    title: "Prohibited Activities",
+    id: "accounts_and_security",
+    title: "Accounts and Security",
     content: (
       <>
-        <p>You agree NOT to:</p>
       </>
     ),
     subItems: [
       {
-        id: "illegal_purposes",
-        title: "Illegal Purposes",
+        id: "account_responsibility",
+        title: "Account Responsibility",
         content: (
           <>
-            <p>Use the Services for illegal purposes or activities</p>
+            <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.</p>
           </>
         )
       },
       {
-        id: "reverse_engineer",
-        title: "Reverse Engineering",
+        id: "security",
+        title: "Security",
         content: (
           <>
-            <p>Attempt to reverse-engineer, exploit, or hack the Services</p>
-          </>
-        )
-      },
-      {
-        id: "malware_transmission",
-        title: "Malware Transmission",
-        content: (
-          <>
-            <p>Transmit malware, spam, or any harmful content</p>
-          </>
-        )
-      },
-      {
-        id: "service_interference",
-        title: "Service Interference",
-        content: (
-          <>
-            <p>Interfere with the proper functioning of the Services</p>
+            <p>We prioritize security but cannot guarantee complete protection against breaches. Notify us immediately of any unauthorized account access.</p>
           </>
         )
       }
     ]
   },
   {
-    id: "account_responsibility",
-    title: "Account Responsibility",
+    id: "payments_and_billing",
+    title: "Payments and Billing",
     content: (
       <>
-        <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.</p>
       </>
     ),
-    subItems: []
-  },
-  {
-    id: "security_disclaimer",
-    title: "Security Disclaimer",
-    content: (
-      <>
-        <p>We prioritize security but cannot guarantee complete protection against breaches. Notify us immediately of any unauthorized account access.</p>
-      </>
-    ),
-    subItems: []
-  },
-  {
-    id: "payment_terms",
-    title: "Payment Terms",
-    content: (
-      <>
-        <p>Access to certain Services may require payment. By subscribing, you agree to pay all applicable fees as described in our pricing plans.</p>
-      </>
-    ),
-    subItems: []
-  },
-  {
-    id: "refund_policy",
-    title: "Refund Policy",
-    content: (
-      <>
-        <p>Refunds are governed by our Refund Policy, which can be reviewed on our website.</p>
-      </>
-    ),
-    subItems: []
+    subItems: [
+      {
+        id: "fees",
+        title: "Fees",
+        content: (
+          <>
+            <p>Access to certain Services may require payment. By subscribing, you agree to pay all applicable fees as described in our pricing plans.</p>
+          </>
+        )
+      },
+      {
+        id: "refunds",
+        title: "Refunds",
+        content: (
+          <>
+            <p>Refunds are governed by our Refund Policy, which can be reviewed on our website.</p>
+          </>
+        )
+      }
+    ]
   },
   {
     id: "intellectual_property",
@@ -324,8 +284,8 @@ export const TermsConditionsSections = [
     subItems: []
   },
   {
-    id: "termination_rights",
-    title: "Termination Rights",
+    id: "termination",
+    title: "Termination",
     content: (
       <>
         <p>We reserve the right to suspend or terminate your account or access to the Services at any time, with or without cause, if you violate these Terms or engage in prohibited activities.</p>
@@ -339,34 +299,10 @@ export const TermsConditionsSections = [
     content: (
       <>
         <p>To the fullest extent permitted by law, Nexora is not liable for:</p>
-      </>
-    ),
-    subItems: [
-      {
-        id: "indirect_damages",
-        title: "Indirect Damages",
-        content: (
-          <>
-            <p>Indirect, incidental, or consequential damages</p>
-          </>
-        )
-      },
-      {
-        id: "data_loss",
-        title: "Data Loss",
-        content: (
-          <>
-            <p>Loss of data, revenue, or profits arising from your use of the Services</p>
-          </>
-        )
-      }
-    ]
-  },
-  {
-    id: "liability_cap",
-    title: "Liability Cap",
-    content: (
-      <>
+        <ul>
+          <li>Indirect, incidental, or consequential damages</li>
+          <li>Loss of data, revenue, or profits arising from your use of the Services.</li>
+        </ul>
         <p>Our liability is limited to the amount you paid for the Services in the 12 months preceding the claim.</p>
       </>
     ),
@@ -378,32 +314,17 @@ export const TermsConditionsSections = [
     content: (
       <>
         <p>You agree to indemnify and hold Nexora harmless from any claims, damages, or liabilities arising from:</p>
+        <ul>
+          <li>Your breach of these Terms.</li>
+          <li>Your use of the Services in violation of applicable laws or regulations.</li>
+        </ul>
       </>
     ),
-    subItems: [
-      {
-        id: "terms_breach",
-        title: "Terms Breach",
-        content: (
-          <>
-            <p>Your breach of these Terms</p>
-          </>
-        )
-      },
-      {
-        id: "law_violation",
-        title: "Law Violation",
-        content: (
-          <>
-            <p>Your use of the Services in violation of applicable laws or regulations</p>
-          </>
-        )
-      }
-    ]
+    subItems: []
   },
   {
-    id: "privacy_policy_reference",
-    title: "Privacy Policy Reference",
+    id: "modifications_to_terms",
+    title: "Modifications to Terms",
     content: (
       <>
         <p>Your use of the Services is also governed by our Privacy Policy, which details how we collect, use, and protect your personal information.</p>
@@ -422,14 +343,14 @@ export const TermsConditionsSections = [
     subItems: []
   },
   {
-    id: "contact_information",
-    title: "Contact Information",
+    id: "contact_us",
+    title: "Contact Us",
     content: (
       <>
         <p>If you have any questions or concerns about this Terms & Conditions, please contact us:</p>
         <ul>
-          <li><strong>Email:</strong> legal@nexora.com</li>
-          <li><strong>Address:</strong> Nexora Company, 9330 N Court Street, Elmiraland 93665</li>
+          <li>Email: <a href="mailto:legal@nexora.com" target="_blank">legal@nexora.com</a></li>
+          <li>Address: Nexora Company, 9330 N Court Street, Elmiraland 93665</li>
         </ul>
       </>
     ),
@@ -437,3 +358,136 @@ export const TermsConditionsSections = [
   }
 ];
 
+export const CookiePolicySections = [
+  {
+    id: "what_are_cookies",
+    title: "What Are Cookies",
+    content: (
+      <>
+        <p>Cookies are small text files stored on your device (computer, tablet, or mobile) when you visit a website. They help websites function effectively and provide useful insights about user interactions.</p>
+      </>
+    ),
+    subItems: []
+  },
+  {
+    id: "how_we_use_cookies",
+    title: "How We Use Cookies",
+    content: (
+      <>
+        <p>We use cookies to:</p>
+        <ul>
+          <li>Improve Functionality: Ensure our website and platform work as intended.</li>
+          <li>Enhance User Experience: Save your preferences, such as language or region settings.</li>
+          <li>Analyze Performance: Collect data to understand user behavior and optimize our platform.</li>
+          <li>Support Marketing Efforts: Display relevant content or advertisements based on your interests.</li>
+        </ul>
+      </>
+    ),
+    subItems: []
+  },
+  {
+    id: "types_of_cookies",
+    title: "Types of Cookies",
+    content: (
+      <>
+      </>
+    ),
+    subItems: [
+      {
+        id: "essential_cookies",
+        title: "Essential Cookies",
+        content: (
+          <>
+            <p>These cookies are necessary for the proper functioning of our website and cannot be disabled.</p>
+          </>
+        )
+      },
+      {
+        id: "analytics_cookies",
+        title: "Analytics Cookies",
+        content: (
+          <>
+            <p>Used to track website performance and user behavior, helping us improve our services.</p>
+          </>
+        )
+      },
+      {
+        id: "preferences_cookies",
+        title: "Preferences Cookies",
+        content: (
+          <>
+            <p>Store your preferences to enhance your experience, such as login details or preferred language.</p>
+          </>
+        )
+      },
+      {
+        id: "marketing_cookies",
+        title: "Marketing Cookies",
+        content: (
+          <>
+            <p>Help us deliver personalized advertisements and measure the effectiveness of marketing campaigns.</p>
+          </>
+        )
+      }
+    ]
+  },
+  {
+    id: "managing_cookies",
+    title: "Managing Cookies",
+    content: (
+      <>
+        <p>You can manage or disable cookies through your browser settings. Note that disabling cookies may affect the functionality of certain features on our platform.</p>
+      </>
+    ),
+    subItems: []
+  },
+  {
+    id: "browser_settings",
+    title: "How to Adjust Cookie Settings in Your Browser",
+    content: (
+      <>
+        <ul>
+          <li>Google Chrome: Go to Settings {"> Privacy and Security > Cookies and other site data."}</li>
+          <li>Safari: Go to Preferences {"> Privacy > Cookies and website data."}</li>
+          <li>Firefox: Go to Options {"> Privacy & Security > Cookies and Site Data."}</li>
+          <li>Microsoft Edge: Go to Settings {"> Privacy, search, and services > Cookies and site permissions."}</li>
+        </ul>
+      </>
+    ),
+    subItems: []
+  },
+  {
+    id: "third_party_cookies",
+    title: "Third-Party Cookies",
+    content: (
+      <>
+        <p>Some cookies are set by third-party providers, such as analytics or advertising partners, to track usage and provide insights. These third-party cookies are subject to their respective privacy policies.</p>
+      </>
+    ),
+    subItems: []
+  },
+  {
+    id: "policy_updates",
+    title: "Policy Updates",
+    content: (
+      <>
+        <p>We may update this Cookie Policy from time to time to reflect changes in technology or legal requirements. Updates will be posted on this page with a revised effective date.</p>
+      </>
+    ),
+    subItems: []
+  },
+  {
+    id: "contact_us",
+    title: "Contact Us",
+    content: (
+      <>
+        <p>If you have any questions or concerns about this Cookie Policy, please contact us:</p>
+        <ul>
+          <li>Email: <a href="mailto:legal@nexora.com" target="_blank">legal@nexora.com</a></li>
+          <li>Mailing Address: Nexora Company, 9330 N Court Street, Elmiraland 93666</li>
+        </ul>
+      </>
+    ),
+    subItems: []
+  }
+];

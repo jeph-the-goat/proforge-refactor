@@ -1,66 +1,27 @@
-import styles from "@/styles/TermsSectionHero.module.scss";
+import styles from "@/styles/LegalSectionHero.module.scss";
 import React from 'react';
 import {clsx} from "clsx";
-import Image from "next/image";
 
-import {DummyUserList} from "@/utils";
-import {ButtonLink, EventBar, SectionTitle} from "src/components/common";
+import {SectionHero, SectionTitle} from "src/components/common";
 
 export const TermsSectionHero = () => {
   return (
-    <section className={clsx(styles.cTermsSectionHero, "c-terms-section-hero")}>
+    <SectionHero extraClassName={clsx(styles.cLegalSectionHero, "c-legal-section-hero", "terms")}>
 
-      <div className="c-container">
+      <div className='c-section-hero-grid-text'>
 
-        <div className="c-terms-section-hero-grid">
-
-          <div className='c-terms-section-hero-grid-text'>
-
-            <EventBar
-              text="Level Up Your Web3 Game"
-              linkUrl="/"
-              linkText="Join Free Webinar"
-              users={DummyUserList}
-            />
-
-            <SectionTitle
-              headingTag="h1"
-              title="Revolutionize Web3 Development"
-              paragraph="From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development."
-            />
-
-            <div className="c-button-container">
-
-              <ButtonLink
-                href='/'
-                btnText='Get Started'
-              />
-
-              <ButtonLink
-                href='/'
-                btnColor='dark'
-                btnText='Learn More'
-              />
-
-            </div>
-
-          </div>
-
-          <div className="c-terms-section-hero-grid-image">
-
-            <Image
-              src="/images/home-hero-img-x1.webp"
-              alt="Revolutionize Web3 Development"
-              width={1160}
-              height={500}
-            />
-
-          </div>
-
-        </div>
-
+        <SectionTitle
+          headingTag="h1"
+          title="Terms and Conditions"
+          paragraph={
+            <>
+              <p>Effective Date: January 16, 2025</p>
+              <p>{'These Terms and Conditions ("Terms") govern your use of our website, platform, and services ("Services"). By accessing or using our Services, you agree to be bound by these Terms. If you do not agree, please discontinue your use of our Services.'}</p>
+            </>
+          }
+        />
       </div>
 
-    </section>
+    </SectionHero>
   );
 }; 

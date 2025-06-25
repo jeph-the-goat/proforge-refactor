@@ -40,5 +40,18 @@ export interface SectionTitleProps {
   headingTag?: "h1"
   headingClass?: string;
   title?: string;
-  paragraph?: string;
+  paragraph?: ReactNode;
+}
+
+export interface cLegalSectionGridSubItemProps {
+  id: string;
+  title: string;
+  content: ReactNode;
+}
+
+export interface cLegalSectionGridProps {
+  id: string;
+  title: string;
+  content: ReactNode;
+  subItems?: cLegalSectionGridSubItemProps[];
 }

@@ -40,7 +40,7 @@
             padding: var(--px8) var(--px12) var(--px8) var(--px24);
             border-radius: var(--px8);
             color: currentColor;
-            scroll-margin-top: var(--header-height);
+            scroll-margin-top: var(--scroll-margin-top);
             transition: background-color 0.3s ease, font-weight 0.3s ease;
 
             &:before {
@@ -103,83 +103,7 @@
         }
 
         .c-blog-single-toc-content {
-          max-height: 500px;
           padding: 0 var(--from-24-to-16px);
-          overflow-y: auto;
-        }
-      }
-
-      .c-dropdown {
-        position: relative;
-
-        .c-dropdown-toggle.c-button {
-          --btn-padding-x: var(--from-24-to-16px);
-          --btn-padding-y: var(--from-24-to-16px);
-          --btn-bg-color: var(--neutral-900);
-          --btn-border-width: 1px;
-          --btn-border-color: var(--neutral-900);
-          --btn-hover-bg-color: var(--neutral-900);
-          --btn-hover-border-color: var(--neutral-700);
-          --btn-border-radius: var(--px12);
-
-          width: 100%;
-          max-width: 100%;
-          justify-content: space-between;
-          text-decoration: none;
-
-          .c-button-label {
-            font-size: var(--px18);
-            font-weight: 600;
-          }
-
-          &:hover,
-          &:focus,
-          &:active {
-            text-decoration: none;
-          }
-
-          &.is-open {
-            --btn-border-color: var(--neutral-700);
-          }
-        }
-
-        .c-dropdown-menu {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          z-index: 1;
-          display: grid;
-          grid-template-columns: 1fr;
-          grid-template-rows: 0px;
-          width: 100%;
-          max-width: 100%;
-          margin: 5px 0;
-          opacity: 0;
-          transform: translateY(-1em);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-
-          &.is-open {
-            grid-template-rows: 1fr;
-            opacity: 1;
-            transform: translateY(0);
-          }
-
-          &-wrapper {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-          }
-
-          &-inner {
-            display: flex;
-            flex-direction: column;
-            max-height: 250px;
-            padding: var(--px8);
-            background-color: var(--neutral-900);
-            border: 1px solid var(--neutral-700);
-            border-radius: 12px;
-            overflow-y: auto;
-          }
         }
       }
     }

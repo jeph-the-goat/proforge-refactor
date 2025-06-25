@@ -15,7 +15,7 @@
         max-width: 100%;
 
         @media(min-width: 992px) {
-          grid-template-columns: 0.448fr 1fr;
+          grid-template-columns: var(--sidebar-width) 1fr;
           align-items: stretch;
         }
 

@@ -5,6 +5,7 @@ export * from "./Banner";
 export * from "./Button";
 export * from "./ButtonLink";
 export * from "./Card";
+export * from "./Dropdown";
 export * from "./EventBar";
 export * from "./Footer";
 export * from "./Header";

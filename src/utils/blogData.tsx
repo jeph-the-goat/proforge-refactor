@@ -169,10 +169,10 @@ export const BlogPosts: BlogPostProps[] = [
         <p>Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Different blockchain platforms use various programming languages:</p>
 
         <ol>
-          <li><strong>Solidity</strong> - Primary language for Ethereum</li>
-          <li><strong>Rust</strong> - Used for Solana and Polkadot</li>
-          <li><strong>Cairo</strong> - StarkNet's programming language</li>
-          <li><strong>Move</strong> - Developed for Diem and used by Aptos</li>
+          <li>Solidity - Primary language for Ethereum</li>
+          <li>Rust - Used for Solana and Polkadot</li>
+          <li>Cairo - {"StarkNet's"} programming language</li>
+          <li>Move - Developed for Diem and used by Aptos</li>
         </ol>
 
         <h3>Best Practices for Development</h3>
@@ -216,7 +216,7 @@ export const BlogPosts: BlogPostProps[] = [
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Building scalable decentralized applications (dApps) requires careful consideration of architecture, user experience, and blockchain limitations.</p>
 
         <h2>Understanding Scalability Challenges</h2>
-        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Traditional blockchains face the "blockchain trilemma" - balancing decentralization, security, and scalability.</p>
+        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Traditional blockchains face the {"\"blockchain trilemma\""} - balancing decentralization, security, and scalability.</p>
 
         <h3>Common Scalability Bottlenecks</h3>
         <ul>
@@ -485,9 +485,9 @@ export const BlogPosts: BlogPostProps[] = [
         <p>Consider how different protocols balance these trade-offs:</p>
 
         <ul>
-          <li><a href="https://example.com/ethereum-decentralization">Ethereum's Decentralization Journey</a></li>
-          <li><a href="https://example.com/binance-smart-chain">Binance Smart Chain's Centralized Approach</a></li>
-          <li><a href="https://example.com/polygon-hybrid">Polygon's Hybrid Architecture</a></li>
+          <li><a href="https://example.com/ethereum-decentralization">{"Ethereum's"} Decentralization Journey</a></li>
+          <li><a href="https://example.com/binance-smart-chain">{"Binance Smart Chain's"} Centralized Approach</a></li>
+          <li><a href="https://example.com/polygon-hybrid">{"Polygon's"} Hybrid Architecture</a></li>
         </ul>
 
         <p>The future likely belongs to systems that can dynamically adjust their level of decentralization based on context and requirements.</p>
@@ -585,7 +585,7 @@ export const BlogPosts: BlogPostProps[] = [
         </ul>
 
         <h2>Setting Up Your Development Environment</h2>
-        <p>Here's a quick setup guide to get started:</p>
+        <p>{"Here's"} a quick setup guide to get started:</p>
 
         <ol>
           <li>Install Node.js and npm</li>
@@ -689,7 +689,7 @@ export const BlogPosts: BlogPostProps[] = [
         <h3>Intent-Based Architectures</h3>
         <p>Users express desired outcomes rather than specific transactions:</p>
         <ol>
-          <li>User declares intent (e.g., "swap ETH for USDC")</li>
+          <li>User declares intent (e.g., {"\"swap ETH for USDC\""})</li>
           <li>Solvers compete to fulfill the intent</li>
           <li>Best solution is executed automatically</li>
         </ol>

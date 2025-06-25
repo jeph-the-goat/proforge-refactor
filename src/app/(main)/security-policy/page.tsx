@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import {TermsSectionHero} from "@/components";
-import {TermsSectionGrid} from "@/components/TermsSectionGrid";
+import {SecuritySectionGrid, SecuritySectionHero} from "@/components";
 
 export const metadata: Metadata = {
   title: 'Terms and conditions',
@@ -10,13 +9,13 @@ export const metadata: Metadata = {
     description: '',
   },
 };
-function TermsConditions() {
+function SecurityPolicy() {
   return (
     <>
-      <TermsSectionHero/>
-      <TermsSectionGrid/>
+      <SecuritySectionHero/>
+      <SecuritySectionGrid/>
     </>
   );
 }
 
-export default TermsConditions
+export default SecurityPolicy

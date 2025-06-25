@@ -44,9 +44,9 @@ export const SectionTitle = (
       )}
 
       {paragraph && (
-        <p>
+        <div className="c-section-title-paragraph">
           {paragraph}
-        </p>
+        </div>
       )}
 
     </div>

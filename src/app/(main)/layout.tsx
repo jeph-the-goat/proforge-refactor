@@ -1,4 +1,4 @@
-import {Footer, Header} from "@/components";
+import {Footer, Header, SectionFooterBanner} from "@/components";
 
 export default function MainLayout(
   {
@@ -11,6 +11,7 @@ export default function MainLayout(
       <Header/>
       <main>
         {children}
+        <SectionFooterBanner/>
       </main>
       <Footer />
     </>

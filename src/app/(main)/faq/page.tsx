@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import {FaqSectionAccordion, FaqSectionHero, SectionFooterBanner} from "@/components";
+import {FaqSectionAccordion, FaqSectionHero} from "@/components";
 
 
 export const metadata: Metadata = {
@@ -15,7 +15,6 @@ function Faq() {
     <>
       <FaqSectionHero/>
       <FaqSectionAccordion/>
-      <SectionFooterBanner/>
     </>
   );
 }

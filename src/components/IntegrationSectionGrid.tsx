@@ -104,9 +104,9 @@ export const IntegrationSectionGrid = () => {
           >
 
             {filteredIntegrations.length > 0 ? (
-              filteredIntegrations.map((integration, integrationIdx) => (
+              filteredIntegrations.map((integration) => (
                 <Card
-                  key={integration.id} // Use integration.id instead of index for better React keys
+                  key={integration.id}
                   useIconBox
                   icon={integration.icon}
                   title={integration.title}

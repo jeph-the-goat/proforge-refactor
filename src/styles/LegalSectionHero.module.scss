@@ -1,0 +1,13 @@
+.cLegalSectionHero {
+  &:global {
+    &.c-legal-section-hero {
+      .c-section-title-paragraph {
+        max-width: 962px;
+
+        >p:last-child:not(:only-child) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+} 

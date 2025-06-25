@@ -40,7 +40,7 @@ export const NotFoundSectionContent = (
             </h1>
 
             <p>
-              It seems the page you're looking for doesn't exist. Let's get you back on track.
+              {"It seems the page you're looking for doesn't exist. Let's get you back on track."}
             </p>
 
           </div>
