@@ -2,7 +2,8 @@ import {IcnDollarSign} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
-import {PricingPlans, Section} from "@/components/common";
+
+import {PricingPlans, Section} from "@/components";
 
 export const HomeSectionPricing = () => {
   return (

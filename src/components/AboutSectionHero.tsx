@@ -3,7 +3,7 @@ import React from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";
 
-import {SectionHero, SectionTitle} from "src/components/common";
+import {SectionHero, SectionTitle} from "@/components";
 
 export const AboutSectionHero = () => {
   return (

@@ -1,10 +1,11 @@
 import {IcnArrowUpRight} from "@assets/icons";
 
 import React from 'react';
-import {ButtonLink} from "@/components/common";
+import clsx from "clsx";
 
 import {ContactInfo} from "@/utils";
-import clsx from "clsx";
+
+import {ButtonLink} from "@/components/common";
 
 interface ContactSectionHeroListProps {
   extraClassName?: string;

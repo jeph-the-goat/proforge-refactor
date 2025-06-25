@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {SectionHero, SectionTitle} from "src/components/common";
+import {SectionHero, SectionTitle} from "@/components";
 
 export const PricingSectionHero = () => {
   return (
@@ -18,4 +18,4 @@ export const PricingSectionHero = () => {
 
     </SectionHero>
   );
-}; 
+};

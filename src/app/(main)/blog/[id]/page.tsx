@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+
 import { BlogPostProps, BlogPosts } from "@/utils";
-import {BlogSingleSectionRelated, BlogSingleSectionContent, SectionFooterBanner} from "@/components";
+
+import {BlogSingleSectionRelated, BlogSingleSectionContent} from "@/components";
 
 interface BlogPostPageProps {
   params: Promise<{ id: string; }>;

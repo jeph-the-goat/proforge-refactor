@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {LegalSectionGrid} from "@/components";
-
 import {PrivacyPolicySections} from "@/utils";
+
+import {LegalSectionGrid} from "@/components";
 
 export const PrivacySectionGrid = () => {
   return (

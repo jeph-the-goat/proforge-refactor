@@ -1,5 +1,6 @@
 "use client";
 import styles from "@/styles/NotFoundSectionContent.module.scss";
+
 import React, {ReactNode} from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";

@@ -4,9 +4,9 @@ import {IcnArrowUpRight, IcnUsers} from "@assets/icons";
 import React from 'react';
 import {clsx} from "clsx";
 
-import {AboutTeamMembers} from "@/utils/aboutData";
+import {AboutTeamMembers} from "@/utils";
 
-import {Avatar, ButtonLink, Section} from "@/components/common";
+import {Avatar, ButtonLink, Section} from "@/components";
 
 export const AboutSectionTeam = () => {
   return (
@@ -63,8 +63,6 @@ export const AboutSectionTeam = () => {
           </div>
 
         </article>
-
-
 
       </div>
 

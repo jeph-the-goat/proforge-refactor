@@ -3,8 +3,10 @@ import {IcnLock} from "@assets/icons";
 
 import React from 'react';
 import {clsx} from "clsx";
+
 import {HomeSecurity} from "@/utils";
-import {Card, Section} from "@/components/common";
+
+import {Card, Section} from "@/components";
 
 export const HomeSectionSecurity = () => {
   return (

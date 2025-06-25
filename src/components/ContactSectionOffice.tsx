@@ -4,10 +4,11 @@ import {IcnBuilding} from "@assets/icons";
 
 import React from 'react';
 import clsx from "clsx";
-
-import {ButtonLink, Card, Section} from "@/components/common";
-import {ContactBusinessInfo} from "@/utils";
 import Image from "next/image";
+
+import {ContactBusinessInfo} from "@/utils";
+
+import {ButtonLink, Card, Section} from "@/components";
 
 export const ContactSectionOffice = () => {
   return (

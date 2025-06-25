@@ -7,7 +7,7 @@ import React from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";
 
-import {ButtonLink, Section, SectionTitle} from "src/components/common";
+import {ButtonLink, Section, SectionTitle} from "@/components";
 
 export const HomeSectionIntegration = () => {
   return (

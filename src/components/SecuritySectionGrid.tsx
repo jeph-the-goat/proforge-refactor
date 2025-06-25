@@ -1,11 +1,13 @@
 import React from 'react';
 
-import {LegalSectionGrid} from "@/components";
-
 import {CookiePolicySections} from "@/utils";
+
+import {LegalSectionGrid} from "@/components";
 
 export const SecuritySectionGrid = () => {
   return (
-    <LegalSectionGrid data={CookiePolicySections}/>
+    <LegalSectionGrid
+      data={CookiePolicySections}
+    />
   );
 };

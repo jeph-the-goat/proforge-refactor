@@ -1,9 +1,10 @@
 import styles from "@/styles/IntegrationSectionHero.module.scss";
+
 import React from 'react';
 import {clsx} from "clsx";
-
-import {SectionHero, SectionTitle} from "src/components/common";
 import Image from "next/image";
+
+import {SectionHero, SectionTitle} from "@/components";
 
 export const IntegrationSectionHero = () => {
   return (

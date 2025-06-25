@@ -7,7 +7,8 @@ import Link from "next/link";
 
 import {cLegalSectionGridProps} from "@/types";
 import {useMediaQuerySafe, useScrollSectionTracker} from "@/hooks";
-import {Dropdown} from "@/components/common";
+
+import {Dropdown} from "@/components";
 
 interface LegalSectionGridProps {
   data: cLegalSectionGridProps[];

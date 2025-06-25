@@ -1,5 +1,6 @@
 import React from 'react';
-import {Banner, ButtonLink} from "@/components/common";
+
+import {Banner, ButtonLink} from "@/components";
 
 interface IntegrationBannerProps {
   extraClassName?: string;

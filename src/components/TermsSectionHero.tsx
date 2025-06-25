@@ -1,8 +1,9 @@
 import styles from "@/styles/LegalSectionHero.module.scss";
+
 import React from 'react';
 import {clsx} from "clsx";
 
-import {SectionHero, SectionTitle} from "src/components/common";
+import {SectionHero, SectionTitle} from "@/components";
 
 export const TermsSectionHero = () => {
   return (

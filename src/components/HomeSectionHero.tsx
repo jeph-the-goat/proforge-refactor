@@ -1,11 +1,13 @@
 import styles from "@/styles/HomeSectionHero.module.scss";
+import HomeHeroImage from "@assets/images/home-hero-image-x2.webp";
+
 import React from 'react';
 import {clsx} from "clsx";
 import Image from "next/image";
 
 import {DummyUserList} from "@/utils";
 
-import {ButtonLink, EventBar, SectionHero, SectionTitle} from "src/components/common";
+import {ButtonLink, EventBar, SectionHero, SectionTitle} from "src/components";
 
 export const HomeSectionHero = () => {
   return (
@@ -46,7 +48,7 @@ export const HomeSectionHero = () => {
       <div className="c-section-hero-grid-image">
 
         <Image
-          src="/images/test-hero-2-483ko.webp"
+          src={HomeHeroImage}
           alt="Revolutionize Web3 Development"
           width={1160}
           height={500}

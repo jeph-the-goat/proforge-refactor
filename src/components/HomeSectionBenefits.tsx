@@ -5,8 +5,8 @@ import {clsx} from "clsx";
 import Image from "next/image";
 
 import {HomeBenefits} from "@/utils";
-import {Card, Section} from "@/components/common";
 
+import {Card, Section} from "@/components";
 
 export const HomeSectionBenefits = () => {
   return (

@@ -1,11 +1,11 @@
 import styles from "@/styles/BlogSingleSectionRelated.module.scss";
+
 import React from 'react';
-import {Section} from "@/components/common";
 import {clsx} from "clsx";
 
 import {BlogPostProps, BlogPosts} from "@/utils";
 
-import {BlogCard} from "@/components/BlogCard";
+import {BlogCard, Section} from "@/components";
 
 interface BlogSingleSectionRelatedProps {
   currentPost: BlogPostProps;

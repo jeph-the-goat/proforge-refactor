@@ -1,11 +1,13 @@
 "use client";
-
 import styles from "@/styles/FaqSectionAccordion.module.scss";
 import { IcnCircleHelp, IcnFilter, IcnSearch } from "@assets/icons";
+
 import React, { useState, useMemo } from 'react';
 import { clsx } from "clsx";
+
 import { FaqFilters, FaqList } from "@/utils";
 import { useMediaQuerySafe } from "@/hooks";
+
 import { Accordion, Section, Input, InputRadioCheckbox, Banner, ButtonLink, InputSelect } from "@/components";
 
 export const FaqSectionAccordion = () => {

@@ -8,7 +8,6 @@ import {BlogPosts} from "@/utils";
 
 import {ButtonLink, Section, BlogCard} from "@/components";
 
-
 export const HomeSectionBlog = () => {
   const latestPosts = BlogPosts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

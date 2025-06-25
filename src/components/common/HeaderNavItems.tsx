@@ -2,9 +2,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {clsx} from "clsx";
 import {usePathname} from "next/navigation";
-import {NavItems} from "@/utils";
-import {ButtonLink} from "@/components";
 import Link from "next/link";
+
+import {NavItems} from "@/utils";
 
 interface HeaderNavItemsProps {
   extraClassName?: string;
@@ -44,7 +44,7 @@ export const HeaderNavItems = ({extraClassName, hasToggler}: HeaderNavItemsProps
     setHoveredRect(rect);
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseLeave = () => {
     if (activeRect) {
       setHoveredRect(activeRect);
     }
@@ -60,7 +60,7 @@ export const HeaderNavItems = ({extraClassName, hasToggler}: HeaderNavItemsProps
         setHoveredRect(rect);
       }
     }
-  }, [pathname]);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", updateRects);

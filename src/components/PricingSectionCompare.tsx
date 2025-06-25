@@ -7,9 +7,9 @@ import React from 'react';
 import { clsx } from "clsx";
 
 import { Plans, ComparePlansLabels } from "@/utils";
-import {Banner, Button, ButtonLink, Section} from "@/components";
 import {useMediaQuerySafe} from "@/hooks";
 
+import {Banner, Button, ButtonLink, Section} from "@/components";
 
 export const PricingSectionCompare = () => {
   const isPhablet = useMediaQuerySafe('(max-width: 767px)');
