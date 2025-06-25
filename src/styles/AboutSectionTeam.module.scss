@@ -4,7 +4,7 @@
       &-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: var(--from-32-to-16px);
+        gap: var(--from-64-to-40px) var(--from-32-to-16px);
         width: 100%;
         max-width: 100%;
 
@@ -34,8 +34,8 @@
 
           &.empty {
             .c-avatar-empty {
-              width: 150px;
-              height: 150px;
+              width: 9.375em; //150px;
+              height: 9.375em;
               background-color: var(--neutral-900);
               border-radius: 50%;
             }
