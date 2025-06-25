@@ -1,9 +1,12 @@
 import styles from "@/styles/AboutSectionTeam.module.scss"
-import {IcnUsers} from "@assets/icons";
+import {IcnArrowUpRight, IcnUsers} from "@assets/icons";
+
 import React from 'react';
 import {clsx} from "clsx";
-import {Avatar, Section} from "@/components/common";
+
 import {AboutTeamMembers} from "@/utils/aboutData";
+
+import {Avatar, ButtonLink, Section} from "@/components/common";
 
 export const AboutSectionTeam = () => {
   return (
@@ -27,14 +30,41 @@ export const AboutSectionTeam = () => {
               size="lg"
             />
 
-            <p className="h6">
-              {member.name}
-            </p>
+            <div className="c-about-section-team-grid-card-text">
+              <p className="h6">
+                {member.name}
+              </p>
 
-            <p>{member.role}</p>
+              <p>{member.role}</p>
+            </div>
 
           </article>
         ))}
+
+        <article className="c-about-section-team-grid-card empty">
+
+          <i className="c-avatar-empty">
+            <span className="h6">You</span>
+          </i>
+
+          <div className="c-about-section-team-grid-card-text">
+            <p className="h6">
+              Want to join us?
+            </p>
+
+            <ButtonLink
+              href="#"
+              btnText="See Open Roles"
+              btnVariant="link"
+              icon={<IcnArrowUpRight/>}
+            />
+
+
+          </div>
+
+        </article>
+
+
 
       </div>
 

@@ -25,10 +25,10 @@ export const AboutSectionHero = () => {
       <div className="c-section-hero-grid-image">
 
         <Image
-          src="/images/home-hero-img-x1.webp"
+          src="/images/about-hero-image-x2.webp"
           alt="Revolutionize Web3 Development"
-          width={1160}
-          height={500}
+          width={465}
+          height={620}
         />
 
       </div>
