@@ -69,6 +69,7 @@ export const HeaderNavItems = ({extraClassName, hasToggler}: HeaderNavItemsProps
 
   return (
     <nav ref={navRef} className={clsx("c-nav", extraClassName)}>
+
       {NavItems.map((navLink, navLinkIdx) => (
         <Link
           key={navLinkIdx}
@@ -85,6 +86,7 @@ export const HeaderNavItems = ({extraClassName, hasToggler}: HeaderNavItemsProps
           {navLink.label}
         </Link>
       ))}
+
       {hasToggler && hoveredRect && (
         <span
           className="c-nav-toggler"

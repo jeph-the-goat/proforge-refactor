@@ -1,5 +1,4 @@
 'use client';
-
 import styles from '@/styles/common/MobileMenu.module.scss'
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
