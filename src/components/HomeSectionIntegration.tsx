@@ -1,14 +1,18 @@
+import styles from "@/styles/HomeSectionIntegration.module.scss";
 import {IcnPullRequest} from "@assets/icons";
+import ImageTop from "@assets/images/home-integration-top-x1.webp";
+import ImageBottom from "@assets/images/home-integration-bottom-x1.webp";
 
 import React from 'react';
 import {clsx} from "clsx";
-import {ButtonLink, Section, SectionTitle} from "src/components/common";
 import Image from "next/image";
+
+import {ButtonLink, Section, SectionTitle} from "src/components/common";
 
 export const HomeSectionIntegration = () => {
   return (
     <Section
-      extraClassName={clsx("c-home-section-integration")}
+      extraClassName={clsx(styles.cHomeSectionIntegration, "c-home-section-integration")}
       uncontainedChildren
       hideSectionTitle
     >
@@ -16,7 +20,7 @@ export const HomeSectionIntegration = () => {
 
         <div className="c-home-section-integration-image top">
           <Image
-            src="/images/home-section-integration-top-x1.webp"
+            src={ImageTop}
             alt="Decorative top"
             width={480}
             height={183}
@@ -38,7 +42,7 @@ export const HomeSectionIntegration = () => {
 
         <div className="c-home-section-integration-image bottom">
           <Image
-            src="/images/home-section-integration-bottom-x1.webp"
+            src={ImageBottom}
             alt="Decorative bottom"
             width={480}
             height={183}

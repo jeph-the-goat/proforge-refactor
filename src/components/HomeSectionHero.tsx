@@ -29,12 +29,12 @@ export const HomeSectionHero = () => {
         <div className="c-button-container">
 
           <ButtonLink
-            href='/'
+            href='#'
             btnText='Get Started'
           />
 
           <ButtonLink
-            href='/'
+            href='#'
             btnColor='dark'
             btnText='Learn More'
           />
@@ -46,7 +46,7 @@ export const HomeSectionHero = () => {
       <div className="c-section-hero-grid-image">
 
         <Image
-          src="/images/home-hero-img-x1.webp"
+          src="/images/test-hero-2-483ko.webp"
           alt="Revolutionize Web3 Development"
           width={1160}
           height={500}

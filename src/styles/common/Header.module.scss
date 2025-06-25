@@ -22,11 +22,11 @@
       &-wrapper {
         position: relative;
         display: grid;
-        grid-template-columns: 91px 1fr 91px;
-        align-items: center;
+        grid-template-columns: 5.6875em 1fr 5.6875em;
+        align-items: stretch;
         gap: var(--px8);
         width: 100%;
-        max-width: 962px; //962px
+        max-width: 60.125em; //962px
         margin: 0 auto;
         padding: var(--px8);
         background-color: hsl(from var(--neutral-400) h s l /10%);
@@ -45,10 +45,36 @@
         }
 
         .c-nav.c-desktop {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: clamp(1em, 40/1440 * 100vw, var(--px40));
+          height: 100%;
+          isolation: isolate;
+
+          .c-nav-toggler {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            display: block;
+            background-color: rgba(255,255,255,0.08);
+            border-radius: 6px;
+            transition: transform 0.3s ease;
+          }
+
+          .c-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 clamp(1em, 20/1440 * 100vw, var(--px20));
+
+            &:hover,
+            &:focus,
+            &:active {
+              text-decoration: none;
+            }
+          }
         }
       }
 

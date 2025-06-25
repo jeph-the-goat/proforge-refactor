@@ -16,7 +16,7 @@ export const Header = () => {
         <Logo/>
 
         {!isMobile && (
-          <HeaderNavItems extraClassName='c-desktop'/>
+          <HeaderNavItems extraClassName='c-desktop' hasToggler/>
         )}
 
         <div className="c-header-button-wrapper">

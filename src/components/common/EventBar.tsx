@@ -17,18 +17,21 @@ interface EventBarProps {
   users: User[];
 }
 
-export const EventBar = ({
-  text,
-  linkUrl,
-  linkText,
-  users
-}: EventBarProps) => {
+export const EventBar = (
+  {
+    text,
+    linkUrl,
+    linkText,
+    users
+  }: EventBarProps) => {
   const displayedUsers = users.slice(0, 3);
   const remainingCount = users.length - 3;
 
   return (
     <aside className={clsx(styles.cEventBar,"c-event-bar")}>
+
       <div className="c-event-bar-users">
+
         {displayedUsers.map((user) => (
           <Avatar
             key={user.id}
@@ -37,23 +40,29 @@ export const EventBar = ({
             alt={user.userName || "user-avatar"}
           />
         ))}
+
         {remainingCount > 0 && (
           <div className="c-event-bar-users-count">
             <span>+{remainingCount}</span>
           </div>
         )}
+
       </div>
 
-      <p className="c-event-bar-title">
-        {text}
-      </p>
+      <div className="c-event-bar-text">
 
-      <ButtonLink
-        href={linkUrl}
-        btnText={linkText}
-        btnVariant="link"
-        icon={<IcnChevronRight/>}
-      />
+        <p className="c-event-bar-title">
+          {text}
+        </p>
+
+        <ButtonLink
+          href={linkUrl}
+          btnText={linkText}
+          btnVariant="link"
+          icon={<IcnChevronRight/>}
+        />
+      </div>
+
     </aside>
   );
 };

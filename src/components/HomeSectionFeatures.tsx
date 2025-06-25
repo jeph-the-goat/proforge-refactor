@@ -31,8 +31,8 @@ export const HomeSectionFeatures = () => {
               <Image
                 src={feature.image}
                 alt={feature.title}
-                width={200}
-                height={200}
+                width={feature.imageWidth}
+                height={feature.imageHeight}
               />
             </div>
 

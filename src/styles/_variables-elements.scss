@@ -28,6 +28,6 @@
   --scroll-margin-top: calc(var(--header-height) + 1em);
 
   @media(max-width: 991px) {
-    --header-height: 74px;
+    --header-height: 4.625em;//74px
   }
 }

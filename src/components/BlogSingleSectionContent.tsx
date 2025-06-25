@@ -12,7 +12,7 @@ import {BlogPostProps, BlogShareButton, BlogShareButtons} from "@/utils";
 import {generateTableOfContents, TocItem} from "@/functions";
 import {useScrollSectionTracker} from "@/hooks";
 
-import {Avatar, Badge, BlogSingleToC, Button, Section, SectionTitle} from "@/components";
+import {Avatar, Badge, BlogSingleToC, Button, ButtonLink, Section, SectionTitle} from "@/components";
 
 interface BlogSingleSectionContentProps {
   post: BlogPostProps;
@@ -60,26 +60,18 @@ export const BlogSingleSectionContent = ({ post }: BlogSingleSectionContentProps
     }
   };
 
-  const handleGoBack = () => {
-    if (typeof window !== 'undefined' && window.history.length > 1) {
-      window.history.back()
-    } else {
-      window.location.href = '/blog'
-    }
-  }
-
   return (
     <Section
       extraClassName={clsx(styles.cBlogSingleSectionContent, "c-blog-single-section-content")}
       hideSectionTitle
     >
       <div className="c-blog-single-section-content-nav">
-        <Button
+        <ButtonLink
+          href="/blog"
           btnText="Back"
           btnVariant="link"
           icon={<IcnChevronLeft />}
           iconPlacement="left"
-          onClick={handleGoBack}
         />
       </div>
 

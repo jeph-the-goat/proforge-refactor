@@ -13,7 +13,7 @@
       overflow: hidden;
 
       &[data-size="lg"] {
-        --avatar-size: 150px;
+        --avatar-size: var(--px150);
       }
 
       &[data-size="md"] {

@@ -34,13 +34,12 @@
               position: absolute;
               top: 0;
               bottom: 0;
-              left: var(--px2);
+              left: 2px;
               width: 1em;
               height: 1em;
               margin: auto 0;
               background-color: var(--neutral-0);
               border-radius: 50%;
-              box-shadow: 0 var(--px1) var(--px2) 0 rgba(164, 172, 185, 0.4);
               transition: transform 0.3s ease;
             }
           }
@@ -53,15 +52,7 @@
             &:after {
               color: var(--neutral-0);
               transform: translateX(1em);
-              box-shadow: 0 var(--px1) var(--px2) 0 rgba(0, 92, 78, 0.4);
             }
-          }
-        }
-
-        input:focus-visible ~ label {
-          .c-toggle-switch-label-toggler {
-            outline: var(--px1) solid rgba(35, 164, 156, 0.5);
-            outline-offset: var(--px1);
           }
         }
       }
