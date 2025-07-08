@@ -1,0 +1,70 @@
+{
+  "businessInfo": {
+    "companyName": "Test Corp",
+    "address": {
+      "street": "123 Main St",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94105",
+      "country": "US"
+    },
+    "industry": "Technology",
+    "employeeCount": "11-50",
+    "website": "https://testcorp.com",
+    "contactEmail": "admin@testcorp.com",
+    "contactPhone": "+1-555-123-4567"
+  },
+  "businessStructure": {
+    "businessType": "LLC",
+    "llcDetails": {
+      "memberType": "Single",
+      "managementType": "Member"
+    },
+    "taxId": "12-3456789",
+    "fiscalYearStart": "2024-01-01",
+    "fiscalYearEnd": "2024-12-31"
+  },
+  "chartOfAccounts": {
+    "accountingMethod": "Accrual",
+    "defaultCurrency": "USD",
+    "segmentation": {
+      "departments": true,
+      "costCenters": false,
+      "projects": true
+    },
+    "ownershipStructure": {
+      "equityAccounts": ["capital"],
+      "distributionHandling": "proportional"
+    }
+  },
+  "moduleSelection": {
+    "inventory": true,
+    "manufacturing": false,
+    "hrPayroll": true,
+    "crm": true,
+    "projectManagement": true,
+    "assetManagement": false,
+    "qualityManagement": false,
+    "ecommerce": false,
+    "pointOfSale": false,
+    "aiFleet": false,
+    "serviceScheduling": false,
+    "aiAnalytics": false
+  },
+  "userSetup": {
+    "adminUser": {
+      "name": "Test Admin",
+      "email": "admin@testcorp.com"
+    },
+    "additionalUsers": [
+      {
+        "name": "John Smith",
+        "email": "john@testcorp.com",
+        "role": "Manager"
+      }
+    ],
+    "departments": ["Executive", "Finance", "Operations"],
+    "permissions": {}
+  },
+  "termsAccepted": true
+}

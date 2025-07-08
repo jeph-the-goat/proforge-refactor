@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                    String  @id @default(cuid())
+  userId                String  @map("user_id")
+  type                  String
+  provider              String
+  providerAccountId     String  @map("provider_account_id")
+  refresh_token         String? @db.Text
+  access_token          String? @db.Text
+  expires_at            Int?
+  token_type           String?
+  scope                String?
+  id_token             String? @db.Text
+  session_state        String?
+  refresh_token_expires_in Int?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  password      String?   @db.Text  // Changed to Text for hashed passwords
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  customer      Customer?
+  
+  // Stripe related fields
+  stripeCustomerId       String?   @unique @map("stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map("stripe_subscription_id")
+  stripeSubscriptionStatus String?  @map("stripe_subscription_status")
+  stripePriceId         String?    @map("stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map("stripe_current_period_end")
+
+  checkoutData         Json?    // Stored checkout configuration
+
+  instanceProvisioning InstanceProvisioning[]
+
+  @@map("users")
+}
+
+model Customer {
+  id                    String    @id @default(cuid())
+  stripeCustomerId      String    @unique @map("stripe_customer_id")
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+  
+  // Subscription details
+  subscriptionId        String?   @unique @map("subscription_id")
+  subscriptionStatus    String?   @map("subscription_status")
+  priceId              String?    @map("price_id")
+  currentPeriodEnd     DateTime?  @map("current_period_end")
+  
+  // Payment method details
+  defaultPaymentMethod  String?   @map("default_payment_method")
+  hasValidPaymentMethod Boolean   @default(false) @map("has_valid_payment_method")
+  
+  // Billing details
+  billingAddress        Json?     @map("billing_address")
+  
+  // User relation
+  userId                String    @unique @map("user_id")
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Metadata
+  metadata              Json?
+
+  @@map("customers")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @db.Text  // Changed to Text for potentially long tokens
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model InstanceProvisioning {
+  id             String    @id @default(cuid())
+  instanceId     String    @unique
+  userId         String
+  sessionId      String
+  instanceToken  String    @unique  
+  status         String
+  onboardingData Json
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  completedAt    DateTime?
+  errorMessage   String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("instance_provisioning")
+}
