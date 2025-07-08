@@ -26,7 +26,7 @@ export interface cFormGroupProps {
 }
 
 export interface cInputProps extends HTMLProps<HTMLInputElement>{
-  type: "text" | "search" | "email" | "tel" | "date" | "time";
+  type: "text" | "search" | "email" | "tel" | "date" | "time" | "password";
   name: string;
   placeholder?: string;
 }
