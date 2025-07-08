@@ -1,30 +1,44 @@
 // src/lib/schemas/onboarding/chart-of-accounts.schema.ts
-import { z } from 'zod';
+import * as yup from 'yup';
 
 // Segmentation sub-schema
-const SegmentationSchema = z.object({
-  departments: z.boolean(),
-  costCenters: z.boolean(),
-  projects: z.boolean(),
+const SegmentationSchema = yup.object({
+  departments: yup.boolean(),
+  costCenters: yup.boolean(),
+  projects: yup.boolean(),
 });
 
 
-const OwnershipStructureSchema = z.object({
-  equityAccounts: z.array(z.string()),
-  distributionHandling: z.string().optional(),
-  stockStructure: z.string().optional(),
-  retainedEarnings: z.string().optional(),
+const OwnershipStructureSchema = yup.object({
+  equityAccounts: yup.array(yup.string()),
+  distributionHandling: yup.string().optional(),
+  stockStructure: yup.string().optional(),
+  retainedEarnings: yup.string().optional(),
 });
 
 // Main chart of accounts schema matching ChartOfAccountsStep.tsx
-export const ChartOfAccountsSchema = z.object({
-  accountingMethod: z.enum(['Cash', 'Accrual']),
+export const ChartOfAccountsSchema = yup.object({
+  accountingMethod: yup.mixed<string>().oneOf(['Cash', 'Accrual']),
   
-  defaultCurrency: z.enum(['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'JPY']),
+  defaultCurrency: yup.mixed<string>().oneOf(['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'JPY']),
   
   segmentation: SegmentationSchema,
   
   ownershipStructure: OwnershipStructureSchema,
 });
 
-export type ChartOfAccounts = z.infer<typeof ChartOfAccountsSchema>;
+export type ChartOfAccounts = {
+  accountingMethod: string;
+  defaultCurrency: string;
+  segmentation: {
+    departments: boolean;
+    costCenters: boolean;
+    projects: boolean;
+  };
+  ownershipStructure: {
+    equityAccounts: string[];
+  }
+  distributionHandling: string;
+  stockStructure: string;
+  retainedEarnings: string;
+}

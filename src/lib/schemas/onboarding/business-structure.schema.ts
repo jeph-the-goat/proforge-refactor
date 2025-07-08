@@ -1,22 +1,22 @@
-import { z } from 'zod';
+import * as yup from 'yup';
 
 // LLC Details sub-schema
-const LLCDetailsSchema = z.object({
-  memberType: z.enum(['Single', 'Multi']),
-  managementType: z.enum(['Manager', 'Member']),
+const LLCDetailsSchema = yup.object({
+  memberType: yup.mixed<string>().oneOf(['Single', 'Multi']),
+  managementType: yup.mixed<string>().oneOf(['Manager', 'Member']),
 });
 
 // Corporation Details sub-schema
-const CorporationDetailsSchema = z.object({
-  type: z.enum(['C-Corp', 'S-Corp']),
-  shareholderCount: z.number()
-    .int('Must be a whole number')
+const CorporationDetailsSchema = yup.object({
+  type: yup.mixed<string>().oneOf(['C-Corp', 'S-Corp']),
+  shareholderCount: yup.number()
+    .integer('Must be a whole number')
     .positive('Must have at least one shareholder'),
 });
 
 // Main business structure schema
-export const BusinessStructureSchema = z.object({
-  businessType: z.enum([
+export const BusinessStructureSchema = yup.object({
+  businessType: yup.mixed<string>().oneOf([
     'LLC',
     'Corporation',
     'SoleProprietorship',
@@ -27,19 +27,22 @@ export const BusinessStructureSchema = z.object({
   llcDetails: LLCDetailsSchema.optional(),
   corporationDetails: CorporationDetailsSchema.optional(),
   
-  taxId: z.string()
+  taxId: yup.string()
     .min(1, 'Tax ID is required')
-    .regex(/^(\d{2}-\d{7}|\d{9})$/, 'Tax ID must be in format XX-XXXXXXX or XXXXXXXXX'),
+    .matches(/^(\d{2}-\d{7}|\d{9})$/, 'Tax ID must be in format XX-XXXXXXX or XXXXXXXXX'),
   
-  fiscalYearStart: z.string()
+  fiscalYearStart: yup.string()
     .min(1, 'Fiscal year start is required')
-    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format'),
+    .matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format'),
     
-  fiscalYearEnd: z.string()
+  fiscalYearEnd: yup.string()
     .min(1, 'Fiscal year end is required')
-    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format'),
-}).refine(
+    .matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in YYYY-MM-DD format'),
+}).test(
+  "business-type-details-match",
+  "Business type details must match the selected business type",
   (data) => {
+
     // Validate LLC details are present when LLC is selected
     if (data.businessType === 'LLC' && !data.llcDetails) {
       return false;
@@ -52,15 +55,21 @@ export const BusinessStructureSchema = z.object({
     if (data.businessType !== 'LLC' && data.llcDetails) {
       return false;
     }
-    if (data.businessType !== 'Corporation' && data.corporationDetails) {
-      return false;
-    }
-    return true;
+    return !(data.businessType !== 'Corporation' && data.corporationDetails);
   },
-  {
-    message: 'Business type details must match the selected business type',
-    path: ['businessType'],
-  }
 );
 
-export type BusinessStructure = z.infer<typeof BusinessStructureSchema>;
+export type BusinessStructure = {
+  businessType: string;
+  llcDetails: {
+    memberType: string;
+    managementType: string;
+  };
+  corporationDetails: {
+    type: string;
+    shareholderCount: number;
+  };
+  taxId: string;
+  fiscalYearStart: string;
+  fiscalYearEnd: string;
+}

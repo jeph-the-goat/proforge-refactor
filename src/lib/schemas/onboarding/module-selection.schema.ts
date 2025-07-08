@@ -1,27 +1,40 @@
-import { z } from 'zod';
+import * as yup from 'yup';
 
 // Module selection schema matching ModuleSelectionStep.tsx
-export const ModuleSelectionSchema = z.object({
+export const ModuleSelectionSchema = yup.object({
   // Standard modules
-  inventory: z.boolean(),
-  manufacturing: z.boolean(),
-  hrPayroll: z.boolean(),
-  crm: z.boolean(),
-  projectManagement: z.boolean(),
-  assetManagement: z.boolean(),
-  qualityManagement: z.boolean(),
+  inventory: yup.boolean(),
+  manufacturing: yup.boolean(),
+  hrPayroll: yup.boolean(),
+  crm: yup.boolean(),
+  projectManagement: yup.boolean(),
+  assetManagement: yup.boolean(),
+  qualityManagement: yup.boolean(),
   
   // Commerce modules
-  ecommerce: z.boolean(),
-  pointOfSale: z.boolean(),
+  ecommerce: yup.boolean(),
+  pointOfSale: yup.boolean(),
   
   // AI-powered modules
-  aiFleet: z.boolean(),
-  serviceScheduling: z.boolean(),
-  aiAnalytics: z.boolean(),
+  aiFleet: yup.boolean(),
+  serviceScheduling: yup.boolean(),
+  aiAnalytics: yup.boolean(),
 });
 
-export type ModuleSelection = z.infer<typeof ModuleSelectionSchema>;
+export interface ModuleSelection {
+  inventory: boolean;
+  manufacturing: boolean;
+  hrPayroll: boolean;
+  crm: boolean;
+  projectManagement: boolean;
+  assetManagement: boolean;
+  qualityManagement: boolean;
+  ecommerce: boolean;
+  pointOfSale: boolean;
+  aiFleet: boolean;
+  serviceScheduling: boolean;
+  aiAnalytics: boolean;
+}
 
 // Helper to count selected modules
 export function countSelectedModules(modules: ModuleSelection): number {
@@ -46,6 +59,9 @@ export function getModulePricing(modules: ModuleSelection): number {
   };
   
   return Object.entries(modules)
-    .filter(([_, enabled]) => enabled)
+    .filter(([e, enabled]) => {
+      void e;
+      return enabled;
+    })
     .reduce((total, [module]) => total + modulePrices[module as keyof typeof modulePrices], 0);
 }

@@ -1,13 +1,13 @@
-import { z } from 'zod';
+import * as yup from 'yup';
 import { OnboardingDataSchema } from './onboarding';
 import { SubscriptionDataSchema } from './subscription.schema';
 
 // What gets sent to the EC2 provisioning endpoint
-export const InstanceRequestSchema = z.object({
+export const InstanceRequestSchema = yup.object({
   onboardingData: OnboardingDataSchema,
   subscriptionData: SubscriptionDataSchema,
-  userId: z.string(), // From NextAuth session
-  instanceType: z.string().optional(), 
+  userId: yup.string(), // From NextAuth session
+  instanceType: yup.string().optional(),
 });
 
-export type InstanceRequest = z.infer<typeof InstanceRequestSchema>;
+export type InstanceRequest = yup.InferType<typeof InstanceRequestSchema>;

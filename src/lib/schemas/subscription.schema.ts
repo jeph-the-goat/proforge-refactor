@@ -1,14 +1,14 @@
-import { z } from 'zod';
+import * as yup from 'yup';
 
-export const SubscriptionDataSchema = z.object({
-  subscriptionId: z.string().min(1),
-  customerId: z.string().min(1),
-  status: z.string(),
-  currentPeriodEnd: z.number(),
-  userCount: z.number().positive(),
-  isAnnual: z.boolean(),
-  addOns: z.array(z.string()),
-  customerEmail: z.string().email().nullable(),
+export const SubscriptionDataSchema = yup.object({
+  subscriptionId: yup.string().min(1),
+  customerId: yup.string().min(1),
+  status: yup.string(),
+  currentPeriodEnd: yup.number(),
+  userCount: yup.number().positive(),
+  isAnnual: yup.boolean(),
+  addOns: yup.array(yup.string()),
+  customerEmail: yup.string().email().nullable(),
 });
 
-export type SubscriptionData = z.infer<typeof SubscriptionDataSchema>;
+export type SubscriptionData = yup.InferType<typeof SubscriptionDataSchema>;
