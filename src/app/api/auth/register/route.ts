@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
-import { z } from 'zod';
+import * as yup from 'yup';
 
 // Validation schema
-const registerSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+const registerSchema = yup.object({
+  name: yup.string().min(1, 'Name is required'),
+  email: yup.string().email('Invalid email address'),
+  password: yup.string().min(8, 'Password must be at least 8 characters'),
 });
 
 export async function POST(request: NextRequest) {
@@ -15,8 +15,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate input
-    const validatedData = registerSchema.parse(body);
+    const validatedData = await registerSchema.validate(body);
     const { name, email, password } = validatedData;
+    console.log('Validated data:', validatedData);
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
@@ -31,6 +32,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Hash the password
+    if (!password || !email || !name) {
+      console.error('Missing required fields');
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
     const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create the user
@@ -64,9 +72,9 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Registration error:', error);
 
-    if (error instanceof z.ZodError) {
+    if (error instanceof yup.ValidationError) {
       return NextResponse.json(
-        { error: error.errors[0].message },
+        { error: error.errors[0] },
         { status: 400 }
       );
     }
