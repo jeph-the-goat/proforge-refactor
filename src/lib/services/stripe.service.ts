@@ -1,6 +1,6 @@
-import stripe from '@/lib/stripe';
+import stripe from '@lib/stripe';
 import type Stripe from 'stripe';
-import { CustomerService } from './customer.service';
+import {CustomerService} from './customer.service';
 
 interface CreateCheckoutSessionParams {
   userId: string;
@@ -33,8 +33,7 @@ export class StripeService {
   }: CreateCheckoutSessionParams) {
     try {
       // Calculate price based on user count and add-ons
-      const basePrice = 75 * userCount // $75 per user
-      let totalPrice = basePrice
+      let totalPrice = 75 * userCount  // $75 per user
 
       // Add selected add-ons to price
       const addOns = [
@@ -135,6 +134,7 @@ export class StripeService {
         subscriptionId: session.subscription as string,
       }
     } catch (error) {
+      void error;
       return { isValid: false }
     }
   }
