@@ -89,7 +89,7 @@ export class CustomerService {
    */
   async updateBillingAddress(
     customerId: string,
-    billingAddress: Record<string, any>
+    billingAddress: Record<string, never>
   ): Promise<Customer> {
     return await prisma.customer.update({
       where: { id: customerId },
