@@ -8,6 +8,7 @@ export const provisionHandlers = [
   // Mock POST /api/provision/start
   http.post("/api/provision/start", async ({ request }) => {
     const body = await request.json();
+    void body;
     const instanceId = generateInstanceId();
     
     return HttpResponse.json({

@@ -15,7 +15,7 @@ vi.mock('@prisma/client', () => ({
   PrismaClient: vi.fn().mockImplementation(() => mockPrisma),
 }));
 
-import * as handler from '@/app/api/provision/config/[instanceId]/route';
+import * as handler from '@app/api/provision/config/[instanceId]/route';
 
 describe('/api/provision/config/[instanceId]', () => {
   beforeEach(() => {
@@ -112,7 +112,7 @@ describe('/api/provision/config/[instanceId]', () => {
     await testApiHandler({
       appHandler: handler,
       params: { instanceId: 'i-0bae6945462b3b5f3' },
-      requestPatcher(request) {
+      requestPatcher() {
         // No X-Instance-Token header
       },
       test: async ({ fetch }) => {
