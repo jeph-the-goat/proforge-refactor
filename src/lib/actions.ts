@@ -1,11 +1,10 @@
 "use server"
 
-import type { LeadDetails, ProjectDetails, SavingsResults } from "./types"
+import type { ProjectDetails, SavingsResults } from "./types"
 import { calculateSavings } from "./utils/calculate-savings"
 
 export async function submitLeadAction(
-  projectDetails: ProjectDetails,
-  leadDetails: LeadDetails
+  projectDetails: ProjectDetails
 ): Promise<{ success: boolean; message: string; results?: SavingsResults }> {
   try {
     // Calculate savings
