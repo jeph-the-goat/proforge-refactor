@@ -192,4 +192,4 @@ export const authOptions: NextAuthOptions = {
 export const auth = NextAuth(authOptions)
 
 // Use this in server components and API routes
-export const getServerAuthSession = auth; 
+export const getServerAuthSession = auth;
