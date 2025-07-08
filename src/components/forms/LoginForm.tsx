@@ -9,7 +9,9 @@ import * as yup from 'yup';
 
 import {AuthSocialButtons} from "@/utils";
 
-import {Button, ButtonLink, Input, InputPassword, Separator, AuthSectionForm} from "@/components";
+import {Button, ButtonLink, Input, Separator, AuthSectionForm} from "@/components";
+import { signIn } from "next-auth/react"
+import {useSearchParams, useRouter} from "next/navigation";
 
 interface LoginFormData {
   email: string;
@@ -31,8 +33,10 @@ export const LoginForm = () => {
   const {
     control,
     handleSubmit,
+    setError,
+    clearErrors,
+    reset,
     formState: { errors, isSubmitting },
-    reset
   } = useForm<LoginFormData>({
     resolver: yupResolver(loginSchema),
     defaultValues: {
@@ -41,25 +45,70 @@ export const LoginForm = () => {
     }
   });
 
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get("callbackUrl") || "/"
+
   const onSubmit = async (data: LoginFormData) => {
     try {
+      // Clear any previous login errors
+      clearErrors("root")
+      
       console.log('Login data:', data);
-      // TODO: Implement actual login logic here
 
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const result = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+        callbackUrl,
+      });
 
-      alert('Login successful! (This is just a demo)');
+      console.log('SignIn result:', result); // Debug log
+
+      // Check if login was successful
+      if (!result?.ok || result?.error) {
+        // Handle different error types
+        let errorMessage = 'Invalid email or password';
+        
+        if (result?.error === 'CredentialsSignin') {
+          errorMessage = 'Invalid email or password';
+        } else if (result?.error) {
+          errorMessage = result.error;
+        }
+        
+        // Set a root-level error for login failures
+        setError("root", {
+          type: "manual",
+          message: errorMessage
+        });
+        
+        return;
+      }
+
+      // Only redirect if login was successful
+      console.log('Login successful, redirecting to:', callbackUrl);
       reset();
+      router.replace(callbackUrl);
     } catch (error) {
       console.error('Login error:', error);
-      alert('Login failed. Please try again.');
+      setError("root", {
+        type: "manual",
+        message: 'An unexpected error occurred. Please try again.'
+      });
     }
   };
 
-  // const handleSocialLogin = (provider: string) => {
-  //   console.log(`${provider} login clicked - implement with chosen auth solution`);
-  //   // TODO: Implement social login
-  // };
+  const handleOAuthSignIn = async (provider: string) => {
+    try {
+      console.log('OAuth sign in:', provider);
+      await signIn(provider, {
+        callbackUrl,
+        redirect: true
+      })
+    } catch (error) {
+      console.error("OAuth sign in error:", error)
+    }
+  }
 
   return (
     <AuthSectionForm
@@ -75,6 +124,20 @@ export const LoginForm = () => {
     >
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        {/* Display login error if exists */}
+        {errors.root && (
+          <div className="error-message" style={{ 
+            color: 'red', 
+            marginBottom: '1rem',
+            padding: '0.5rem',
+            backgroundColor: '#fee',
+            border: '1px solid #fcc',
+            borderRadius: '4px'
+          }}>
+            {errors.root.message}
+          </div>
+        )}
+
         <Controller
           name="email"
           control={control}
@@ -97,7 +160,7 @@ export const LoginForm = () => {
           name="password"
           control={control}
           render={({ field }) => (
-            <InputPassword
+            <Input
               type="password"
               name={field.name}
               labelText="Password"
@@ -128,6 +191,7 @@ export const LoginForm = () => {
         {AuthSocialButtons.map((social, socialIdx) => (
           <Button
             key={socialIdx}
+            onClick={() => handleOAuthSignIn(social.label.toLowerCase())}
             btnText={social.label}
             title={social.ariaLabel}
             btnColor="white"
