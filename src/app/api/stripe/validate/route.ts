@@ -1,12 +1,12 @@
-import { NextResponse } from 'next/server';
-import { auth } from '@/auth';
-import { CheckoutService } from '@/lib/services/checkout.service';
+import {NextResponse} from 'next/server';
+import {CheckoutService} from '@/lib/services/checkout.service';
+import {getServerAuthSession} from "@lib/auth";
 
 const checkoutService = new CheckoutService();
 
 export async function POST(request: Request) {
   try {
-    const session = await auth();
+    const session = await getServerAuthSession();
     
     if (!session?.user?.id) {
       return new NextResponse(
@@ -28,9 +28,9 @@ export async function POST(request: Request) {
     const result = await checkoutService.validateSession(sessionId, session.user.id);
 
     // Add security headers
-    const response = new NextResponse(
+    return new NextResponse(
       JSON.stringify(result),
-      { 
+      {
         status: result.isValid ? 200 : 400,
         headers: {
           'Content-Type': 'application/json',
@@ -40,8 +40,6 @@ export async function POST(request: Request) {
         }
       }
     );
-
-    return response;
   } catch (error) {
     console.error('Stripe session validation error:', error);
     return new NextResponse(

@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/auth';
 import { ProvisionManager } from '@/lib/provisioning/provision-manager';
 import { PrismaClient } from '@prisma/client';
+import {authOptions, getServerAuthSession} from "@lib/auth";
 
 const prisma = new PrismaClient();
 const provisionManager = new ProvisionManager();
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await getServerAuthSession();
     if (!session?.user?.email) {
       return NextResponse.json(
         { error: 'Authentication required' },

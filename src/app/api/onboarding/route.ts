@@ -30,50 +30,48 @@ export async function POST(request: Request) {
       customerId = session.customer as string;
     }
 
-    const validationResult = OnboardingDataSchema.safeParse(onboardingData);
-    
-    if (!validationResult.success) {
-      return NextResponse.json(
-        { 
-          error: 'Validation failed',
-          details: validationResult.error.errors 
-        },
-        { status: 400 }
-      );
+    const validationResult = OnboardingDataSchema.validateSync(onboardingData);
+    if (!validationResult) {
+      console.error('Invalid onboarding data:', onboardingData);
+      return NextResponse.json({
+          error: 'Invalid onboarding data',
+          status: 400,
+        });
     }
 
-    const validatedData = validationResult.data;
-
     // Update Stripe customer if we have one
-    if (customerId) {
+    if (customerId && validationResult.businessInfo && validationResult.businessStructure) {
       await stripe.customers.update(customerId, {
-        name: validatedData.businessInfo.companyName,
-        email: validatedData.businessInfo.contactEmail,
-        phone: validatedData.businessInfo.contactPhone,
+        name: validationResult.businessInfo.companyName,
+        email: validationResult.businessInfo.contactEmail,
+        phone: validationResult.businessInfo.contactPhone,
         address: {
-          line1: validatedData.businessInfo.address.street,
-          city: validatedData.businessInfo.address.city,
-          state: validatedData.businessInfo.address.state,
-          postal_code: validatedData.businessInfo.address.zip,
-          country: validatedData.businessInfo.address.country,
+          line1: validationResult.businessInfo.address.street,
+          city: validationResult.businessInfo.address.city,
+          state: validationResult.businessInfo.address.state,
+          postal_code: validationResult.businessInfo.address.zip,
+          country: validationResult.businessInfo.address.country,
         },
         metadata: {
-          industry: validatedData.businessInfo.industry,
-          employeeCount: validatedData.businessInfo.employeeCount,
-          website: validatedData.businessInfo.website || '',
-          businessType: validatedData.businessStructure.businessType,
-          taxId: validatedData.businessStructure.taxId,
-          fiscalYearStart: validatedData.businessStructure.fiscalYearStart,
-          fiscalYearEnd: validatedData.businessStructure.fiscalYearEnd,
-          accountingMethod: validatedData.chartOfAccounts.accountingMethod,
-          defaultCurrency: validatedData.chartOfAccounts.defaultCurrency,
+          industry: validationResult.businessInfo.industry!,
+          employeeCount: validationResult.businessInfo.employeeCount!,
+          website: validationResult.businessInfo.website || '',
+          businessType: validationResult.businessStructure.businessType!,
+          taxId: validationResult.businessStructure.taxId!,
+          fiscalYearStart: validationResult.businessStructure.fiscalYearStart!,
+          fiscalYearEnd: validationResult.businessStructure.fiscalYearEnd!,
+          accountingMethod: validationResult.chartOfAccounts.accountingMethod!,
+          defaultCurrency: validationResult.chartOfAccounts.defaultCurrency!,
           // Store modules as comma-separated list
-          selectedModules: Object.entries(validatedData.moduleSelection)
-            .filter(([_, enabled]) => enabled)
+          selectedModules: Object.entries(validationResult.moduleSelection)
+            .filter(([e, enabled]) => {
+              void e;
+              return enabled;
+            })
             .map(([module]) => module)
             .join(','),
-          departments: validatedData.userSetup.departments.join(','),
-          additionalUsersCount: validatedData.userSetup.additionalUsers.length.toString(),
+          departments: validationResult.userSetup.departments!.join(','),
+          additionalUsersCount: validationResult.userSetup.additionalUsers!.length.toString(),
         },
       });
     }

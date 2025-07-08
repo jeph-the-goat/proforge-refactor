@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ProvisioningService } from '@/lib/provisioning/provision-service';
-import { auth } from '@/auth';
+import {getServerAuthSession} from "@lib/auth";
 
 const provisioningService = new ProvisioningService();
 
@@ -16,7 +16,7 @@ export async function GET(
     const params = await context.params;
     
     // Authenticate user
-    const session = await auth();
+    const session = await getServerAuthSession();
     if (!session?.user?.id) {
       return NextResponse.json(
         { error: 'Unauthorized' },

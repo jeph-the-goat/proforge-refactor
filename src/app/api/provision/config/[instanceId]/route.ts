@@ -1,7 +1,5 @@
 // src/app/api/provision/config/[instanceId]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/auth';
 import { ProvisioningService } from '@/lib/provisioning/provision-service';
 
 const provisioningService = new ProvisioningService();

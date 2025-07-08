@@ -115,7 +115,7 @@ export async function POST(req: Request) {
         }
 
         // Verify the payment method belongs to the customer
-        const stripeCustomer = await stripe.customers.retrieve(customer.stripeCustomerId)
+        // const stripeCustomer = await stripe.customers.retrieve(customer.stripeCustomerId)
         const paymentMethods = await stripe.paymentMethods.list({
           customer: customer.stripeCustomerId,
           type: paymentMethod.type as Stripe.PaymentMethodListParams['type']
@@ -159,9 +159,11 @@ export async function POST(req: Request) {
 // Note: Implement these functions with your database
 async function checkIfEventProcessed(eventId: string): Promise<boolean> {
   // TODO: Check if event has been processed in your database
+  void eventId;
   return false
 }
 
 async function markEventAsProcessed(eventId: string): Promise<void> {
   // TODO: Mark event as processed in your database
+  void eventId;
 } 

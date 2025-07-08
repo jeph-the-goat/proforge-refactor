@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/auth';
-import { ProvisionManager } from '@/lib/provisioning/provision-manager';
-import { OnboardingDataSchema } from '@/lib/schemas/onboarding';  // ✅ Correct import
+import {ProvisionManager, ProvisionManagerRequest} from '@/lib/provisioning/provision-manager';
+import { OnboardingDataSchema } from '@/lib/schemas/onboarding';
 import { PrismaClient } from '@prisma/client';
+import {getServerAuthSession} from "@lib/auth";
 
 const prisma = new PrismaClient();
 const provisionManager = new ProvisionManager();
@@ -11,7 +10,7 @@ const provisionManager = new ProvisionManager();
 export async function POST(request: NextRequest) {
   try {
     // Authenticate user
-    const session = await getServerSession(authOptions);
+    const session = await getServerAuthSession();
     if (!session?.user?.email) {
       return NextResponse.json(
         { error: 'Authentication required' },
@@ -33,25 +32,23 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate request body
     const body = await request.json();
-    const validationResult = OnboardingDataSchema.safeParse(body.onboardingData);
+    const validationResult = OnboardingDataSchema.validateSync(body.onboardingData);
 
-    if (!validationResult.success) {
-      return NextResponse.json(
-        { 
+    if (!validationResult) {
+      console.error('Invalid onboarding data:', body.onboardingData);
+      return NextResponse.json({
           error: 'Invalid onboarding data',
-          details: validationResult.error.issues 
-        },
-        { status: 400 }
-      );
+          status: 400,
+        });
     }
 
     // Generate session ID for this provisioning request
-    const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const sessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 
     // Start provisioning
-    const result = await provisionManager.startERPProvisioning({
+    const result = await provisionManager.startERPProvisioning(<ProvisionManagerRequest>{
       user,
-      onboardingData: validationResult.data,
+      onboardingData: validationResult,
       sessionId,
     });
 

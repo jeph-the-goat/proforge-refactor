@@ -11,8 +11,6 @@ export async function POST(request: NextRequest) {
       instanceId, 
       status, 
       message,
-      timestamp,
-      publicIp 
     } = body;
 
     // Get instance token from header
