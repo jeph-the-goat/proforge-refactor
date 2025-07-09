@@ -1,0 +1,25 @@
+.cAboutSectionValues {
+  :global {
+    .c-about-section-values {
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-24-to-16px);
+        width: 100%;
+        max-width: 100%;
+
+        @media(min-width: 768px) {
+          grid-template-columns: repeat(3,1fr);
+        }
+
+        .c-card {
+          --card-padding: 0;
+          --card-bg-color: transparent;
+          --card-icon-bg-color: var(--neutral-900);
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

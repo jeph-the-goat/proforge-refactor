@@ -1,0 +1,17 @@
+.cHomeSectionIntegration {
+  &:global {
+    &.c-home-section-integration.c-section {
+      >.c-container {
+        row-gap: 1em;
+
+        .c-home-section-integration-image {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          max-width: 480px;
+        }
+      }
+    }
+  }
+}

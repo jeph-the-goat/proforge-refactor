@@ -1,0 +1,195 @@
+.cPricingPlans {
+  &:global {
+    &.c-pricing-plans {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--from-64-to-40px);
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  :global {
+    .c-pricing-plans {
+      &-header {
+        .c-toggle-switch {
+
+        }
+      }
+
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-32-to-16px);
+
+        @media(min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+          align-items: stretch;
+        }
+      }
+
+      &-card {
+        --plan-bg: var(--neutral-800);
+        display: flex;
+        flex-direction: column;
+        gap: var(--from-24-to-16px);
+        padding: var(--from-40-to-20px);
+        background: var(--plan-bg);
+        border-radius: 1em;
+        text-align: left;
+
+        p {
+          margin-bottom: 0;
+        }
+
+        &-header {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--from-24-to-16px);
+
+          &-icon {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--px8);
+
+            >i {
+              width: var(--px40);
+              height: var(--px40);
+
+              svg {
+                max-width: var(--px28);
+                max-height: var(--px28);
+              }
+            }
+
+            >span {
+              flex-shrink: 0;
+              display: inline-flex;
+              align-items: center;
+              gap: var(--px4);
+              height: auto;
+              min-height: var(--px36);
+              padding: 0.25em var(--px8);
+              background-color: var(--primary-500);
+              border-radius: var(--px8);
+              color: var(--neutral-0);
+              font-weight: 600;
+
+              >i {
+                width: 1em;
+                height: 1em;
+              }
+            }
+          }
+
+          &-text {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px8);
+
+            p {
+              margin-bottom: 0;
+
+              &:last-child {
+                color: var(--neutral-300);
+              }
+            }
+          }
+        }
+
+        &-body {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px24);
+
+          p {
+            display: flex;
+            align-items: baseline;
+
+            >sub {
+              display: block;
+              bottom: 0;
+            }
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+              display: flex;
+              align-items: center;
+              column-gap: var(--px12);
+              font-size: var(--px14);
+              line-height: 24px;
+
+              i {
+                flex: 0 0 auto;
+                width: 1.142em; //16 @14px
+                height: 1.142em;
+                color: var(--primary-500);
+              }
+            }
+          }
+        }
+
+        &-footer {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          .c-button {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+
+        &.pro {
+          --plan-bg: linear-gradient(180deg, #FFFFFF 0%, #99A0AE 100%);
+
+          color: var(--neutral-950);
+
+          .c-pricing-plans-card-header {
+            &-text p:last-child {
+              color: currentColor;
+            }
+          }
+
+          .c-pricing-plans-card-body ul li i {
+            color: currentColor;
+          }
+        }
+
+        &.enterprise {
+          --plan-bg: var(--neutral-950);
+
+          @media(min-width: 768px) {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            column-gap: var(--from-40-to-24px);
+
+            .c-pricing-plans-card-header {
+              grid-area: 1 /1/ 2/ 2;
+            }
+
+            .c-pricing-plans-card-footer {
+              grid-area: 2/1/3/2;
+            }
+
+            .c-pricing-plans-card-body {
+              grid-area: 1/2/3/3;
+            }
+          }
+        }
+      }
+    }
+  }
+}

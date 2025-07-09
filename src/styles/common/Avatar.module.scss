@@ -1,0 +1,38 @@
+.cAvatar {
+  &:global{
+    &.c-avatar {
+      --avatar-size: var(--px48);
+
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--avatar-size);
+      height: var(--avatar-size);
+      border-radius: 50%;
+      overflow: hidden;
+
+      &[data-size="lg"] {
+        --avatar-size: var(--px150);
+      }
+
+      &[data-size="md"] {
+        --avatar-size: var(--px40);
+      }
+
+      &[data-size="sm"] {
+        --avatar-size: var(--px32);
+      }
+
+      &[data-size="xs"] {
+        --avatar-size: var(--px28);
+      }
+
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

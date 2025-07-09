@@ -1,0 +1,40 @@
+.cHomeSectionHero {
+  :global {
+    .c-section-hero {
+      &-grid {
+        &-text {
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+
+          .c-event-bar {
+            margin-bottom: var(--px30);
+          }
+
+          .c-section-title {
+            max-width: clamp(25em, 762/1440 * 100vw, 47.625em);//400-762px
+
+            p {
+              max-width: 30.0625em; //481px
+            }
+          }
+
+          .c-button-container {
+            justify-content: center;
+            margin-top: clamp(var(--px24), 54/1440 * 100vw, 54px);
+          }
+        }
+
+        &-image {
+          position: relative;
+
+          >img {
+            mask-image: radial-gradient(55.02% 119.7% at 50% 0%, black 48.82%, transparent 100%);
+            mask-repeat: no-repeat;
+            mask-position: center;
+          }
+        }
+      }
+    }
+  }
+}

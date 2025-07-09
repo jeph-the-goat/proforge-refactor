@@ -1,0 +1,56 @@
+.cBanner {
+  &:global {
+    &.c-banner {
+      width: 100%;
+      max-width: 100%;
+
+      &.is-section {
+        padding: var(--from-120-to-40px) 1em;
+      }
+    }
+  }
+  :global {
+    .c-banner {
+      &-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: var(--from-32-to-16px);
+        padding: var(--from-40-to-20px);
+        border-radius: var(--px20);
+        text-align: center;
+      }
+
+      &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1em;
+
+        i {
+          width: var(--px48);
+          height: var(--px48);
+          background-color: var(--neutral-950);
+          border-radius: 50%;
+          color: var(--primary-500);
+
+          svg {
+            max-width: var(--px20);
+            max-height: var(--px20);
+          }
+        }
+
+        &-text {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px8);
+
+          p {
+            margin-bottom: 0;
+            color: var(--neutral-300);
+          }
+        }
+      }
+    }
+  }
+}

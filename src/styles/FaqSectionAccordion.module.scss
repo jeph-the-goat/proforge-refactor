@@ -1,0 +1,53 @@
+.cFaqSectionAccordion {
+  &:global {
+    &.c-faq-section-accordion.c-section {
+      padding: 0 1em var(--from-80-to-40px);
+    }
+  }
+
+  :global {
+    .c-faq-section-accordion {
+      &-header {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px12);
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: var(--from-56-to-16px);
+        width: 100%;
+        max-width: 100%;
+
+        @media(min-width: 992px) {
+          grid-template-columns: var(--sidebar-width) 1fr;
+          align-items: stretch;
+        }
+
+        &-filters {
+          .c-button-group {
+            @media(min-width: 992px) {
+              position: sticky;
+              top: calc(var(--header-height) + 1em);
+              left: 0;
+            }
+          }
+
+          .c-form-group-check label.is-button {
+            justify-content: unset;
+            text-align: left;
+            border: 0;
+          }
+        }
+
+        .c-no-results {
+          text-align: left;
+        }
+      }
+    }
+  }
+}

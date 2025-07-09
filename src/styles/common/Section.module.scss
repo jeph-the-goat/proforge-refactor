@@ -1,0 +1,36 @@
+.cSection {
+  &:global {
+    &.c-section {
+      --section-padding-top: var(--from-120-to-40px);
+      --section-padding-bottom: var(--from-120-to-40px);
+
+      padding: var(--section-padding-top) 1em var(--section-padding-bottom);
+
+      &:has(.c-section-wrapper) {
+        --section-padding-top: var(--from-64-to-40px);
+        --section-padding-bottom: var(--from-64-to-40px);
+      }
+
+      .c-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: clamp(var(--px32), 64/1440*100vw, var(--px64));
+        text-align: center;
+      }
+    }
+  }
+
+  :global {
+    .c-section {
+      &-wrapper {
+        width: 100%;
+        max-width: 82em; // 1312px
+        margin: 0 auto;
+        padding: var(--from-80-to-40px) 1em;
+        background-color: var(--neutral-900);
+        border-radius: var(--px20);
+      }
+    }
+  }
+}

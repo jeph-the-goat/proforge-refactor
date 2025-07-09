@@ -1,0 +1,55 @@
+.cAboutSectionTeam {
+  :global {
+    .c-about-section-team {
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-64-to-40px) var(--from-32-to-16px);
+        width: 100%;
+        max-width: 100%;
+
+        @media(min-width: 576px) {
+          grid-template-columns: repeat(auto-fit,minmax(266px, 1fr));
+        }
+
+        &-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: var(--px24);
+
+          &-text {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px4);
+
+            p {
+              margin-bottom: 0;
+
+              &:not(.h6) {
+                color: var(--neutral-300);
+              }
+            }
+          }
+
+          &.empty {
+            .c-avatar-empty {
+              width: 9.375em; //150px;
+              height: 9.375em;
+              background-color: var(--neutral-900);
+              border-radius: 50%;
+            }
+
+            .c-button[data-variant="link"] {
+              --btn-color: var(--primary-500);
+              --btn-icon-size: var(--px10);
+
+              justify-content: center;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

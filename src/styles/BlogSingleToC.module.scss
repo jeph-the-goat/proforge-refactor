@@ -1,0 +1,111 @@
+.cBlogSingleToc {
+  &:global {
+    &.c-blog-single-toc {
+      .c-blog-single-toc-content  {
+        display: flex;
+        flex-direction: column;
+
+        a {
+          display: flex;
+          width: 100%;
+          max-width: 100%;
+        }
+
+        > a {
+          padding: var(--px8) var(--px12);
+          border-radius: var(--px8);
+          transition: background-color 0.3s ease, font-weight 0.3s ease;
+
+          &.active {
+            background-color: var(--neutral-950);
+            font-weight: 600;
+          }
+        }
+
+        > ol,
+        > ul {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+          padding: 0;
+
+          > li {
+            display: flex;
+            align-items: baseline;
+            width: 100%;
+            max-width: 100%;
+            gap: var(--px8);
+            padding: var(--px8) var(--px12) var(--px8) var(--px24);
+            border-radius: var(--px8);
+            color: currentColor;
+            scroll-margin-top: var(--scroll-margin-top);
+            transition: background-color 0.3s ease, font-weight 0.3s ease;
+
+            &:before {
+              color: inherit;
+            }
+
+            &:has(a.active) {
+              background-color: var(--neutral-950);
+              font-weight: 600;
+            }
+
+            > a {
+              display: block;
+              min-width: 0;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+        }
+
+        > ol {
+          counter-reset: item;
+
+          > li:before {
+            counter-increment: item;
+            content: counter(item) ".";
+          }
+        }
+
+        > ul {
+          > li:before {
+            content: "•";
+          }
+        }
+      }
+
+      .c-desktop {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+        background-color: var(--neutral-900);
+        border-radius: var(--px12);
+
+        @media(min-width: 992px) {
+          padding-bottom: var(--from-24-to-16px);
+        }
+
+        p {
+          padding: var(--from-24-to-16px) var(--from-24-to-16px) 0;
+          margin-bottom: 0;
+
+          span {
+            display: block;
+            font-size: var(--px18);
+            font-weight: 600;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--neutral-700);
+          }
+        }
+
+        .c-blog-single-toc-content {
+          padding: 0 var(--from-24-to-16px);
+        }
+      }
+    }
+  }
+}

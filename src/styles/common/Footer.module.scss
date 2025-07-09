@@ -1,0 +1,109 @@
+.cFooter {
+  &:global {
+    &.c-footer {
+      padding: var(--from-120-to-40px) 1em;
+      background-color: var(--neutral-900);
+
+      >.c-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--from-56-to-24px) 1em;
+      }
+    }
+  }
+
+  :global {
+    .c-footer {
+      &-logo {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px12);
+
+        .c-logo {
+          max-width: 8.5em; //136px
+        }
+
+        p {
+          margin-bottom: 0;
+          color: var(--neutral-300);
+        }
+      }
+
+      &-social {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--px24);
+      }
+
+      &-nav {
+        flex: 0 0 100%;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-flow: column;
+        gap: 1em;
+
+        &-category {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px12);
+
+          p {
+            margin-bottom: 0;
+            color: var(--neutral-500);
+          }
+
+          >div {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px12);
+
+            >a {
+              &:hover,
+              &:focus,
+              &:active {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+
+      &-foot {
+        flex: 0 0 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap-reverse;
+        margin-top: var(--px8);
+        padding-top: var(--from-56-to-24px);
+        border-top: 1px solid var(--neutral-700);
+        color: var(--neutral-500);
+
+        >span,
+        a {
+          font-size: var(--px14);
+        }
+      }
+
+      &-legal {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        column-gap: clamp(1em, 64/1440 * 100vw,  var(--px64));
+      }
+
+      @media (max-width: 767px) {
+        &-nav {
+          grid-template-columns: 1fr 1fr;
+          grid-auto-columns: unset;
+          grid-auto-flow: unset;
+        }
+      }
+    }
+  }
+}

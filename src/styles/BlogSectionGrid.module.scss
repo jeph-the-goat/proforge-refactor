@@ -1,0 +1,117 @@
+.cBlogSectionGrid {
+  &:global {
+    &.c-blog-section-grid.c-section {
+      padding: 0 1em var(--from-64-to-40px);
+
+      .c-container {
+        row-gap: var(--from-120-to-40px);
+      }
+    }
+  }
+
+  :global {
+    .c-blog-section-grid {
+      &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: var(--px24);
+        width: 100%;
+        max-width: 35.25em; //564px
+        margin: 0 auto;
+
+        .c-form-group-search {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--from-80-to-40px);
+        width: 100%;
+        max-width: 100%;
+      }
+
+      &-featured {
+        .c-blog-card[data-card="featured"] {
+          gap: var(--from-32-to-16px);
+
+          .c-badge {
+            order: -1;
+          }
+
+          .c-blog-card-title {
+            order: 1;
+          }
+
+          time {
+            order: 2;
+            margin-bottom: var(--px12);
+          }
+
+          .c-button {
+            order: 3;
+          }
+
+          @media(min-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+          }
+        }
+      }
+
+      &-items {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--from-40-to-20px);
+
+        &-filters {
+          width: 100%;
+          max-width: 100%;
+          padding: 0 0 1em;
+          overflow-x: auto;
+
+          .c-button-group {
+            flex-direction: unset;
+            flex-wrap: nowrap;
+            padding: var(--px4);
+            background-color: var(--neutral-900);
+
+            .c-form-group-check {
+              flex: 1;
+
+              input:checked ~ label.is-button {
+                background-color: var(--neutral-800);
+                border-color: transparent;
+              }
+
+              label.is-button {
+                white-space: nowrap;
+                border: 0;
+              }
+            }
+          }
+        }
+
+        &-list {
+          display: grid;
+          align-items: stretch;
+          grid-template-columns: 1fr;
+          gap: 1em;
+
+          .c-blog-card {
+            gap: var(--from-24-to-16px);
+            padding-bottom: 1em;
+            border-bottom: 1px solid var(--neutral-700);
+          }
+        }
+
+        .c-button-container {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

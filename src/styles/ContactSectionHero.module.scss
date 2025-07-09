@@ -1,0 +1,101 @@
+.cContactSectionHero {
+  :global {
+    .c-section-hero {
+      &-grid {
+        &-text {
+          row-gap: clamp(var(--px32), 72/1440*100vw, var(--px72));
+
+          .c-section-title {
+            max-width: clamp(25em, 762/1440 * 100vw, 47.625em);//400-762px
+          }
+        }
+
+        &-list {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--from-24-to-16px);
+          width: 100%;
+          max-width: 100%;
+          text-align: left;
+
+          >p {
+            font-weight: 600;
+          }
+
+          p {
+            margin-bottom: 0;
+
+            span {
+              &.title {
+                font-size: var(--px18);
+                font-weight: 600;
+              }
+
+              &.text {
+                color:  var(--neutral-300);
+              }
+            }
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--from-32-to-16px);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+              display: flex;
+              align-items: flex-start;
+              gap: 1em;
+
+              >i {
+                width: var(--px48);
+                height: var(--px48);
+                background-color: var(--neutral-900);
+                border-radius: 50%;
+                color: var(--primary-500);
+
+                svg {
+                  max-width: var(--px20);
+                  max-height: var(--px20);
+                }
+              }
+
+              >div, p {
+                display: flex;
+                flex-direction: column;
+              }
+
+              >div {
+                row-gap: var(--px8);
+              }
+
+              p {
+                margin-bottom: 0;
+              }
+
+              a {
+                --btn-color: var(--primary-400);
+                --btn-icon-size: var(--px8);
+              }
+            }
+          }
+        }
+
+        &-form {
+          >form {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+            width: 100%;
+            padding: var(--from-24-to-16px);
+            border: 1px solid var(--neutral-700);
+            border-radius: var(--px20);
+          }
+        }
+      }
+    }
+  }
+} 

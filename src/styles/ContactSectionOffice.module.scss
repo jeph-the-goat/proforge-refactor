@@ -1,0 +1,38 @@
+.cContactSectionOffice {
+  :global {
+    .c-contact-section-office {
+      &-image {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-32-to-16px);
+
+        @media(min-width: 767px) {
+          grid-template-columns: repeat(3,1fr);
+        }
+
+        .c-card {
+          --card-padding: 0;
+          --card-bg-color: transparent;
+          --card-border-radius: 0;
+          --card-icon-size: var(--px18);
+          --card-icon-bg-color: transparent;
+
+          align-items: center;
+          gap: 1em;
+          text-align: center;
+
+          .h6 {
+            color: var(--neutral-500);
+            font-size: 1em;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}

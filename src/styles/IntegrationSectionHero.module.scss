@@ -1,0 +1,13 @@
+.cIntegrationSectionHero {
+  :global {
+    .c-section-hero {
+      &-grid {
+        &-text {
+          .c-section-title {
+            max-width: clamp(500px, 962/1440 * 100vw, 962px);//500-962px
+          }
+        }
+      }
+    }
+  }
+} 

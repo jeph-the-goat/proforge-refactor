@@ -1,0 +1,15 @@
+.cHomeSectionSecurity {
+  :global {
+    .c-home-section-security {
+      &-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-32-to-16px);
+
+        @media(min-width: 767px) {
+          grid-template-columns: repeat(3,1fr);
+        }
+      }
+    }
+  }
+}

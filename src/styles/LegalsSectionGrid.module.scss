@@ -1,0 +1,123 @@
+.cLegalSectionGrid {
+  &:global {
+    &.c-legal-section-grid {
+      padding: var(--from-80-to-40px) 1em var(--from-120-to-40px);
+
+      >.c-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-56-to-16px);
+
+        @media(min-width: 992px) {
+          grid-template-columns: var(--sidebar-width) 1fr;
+          align-items: stretch;
+        }
+      }
+    }
+  }
+
+  :global {
+    .c-legal-section-grid {
+      &-sidebar {
+        &-wrapper {
+          @media(min-width: 992px) {
+            position: sticky;
+            top: calc(var(--header-height) + 1em);
+            left: 0;
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px4);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            > li > a {
+              display: flex;
+              align-items: center;
+              width: 100%;
+              max-width: 100%;
+              height: auto;
+              min-height: var(--px52);
+              padding: 0.25em 1em;
+              border-radius: var(--px8);
+              transition: background-color 0.3s ease, font-weight 0.3s ease;
+
+              &:hover,
+              &.active {
+                background-color: var(--neutral-900);
+                font-weight: 500;
+              }
+            }
+
+            &.c-legal-section-grid-sidebar-anchors > li {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px4);
+            }
+
+            &.c-legal-section-grid-sidebar-anchors-subitems {
+              margin-left: var(--px12);
+              padding-left: var(--px12);
+              border-left: 1px solid var(--neutral-700);
+            }
+          }
+        }
+      }
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--from-32-to-16px);
+      }
+
+      &-item {
+        scroll-margin-top: calc(var(--header-height) + 1em);
+
+        &.sub-item {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px12);
+          margin-top: var(--from-32-to-16px);
+        }
+
+        &-title {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--px12);
+        }
+
+        &-content {
+          p, ul, ol, span {
+            color: var(--neutral-300);
+          }
+
+          a {
+            color: var(--primary-400);
+            transition: all 0.3s ease;
+
+            &:hover,
+            &:focus,
+            &:active {
+              color: var(--neutral-0);
+              text-decoration: underline;
+            }
+          }
+
+          p:last-child,
+          ul:last-child,
+          ol:last-child {
+            margin-bottom: 0;
+          }
+
+          ul, ol {
+            margin: 0 0 1em;
+            padding-left: 1.5em;
+          }
+        }
+      }
+    }
+  }
+}

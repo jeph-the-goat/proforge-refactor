@@ -1,0 +1,34 @@
+.cSectionTitle {
+  &:global{
+    &.c-section-title {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: var(--px12);
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+
+      .c-badge {
+        --badge-padding-x: var(--px8);
+        --badge-font-weight: normal;
+      }
+
+      .c-section-title-paragraph {
+        width: 100%;
+        margin: 0 auto;
+        color: var(--neutral-300);
+      }
+
+      &[data-alignment="left"] {
+        align-items: flex-start;
+        margin: unset;
+        text-align: left;
+
+        .c-section-title-paragraph {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

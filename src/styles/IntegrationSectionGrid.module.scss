@@ -1,0 +1,97 @@
+.cIntegrationSectionGrid {
+  &:global {
+    &.c-integration-section-grid.c-section {
+      padding-top: var(--px40);
+    }
+  }
+
+  :global {
+    .c-integration-section-grid {
+      &-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--from-56-to-16px);
+        width: 100%;
+        max-width: 100%;
+
+        @media(min-width: 992px) {
+          grid-template-columns: var(--sidebar-width) 1fr;
+          align-items: stretch;
+        }
+
+        &-sidebar {
+          text-align: left;
+
+          &-wrapper {
+            display: flex;
+            flex-direction: column;
+            row-gap: var(--px8);
+
+            @media(min-width: 992px) {
+              position: sticky;
+              top: calc(var(--header-height) + 1em);
+              left: 0;
+              row-gap: var(--from-32-to-16px);
+            }
+
+            .c-button-group {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px8);
+
+              .c-form-group {
+                label {
+                  justify-content: flex-start;
+                  width: 100%;
+                  max-width: 100%;
+                  border: 0;
+                  text-align: left;
+                }
+              }
+            }
+
+            .c-banner {
+              &-wrapper {
+                align-items: flex-start;
+                padding: var(--from-24-to-16px);
+                border-radius: var(--px12);
+                text-align: left;
+
+                .c-button {
+                  width: 100%;
+                  max-width: 100%;
+                }
+              }
+            }
+          }
+        }
+
+        &-cards {
+          &-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--from-32-to-16px);
+
+            @media(min-width: 576px) {
+              align-items: stretch;
+              grid-template-columns: repeat(2, 1fr);
+
+              .c-no-results {
+                grid-column: span 2;
+
+                >p {
+                  margin-bottom: 0;
+                }
+              }
+            }
+
+            .c-card {
+              background-color: transparent;
+              border: 1px solid var(--neutral-700);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.cAboutSectionHero {
+  :global {
+    .c-section-hero {
+      &-grid {
+        &-text {
+          .c-section-title {
+            max-width: clamp(25em, 600 / 1440 * 100vw, 600px); //400-663px
+          }
+        }
+
+        &-image img {
+          max-width: 29.0625em; //465px
+        }
+      }
+    }
+  }
+}

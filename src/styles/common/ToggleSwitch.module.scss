@@ -1,0 +1,176 @@
+.cToggleSwitch {
+  &:global {
+    &.c-toggle-switch {
+      &[data-style="default"] {
+        display: inline-block;
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: nowrap;
+          gap: 1em;
+          margin-bottom: 0;
+          font-size: 1em;
+          white-space: nowrap;
+
+          .c-toggle-switch-label-text {
+            font-size: var(--px14);
+            line-height: 1;
+          }
+
+          .c-toggle-switch-label-toggler {
+            flex-shrink: 0;
+            position: relative;
+            display: inline-flex;
+            width: var(--px36);
+            height: var(--px20);
+            background-color: blue;
+            border-radius: var(--px36);
+            transition: background-color 0.3s ease;
+
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 2px;
+              width: 1em;
+              height: 1em;
+              margin: auto 0;
+              background-color: var(--neutral-0);
+              border-radius: 50%;
+              transition: transform 0.3s ease;
+            }
+          }
+        }
+
+        input:checked ~ label {
+          .c-toggle-switch-label-toggler {
+            background-color: var(--teal);
+
+            &:after {
+              color: var(--neutral-0);
+              transform: translateX(1em);
+            }
+          }
+        }
+      }
+
+      &[data-style="duo"] {
+        display: inline-flex;
+        flex-direction: column;
+        width: auto;
+        max-width: 100%;
+        padding: var(--px4);
+        height: auto;
+        min-height: var(--px52);
+        background-color: var(--neutral-950);
+        border-radius: var(--px8);
+        isolation: isolate;
+
+        .c-toggle-switch-label {
+          flex: 1;
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: stretch;
+          margin-bottom: 0;
+          font-size: 1em;
+          color: unset;
+          cursor: pointer;
+
+          &-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            column-gap: var(--px8);
+            padding: 0.25em 1em;
+            text-align: center;
+            transition: color 0.3s ease;
+
+            &.unchecked {
+              color: var(--neutral-0);
+              font-weight: 600;
+            }
+
+            &.checked {
+              font-weight: normal;
+              color: var(--neutral-400);
+
+              .c-toggle-switch-label-badge {
+                flex-shrink: 0;
+                display: inline-flex;
+                align-items: center;
+                gap: var(--px4);
+                padding: 2px var(--px4);
+                background-color: var(--neutral-700);
+                border-radius: var(--px4);
+
+                em, span {
+                  font-size: var(--px12);
+                  font-weight: 600 !important;
+                  line-height: 1em;
+                }
+
+                em {
+                  font-style: normal;
+                  color: var(--neutral-400);
+                }
+                span {
+                  padding: 4px; //4px @12px
+                  background-color: var(--neutral-950);
+                  border-radius: 4px;
+                  color: var(--neutral-0);
+                }
+              }
+            }
+          }
+
+          &-toggler {
+            content: "";
+            position: absolute;
+            left: 0;
+            display: inline-flex;
+            z-index: -1;
+            width: 100%;
+            max-width: 50%;
+            height: 100%;
+            background-color: var(--neutral-900);
+            border-radius: var(--px4);
+            transition: transform 0.3s ease;
+          }
+        }
+
+        input {
+          &:checked {
+            ~ label {
+              .c-toggle-switch-label-toggler {
+                transform: translateX(100%);
+              }
+
+              .c-toggle-switch-label-text {
+                &.unchecked {
+                  font-weight: normal;
+                  color: var(--neutral-400);
+                }
+
+                &.checked {
+                  color: var(--neutral-0);
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+
+          &:disabled {
+            ~ label {
+              pointer-events: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
