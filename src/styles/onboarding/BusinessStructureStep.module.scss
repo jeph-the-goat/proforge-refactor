@@ -1,0 +1,233 @@
+.cBusinessStructureStep {
+  &:global {
+    &.c-business-structure-step {
+      display: flex;
+      flex-direction: column;
+      gap: var(--from-40-to-24px);
+      width: 100%;
+      max-width: 100%;
+
+      .c-business-structure-step-header {
+        text-align: center;
+        margin-bottom: var(--from-32-to-24px);
+
+        .h2 {
+          font-size: var(--font-size-h2);
+          font-weight: 600;
+          color: var(--neutral-0);
+          margin-bottom: var(--px12);
+          line-height: 1.125;
+        }
+
+        p {
+          font-size: var(--px18);
+          color: var(--neutral-300);
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .c-business-structure-step-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--from-40-to-24px);
+
+        .c-business-structure-step-section {
+          display: flex;
+          flex-direction: column;
+          gap: var(--from-24-to-16px);
+
+          .c-business-structure-step-section-title {
+            font-size: var(--font-size-h4);
+            font-weight: 600;
+            color: var(--neutral-0);
+            margin-bottom: var(--px8);
+            line-height: 1.2;
+          }
+
+          .c-business-structure-step-section-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--from-24-to-16px);
+            padding: var(--from-32-to-24px);
+            background-color: var(--neutral-900);
+            border: 1px solid var(--neutral-700);
+            border-radius: var(--px12);
+          }
+        }
+
+        // Business Type Selection
+        .c-business-type-selection {
+          .c-business-type-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--from-24-to-16px);
+
+            @media (min-width: 640px) {
+              grid-template-columns: 1fr 1fr;
+            }
+
+            @media (min-width: 1024px) {
+              grid-template-columns: repeat(4, 1fr);
+            }
+
+            .c-business-type-card {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: var(--px16);
+              padding: var(--from-24-to-20px);
+              background-color: var(--neutral-950);
+              border: 2px solid var(--neutral-700);
+              border-radius: var(--px12);
+              cursor: pointer;
+              transition: all 0.2s ease;
+              text-align: center;
+
+              &:hover {
+                border-color: var(--primary-500);
+                background-color: var(--neutral-900);
+                transform: translateY(-2px);
+              }
+
+              &.is-selected {
+                border-color: var(--primary-500);
+                background-color: var(--primary-950);
+                box-shadow: 0 0 0 1px var(--primary-500);
+              }
+
+              .c-business-type-card-icon {
+                width: var(--px48);
+                height: var(--px48);
+                color: var(--neutral-400);
+                transition: color 0.2s ease;
+              }
+
+              &:hover .c-business-type-card-icon,
+              &.is-selected .c-business-type-card-icon {
+                color: var(--primary-500);
+              }
+
+              .c-business-type-card-content {
+                display: flex;
+                flex-direction: column;
+                gap: var(--px8);
+
+                .c-business-type-card-title {
+                  font-size: var(--px16);
+                  font-weight: 600;
+                  color: var(--neutral-0);
+                  margin: 0;
+                }
+
+                .c-business-type-card-description {
+                  font-size: var(--px14);
+                  color: var(--neutral-400);
+                  margin: 0;
+                  line-height: 1.4;
+                }
+              }
+            }
+          }
+        }
+
+        // Business Details Form
+        .c-business-details-form {
+          .c-form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--from-24-to-16px);
+
+            @media (min-width: 768px) {
+              grid-template-columns: 1fr 1fr;
+            }
+
+            .c-form-group-full {
+              grid-column: 1 / -1;
+            }
+          }
+
+          .c-fiscal-year-section {
+            .c-fiscal-year-title {
+              font-size: var(--font-size-h6);
+              font-weight: 600;
+              color: var(--neutral-0);
+              margin-bottom: var(--px16);
+              padding-bottom: var(--px8);
+              border-bottom: 1px solid var(--neutral-700);
+            }
+
+            .c-fiscal-year-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: var(--from-24-to-16px);
+
+              @media (min-width: 640px) {
+                grid-template-columns: 1fr 1fr;
+              }
+            }
+
+            .c-fiscal-year-info {
+              padding: var(--px16);
+              background-color: var(--primary-950);
+              border: 1px solid var(--primary-800);
+              border-radius: var(--px8);
+              font-size: var(--px14);
+              color: var(--primary-200);
+              line-height: 1.4;
+              margin-top: var(--px12);
+
+              .c-fiscal-year-info-icon {
+                width: var(--px16);
+                height: var(--px16);
+                color: var(--primary-400);
+                margin-right: var(--px8);
+                vertical-align: top;
+                flex-shrink: 0;
+              }
+            }
+          }
+        }
+
+        // Validation Errors
+        .c-validation-errors {
+          padding: var(--px16) var(--px20);
+          background-color: var(--error-950);
+          border: 1px solid var(--error-800);
+          border-radius: var(--px8);
+          color: var(--error-200);
+
+          .c-validation-errors-title {
+            display: flex;
+            align-items: center;
+            gap: var(--px8);
+            font-size: var(--px16);
+            font-weight: 600;
+            margin-bottom: var(--px12);
+
+            svg {
+              width: var(--px16);
+              height: var(--px16);
+              color: var(--error-400);
+            }
+          }
+
+          .c-validation-errors-list {
+            margin: 0;
+            padding-left: var(--px20);
+            font-size: var(--px14);
+            line-height: 1.5;
+
+            li {
+              margin-bottom: var(--px4);
+              
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

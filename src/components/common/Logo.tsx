@@ -19,8 +19,8 @@ export const Logo =(
       {isDisabled? (
         <span
           className={clsx(styles.cLogo, "c-logo", extraClassName)}
-          title="Nexora"
-          aria-label="Nexora"
+          title="Proforge ERP"
+          aria-label="Proforge ERP"
         >
           <NexoraLogo/>
         </span>
@@ -28,8 +28,8 @@ export const Logo =(
         <Link
           href='/'
           className={clsx(styles.cLogo, "c-logo", extraClassName)}
-          title="Nexora"
-          aria-label="Nexora"
+          title="Proforge ERP"
+          aria-label="Proforge ERP"
         >
           <NexoraLogo/>
         </Link>

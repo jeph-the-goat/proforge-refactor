@@ -5,7 +5,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import {Button, Input, InputSelect, InputTextarea} from "@/components";
+import {InputTextarea} from "@/components/form-elements/InputTextarea";
+import {Input} from "@/components/form-elements/Input";
+import {InputSelect} from "@/components/form-elements/InputSelect";
+import {Button} from "@/components";
 
 import {DummyOptions} from "@/utils";
 

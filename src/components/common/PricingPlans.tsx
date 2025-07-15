@@ -9,6 +9,8 @@ import { clsx } from "clsx";
 import {PlanProps, Plans} from "@/utils";
 
 import {Button, ButtonLink, ToggleSwitch} from "@/components";
+// Remove direct stripe import - use API route instead
+import { useSession, signIn } from "next-auth/react";
 
 const getAnnualPrice = (plan: PlanProps): { price: string; amount: number | null } => {
   if (plan.priceAmount === null || plan.priceAmount === 0) {
@@ -25,6 +27,49 @@ const getAnnualPrice = (plan: PlanProps): { price: string; amount: number | null
 
 export const PricingPlans = () => {
   const [isAnnual, setIsAnnual] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { data: session } = useSession();
+
+  const handleGetStarted = async (userCount: number = 1) => {
+    if (!session) {
+      signIn();
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+
+      // Call API route instead of direct stripe function
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userCount,
+          isAnnual,
+          selectedAddOns: []
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create checkout session');
+      }
+
+      const { url } = await response.json();
+
+      if (url) {
+        window.location.href = url;
+      } else {
+        throw new Error("Failed to create checkout session");
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+      console.error(errorMessage);
+      setIsLoading(false);
+    }
+  };
 
   const adaptedPricings = !isAnnual
     ? Plans
@@ -119,6 +164,8 @@ export const PricingPlans = () => {
                 <Button
                   btnText={plan.btnText}
                   btnColor={plan.btnColor}
+                  onClick={() => handleGetStarted(plan.userCount)}
+                  disabled={isLoading}
                 />
               )}
             </div>

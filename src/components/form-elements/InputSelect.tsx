@@ -115,3 +115,5 @@ export const InputSelect = (
     </FormGroup>
   );
 };
+
+export {SelectContent, Select, SelectItem, SelectTrigger, SelectValue};
