@@ -1,6 +1,6 @@
-.cFormGroup {
+.cStepFormGroup {
   &:global {
-    &.c-form-group {
+    &.c-step-form-group {
       --input-height: var(--px52);
       --input-padding-y: 0.25em;
       --input-padding-x: 1em;
@@ -82,13 +82,13 @@
         }
       }
 
-      .c-form-group-wrapper {
+      .c-step-form-group-wrapper {
         display: flex;
         align-items: stretch;
         gap: 1em;
       }
 
-      .c-form-group-input {
+      .c-step-form-group-input {
         flex: 1;
         display: flex;
         align-items: center;
@@ -119,7 +119,7 @@
         }
       }
 
-      &.c-form-group-search {
+      &.c-step-form-group-search {
         width: 100%;
 
         @media(min-width: 992px) {
@@ -141,7 +141,7 @@
         }
       }
 
-      &.c-form-group-password {
+      &.c-step-form-group-password {
         .c-form-group-input >.c-button {
           --btn-color: var(--input-placeholder-color);
           --btn-hover-color: var(--neutral-0);
@@ -157,7 +157,7 @@
         }
       }
 
-      &.c-form-group-textarea {
+      &.c-step-form-group-textarea {
         .c-form-group-input {
           padding: 0;
 
@@ -167,7 +167,7 @@
         }
       }
 
-      &.c-form-group-check {
+      &.c-step-form-group-check {
         .c-form-group-wrapper {
           display: flex;
           align-items: center;
@@ -200,7 +200,7 @@
         }
       }
 
-      &.c-form-group-select {
+      &.c-step-form-group-select {
         .c-form-group-input {
           position: relative;
           padding: 0;
@@ -211,7 +211,7 @@
         }
       }
 
-      .c-form-group-error {
+      .c-step-form-group-error {
         font-size: var(--px14);
         color: var(--error-500);
       }

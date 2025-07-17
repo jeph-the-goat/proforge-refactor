@@ -1,0 +1,334 @@
+.cStatusPage {
+  &:global {
+    &.c-status-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, 
+        color-mix(in srgb, var(--primary-500) 5%, var(--body-bg-color)),
+        color-mix(in srgb, var(--secondary-500) 5%, var(--body-bg-color))
+      );
+
+      .c-status-container {
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: var(--px32) var(--px16);
+
+        @media (min-width: 640px) {
+          padding: var(--px32);
+        }
+
+        .c-status-content {
+          max-width: 48rem;
+          margin: 0 auto;
+        }
+      }
+
+      .c-status-card {
+        background-color: var(--neutral-900);
+        border: 1px solid var(--neutral-700);
+        border-radius: var(--px8);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+
+        .c-status-header {
+          text-align: center;
+          padding: var(--px32) var(--px24) var(--px24);
+
+          @media (min-width: 640px) {
+            padding: var(--px48) var(--px32) var(--px32);
+          }
+
+          .c-status-icon-wrapper {
+            margin: 0 auto var(--px24);
+            padding: var(--px16);
+            border-radius: 50%;
+            background-color: color-mix(in srgb, var(--primary-500) 10%, transparent);
+            width: fit-content;
+
+            .c-status-icon {
+              width: var(--px32);
+              height: var(--px32);
+
+              @media (min-width: 640px) {
+                width: var(--px40);
+                height: var(--px40);
+              }
+
+              &.c-status-icon-loading {
+                color: var(--primary-500);
+                animation: spin 1s linear infinite;
+              }
+
+              &.c-status-icon-error {
+                color: var(--error-500);
+              }
+
+              &.c-status-icon-success {
+                color: var(--success-500);
+              }
+
+              &.c-status-icon-progress {
+                color: var(--primary-500);
+                animation: pulse 2s ease-in-out infinite;
+              }
+            }
+          }
+
+          .c-status-title {
+            font-size: var(--px32);
+            font-weight: 700;
+            color: var(--neutral-0);
+            margin-bottom: var(--px8);
+            line-height: 1.2;
+
+            @media (min-width: 640px) {
+              font-size: var(--px36);
+            }
+          }
+
+          .c-status-subtitle {
+            font-size: var(--px18);
+            color: var(--neutral-400);
+            margin-bottom: var(--px8);
+
+            @media (min-width: 640px) {
+              font-size: var(--px20);
+            }
+          }
+
+          .c-status-time {
+            font-size: var(--px14);
+            color: var(--neutral-500);
+            margin: 0;
+          }
+        }
+
+        .c-status-body {
+          padding: var(--px24);
+
+          @media (min-width: 640px) {
+            padding: var(--px32);
+          }
+        }
+      }
+
+      .c-status-progress-section {
+        margin-bottom: var(--px32);
+
+        .c-status-progress-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: var(--px16);
+
+          .c-status-progress-label {
+            font-size: var(--px18);
+            font-weight: 600;
+            color: var(--neutral-0);
+          }
+
+          .c-status-progress-percentage {
+            font-size: var(--px32);
+            font-weight: 700;
+            color: var(--primary-500);
+          }
+        }
+
+        .c-status-progress-bar {
+          height: var(--px16);
+          background-color: var(--neutral-800);
+          border-radius: var(--px8);
+          overflow: hidden;
+          border: 1px solid var(--neutral-700);
+
+          .c-status-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-500), var(--primary-400));
+            transition: width 0.5s ease;
+            border-radius: var(--px8);
+          }
+        }
+      }
+
+      .c-status-message-section {
+        text-align: center;
+        padding: var(--px24) 0;
+        margin-bottom: var(--px32);
+
+        .c-status-message {
+          font-size: var(--px20);
+          color: var(--neutral-400);
+          margin: 0;
+        }
+
+        .c-status-error {
+          .c-status-error-message {
+            font-size: var(--px20);
+            color: var(--error-400);
+            margin-bottom: var(--px16);
+          }
+
+          .c-status-retry-btn {
+            margin-top: var(--px16);
+          }
+        }
+
+        .c-status-success {
+          .c-status-success-message {
+            font-size: var(--px20);
+            font-weight: 600;
+            color: var(--primary-400);
+            margin-bottom: var(--px8);
+          }
+
+          .c-status-success-description {
+            font-size: var(--px14);
+            color: var(--neutral-500);
+            margin: 0;
+          }
+        }
+      }
+
+      .c-status-steps {
+        background: linear-gradient(135deg, 
+          color-mix(in srgb, var(--primary-500) 5%, transparent),
+          color-mix(in srgb, var(--secondary-500) 5%, transparent)
+        );
+        border-radius: var(--px12);
+        padding: var(--px24);
+        margin-bottom: var(--px32);
+
+        .c-status-steps-title {
+          font-weight: 600;
+          font-size: var(--px18);
+          color: var(--neutral-0);
+          margin-bottom: var(--px16);
+          text-align: center;
+        }
+
+        .c-status-steps-list {
+          display: flex;
+          flex-direction: column;
+          gap: var(--px12);
+
+          .c-status-step {
+            display: flex;
+            align-items: center;
+            gap: var(--px12);
+            padding: var(--px8) 0;
+
+            .c-status-step-icon {
+              width: var(--px20);
+              height: var(--px20);
+              flex-shrink: 0;
+
+              &.c-status-step-icon-success {
+                color: var(--success-500);
+              }
+
+              &.c-status-step-icon-loading {
+                color: var(--primary-500);
+                animation: spin 1s linear infinite;
+              }
+
+              &.c-status-step-icon-pending {
+                color: var(--neutral-400);
+              }
+            }
+
+            .c-status-step-text {
+              font-size: var(--px14);
+              color: var(--neutral-0);
+              flex: 1;
+            }
+
+            &.c-status-step-completed {
+              .c-status-step-text {
+                color: var(--neutral-300);
+              }
+            }
+
+            &.c-status-step-active {
+              .c-status-step-text {
+                color: var(--neutral-0);
+                font-weight: 500;
+              }
+            }
+
+            &.c-status-step-pending {
+              .c-status-step-text {
+                color: var(--neutral-500);
+              }
+            }
+          }
+        }
+      }
+
+      .c-status-estimate {
+        text-align: center;
+        background-color: color-mix(in srgb, var(--warning-500) 10%, transparent);
+        border: 1px solid color-mix(in srgb, var(--warning-500) 20%, transparent);
+        border-radius: var(--px8);
+        padding: var(--px16);
+        margin-bottom: var(--px32);
+
+        .c-status-estimate-title {
+          font-weight: 500;
+          color: var(--warning-400);
+          margin-bottom: var(--px4);
+          font-size: var(--px16);
+        }
+
+        .c-status-estimate-description {
+          font-size: var(--px14);
+          color: var(--warning-500);
+          margin: 0;
+        }
+      }
+
+      .c-status-complete {
+        text-align: center;
+        background-color: color-mix(in srgb, var(--success-500) 10%, transparent);
+        border: 1px solid color-mix(in srgb, var(--success-500) 20%, transparent);
+        border-radius: var(--px8);
+        padding: var(--px24);
+
+        .c-status-complete-icon {
+          width: var(--px48);
+          height: var(--px48);
+          color: var(--success-500);
+          margin: 0 auto var(--px12);
+        }
+
+        .c-status-complete-title {
+          font-size: var(--px20);
+          font-weight: 600;
+          color: var(--success-400);
+          margin-bottom: var(--px8);
+        }
+
+        .c-status-complete-description {
+          color: var(--success-500);
+          margin: 0;
+          font-size: var(--px14);
+        }
+      }
+
+      // Animations
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes pulse {
+        0%, 100% { 
+          opacity: 1; 
+          transform: scale(1);
+        }
+        50% { 
+          opacity: 0.7; 
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+} 

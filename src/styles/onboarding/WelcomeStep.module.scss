@@ -1,254 +1,166 @@
 .cWelcomeStep {
-  &:global {
-    &.c-welcome-step {
-      display: flex;
-      flex-direction: column;
-      gap: var(--from-40-to-24px);
-      width: 100%;
-      max-width: 100%;
+  :global {
+    .c-welcome-step {
+      &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: var(--px24);
+        width: 100%;
+        margin: 0 auto;
 
-      .c-welcome-step-header {
-        text-align: center;
-        margin-bottom: var(--from-32-to-24px);
-
-        .h2 {
-          font-size: var(--font-size-h2);
-          font-weight: 600;
-          color: var(--neutral-0);
-          margin-bottom: var(--px12);
-          line-height: 1.125;
-        }
-
-        p {
-          font-size: var(--px18);
-          color: var(--neutral-300);
-          line-height: 1.5;
-          margin: 0;
+        .c-form-group-search {
+          width: 100%;
+          max-width: 100%;
         }
       }
 
-      .c-welcome-step-content {
+      &-content {
         display: flex;
         flex-direction: column;
-        gap: var(--from-40-to-24px);
+        gap: 1.5rem;
 
-        .c-welcome-step-section {
-          display: flex;
-          flex-direction: column;
-          gap: var(--from-24-to-16px);
-
-          .c-welcome-step-section-title {
-            font-size: var(--font-size-h4);
-            font-weight: 600;
-            color: var(--neutral-0);
-            margin-bottom: var(--px8);
-            line-height: 1.2;
-          }
-
-          .c-welcome-step-section-content {
-            display: flex;
-            flex-direction: column;
-            gap: var(--from-24-to-16px);
-            padding: var(--from-32-to-24px);
-            background-color: var(--neutral-900);
-            border: 1px solid var(--neutral-700);
-            border-radius: var(--px12);
-          }
+        h3 {
+          font-size: var(--px32);
+          font-weight: 600;
+          color: var(--neutral-0);
+          margin-bottom: 2rem;
         }
 
-        // Logo Upload Section
-        .c-logo-upload-section {
-          .c-logo-upload-area {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: var(--px16);
-            min-height: 12rem;
-            padding: var(--from-32-to-24px);
-            border: 2px dashed var(--neutral-700);
-            border-radius: var(--px12);
-            background-color: var(--neutral-950);
-            transition: all 0.2s ease;
-            cursor: pointer;
+        .c-company-section {
+          .c-logo-upload {
+            align-items: flex-start;
+            padding: var(--from-24-to-16px);
+            gap: var(--px12);
+            border: 1px solid var(--neutral-700);
+            border-radius: var(--px8);
+            background-color: var(--neutral-900);
 
-            &:hover {
-              border-color: var(--primary-500);
-              background-color: var(--neutral-900);
-            }
+            .c-logo-upload-header {
+              display: inline-flex !important;
+              flex: 1;
+              justify-content: center;
+              align-items: center;
+              flex-direction: row !important;
+              margin-top: 1rem;
+              gap: var(--px8);
+              font-size: var(--px16);
+              font-weight: 600;
+              color: var(--neutral-0);
+              margin-bottom: var(--px4);
 
-            &.has-logo {
-              border-style: solid;
-              border-color: var(--primary-500);
-              background-color: var(--neutral-900);
-            }
-
-            .c-logo-upload-icon {
-              width: var(--px48);
-              height: var(--px48);
-              color: var(--neutral-400);
-              transition: color 0.2s ease;
-            }
-
-            &:hover .c-logo-upload-icon {
-              color: var(--primary-500);
-            }
-
-            .c-logo-upload-text {
-              text-align: center;
-              
-              .c-logo-upload-title {
-                font-size: var(--px18);
-                font-weight: 600;
-                color: var(--neutral-0);
-                margin-bottom: var(--px4);
+              svg {
+                width: 5rem;
+                height: 5rem;
+                border-radius: var(--px8);
+                border: 1px solid var(--neutral-700);
               }
 
-              .c-logo-upload-description {
+              p {
+                margin: 0 var(--px16) 0 0;
                 font-size: var(--px14);
                 color: var(--neutral-400);
-                margin: 0;
+                margin-bottom: 2rem;
+                line-height: 1.4;
               }
             }
 
-            .c-logo-preview {
-              position: relative;
-              max-width: 8rem;
-              max-height: 8rem;
-              border-radius: var(--px8);
-              overflow: hidden;
-              background-color: var(--neutral-800);
+            .c-logo-input {
+              flex: 1;
+              margin-top: 1rem;
+              justify-content: flex-start;
+              flex-direction: row !important;
+              max-width: 20em;
 
-              img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-              }
-
-              .c-logo-remove {
-                position: absolute;
-                top: var(--px8);
-                right: var(--px8);
-                width: var(--px24);
-                height: var(--px24);
-                background-color: var(--error-500);
-                border: none;
-                border-radius: 50%;
-                color: var(--neutral-0);
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: background-color 0.2s ease;
-
-                &:hover {
-                  background-color: var(--error-600);
-                }
-
-                svg {
-                  width: var(--px12);
-                  height: var(--px12);
+              .c-form-group-input {
+                input {
+                  font-size: var(--px14);
+                  transition: border-color 0.2s ease;
                 }
               }
             }
-          }
-
-          .c-logo-upload-input {
-            display: none;
           }
         }
 
-        // Business Info Form
-        .c-business-info-form {
-          .c-form-grid {
+        .c-contact-section {
+          .c-contact-title {
+            font-size: var(--px16);
+            font-weight: 600;
+            color: var(--neutral-0);
+            margin-bottom: 1rem;
+          }
+
+          .c-contact-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: var(--from-24-to-16px);
+            gap: 1rem;
+
+            @media (min-width: 768px) {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+        }
+
+        .c-address-section {
+          .c-address-title {
+            font-size: var(--px16);
+            font-weight: 600;
+            color: var(--neutral-0);
+            margin-bottom: 1rem;
+          }
+
+          .c-address-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
 
             @media (min-width: 768px) {
               grid-template-columns: 1fr 1fr;
             }
 
-            .c-form-group-full {
+            .c-address-full-width {
               grid-column: 1 / -1;
-            }
-          }
-
-          .c-address-section {
-            .c-address-section-title {
-              font-size: var(--font-size-h6);
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin-bottom: var(--px16);
-              padding-bottom: var(--px8);
-              border-bottom: 1px solid var(--neutral-700);
-            }
-
-            .c-address-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: var(--from-24-to-16px);
-
-              @media (min-width: 768px) {
-                grid-template-columns: 2fr 1fr;
-              }
-
-              .c-address-row {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: var(--from-24-to-16px);
-
-                @media (min-width: 640px) {
-                  grid-template-columns: 1fr 1fr;
-                }
-
-                &.c-address-row-full {
-                  grid-column: 1 / -1;
-                }
-              }
-            }
-          }
-        }
-
-        // Validation Errors
-        .c-validation-errors {
-          padding: var(--px16) var(--px20);
-          background-color: var(--error-950);
-          border: 1px solid var(--error-800);
-          border-radius: var(--px8);
-          color: var(--error-200);
-
-          .c-validation-errors-title {
-            display: flex;
-            align-items: center;
-            gap: var(--px8);
-            font-size: var(--px16);
-            font-weight: 600;
-            margin-bottom: var(--px12);
-
-            svg {
-              width: var(--px16);
-              height: var(--px16);
-              color: var(--error-400);
-            }
-          }
-
-          .c-validation-errors-list {
-            margin: 0;
-            padding-left: var(--px20);
-            font-size: var(--px14);
-            line-height: 1.5;
-
-            li {
-              margin-bottom: var(--px4);
-              
-              &:last-child {
-                margin-bottom: 0;
-              }
             }
           }
         }
       }
+
+      .c-validation-errors {
+        padding: var(--px12) var(--px16);
+        background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
+        border: 1px solid var(--error-800);
+        border-radius: var(--px8);
+        color: var(--error-400);
+
+        .c-validation-errors-title {
+          display: flex;
+          align-items: center;
+          gap: var(--px8);
+          font-size: var(--px14);
+          font-weight: 600;
+          margin-bottom: var(--px8);
+
+          .c-validation-errors-icon {
+            width: var(--px16);
+            height: var(--px16);
+          }
+        }
+
+        .c-validation-errors-list {
+          margin: 0;
+          padding-left: var(--px16);
+          font-size: var(--px12);
+          line-height: 1.4;
+
+          li {
+            margin-bottom: var(--px4);
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+      }
     }
   }
-}
