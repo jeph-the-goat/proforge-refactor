@@ -12,16 +12,16 @@ import type { OnboardingData } from '@/lib/schemas/onboarding';
 
 // Simple validation schema for review step
 const ReviewStepSchema = yup.object({
-  termsAccepted: yup.boolean().oneOf([true], "You must accept the terms and conditions to continue"),
+  termsAccepted: yup.boolean()
+    .oneOf([true], "You must accept the terms and conditions to continue")
+    .default(false),
 });
 
-interface ReviewStepData {
-  termsAccepted: boolean;
-}
+type ReviewStepData = yup.InferType<typeof ReviewStepSchema>;
 
 type ReviewStepProps = {
   data: OnboardingData;
-  onUpdate: (data: Partial<OnboardingData>) => void;
+  onUpdateAction: (data: Partial<OnboardingData>) => void;
 };
 
 type InfoRowProps = {
@@ -44,7 +44,7 @@ const InfoRow = ({ label, value }: InfoRowProps) => (
   </div>
 );
 
-export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
+export function ReviewStep({ data, onUpdateAction }: ReviewStepProps) {
   const {
     control,
     watch,
@@ -60,10 +60,10 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
   // Watch for changes and update parent
   useEffect(() => {
     const subscription = watch((value) => {
-      onUpdate({ termsAccepted: value.termsAccepted });
+      onUpdateAction({ termsAccepted: value.termsAccepted });
     });
     return () => subscription.unsubscribe();
-  }, [watch, onUpdate]);
+  }, [watch, onUpdateAction]);
 
   return (
     <div className={styles.cReviewStep}>

@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import {Section} from "@/components";
 import { Input } from '@/components/form-elements/Input';
 import { InputSelect } from '@/components/form-elements/InputSelect';
 import { Upload } from 'lucide-react';
 import Image from 'next/image';
 import { BusinessInfoSchema, type BusinessInfo } from '@/lib/schemas/onboarding/business-info.schema';
-import { cn } from '@/lib/utils';
 import styles from '@/styles/onboarding/WelcomeStep.module.scss';
+import {clsx} from "clsx";
 
 type WelcomeStepProps = {
   data: BusinessInfo;
@@ -38,8 +39,8 @@ const EMPLOYEE_RANGES = [
   '1000+',
 ];
 
-export function WelcomeStep({ data, onUpdate }: WelcomeStepProps) {
-  const [logoPreview, setLogoPreview] = useState<string | null>(null);
+export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
+  const [logoPreview] = useState<string | null>(null);
 
   const {
     control,
@@ -49,13 +50,13 @@ export function WelcomeStep({ data, onUpdate }: WelcomeStepProps) {
   } = useForm<BusinessInfo>({
     resolver: yupResolver(BusinessInfoSchema),
     defaultValues: data,
-    mode: 'onChange', // Validate on change for real-time feedback
+    mode: 'onChange' // Validate on change for real-time feedback
   });
 
   // Watch form changes and update parent
   useEffect(() => {
     const subscription = watch((value) => {
-      onUpdate({ businessInfo: value as BusinessInfo });
+      onUpdate({businessInfo: value as BusinessInfo});
     });
     return () => subscription.unsubscribe();
   }, [watch, onUpdate]);
@@ -71,57 +72,53 @@ export function WelcomeStep({ data, onUpdate }: WelcomeStepProps) {
   };
 
   return (
-    <div className={cn(styles.cWelcomeStep, "c-welcome-step")}>
-      <div className="c-welcome-step-header">
-        <h2 className="h2">Welcome to ProForge ERP</h2>
-        <p>Let&#39;s get started by setting up your business profile.</p>
-      </div>
+    <div className={clsx(styles.cWelcomeStep, "c-welcome-step")}>
+      <Section
+        extraClassName="c-welcome-step-header"
+        title="Welcome to ProForge ERP"
+        paragraph="Let's get started by setting up your business profile."
+      >
+      </Section>
 
-      <div className="c-welcome-step-content">
-        {/* Company Logo Upload */}
-        <div className="c-welcome-step-logo-section">
-          <div className="c-welcome-step-logo-upload">
-            {logoPreview ? (
-              <Image
-                src={logoPreview}
-                alt="Company logo preview"
-                width={96}
-                height={96}
-                className="c-welcome-step-logo-preview"
-              />
-            ) : (
-              <div className="c-welcome-step-logo-placeholder">
-                <Upload />
-              </div>
-            )}
-            <div className="c-welcome-step-logo-text">
-              <h3>Company Logo</h3>
+      <form className="c-welcome-step-content">
+        <section className="c-company-section">
+          <h3>Company Info</h3>
+          <section className="c-logo-upload">
+            <div className="c-logo-upload-header">
+              {logoPreview ? (
+                <Image
+                  src={logoPreview}
+                  alt="Company logo preview"
+                  width={96}
+                  height={96}
+                />
+              ) : <Upload />
+              }
               <p>Upload your company logo. Recommended size: 400x400px.</p>
-              <Controller
-                name="companyLogo"
-                control={control}
-                render={({ field: { onChange, onBlur, name, ref } }) => (
-                  <Input
-                    type="file"
-                    name="companyLogo"
-                    labelText="Upload Logo"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const target = e.target as HTMLInputElement;
-                      const file = target.files?.[0];
-                      if (file) {
-                        handleFileUpload(file);
-                      }
-                    }}
-                  />
-                )}
-              />
             </div>
-          </div>
-        </div>
-
-        {/* Basic Information */}
-        <div className="c-welcome-step-form">
+            <div className="c-logo-input">
+                <Controller
+                  name="companyLogo"
+                  control={control}
+                  render={() => (
+                    <Input
+                      type="file"
+                      name="companyLogo"
+                      labelText="Upload Logo"
+                      accept="image/*"
+                      onChange={(e) => {
+                        const target = e.target as HTMLInputElement;
+                        const file = target.files?.[0];
+                        if (file) {
+                          handleFileUpload(file);
+                        }
+                      }}
+                    />
+                  )}
+                />
+            </div>
+          </section>
+        {/* Company Information */}
           <Controller
             name="companyName"
             control={control}
@@ -197,9 +194,8 @@ export function WelcomeStep({ data, onUpdate }: WelcomeStepProps) {
               />
             )}
           />
-
-          {/* Contact Information */}
-          <div className="c-welcome-step-form-section">
+        </section>
+          <section className={"c-contact-section"}>
             <h3 className="c-welcome-step-form-section-title">Contact Information</h3>
             <div className="c-welcome-step-form-grid">
               <Controller
@@ -236,10 +232,8 @@ export function WelcomeStep({ data, onUpdate }: WelcomeStepProps) {
                 )}
               />
             </div>
-          </div>
-
-          {/* Business Address */}
-          <div className="c-welcome-step-form-section">
+          </section>
+          <section className={"c-address-section"}>
             <h3 className="c-welcome-step-form-section-title">Business Address</h3>
             <div className="c-welcome-step-form-grid">
               <div className="c-welcome-step-form-grid-full">
@@ -329,9 +323,8 @@ export function WelcomeStep({ data, onUpdate }: WelcomeStepProps) {
                 )}
               />
             </div>
-          </div>
-        </div>
-      </div>
+          </section>
+      </form>
     </div>
   );
 }

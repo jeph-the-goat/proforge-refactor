@@ -3,9 +3,8 @@
 import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import ProForgeOnboarding from "@/components/onboarding/proforge-onboarding"
-import { cn } from "@/lib/utils"
 import { clsx } from "clsx"
-import styles from "./success.module.scss"
+import styles from "@/styles/success.module.scss"
 
 type SubscriptionData = {
   subscriptionId: string;
