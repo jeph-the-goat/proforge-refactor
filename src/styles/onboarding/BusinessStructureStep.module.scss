@@ -1,44 +1,14 @@
 .cBusinessStructureStep {
-  &:global {
-    &.c-business-structure-step {
-      .c-business-structure-step-header {
-        margin-bottom: 1.5rem;
-
-        @media (min-width: 640px) {
-          margin-bottom: 2rem;
-        }
-
-        .c-business-structure-step-title {
-          font-size: var(--px24);
-          font-weight: 700;
-          color: var(--neutral-0);
-          margin-bottom: var(--px8);
-          line-height: 1.2;
-        }
-
-        .c-business-structure-step-description {
-          font-size: var(--px16);
-          color: var(--neutral-400);
-          margin: 0;
-          line-height: 1.5;
-        }
-      }
-
-      .c-business-structure-step-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-        @media (min-width: 640px) {
-          gap: 1.5rem;
-        }
-
+  :global {
+    .c-business-structure-step {
+      &-content {
         // Business Type Selection
-        .c-business-type-selection {
-          .c-business-type-grid {
+        .c-selection {
+          .c-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: var(--px12);
+            margin: 1rem auto;
 
             @media (min-width: 640px) {
               grid-template-columns: 1fr 1fr;
@@ -49,7 +19,7 @@
               grid-template-columns: repeat(4, 1fr);
             }
 
-            .c-business-type-card {
+            .c-card {
               position: relative;
               padding: 1rem 1.5rem;
               background-color: var(--neutral-900);
@@ -71,7 +41,7 @@
                 background-color: color-mix(in srgb, var(--primary-500) 5%, var(--neutral-900));
               }
 
-              .c-business-type-card-content {
+              .c-card-content {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -84,7 +54,7 @@
                   gap: 1rem;
                 }
 
-                .c-business-type-card-icon-wrapper {
+                .c-card-icon-wrapper {
                   padding: var(--px8) var(--px12);
                   border-radius: 50%;
                   background-color: var(--neutral-800);
@@ -99,7 +69,7 @@
                     color: var(--neutral-0);
                   }
 
-                  .c-business-type-card-icon {
+                  .c-card-icon {
                     width: var(--px20);
                     height: var(--px20);
 
@@ -110,14 +80,14 @@
                   }
                 }
 
-                .c-business-type-card-text {
+                .c-card-text {
                   flex: 1;
 
                   @media (min-width: 640px) {
                     flex: none;
                   }
 
-                  .c-business-type-card-title {
+                  .c-card-title {
                     font-size: var(--px14);
                     font-weight: 500;
                     color: var(--neutral-0);
@@ -131,160 +101,146 @@
                 }
               }
             }
-          }
-        }
 
-        // Business Details Form
-        .c-business-details-form {
-          .c-form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
+            // Business Details Form
+            .c-details-form {
+              .c-form-field {
+                display: flex;
+                flex-direction: column;
+                gap: var(--px4);
 
-            @media (min-width: 768px) {
-              grid-template-columns: 1fr 1fr;
+                .c-form-label {
+                  font-size: var(--px14);
+                  font-weight: 500;
+                  color: var(--neutral-0);
+                }
+
+                .c-form-input {
+                  padding: var(--px12) var(--px16);
+                  background-color: var(--neutral-950);
+                  border: 1px solid var(--neutral-700);
+                  border-radius: var(--px8);
+                  color: var(--neutral-0);
+                  font-size: var(--px14);
+                  transition: border-color 0.2s ease;
+
+                  &:focus {
+                    outline: none;
+                    border-color: var(--primary-500);
+                  }
+
+                  &.has-error {
+                    border-color: var(--error-500);
+                  }
+
+                  &::placeholder {
+                    color: var(--neutral-400);
+                  }
+                }
+
+                .c-form-error {
+                  font-size: var(--px12);
+                  color: var(--error-400);
+                  margin-top: var(--px4);
+                }
+              }
+
+              // LLC Details Section
+              .c-llc-details-section {
+                .c-llc-details-title {
+                  font-size: var(--px16);
+                  font-weight: 600;
+                  color: var(--neutral-0);
+                  margin-bottom: 1rem;
+                }
+
+                .c-llc-details-grid {
+                  display: grid;
+                  grid-template-columns: 1fr;
+                  gap: 1rem;
+
+                  @media (min-width: 768px) {
+                    grid-template-columns: 1fr 1fr;
+                  }
+                }
+              }
+
+              // Corporation Details Section
+              .c-corporation-details-section {
+                .c-corporation-details-title {
+                  font-size: var(--px16);
+                  font-weight: 600;
+                  color: var(--neutral-0);
+                  margin-bottom: 1rem;
+                }
+
+                .c-corporation-details-grid {
+                  display: grid;
+                  grid-template-columns: 1fr;
+                  gap: 1rem;
+
+                  @media (min-width: 768px) {
+                    grid-template-columns: 1fr 1fr;
+                  }
+                }
+              }
+
+              // Fiscal Year Section
+              .c-fiscal-year-section {
+                .c-fiscal-year-title {
+                  font-size: var(--px16);
+                  font-weight: 600;
+                  color: var(--neutral-0);
+                  margin-bottom: 1rem;
+                }
+
+                .c-fiscal-year-grid {
+                  display: grid;
+                  grid-template-columns: 1fr;
+                  gap: 1rem;
+
+                  @media (min-width: 768px) {
+                    grid-template-columns: 1fr 1fr;
+                  }
+                }
+              }
             }
 
-            .c-form-group-full {
-              grid-column: 1 / -1;
-            }
-          }
-
-          .c-form-field {
-            display: flex;
-            flex-direction: column;
-            gap: var(--px4);
-
-            .c-form-label {
-              font-size: var(--px14);
-              font-weight: 500;
-              color: var(--neutral-0);
-            }
-
-            .c-form-input {
+            // Validation Errors
+            .c-validation-errors {
               padding: var(--px12) var(--px16);
-              background-color: var(--neutral-950);
-              border: 1px solid var(--neutral-700);
+              background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
+              border: 1px solid var(--error-800);
               border-radius: var(--px8);
-              color: var(--neutral-0);
-              font-size: var(--px14);
-              transition: border-color 0.2s ease;
-
-              &:focus {
-                outline: none;
-                border-color: var(--primary-500);
-              }
-
-              &.has-error {
-                border-color: var(--error-500);
-              }
-
-              &::placeholder {
-                color: var(--neutral-400);
-              }
-            }
-
-            .c-form-error {
-              font-size: var(--px12);
               color: var(--error-400);
-              margin-top: var(--px4);
-            }
-          }
 
-          // LLC Details Section
-          .c-llc-details-section {
-            .c-llc-details-title {
-              font-size: var(--px16);
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin-bottom: 1rem;
-            }
+              .c-validation-errors-title {
+                display: flex;
+                align-items: center;
+                gap: var(--px8);
+                font-size: var(--px14);
+                font-weight: 600;
+                margin-bottom: var(--px8);
 
-            .c-llc-details-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 1rem;
-
-              @media (min-width: 768px) {
-                grid-template-columns: 1fr 1fr;
+                .c-validation-errors-icon {
+                  width: var(--px16);
+                  height: var(--px16);
+                }
               }
-            }
-          }
 
-          // Corporation Details Section
-          .c-corporation-details-section {
-            .c-corporation-details-title {
-              font-size: var(--px16);
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin-bottom: 1rem;
-            }
+              .c-validation-errors-list {
+                margin: 0;
+                padding-left: var(--px16);
+                font-size: var(--px12);
+                line-height: 1.4;
 
-            .c-corporation-details-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 1rem;
+                li {
+                  margin-bottom: var(--px4);
 
-              @media (min-width: 768px) {
-                grid-template-columns: 1fr 1fr;
-              }
-            }
-          }
-
-          // Fiscal Year Section
-          .c-fiscal-year-section {
-            .c-fiscal-year-title {
-              font-size: var(--px16);
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin-bottom: 1rem;
-            }
-
-            .c-fiscal-year-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 1rem;
-
-              @media (min-width: 768px) {
-                grid-template-columns: 1fr 1fr;
-              }
-            }
-          }
-        }
-
-        // Validation Errors
-        .c-validation-errors {
-          padding: var(--px12) var(--px16);
-          background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
-          border: 1px solid var(--error-800);
-          border-radius: var(--px8);
-          color: var(--error-400);
-
-          .c-validation-errors-title {
-            display: flex;
-            align-items: center;
-            gap: var(--px8);
-            font-size: var(--px14);
-            font-weight: 600;
-            margin-bottom: var(--px8);
-
-            .c-validation-errors-icon {
-              width: var(--px16);
-              height: var(--px16);
-            }
-          }
-
-          .c-validation-errors-list {
-            margin: 0;
-            padding-left: var(--px16);
-            font-size: var(--px12);
-            line-height: 1.4;
-
-            li {
-              margin-bottom: var(--px4);
-              
-              &:last-child {
-                margin-bottom: 0;
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                }
               }
             }
           }

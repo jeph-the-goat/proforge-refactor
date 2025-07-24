@@ -1,32 +1,7 @@
 .cWelcomeStep {
   :global {
     .c-welcome-step {
-      &-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        row-gap: var(--px24);
-        width: 100%;
-        margin: 0 auto;
-
-        .c-form-group-search {
-          width: 100%;
-          max-width: 100%;
-        }
-      }
-
       &-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        h3 {
-          font-size: var(--px32);
-          font-weight: 600;
-          color: var(--neutral-0);
-          margin-bottom: 2rem;
-        }
-
         .c-company-section {
           .c-logo-upload {
             align-items: flex-start;
@@ -39,87 +14,53 @@
             .c-logo-upload-header {
               display: inline-flex !important;
               flex: 1;
-              justify-content: center;
+              flex-wrap: wrap;
+              width: 100%;
               align-items: center;
               flex-direction: row !important;
-              margin-top: 1rem;
-              gap: var(--px8);
+              gap: var(--from-32-to-16px);
               font-size: var(--px16);
               font-weight: 600;
               color: var(--neutral-0);
-              margin-bottom: var(--px4);
 
-              svg {
-                width: 5rem;
-                height: 5rem;
+              .c-logo-preview {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 7rem;
+                height: 7rem;
+                margin: auto;
                 border-radius: var(--px8);
                 border: 1px solid var(--neutral-700);
               }
 
-              p {
-                margin: 0 var(--px16) 0 0;
-                font-size: var(--px14);
-                color: var(--neutral-400);
-                margin-bottom: 2rem;
-                line-height: 1.4;
+              svg {
+                width: 2rem;
+                height: 2rem;
               }
+            }
+
+            p {
+              margin: 0 var(--px16) 0 0;
+              font-size: var(--px14);
+              color: var(--neutral-400);
+              line-height: 1.4;
             }
 
             .c-logo-input {
               flex: 1;
-              margin-top: 1rem;
               justify-content: flex-start;
               flex-direction: row !important;
-              max-width: 20em;
 
-              .c-form-group-input {
-                input {
-                  font-size: var(--px14);
-                  transition: border-color 0.2s ease;
-                }
+              input {
+                font-size: var(--px14);
+                background-color: var(--neutral-950);
+                margin-top: 1rem;
+                border-radius: var(--px8);
+                border: 1px solid var(--neutral-700);
+                cursor: pointer;
+                transition: border-color 0.2s ease;
               }
-            }
-          }
-        }
-
-        .c-contact-section {
-          .c-contact-title {
-            font-size: var(--px16);
-            font-weight: 600;
-            color: var(--neutral-0);
-            margin-bottom: 1rem;
-          }
-
-          .c-contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-
-            @media (min-width: 768px) {
-              grid-template-columns: 1fr 1fr;
-            }
-          }
-        }
-
-        .c-address-section {
-          .c-address-title {
-            font-size: var(--px16);
-            font-weight: 600;
-            color: var(--neutral-0);
-            margin-bottom: 1rem;
-          }
-
-          .c-address-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-
-            @media (min-width: 768px) {
-              grid-template-columns: 1fr 1fr;
-            }
-
-            .c-address-full-width {
-              grid-column: 1 / -1;
             }
           }
         }

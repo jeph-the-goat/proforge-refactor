@@ -40,12 +40,16 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "jsdom": "^26.1.0",
     "msw": "^2.10.3",
     "next-test-api-route-handler": "^4.0.16",
     "prisma": "^6.11.1",
     "typescript": "^5",
-    "vitest": "^3.2.4"
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^3.2.4",
+    "@testing-library/jest-dom": "latest"
   }
 }

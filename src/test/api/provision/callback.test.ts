@@ -7,7 +7,7 @@ const mockProvisioningService = vi.hoisted(() => ({
   updateProvisioningStatus: vi.fn(),
 }));
 
-vi.mock('@lib/provisioning/provision-service', () => ({
+vi.mock('@/lib/provisioning/provision-service', () => ({
   ProvisioningService: vi.fn(() => mockProvisioningService),
 }));
 
@@ -15,7 +15,7 @@ vi.mock('@prisma/client', () => ({
   PrismaClient: vi.fn().mockImplementation(() => mockPrisma),
 }));
 
-import * as handler from '@app/api/provision/callback/route';
+import * as handler from '@/app/api/provision/callback/route';
 
 describe('/api/provision/callback', () => {
   beforeEach(() => {

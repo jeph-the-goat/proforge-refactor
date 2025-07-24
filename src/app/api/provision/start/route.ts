@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {ProvisionManager, ProvisionManagerRequest} from '@/lib/provisioning/provision-manager';
-import { OnboardingDataSchema } from '@/lib/schemas/onboarding';
+import {validateOnboardingData} from '@/lib/schemas/onboarding';
 import { PrismaClient } from '@prisma/client';
-import {getServerAuthSession} from "@lib/auth";
+import {authOptions} from "@/lib/auth";
+import {getServerSession} from "next-auth";
 
 const prisma = new PrismaClient();
 const provisionManager = new ProvisionManager();
@@ -10,7 +11,7 @@ const provisionManager = new ProvisionManager();
 export async function POST(request: NextRequest) {
   try {
     // Authenticate user
-    const session = await getServerAuthSession();
+    const session = await getServerSession(authOptions);
     if (!session?.user?.email) {
       return NextResponse.json(
         { error: 'Authentication required' },
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     // Parse and validate request body
     const body = await request.json();
-    const validationResult = OnboardingDataSchema.validateSync(body.onboardingData);
+    const validationResult = validateOnboardingData(body.onboardingData);
 
     if (!validationResult) {
       console.error('Invalid onboarding data:', body.onboardingData);

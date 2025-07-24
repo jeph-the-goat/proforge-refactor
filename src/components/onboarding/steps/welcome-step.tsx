@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {Section} from "@/components";
+import {Label, Section} from "@/components";
 import { Input } from '@/components/form-elements/Input';
 import { InputSelect } from '@/components/form-elements/InputSelect';
 import { Upload } from 'lucide-react';
@@ -72,20 +72,20 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
   };
 
   return (
-    <div className={clsx(styles.cWelcomeStep, "c-welcome-step")}>
+    <div className={clsx(styles.cWelcomeStep, "c-welcome-step c-step-content")}>
       <Section
-        extraClassName="c-welcome-step-header"
         title="Welcome to ProForge ERP"
-        paragraph="Let's get started by setting up your business profile."
-      >
+        paragraph="Let's get started by setting up your business profile.">
       </Section>
 
-      <form className="c-welcome-step-content">
-        <section className="c-company-section">
+      <form className="c-welcome-step-content c-onboarding-content-inner c-step-form-group">
+        <section className="c-company-section c-onboarding-section">
           <h3>Company Info</h3>
-          <section className="c-logo-upload">
+          <div className="c-logo-upload">
             <div className="c-logo-upload-header">
+              <div className="c-logo-preview">
               {logoPreview ? (
+
                 <Image
                   src={logoPreview}
                   alt="Company logo preview"
@@ -94,17 +94,17 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
                 />
               ) : <Upload />
               }
-              <p>Upload your company logo. Recommended size: 400x400px.</p>
-            </div>
-            <div className="c-logo-input">
+              </div>
+              <div className="c-logo-input">
+                <Label>Company Logo</Label>
+                <p>Upload your company logo. Recommended size: 400x400px.</p>
                 <Controller
                   name="companyLogo"
                   control={control}
                   render={() => (
-                    <Input
+                    <input
                       type="file"
                       name="companyLogo"
-                      labelText="Upload Logo"
                       accept="image/*"
                       onChange={(e) => {
                         const target = e.target as HTMLInputElement;
@@ -116,8 +116,9 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
                     />
                   )}
                 />
+              </div>
             </div>
-          </section>
+          </div>
         {/* Company Information */}
           <Controller
             name="companyName"
@@ -135,8 +136,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
               />
             )}
           />
-
-          <div className="c-welcome-step-form-grid">
+          <div className="c-grid">
             <Controller
               name="industry"
               control={control}
@@ -179,25 +179,22 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
           </div>
 
           <Controller
-            name="website"
+            name="companyWebsite"
             control={control}
             render={({ field }) => (
               <Input
                 type="url"
                 name="website"
-                labelText="Website"
+                labelText="Company Website"
                 placeholder="https://yourcompany.com"
                 value={field.value || ''}
                 onChange={field.onChange}
-                hasErrors={!!errors.website}
-                errorText={errors.website?.message}
+                hasErrors={!!errors.companyWebsite}
+                errorText={errors.companyWebsite?.message}
               />
             )}
           />
-        </section>
-          <section className={"c-contact-section"}>
-            <h3 className="c-welcome-step-form-section-title">Contact Information</h3>
-            <div className="c-welcome-step-form-grid">
+          <div className="c-grid">
               <Controller
                 name="contactEmail"
                 control={control}
@@ -231,12 +228,11 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
                   />
                 )}
               />
-            </div>
-          </section>
-          <section className={"c-address-section"}>
-            <h3 className="c-welcome-step-form-section-title">Business Address</h3>
-            <div className="c-welcome-step-form-grid">
-              <div className="c-welcome-step-form-grid-full">
+          </div>
+        </section>
+        <section className="c-onboarding-section">
+          <h3>Business Address</h3>
+          <div className="c-grid-full">
                 <Controller
                   name="address.street"
                   control={control}
@@ -255,6 +251,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
                 />
               </div>
 
+          <div className="c-grid">
               <Controller
                 name="address.city"
                 control={control}
@@ -322,7 +319,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
                   />
                 )}
               />
-            </div>
+          </div>
           </section>
       </form>
     </div>

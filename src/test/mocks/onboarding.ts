@@ -1,7 +1,8 @@
-import type { OnboardingData } from '@/lib/schemas/onboarding';
+import {OnboardingData, validateOnboardingData} from '@/lib/schemas/onboarding';
 
 export const mockOnboardingData: OnboardingData = {
   businessInfo: {
+    companyLogo: "",
     companyName: 'Test Company',
     address: {
       street: '123 Business Ave',
@@ -74,6 +75,7 @@ export const mockOnboardingData: OnboardingData = {
 // Variations for different test scenarios
 export const mockOnboardingDataMinimal: Partial<OnboardingData> = {
   businessInfo: {
+    companyLogo: "",
     companyName: 'Minimal Test Company',
     address: {
       street: '456 Minimal St',

@@ -101,6 +101,7 @@ export const Plans: PlanProps[] = [
       'Custom integrations',
       'Enterprise-level security & compliance'
     ],
+    userCount: 200,
     bestFor: 'Large enterprises',
     blockchainConnections: 'Unlimited blockchain',
     smartContractAutomation: 'AI-powered contract builder',

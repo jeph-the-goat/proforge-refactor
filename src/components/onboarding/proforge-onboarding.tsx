@@ -330,7 +330,6 @@ export default function ProForgeOnboarding({
         {/* Main content */}
         <div className="c-onboarding-main">
           <main className="c-onboarding-content">
-            <div className="c-onboarding-content-inner">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentStep}
@@ -424,7 +423,6 @@ export default function ProForgeOnboarding({
                   </div>
                 </motion.div>
               </AnimatePresence>
-            </div>
           </main>
         </div>
       </div>

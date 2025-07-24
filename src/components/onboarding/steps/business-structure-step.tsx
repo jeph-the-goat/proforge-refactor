@@ -9,6 +9,8 @@ import { Building2, Users, Shield, TrendingUp } from 'lucide-react';
 import { BusinessStructureSchema, type BusinessStructure } from '@/lib/schemas/onboarding/business-structure.schema';
 import { cn } from '@/lib/utils';
 import styles from '@/styles/onboarding/BusinessStructureStep.module.scss';
+import formStyles from "@/styles/onboarding/CommonStep.module.scss";
+import {Section} from "@/components";
 
 interface BusinessStructureStepProps {
   businessStructure: BusinessStructure | undefined;
@@ -97,31 +99,30 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
 
   return (
     <div className={cn(styles.cBusinessStructureStep, "c-business-structure-step")}>
-      <div className="c-business-structure-header">
-        <h2>Business Structure</h2>
-        <p>Configure your business structure and fiscal settings.</p>
-      </div>
+      <Section
+        title="Business Structure"
+        paragraph="Configure your business structure and fiscal settings.">
+      </Section>
 
-      <div className="c-business-structure-content">
-        {/* Business Type Selection */}
-        <div className="c-business-type-section">
-          <h3 className="c-business-type-section-title">Choose Your Business Type</h3>
-          <div className="c-business-type-grid">
+      <section className="c-onboarding-content-inner c-business-structure-step-content">
+        <section className="c-selection">
+          <h3>Choose Your Business Type</h3>
+          <div className="c-grid">
             {Object.entries(BUSINESS_TYPE_ICONS).map(([type, Icon]) => {
               const isSelected = businessType === type;
               return (
                 <div
                   key={type}
                   className={cn(
-                    "c-business-type-card",
+                    "c-card",
                     isSelected && "is-selected"
                   )}
                   onClick={() => handleTypeChange(type as BusinessStructure['businessType'])}
                 >
-                  <div className="c-business-type-card-icon">
+                  <div className="c-card-icon">
                     <Icon />
                   </div>
-                  <div className="c-business-type-card-content">
+                  <div className="c-card-content">
                     <h3>{BUSINESS_TYPE_LABELS[type as keyof typeof BUSINESS_TYPE_LABELS]}</h3>
                     <p>{BUSINESS_TYPE_DESCRIPTIONS[type as keyof typeof BUSINESS_TYPE_DESCRIPTIONS]}</p>
                   </div>
@@ -129,18 +130,17 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
               );
             })}
           </div>
-        </div>
+        </section>
 
         {/* Business Details */}
-        <div className="c-business-details-section">
-          <h3 className="c-business-details-section-title">Business Details</h3>
-          <div className="c-business-details-form">
+        <section className="c-section">
+          <form className="c-details-form">
             
             {/* LLC Details */}
             {businessType === 'LLC' && (
-              <div className="c-business-details-subsection">
-                <h4 className="c-business-details-subsection-title">LLC Details</h4>
-                <div className="c-business-details-subsection-content">
+              <div className="c-details-subsection">
+                <h3>LLC Details</h3>
+                <div className="c-details-subsection-content">
                   <Controller
                     name="llcDetails.memberType"
                     control={control}
@@ -183,9 +183,9 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
 
             {/* Corporation Details */}
             {businessType === 'Corporation' && (
-              <div className="c-business-details-subsection">
-                <h4 className="c-business-details-subsection-title">Corporation Details</h4>
-                <div className="c-business-details-subsection-content">
+              <div className="c-details-subsection">
+                <h3>Corporation Details</h3>
+                <div className="c-details-subsection-content">
                   <Controller
                     name="corporationDetails.type"
                     control={control}
@@ -225,7 +225,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
             )}
 
             {/* Tax Information */}
-            <div className="c-business-details-form-grid">
+            <div className="c-grid">
               <Controller
                 name="taxId"
                 control={control}
@@ -242,8 +242,8 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
                   />
                 )}
               />
-              <div className="c-business-details-form-grid-full">
-                <div className="c-date-picker-group">
+              <div className="c-grid-full">
+                <div className="c-date-picker-group c-full-width">
                   <Controller
                     name="fiscalYearStart"
                     control={control}
@@ -303,9 +303,9 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </form>
+        </section>
+      </section>
     </div>
   );
 }

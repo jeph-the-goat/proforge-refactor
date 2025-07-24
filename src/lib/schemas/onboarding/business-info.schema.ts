@@ -47,7 +47,8 @@ export const BusinessInfoSchema = yup.object({
     .optional()
     .default(""), // Base64 encoded image
   
-  website: yup.string()
+  companyWebsite: yup.string()
+    .min(1, 'Company website is required')
     .url('Please enter a valid URL')
     .required(),
   

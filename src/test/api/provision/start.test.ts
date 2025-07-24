@@ -2,7 +2,10 @@ import { testApiHandler } from 'next-test-api-route-handler';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { getServerSession } from 'next-auth';
 import { mockPrisma, mockUserSession, setupSuccessfulAuth } from '../../mocks/auth';
-import { mockOnboardingData, mockOnboardingDataMinimal } from '../../mocks/onboarding'; // ✅ Import shared data
+import {
+  mockOnboardingData,
+  mockOnboardingDataMinimal,
+} from '../../mocks/onboarding'; // ✅ Import shared data
 
 const mockProvisionManager = vi.hoisted(() => ({
   startERPProvisioning: vi.fn(),
@@ -37,7 +40,21 @@ vi.mock('@/lib/schemas/onboarding', () => ({
   },
 }));
 
+
+// Mock the validation function
+vi.mock('@/lib/schemas/onboarding', async () => {
+  const actual = await vi.importActual('@/lib/schemas/onboarding');
+  return {
+    ...actual,
+    validateOnboardingData: vi.fn()
+  };
+});
+
+// Get the mocked function with proper typing
+const mockValidateOnboardingData = vi.mocked(validateOnboardingData);
+
 import * as handler from '@/app/api/provision/start/route';
+import {validateOnboardingData} from "@/lib/schemas/onboarding";
 
 describe('/api/provision/start', () => {
   beforeEach(() => {
@@ -118,6 +135,9 @@ describe('/api/provision/start', () => {
       message: 'Valid subscription required to provision ERP system.',
       redirectUrl: '/pricing',
     });
+
+    mockValidateOnboardingData.mockReturnValue(mockOnboardingData);
+
 
     await testApiHandler({
       appHandler: handler,
