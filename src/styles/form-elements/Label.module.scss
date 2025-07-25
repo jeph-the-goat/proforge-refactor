@@ -1,0 +1,10 @@
+.cLabel {
+  :global {
+    .c-label {
+      flex: 1;
+      font-weight: 600;
+      color: var(--neutral-0);
+      margin-bottom: var(--px4);
+    }
+  }
+}

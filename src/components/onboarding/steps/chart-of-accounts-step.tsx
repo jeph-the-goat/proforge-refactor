@@ -129,40 +129,39 @@ export function ChartOfAccountsStep({
               <h3 className="c-card-title">Basic Settings</h3>
             </div>
             <div className="c-card-content">
-              <div className="c-field">
-                <div className="c-field-info">
-                  <Label className="c-field-label">Accounting Method</Label>
-                  <p className="c-field-description">
-                  Choose between cash or accrual accounting
-                </p>
+              <div className="c-account-toggle">
+                <Label
+                  title="Accounting Method"
+                  description="Choose between cash or accrual accounting"
+                >
+                </Label>
+                <Controller
+                  name="accountingMethod"
+                  control={control}
+                  render={({field}) => (
+                    <div className="c-switch-group">
+                        <span
+                          className={`c-switch-label ${
+                            field.value === 'Cash' ? 'active' : ''
+                          }`}
+                        >
+                          Cash
+                        </span>
+                      <Switch
+                        checked={field.value === 'Accrual'}
+                        onCheckedChange={(checked) => field.onChange(checked ? 'Accrual' : 'Cash')}
+                      />
+                      <span
+                        className={`c-switch-label ${
+                          field.value === 'Accrual' ? 'active' : ''
+                        }`}
+                      >
+                          Accrual
+                        </span>
+                    </div>
+                  )}
+                />
               </div>
-              <Controller
-                name="accountingMethod"
-                control={control}
-                render={({ field }) => (
-                  <div className="c-switch-group">
-                    <span
-                      className={`c-switch-label ${
-                        field.value === 'Cash' ? 'active' : ''
-                      }`}
-                    >
-                      Cash
-                    </span>
-                    <Switch
-                      checked={field.value === 'Accrual'}
-                      onCheckedChange={(checked) => field.onChange(checked ? 'Accrual' : 'Cash')}
-                    />
-                    <span
-                      className={`c-switch-label ${
-                        field.value === 'Accrual' ? 'active' : ''
-                      }`}
-                    >
-                      Accrual
-                    </span>
-                  </div>
-                )}
-              />
-            </div>
             {errors.accountingMethod && (
               <p className="c-error">{errors.accountingMethod.message}</p>
             )}
@@ -190,7 +189,6 @@ export function ChartOfAccountsStep({
 
         <section className="c-onboarding-section">
           {/* Account Segmentation */}
-          <article className="c-card">
             <div className="c-card-header">
               <div className="c-card-title-with-tooltip">
                 <h3 className="c-card-title">Account Segmentation</h3>
@@ -201,11 +199,12 @@ export function ChartOfAccountsStep({
               </div>
           </div>
             <div className="c-card-content">
-              <div className="c-field">
-                <div className="c-field-info">
-                  <Label className="c-field-label">Departments</Label>
-                  <p className="c-field-description">Track finances by department</p>
-              </div>
+              <div className="c-account-toggle">
+                <Label
+                  title="Departments"
+                  description="Track finances by department"
+                >
+                </Label>
               <Controller
                 name="segmentation.departments"
                 control={control}
@@ -216,13 +215,13 @@ export function ChartOfAccountsStep({
                   />
                 )}
               />
-            </div>
-
-              <div className="c-field">
-                <div className="c-field-info">
-                  <Label className="c-field-label">Cost Centers</Label>
-                  <p className="c-field-description">Enable cost center tracking</p>
               </div>
+
+              <div className="c-account-toggle">
+                <Label
+                  title="Cost Centers"
+                  description="Track finances by cost center">
+                </Label>
               <Controller
                 name="segmentation.costCenters"
                 control={control}
@@ -233,30 +232,28 @@ export function ChartOfAccountsStep({
                   />
                 )}
               />
-            </div>
-
-              <div className="c-field">
-                <div className="c-field-info">
-                  <Label className="c-field-label">Projects</Label>
-                  <p className="c-field-description">Track finances by project</p>
               </div>
+
+              <div className="c-account-toggle">
+                <Label
+                  title="Projects"
+                  description="Track finances by project">
+                </Label>
               <Controller
                 name="segmentation.projects"
                 control={control}
-                render={({ field }) => (
+                render={({field}) => (
                   <Switch
                     checked={field.value}
                     onCheckedChange={field.onChange}
                   />
                 )}
               />
-            </div>
+              </div>
           </div>
-          </article>
         </section>
-        <section className="c-onboarding-section">
           {/* Entity-Specific Settings */}
-          <article className="c-card c-entity-specific-card" data-business-type={businessType}>
+        <section className="c-onboarding-section" data-business-type={businessType}>
             <div className="c-card-header">
               <div className="c-card-title-with-tooltip">
                 <h3 className="c-card-title">Entity-Specific Settings</h3>
@@ -267,8 +264,8 @@ export function ChartOfAccountsStep({
             </div>
 
             {businessType === 'LLC' && (
-              <div className="c-card-content">
-                <div className="c-field">
+              <div className="c-inline-grid">
+                <div className="c-card-content">
                   <Controller
                     name="ownershipStructure.distributionHandling"
                     control={control}
@@ -284,15 +281,20 @@ export function ChartOfAccountsStep({
                         ]}
                         value={field.value || ''}
                         onValueChange={field.onChange}
+                        hasDescription
                       />
                     )}
                   />
-                  <p className="c-field-description">
-                    How profits and losses will be distributed among members
-                  </p>
+                  <div className="c-field">
+                    <div className="c-field-info">
+                      <p className="c-field-description">
+                        How profits and losses will be distributed among members
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="c-field">
+                <div className="c-card-content">
                   <Controller
                     name="ownershipStructure.equityAccounts"
                     control={control}
@@ -308,12 +310,17 @@ export function ChartOfAccountsStep({
                         ]}
                         value={field.value?.[0] || ''}
                         onValueChange={(value) => field.onChange([value])}
+                        hasDescription
                       />
                     )}
                   />
-                  <p className="c-field-description">
-                    How member equity will be tracked in the system
-                  </p>
+                  <div className="c-field">
+                    <div className="c-field-info">
+                      <p className="c-field-description">
+                        How member equity will be tracked in the system
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -321,6 +328,7 @@ export function ChartOfAccountsStep({
             {businessType === 'Corporation' && (
               <div className="c-card-content">
                 <div className="c-field">
+                  <div className="c-field-info">
                   <Controller
                     name="ownershipStructure.stockStructure"
                     control={control}
@@ -336,15 +344,18 @@ export function ChartOfAccountsStep({
                         ]}
                         value={field.value || ''}
                         onValueChange={field.onChange}
+                        hasDescription
                       />
                     )}
                   />
-                  <p className="c-field-description">
-                    Type of shares your corporation will issue
-                  </p>
+                    <p className="c-field-description">
+                      Type of shares your corporation will issue
+                    </p>
+                </div>
                 </div>
 
                 <div className="c-field">
+                  <div className="c-field-info">
                   <Controller
                     name="ownershipStructure.retainedEarnings"
                     control={control}
@@ -360,15 +371,18 @@ export function ChartOfAccountsStep({
                         ]}
                         value={field.value || ''}
                         onValueChange={field.onChange}
+                        hasDescription
                       />
                     )}
                   />
-                  <p className="c-field-description">
-                    How the company will handle undistributed profits
-                  </p>
+                    <p className="c-field-description">
+                      How the company will handle undistributed profits
+                    </p>
+                  </div>
                 </div>
 
                 <div className="c-field">
+                  <div className="c-field-info">
                   <Controller
                     name="ownershipStructure.equityAccounts"
                     control={control}
@@ -384,19 +398,22 @@ export function ChartOfAccountsStep({
                         ]}
                         value={field.value?.[0] || ''}
                         onValueChange={(value) => field.onChange([value])}
+                        hasDescription
                       />
                     )}
                   />
-                  <p className="c-field-description">
-                    How shareholder equity will be tracked in the system
-                  </p>
+                    <p className="c-field-description">
+                      How shareholder equity will be tracked in the system
+                    </p>
                 </div>
+              </div>
               </div>
             )}
 
             {(businessType === 'SoleProprietorship' || businessType === 'Partnership') && (
               <div className="c-card-content">
                 <div className="c-field">
+                  <div className="c-field-info">
                   <Controller
                     name="ownershipStructure.equityAccounts"
                     control={control}
@@ -414,16 +431,19 @@ export function ChartOfAccountsStep({
                         ]}
                         value={field.value?.[0] || ''}
                         onValueChange={(value) => field.onChange([value])}
+                        hasDescription
                       />
                     )}
                   />
-                  <p className="c-field-description">
-                    How owner&apos;s equity will be tracked in the system
-                  </p>
+                    <p className="c-field-description">
+                      How owner&apos;s equity will be tracked in the system
+                    </p>
+                </div>
                 </div>
 
                 {businessType === 'Partnership' && (
                   <div className="c-field">
+                    <div className="c-field-info">
                     <Controller
                       name="ownershipStructure.distributionHandling"
                       control={control}
@@ -439,12 +459,14 @@ export function ChartOfAccountsStep({
                           ]}
                           value={field.value || ''}
                           onValueChange={field.onChange}
+                          hasDescription
                         />
                       )}
                     />
-                    <p className="c-field-description">
-                      How profits and losses will be shared between partners
-                    </p>
+                      <p className="c-field-description">
+                        How profits and losses will be shared between partners
+                      </p>
+                  </div>
                   </div>
                 )}
               </div>
@@ -457,7 +479,6 @@ export function ChartOfAccountsStep({
                 </p>
               </div>
             )}
-          </article>
         </section>
       </form>
     </div>

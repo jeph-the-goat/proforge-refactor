@@ -55,11 +55,16 @@
               input {
                 font-size: var(--px14);
                 background-color: var(--neutral-950);
+                max-width: 6rem;
                 margin-top: 1rem;
                 border-radius: var(--px8);
                 border: 1px solid var(--neutral-700);
                 cursor: pointer;
                 transition: border-color 0.2s ease;
+              }
+
+              @media (min-width: 640px) {
+                max-width: 100%;
               }
             }
           }

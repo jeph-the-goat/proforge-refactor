@@ -1,78 +1,20 @@
 .cUserSetupStep {
   &:global {
     &.c-user-setup-step {
-      .c-user-setup-step-header {
-        margin-bottom: 1.5rem;
-
-        @media (min-width: 640px) {
-          margin-bottom: 2rem;
-        }
-
-        .c-user-setup-step-title {
-          font-size: var(--px24);
-          font-weight: 700;
-          color: var(--neutral-0);
-          margin-bottom: var(--px8);
-          line-height: 1.2;
-        }
-
-        .c-user-setup-step-description {
-          font-size: var(--px16);
-          color: var(--neutral-400);
-          margin: 0;
-          line-height: 1.5;
-        }
-      }
-
       .c-user-setup-step-content {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
 
-        @media (min-width: 640px) {
-          gap: 1.5rem;
-        }
-
-        // Admin User Section
-        .c-admin-user-section {
-          .c-admin-user-title {
-            font-size: var(--px16);
-            font-weight: 600;
-            color: var(--neutral-0);
-            margin-bottom: 1rem;
-          }
-
-          .c-admin-user-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-
-            @media (min-width: 768px) {
-              grid-template-columns: 1fr 1fr;
-            }
-          }
-        }
-
-        // Additional Users Section
         .c-additional-users-section {
-          .c-additional-users-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
+          .c-additional-users-form-grid {
+            --columns: 1;
+            display: grid;
+            margin: 0;
+            grid-template-columns: repeat(var(--columns), 1fr);
+            gap: var(--px24);
 
-            .c-additional-users-title {
-              font-size: var(--px16);
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin: 0;
-            }
-
-            .c-add-user-btn {
-              --btn-size: var(--px32);
-              --btn-min-height: var(--px32);
-              --btn-padding-x: var(--px12);
-              --btn-font-size: var(--px14);
+            @media (min-width: 800px) {
+              --columns: 3;
             }
           }
 
@@ -116,34 +58,51 @@
                   color: var(--neutral-300);
                 }
               }
-
-              .c-remove-user-btn {
-                --btn-size: var(--px24);
-                --btn-min-height: var(--px24);
-                --btn-padding-x: var(--px8);
-                --btn-bg-color: var(--error-500);
-                --btn-hover-bg-color: var(--error-600);
-                --btn-color: var(--neutral-0);
-                
-                flex-shrink: 0;
-              }
             }
           }
+
+          .c-add-user-btn {
+            --btn-min-height: var(--px44);
+            --btn-padding-x: var(--px12);
+            --btn-font-size: var(--px18);
+            width: 100%;
+          }
+
+          .c-button-icon {
+            width: var(--px20);
+            height: var(--px20);
+          }
+
+          .c-remove-user-btn {
+            --btn-min-height: var(--px44);
+            --btn-bg-color: var(--error-500);
+            --btn-hover-bg-color: var(--error-600);
+            --btn-color: var(--neutral-0);
+            width: 100%;
+            flex-shrink: 0;
+          }
         }
+      }
 
-        // Departments Section
-        .c-departments-section {
-          .c-departments-header {
+      .c-departments-section {
+        .c-departments-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--px8);
+
+          .c-department-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            gap: var(--px8);
+            padding: var(--px8) var(--px12);
+            background-color: var(--neutral-800);
+            border: 1px solid var(--neutral-700);
+            border-radius: var(--px6);
+            font-size: var(--px14);
+            color: var(--neutral-0);
 
-            .c-departments-title {
-              font-size: var(--px16);
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin: 0;
+            .c-department-name {
+              font-weight: 500;
             }
 
             .c-add-department-btn {
@@ -152,130 +111,28 @@
               --btn-padding-x: var(--px12);
               --btn-font-size: var(--px14);
             }
-          }
 
-          .c-departments-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--px8);
-
-            .c-department-item {
-              display: flex;
-              align-items: center;
-              gap: var(--px8);
-              padding: var(--px8) var(--px12);
-              background-color: var(--neutral-800);
-              border: 1px solid var(--neutral-700);
-              border-radius: var(--px6);
-              font-size: var(--px14);
-              color: var(--neutral-0);
-
-              .c-department-name {
-                font-weight: 500;
-              }
-
-              .c-remove-department-btn {
-                width: var(--px16);
-                height: var(--px16);
-                background: none;
-                border: none;
-                color: var(--neutral-400);
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: var(--px4);
-                transition: all 0.2s ease;
-
-                &:hover {
-                  background-color: var(--error-500);
-                  color: var(--neutral-0);
-                }
-
-                svg {
-                  width: var(--px10);
-                  height: var(--px10);
-                }
-              }
-            }
-          }
-        }
-
-        // Form Fields
-        .c-form-field {
-          display: flex;
-          flex-direction: column;
-          gap: var(--px4);
-
-          .c-form-label {
-            font-size: var(--px14);
-            font-weight: 500;
-            color: var(--neutral-0);
-          }
-
-          .c-form-input {
-            padding: var(--px12) var(--px16);
-            background-color: var(--neutral-950);
-            border: 1px solid var(--neutral-700);
-            border-radius: var(--px8);
-            color: var(--neutral-0);
-            font-size: var(--px14);
-            transition: border-color 0.2s ease;
-
-            &:focus {
-              outline: none;
-              border-color: var(--primary-500);
-            }
-
-            &.has-error {
-              border-color: var(--error-500);
-            }
-
-            &::placeholder {
-              color: var(--neutral-400);
-            }
-          }
-
-          .c-form-error {
-            font-size: var(--px12);
-            color: var(--error-400);
-            margin-top: var(--px4);
-          }
-        }
-
-        // Validation Errors
-        .c-validation-errors {
-          padding: var(--px12) var(--px16);
-          background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
-          border: 1px solid var(--error-800);
-          border-radius: var(--px8);
-          color: var(--error-400);
-
-          .c-validation-errors-title {
-            display: flex;
-            align-items: center;
-            gap: var(--px8);
-            font-size: var(--px14);
-            font-weight: 600;
-            margin-bottom: var(--px8);
-
-            .c-validation-errors-icon {
+            .c-remove-department-btn {
               width: var(--px16);
               height: var(--px16);
-            }
-          }
+              background: none;
+              border: none;
+              color: var(--neutral-400);
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: var(--px4);
+              transition: all 0.2s ease;
 
-          .c-validation-errors-list {
-            margin: 0;
-            padding-left: var(--px16);
-            font-size: var(--px12);
-            line-height: 1.4;
+              &:hover {
+                background-color: var(--error-500);
+                color: var(--neutral-0);
+              }
 
-            li {
-              margin-bottom: var(--px4);
-              
-              &:last-child {
-                margin-bottom: 0;
+              svg {
+                width: var(--px10);
+                height: var(--px10);
               }
             }
           }

@@ -1,19 +1,33 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
+import styles from '@/styles/form-elements/Label.module.scss';
+import {cn} from "@lib/utils";
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  children: React.ReactNode;
-  className?: string;
+  title: string;
+  description?: string;
+  extraClassName?: string;
 }
 
 export const Label: React.FC<LabelProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+                                              title,
+                                              description,
+                                              extraClassName,
+                                              ...props
+                                            }) => {
   return (
-    <label className={cn("c-form-label", className)} {...props}>
-      {children}
+    <div>
+      <label className={cn(styles.cLabel, "c-label", extraClassName)} {...props}>
+        {title}
     </label>
+      {description && (
+        <div className="c-field">
+          <div className="c-field-info">
+            <div className="c-field-description">
+              {description}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }; 

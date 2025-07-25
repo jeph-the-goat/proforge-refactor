@@ -10,6 +10,7 @@ import { Switch } from '@/components/form-elements/Switch';
 import { cn } from '@/lib/utils';
 import { ModuleSelectionSchema, type ModuleSelection } from '@/lib/schemas/onboarding/module-selection.schema';
 import styles from '@/styles/onboarding/ModuleSelectionStep.module.scss';
+import {Section} from "@/components";
 
 type ModuleSelectionStepProps = {
   data: ModuleSelection;
@@ -136,8 +137,7 @@ const MODULES: Module[] = [
 export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps) {
   const {
     control,
-    watch,
-    formState: { errors },
+    watch
   } = useForm<ModuleSelection>({
     resolver: yupResolver(ModuleSelectionSchema),
     defaultValues: data,
@@ -224,15 +224,16 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
   };
 
   return (
-    <div className={cn(styles.cModuleSelectionStep, "c-module-selection-step")}>
-      <div className="c-module-selection-step-header">
-        <h2 className="h2">Module Selection</h2>
-        <p>Choose the modules you need for your business operations.</p>
-      </div>
+    <form className={cn(styles.cModuleSelectionStep, "c-module-selection-step")}>
+      <Section
+        title="Module Selection"
+        paragraph="Choose the modules you need for your business operations"
+      >
+      </Section>
 
-      <div className="c-module-selection-step-content">
+      <section className="c-onboarding-content-inner c-module-selection-step-content">
         {/* Summary Card */}
-        <div className="c-module-selection-summary">
+        <section className="c-onboarding-section c-module-selection-summary">
           <div className="c-module-selection-summary-content">
             <div className="c-module-selection-summary-text">
               <h3>{selectedCount} Modules Selected</h3>
@@ -248,40 +249,40 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
               </div>
             )}
           </div>
-        </div>
+        </section>
 
         {/* Core Module */}
-        <div className="c-module-category">
+        <section className="c-onboarding-section c-module-category">
           <h3 className="c-module-category-title">Core Module</h3>
           <div className="c-module-grid single-column">
             {MODULES.filter(m => m.category === 'core').map(renderModule)}
           </div>
-        </div>
+        </section>
 
         {/* Standard Modules */}
-        <div className="c-module-category">
+        <section className="c-onboarding-section c-module-category">
           <h3 className="c-module-category-title">Standard Modules</h3>
           <div className="c-module-grid">
             {modulesByCategory.standard.map(renderModule)}
           </div>
-        </div>
+        </section>
 
         {/* Commerce Modules */}
-        <div className="c-module-category">
+        <section className="c-onboarding-section c-module-category">
           <h3 className="c-module-category-title">Commerce Modules</h3>
           <div className="c-module-grid">
             {modulesByCategory.commerce.map(renderModule)}
           </div>
-        </div>
+        </section>
 
         {/* AI-Powered Modules */}
-        <div className="c-module-category">
+        <section className="c-onboarding-section c-module-category">
           <h3 className="c-module-category-title">AI-Powered Modules</h3>
           <div className="c-module-grid">
             {modulesByCategory.ai.map(renderModule)}
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </form>
   );
 }

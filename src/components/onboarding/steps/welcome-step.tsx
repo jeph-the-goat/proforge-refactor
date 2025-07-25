@@ -136,7 +136,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
               />
             )}
           />
-          <div className="c-grid">
+          <div className="c-inline-grid">
             <Controller
               name="industry"
               control={control}
@@ -194,7 +194,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
               />
             )}
           />
-          <div className="c-grid">
+          <div className="c-inline-grid">
               <Controller
                 name="contactEmail"
                 control={control}
@@ -251,7 +251,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
                 />
               </div>
 
-          <div className="c-grid">
+          <div className="c-inline-grid">
               <Controller
                 name="address.city"
                 control={control}

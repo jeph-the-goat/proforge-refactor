@@ -225,7 +225,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
             )}
 
             {/* Tax Information */}
-            <div className="c-grid">
+            <div className="c-inline-grid">
               <Controller
                 name="taxId"
                 control={control}

@@ -8,15 +8,12 @@
         .c-card-header {
           display: flex;
           justify-content: space-between;
-          align-items: center;
-          margin-bottom: var(--px16);
         }
 
         .c-card-title {
           font-size: var(--font-size-h5);
           font-weight: 600;
           color: var(--neutral-0);
-          margin: 0 0 var(--px16) 0;
         }
 
         .c-card-title-with-tooltip {
@@ -44,7 +41,25 @@
 
         .c-card-content {
           display: grid;
+          margin: 1rem 0;
           gap: var(--px20);
+
+          .c-form-group {
+            margin-top: 0;
+          }
+
+          .c-account-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0;
+            gap: var(--px12);
+            transition: all 0.3s ease;
+
+            label {
+              font-weight: bold;
+            }
+          }
         }
 
         .c-title {
@@ -67,6 +82,10 @@
           border-radius: var(--px8);
           transition: background-color 0.2s ease;
 
+          .c-form-group {
+            margin-bottom: 0;
+          }
+
           &:hover {
             background-color: var(--neutral-800);
           }
@@ -74,34 +93,10 @@
           .c-field-info {
             flex: 1;
 
-            .c-field-label {
-              font-weight: 600;
-              color: var(--neutral-0);
-              margin-bottom: var(--px4);
-            }
-
             .c-field-description {
               font-size: var(--px14);
               color: var(--neutral-400);
               margin: 0;
-            }
-          }
-
-          .c-switch-group {
-            display: flex;
-            margin: auto;
-            align-items: center;
-            gap: var(--px12);
-
-            .c-switch-label {
-              font-size: var(--px14);
-              color: var(--neutral-400);
-              transition: color 0.2s ease;
-
-              &.active {
-                color: var(--neutral-0);
-                font-weight: 500;
-              }
             }
           }
         }
@@ -331,7 +326,6 @@
         }
       }
 
-      // Mobile responsiveness
       @media (max-width: 767px) {
         &-header {
           margin-bottom: var(--from-48-to-32px);

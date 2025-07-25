@@ -10,6 +10,7 @@ import { Button } from '@/components/common/Button';
 import { UserSetupSchema, type UserSetup } from '@/lib/schemas/onboarding/user-setup.schema';
 import { cn } from '@/lib/utils';
 import styles from '@/styles/onboarding/UserSetupStep.module.scss';
+import {InputSelect, Section} from "@/components";
 
 type UserSetupStepProps = {
   data: UserSetup;
@@ -132,206 +133,192 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
 
   return (
     <div className={cn(styles.cUserSetupStep, "c-user-setup-step")}>
-      <div className="c-user-setup-step-header">
-        <h2 className="h2">User Setup</h2>
-        <p>Configure your team members and organizational structure.</p>
-      </div>
+      <Section
+        title="User Setup"
+        paragraph="Configure your team members and organizational structure."
+      >
+      </Section>
 
-      <div className="c-user-setup-step-content">
+      <div className="c-onboarding-content-inner c-user-setup-step-content">
         {/* Admin User Setup */}
-        <div className="c-user-setup-section">
-          <h3 className="c-user-setup-section-title">Administrator Account</h3>
-          <div className="c-user-setup-section-content">
-            <div className="c-admin-user-form">
-              <div className="c-form-grid">
-                <Controller
-                  name="adminUser.name"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      type="text"
-                      name={field.name}
-                      labelText="Full Name"
-                      placeholder="Your full name"
-                      value={field.value}
-                      onChange={field.onChange}
-                      hasErrors={!!errors.adminUser?.name}
-                      errorText={errors.adminUser?.name?.message}
-                    />
-                  )}
-                />
-                <Controller
-                  name="adminUser.email"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      type="email"
-                      name={field.name}
-                      labelText="Email Address"
-                      placeholder="your.email@company.com"
-                      value={field.value}
-                      onChange={field.onChange}
-                      hasErrors={!!errors.adminUser?.email}
-                      errorText={errors.adminUser?.email?.message}
-                    />
-                  )}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <section className="c-onboarding-section">
+          <h3>Administrator Account</h3>
+          <Controller
+            name="adminUser.name"
+            control={control}
+            render={({field}) => (
+              <Input
+                type="text"
+                name={field.name}
+                labelText="Full Name"
+                placeholder="Your full name"
+                value={field.value}
+                onChange={field.onChange}
+                hasErrors={!!errors.adminUser?.name}
+                errorText={errors.adminUser?.name?.message}
+              />
+            )}
+          />
+          <Controller
+            name="adminUser.email"
+            control={control}
+            render={({field}) => (
+              <Input
+                type="email"
+                name={field.name}
+                labelText="Email Address"
+                placeholder="your.email@company.com"
+                value={field.value}
+                onChange={field.onChange}
+                hasErrors={!!errors.adminUser?.email}
+                errorText={errors.adminUser?.email?.message}
+              />
+            )}
+          />
+        </section>
 
         {/* Additional Users */}
-        <div className="c-user-setup-section">
-          <h3 className="c-user-setup-section-title">Additional Users</h3>
-          <div className="c-user-setup-section-content">
-            <div className="c-additional-users-section">
-              {/* Add User Form */}
-              <form onSubmit={handleAddUser} className="c-additional-users-form">
-                <div className="c-additional-users-form-grid">
-                  <Input
-                    type="text"
-                    name="newUserName"
-                    labelText="Full Name"
-                    placeholder="Jane Smith"
-                    required
-                  />
-                  <Input
-                    type="email"
-                    name="newUserEmail"
-                    labelText="Email Address"
-                    placeholder="user@company.com"
-                    required
-                  />
-                  <div className="c-select-wrapper">
-                    <label htmlFor="newUserRole" className="c-form-label">Role</label>
-                    <select
-                      id="newUserRole"
-                      name="newUserRole"
-                      className="c-select"
-                      required
-                    >
-                      <option value="">Select role</option>
-                      {USER_ROLES.map((role) => (
-                        <option key={role} value={role}>
-                          {role}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <Button
-                  type="submit"
-                  btnText="Add User"
-                  icon={<UserPlus />}
-                  extraClassName="c-additional-users-form-button"
-                />
-              </form>
+        <section className="c-onboarding-section c-additional-users-section">
+          <h3>Additional Users</h3>
+          {/* Add User Form */}
+          <form onSubmit={(e) => handleAddUser(e)}>
+            <div className="c-additional-users-form-grid">
+              <Input
+                type="text"
+                name="newUserName"
+                labelText="Full Name"
+                placeholder="Jane Smith"
+                required
+              />
+              <Input
+                type="email"
+                name="newUserEmail"
+                labelText="Email Address"
+                placeholder="user@company.com"
+                required
+              />
+              <Controller
+                name="additionalUsers.0.role"
+                control={control}
+                render={({field}) => (
+                  <InputSelect
+                    name="newUserRole"
+                    labelText="Role"
+                    placeholder="Select distribution method"
+                    options={USER_ROLES.map((role) => {
+                      return {value: role, label: role}
+                    })}
+                    value={field.value || ''}
+                    onValueChange={field.onChange}
+                  >
+                  </InputSelect>
+                )}/>
+            </div>
+            <Button
+              type="submit"
+              btnText="Add User"
+              icon={<UserPlus />}
+              extraClassName="c-add-user-btn"
+            />
+            </form>
 
-              {/* Additional Users List */}
-              {fields.length > 0 && (
-                <div className="c-additional-users-list">
-                  {fields.map((field, index) => (
-                    <div key={field.id} className="c-additional-users-list-item">
-                      <div className="c-additional-users-list-item-info">
-                        <div className="c-additional-users-list-item-avatar">
-                          {getInitials(field.name || '')}
-                        </div>
-                        <div className="c-additional-users-list-item-text">
-                          <h4>{field.name}</h4>
-                          <div className="c-additional-users-list-item-details">
-                            <span className="c-email">{field.email}</span>
-                            <span className="c-role">{field.role}</span>
-                          </div>
-                        </div>
+            {/* Additional Users List */}
+            {fields.length > 0 && (
+              <ul className="c-additional-users-list">
+                {fields.map((field, index) => (
+                  <li key={field.id} className="c-additional-users-list-item">
+                    <div className="c-additional-users-list-item-info">
+                      <div className="c-additional-users-list-item-avatar">
+                        {getInitials(field.name || '')}
                       </div>
-                      <div className="c-additional-users-list-item-actions">
-                        <button
-                          type="button"
-                          onClick={() => remove(index)}
-                          className="c-remove-user-button"
-                          title="Remove user"
-                        >
-                          <Trash2 />
-                        </button>
+                      <div className="c-additional-users-list-item-text">
+                        <h4>{field.name}</h4>
+                        <div className="c-additional-users-list-item-details">
+                          <span className="c-email">{field.email}</span>
+                          <span className="c-role">{field.role}</span>
+                        </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Department Structure */}
-        <div className="c-user-setup-section">
-          <h3 className="c-user-setup-section-title">Department Structure</h3>
-          <div className="c-user-setup-section-content">
-            <div className="c-departments-section">
-              {/* Default Departments */}
-              <div className="c-departments-grid">
-                {DEFAULT_DEPARTMENTS.map((dept) => (
-                  <button
-                    key={dept}
-                    type="button"
-                    className={cn(
-                      "c-department-button",
-                      (watch('departments') || []).includes(dept) && "is-selected"
-                    )}
-                    onClick={() => handleToggleDepartment(dept)}
-                  >
-                    {dept}
-                  </button>
-                ))}
-              </div>
-
-              {/* Custom Department Form */}
-              <div className="c-custom-department-form">
-                <Input
-                  type="text"
-                  name="newDepartment"
-                  labelText="Department Name"
-                  placeholder="Enter department name"
-                  value={newDepartment}
-                  onChange={(e) => setNewDepartment((e.target as HTMLInputElement).value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      addDepartment();
-                    }
-                  }}
-                  extraClassName="c-user-setup-department-input"
-                />
-                <Button
-                  btnText="Add"
-                  icon={<Plus />}
-                  btnVariant="icon"
-                  onClick={addDepartment}
-                  disabled={!newDepartment}
-                  extraClassName="c-custom-department-button"
-                />
-              </div>
-
-              {/* Custom Departments List */}
-              {customDepartments.length > 0 && (
-                <div className="c-custom-departments-list">
-                  {customDepartments.map((dept) => (
-                    <div key={dept} className="c-custom-departments-list-item">
-                      <span>{dept}</span>
+                    <div className="c-additional-users-list-item-actions">
                       <button
                         type="button"
-                        className="c-department-remove"
-                        onClick={() => handleRemoveDepartment(dept || '')}
+                        onClick={() => remove(index)}
+                        className="c-remove-user-button"
+                        title="Remove user"
                       >
-                        <Trash2 size={14} />
+                        <Trash2 />
                       </button>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </li>
+                ))}
+              </ul>
+            )}
+        </section>
+
+        {/* Department Structure */}
+        <section className="c-onboarding-section c-departments-section">
+          <h3>Department Structure</h3>
+            {/* Default Departments */}
+            <div className="c-departments-grid">
+              {DEFAULT_DEPARTMENTS.map((dept) => (
+                <Button
+                  key={dept}
+                  className={cn(
+                    "c-department-button",
+                    (watch('departments') || []).includes(dept) && "is-selected"
+                  )}
+                  onClick={() => handleToggleDepartment(dept)}
+                >
+                  {dept}
+                </Button>
+              ))}
             </div>
-          </div>
-        </div>
+
+            {/* Custom Department Form */}
+            <div className="c-custom-department-form">
+              <Input
+                type="text"
+                name="newDepartment"
+                labelText="Custom Department Name"
+                placeholder="Enter custom department name"
+                value={newDepartment}
+                onChange={(e) => setNewDepartment((e.target as HTMLInputElement).value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addDepartment();
+                  }
+                }}
+                extraClassName="c-user-setup-department-input"
+              />
+              <Button
+                btnText="Add"
+                icon={<Plus />}
+                btnVariant="icon"
+                onClick={addDepartment}
+                disabled={!newDepartment}
+                extraClassName="c-custom-department-button"
+              />
+            </div>
+
+            {/* Custom Departments List */}
+            {customDepartments.length > 0 && (
+              <div className="c-custom-departments-list">
+                {customDepartments.map((dept) => (
+                  <div key={dept} className="c-custom-departments-list-item">
+                    <span>{dept}</span>
+                    <button
+                      type="button"
+                      className="c-department-remove"
+                      onClick={() => handleRemoveDepartment(dept || '')}
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+        </section>
       </div>
 
       {/* Validation Errors */}
