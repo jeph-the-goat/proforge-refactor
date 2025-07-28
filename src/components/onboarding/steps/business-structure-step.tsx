@@ -106,7 +106,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
 
       <section className="c-onboarding-content-inner c-business-structure-step-content">
         <section className="c-selection">
-          <h3>Choose Your Business Type</h3>
+          <h3 className="c-section-title">Choose Your Business Type</h3>
           <div className="c-grid">
             {Object.entries(BUSINESS_TYPE_ICONS).map(([type, Icon]) => {
               const isSelected = businessType === type;
@@ -119,12 +119,13 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
                   )}
                   onClick={() => handleTypeChange(type as BusinessStructure['businessType'])}
                 >
-                  <div className="c-card-icon">
-                    <Icon />
-                  </div>
+
                   <div className="c-card-content">
-                    <h3>{BUSINESS_TYPE_LABELS[type as keyof typeof BUSINESS_TYPE_LABELS]}</h3>
-                    <p>{BUSINESS_TYPE_DESCRIPTIONS[type as keyof typeof BUSINESS_TYPE_DESCRIPTIONS]}</p>
+                    <div className="c-card-title">
+                      <Icon />
+                      <h3>{BUSINESS_TYPE_LABELS[type as keyof typeof BUSINESS_TYPE_LABELS]}</h3>
+                    </div>
+                    <p className="c-card-text">{BUSINESS_TYPE_DESCRIPTIONS[type as keyof typeof BUSINESS_TYPE_DESCRIPTIONS]}</p>
                   </div>
                 </div>
               );
@@ -139,7 +140,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
             {/* LLC Details */}
             {businessType === 'LLC' && (
               <div className="c-details-subsection">
-                <h3>LLC Details</h3>
+                <h3 className="c-section-title">LLC Details</h3>
                 <div className="c-details-subsection-content">
                   <Controller
                     name="llcDetails.memberType"
@@ -184,7 +185,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
             {/* Corporation Details */}
             {businessType === 'Corporation' && (
               <div className="c-details-subsection">
-                <h3>Corporation Details</h3>
+                <h3 className="c-section-title">Corporation Details</h3>
                 <div className="c-details-subsection-content">
                   <Controller
                     name="corporationDetails.type"

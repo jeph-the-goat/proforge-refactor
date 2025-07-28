@@ -253,7 +253,7 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
 
         {/* Core Module */}
         <section className="c-onboarding-section c-module-category">
-          <h3 className="c-module-category-title">Core Module</h3>
+          <h3 className="c-section-title">Core Module</h3>
           <div className="c-module-grid single-column">
             {MODULES.filter(m => m.category === 'core').map(renderModule)}
           </div>
@@ -261,7 +261,7 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
 
         {/* Standard Modules */}
         <section className="c-onboarding-section c-module-category">
-          <h3 className="c-module-category-title">Standard Modules</h3>
+          <h3 className="c-section-title">Standard Modules</h3>
           <div className="c-module-grid">
             {modulesByCategory.standard.map(renderModule)}
           </div>
@@ -269,7 +269,7 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
 
         {/* Commerce Modules */}
         <section className="c-onboarding-section c-module-category">
-          <h3 className="c-module-category-title">Commerce Modules</h3>
+          <h3 className="c-section-title">Commerce Modules</h3>
           <div className="c-module-grid">
             {modulesByCategory.commerce.map(renderModule)}
           </div>
@@ -277,7 +277,7 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
 
         {/* AI-Powered Modules */}
         <section className="c-onboarding-section c-module-category">
-          <h3 className="c-module-category-title">AI-Powered Modules</h3>
+          <h3 className="c-section-title">AI-Powered Modules</h3>
           <div className="c-module-grid">
             {modulesByCategory.ai.map(renderModule)}
           </div>

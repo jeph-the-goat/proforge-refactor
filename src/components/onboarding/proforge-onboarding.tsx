@@ -8,6 +8,7 @@ import { Loader2, CheckCircle, AlertCircle, Rocket } from 'lucide-react';
 import { Button } from '@/components/common/Button';
 import { Separator } from '@/components/common/Separator';
 import type { OnboardingData } from '@/lib/schemas/onboarding';
+import { Section } from "@/components";
 import { WelcomeStep } from '@/components/onboarding/steps/welcome-step';
 import { BusinessStructureStep } from '@/components/onboarding/steps/business-structure-step';
 import { ChartOfAccountsStep } from '@/components/onboarding/steps/chart-of-accounts-step';
@@ -45,7 +46,7 @@ const INITIAL_ONBOARDING_DATA: OnboardingData = {
     },
     industry: '',
     employeeCount: '1-10',
-    website: '',
+    companyWebsite: '',
     contactEmail: '',
     contactPhone: '',
   },
@@ -283,9 +284,11 @@ export default function ProForgeOnboarding({
       <div className="c-onboarding-container">
         {/* Sidebar */}
         <div className="c-onboarding-sidebar">
-          <div className="c-onboarding-sidebar-header">
-            <h2 className="c-onboarding-sidebar-title">Setup Progress</h2>
-            <p className="c-onboarding-sidebar-subtitle">Complete your ProForge setup</p>
+          <Section
+            extraClassName="c-onboarding-sidebar-header"
+            title="Setup Progress"
+            paragraph="Complete your ProForge setup"
+            >
             {/* Show saved progress indicator */}
             {loadSavedProgress() && (
               <Button
@@ -295,7 +298,7 @@ export default function ProForgeOnboarding({
                 Clear saved progress
               </Button>
             )}
-          </div>
+          </Section>
           <Separator text={''} />
           <nav className="c-onboarding-sidebar-nav">
             {[
@@ -329,7 +332,7 @@ export default function ProForgeOnboarding({
 
         {/* Main content */}
         <div className="c-onboarding-main">
-          <main className="c-onboarding-content">
+          <main className="c-onboarding-content c-form-group">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentStep}

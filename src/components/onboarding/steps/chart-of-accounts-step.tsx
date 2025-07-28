@@ -124,10 +124,7 @@ export function ChartOfAccountsStep({
       <form className="c-onboarding-content-inner c-chart-of-accounts-step-content">
         <section className="c-onboarding-section">
         {/* Basic Accounting Settings */}
-          <article className="c-card">
-            <div className="c-card-header">
-              <h3 className="c-card-title">Basic Settings</h3>
-            </div>
+          <h3 className="c-section-title">Basic Settings</h3>
             <div className="c-card-content">
               <div className="c-account-toggle">
                 <Label
@@ -166,7 +163,6 @@ export function ChartOfAccountsStep({
               <p className="c-error">{errors.accountingMethod.message}</p>
             )}
             </div>
-          </article>
           <div className="c-field">
             <Controller
               name="defaultCurrency"
@@ -189,15 +185,13 @@ export function ChartOfAccountsStep({
 
         <section className="c-onboarding-section">
           {/* Account Segmentation */}
-            <div className="c-card-header">
-              <div className="c-card-title-with-tooltip">
-                <h3 className="c-card-title">Account Segmentation</h3>
-                <Tooltip
-                  content="Segment your accounts for better financial tracking and reporting">
-                  <InfoIcon className="c-tooltip-icon"/>
-                </Tooltip>
-              </div>
-          </div>
+            <div className="c-card-title-with-tooltip c-section-title">
+              <h3>Account Segmentation</h3>
+              <Tooltip
+                content="Segment your accounts for better financial tracking and reporting">
+                <InfoIcon className="c-tooltip-icon"/>
+              </Tooltip>
+            </div>
             <div className="c-card-content">
               <div className="c-account-toggle">
                 <Label
@@ -254,14 +248,12 @@ export function ChartOfAccountsStep({
         </section>
           {/* Entity-Specific Settings */}
         <section className="c-onboarding-section" data-business-type={businessType}>
-            <div className="c-card-header">
-              <div className="c-card-title-with-tooltip">
-                <h3 className="c-card-title">Entity-Specific Settings</h3>
-                <Tooltip content="Configure settings specific to your business structure">
-                  <InfoIcon className="c-tooltip-icon"/>
-                </Tooltip>
-              </div>
-            </div>
+          <div className="c-card-title-with-tooltip c-section-title">
+            <h3>Entity-Specific Settings</h3>
+            <Tooltip content="Configure settings specific to your business structure">
+              <InfoIcon className="c-tooltip-icon"/>
+            </Tooltip>
+          </div>
 
             {businessType === 'LLC' && (
               <div className="c-inline-grid">

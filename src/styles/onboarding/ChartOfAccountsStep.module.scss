@@ -10,28 +10,20 @@
           justify-content: space-between;
         }
 
-        .c-card-title {
-          font-size: var(--font-size-h5);
-          font-weight: 600;
-          color: var(--neutral-0);
+        p {
+          font-size: var(--from-16-to-14px);
+          color: var(--neutral-400);
         }
 
         .c-card-title-with-tooltip {
           display: flex;
           height: 100%;
-          align-items: center;
-          gap: 0.5rem;
+          gap: var(--px8);
           margin: auto 0;
 
-          h3 {
-            font-size: var(--font-size-h5);
-            font-weight: 600;
-            color: var(--neutral-0);
-          }
-
-          .c-tooltip-icon {
-            width: var(--px16);
-            height: var(--px16);
+          .c-tooltip-content {
+            width: var(--px14);
+            height: var(--px14);
             color: var(--neutral-400);
             cursor: help;
             translate: 0 -15%;
@@ -41,12 +33,7 @@
 
         .c-card-content {
           display: grid;
-          margin: 1rem 0;
-          gap: var(--px20);
-
-          .c-form-group {
-            margin-top: 0;
-          }
+          margin: 0;
 
           .c-account-toggle {
             display: flex;
@@ -70,35 +57,6 @@
           line-height: 1.2;
           padding-bottom: var(--px16);
           border-bottom: 1px solid var(--neutral-800);
-        }
-
-        .c-field {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: var(--px16);
-          padding: var(--px16);
-          background-color: var(--neutral-850);
-          border-radius: var(--px8);
-          transition: background-color 0.2s ease;
-
-          .c-form-group {
-            margin-bottom: 0;
-          }
-
-          &:hover {
-            background-color: var(--neutral-800);
-          }
-
-          .c-field-info {
-            flex: 1;
-
-            .c-field-description {
-              font-size: var(--px14);
-              color: var(--neutral-400);
-              margin: 0;
-            }
-          }
         }
 
         .c-tooltip-wrapper {

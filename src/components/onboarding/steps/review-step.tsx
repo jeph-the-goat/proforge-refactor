@@ -3,12 +3,14 @@
 import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Label } from '@/components/form-elements/Label';
 import { Switch } from '@/components/form-elements/Switch';
-import { Check, AlertCircle, Building2 } from 'lucide-react';
+import {Check, AlertCircle, Building2, Edit2, User, Briefcase} from 'lucide-react';
+import { Button } from '@/components/common/Button';
 import styles from '@/styles/onboarding/ReviewStep.module.scss';
+import { cn } from '@/lib/utils';
 import * as yup from 'yup';
 import type { OnboardingData } from '@/lib/schemas/onboarding';
+import { Section , Separator } from "@/components";
 
 // Simple validation schema for review step
 const ReviewStepSchema = yup.object({
@@ -21,30 +23,10 @@ type ReviewStepData = yup.InferType<typeof ReviewStepSchema>;
 
 type ReviewStepProps = {
   data: OnboardingData;
-  onUpdateAction: (data: Partial<OnboardingData>) => void;
+  onUpdate: (data: Partial<OnboardingData>) => void;
 };
 
-type InfoRowProps = {
-  label: string;
-  value: string | React.ReactElement;
-};
-
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="c-review-step-section-title">{children}</h3>
-);
-
-const InfoRow = ({ label, value }: InfoRowProps) => (
-  <div className="c-review-step-info-row">
-    <span className="c-review-step-info-label">{label}</span>
-    {typeof value === 'string' ? (
-      <span className="c-review-step-info-value">{value}</span>
-    ) : (
-      value
-    )}
-  </div>
-);
-
-export function ReviewStep({ data, onUpdateAction }: ReviewStepProps) {
+export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
   const {
     control,
     watch,
@@ -60,210 +42,286 @@ export function ReviewStep({ data, onUpdateAction }: ReviewStepProps) {
   // Watch for changes and update parent
   useEffect(() => {
     const subscription = watch((value) => {
-      onUpdateAction({ termsAccepted: value.termsAccepted });
+      onUpdate({ termsAccepted: value.termsAccepted });
     });
     return () => subscription.unsubscribe();
-  }, [watch, onUpdateAction]);
+  }, [watch, onUpdate]);
+
+  // Calculate selected modules count and total price
+  const selectedModules = Object.entries(data.moduleSelection).filter(([_, value]) => value);
+  const totalPrice = selectedModules.length * 15; // Mock pricing
 
   return (
-    <div className={styles.cReviewStep}>
-      <div className="c-review-step-header">
-        <div className="c-review-step-title-container">
-          <Check className="c-review-step-check-icon" />
-          <h2 className="c-review-step-title">Review Your Setup</h2>
-        </div>
-        <p className="c-review-step-description">
-          Please review all the information you&apos;ve provided. You can go back to any previous step to make changes if needed.
-        </p>
-      </div>
+    <div className={cn(styles.cReviewStep, "c-review-step")}>
+      <Section
+        title="Review Your Setup"
+        paragraph="Please review all the information you've provided. You can go back to any previous step to make changes if needed."
+      />
       
-      <div className="c-review-step-scroll-container">
-        <div className="c-review-step-content">
-          {/* Company Information */}
-          <div className="c-review-step-card">
-            <SectionTitle>Company Information</SectionTitle>
-            <div className="c-review-step-card-content">
-              <InfoRow label="Company Name" value={data.businessInfo.companyName || 'Not provided'} />
-              <InfoRow label="Industry" value={data.businessInfo.industry || 'Not provided'} />
-              <InfoRow label="Employee Count" value={data.businessInfo.employeeCount || 'Not provided'} />
-              <InfoRow label="Website" value={data.businessInfo.website || 'Not provided'} />
-              <InfoRow 
-                label="Contact" 
-                value={
-                  <div className="c-review-step-contact-info">
-                    <div className="c-review-step-contact-value">{data.businessInfo.contactEmail}</div>
-                    <div className="c-review-step-contact-value">{data.businessInfo.contactPhone}</div>
-                  </div>
-                } 
-              />
-              <InfoRow 
-                label="Address" 
-                value={
-                  <div className="c-review-step-address-info">
-                    <div className="c-review-step-address-value">{data.businessInfo.address.street}</div>
-                    <div className="c-review-step-address-value">
-                      {data.businessInfo.address.city}, {data.businessInfo.address.state} {data.businessInfo.address.zip}
-                    </div>
-                    <div className="c-review-step-address-value">{data.businessInfo.address.country}</div>
-                  </div>
-                } 
-              />
+      <div className="c-onboarding-content-inner c-review-step-content">
+        {/* Company Information */}
+        <div className="c-review-section c-onboarding-section c-section-title">
+          <div className="c-review-section-header">
+            <Briefcase className="c-review-section-icon" />
+            <h3>Company Information</h3>
+            <Button
+              btnText="Edit"
+              icon={<Edit2 />}
+              extraClassName="c-review-section-edit"
+            />
+          </div>
+          <div className="c-review-section-content">
+            <div className="c-business-info-grid">
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Company Name</label>
+                <p className="c-business-info-value c-business-info-value-emphasis">
+                  {data.businessInfo.companyName || 'Not provided'}
+                </p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Industry</label>
+                <p className="c-business-info-value">{data.businessInfo.industry || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Employee Count</label>
+                <p className="c-business-info-value">{data.businessInfo.employeeCount || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Website</label>
+                <p className="c-business-info-value">{data.businessInfo.companyWebsite || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Contact Email</label>
+                <p className="c-business-info-value">{data.businessInfo.contactEmail || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Contact Phone</label>
+                <p className="c-business-info-value">{data.businessInfo.contactPhone || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item c-business-info-item-full">
+                <label className="c-business-info-label">Business Address</label>
+                {data.businessInfo.address.street && data.businessInfo.address.city &&
+                data.businessInfo.address.state && data.businessInfo.address.zip  &&
+                data.businessInfo.address.country ?
+                  <p className="c-business-info-value">
+                  {data.businessInfo.address.street}<br />
+                  {data.businessInfo.address.city}<br />
+                  {data.businessInfo.address.state}<br />
+                  {data.businessInfo.address.zip}<br />
+                  {data.businessInfo.address.country}
+                  </p> : (
+                  <p className="c-business-info-value">Not provided</p>
+                  )}
+              </div>
             </div>
           </div>
+          <Separator text={''} />
+        </div>
 
-          {/* Business Structure */}
-          <div className="c-review-step-card">
-            <SectionTitle>Business Structure</SectionTitle>
-            <div className="c-review-step-card-content">
-              <InfoRow label="Business Type" value={data.businessStructure.businessType || 'Not provided'} />
+        {/* Business Structure */}
+        <div className="c-review-section c-onboarding-section c-section-title">
+          <div className="c-review-section-header">
+            <Building2 className="c-review-section-icon" />
+            <h3 className="c-review-section-title">Business Structure</h3>
+            <Button
+              btnText="Edit"
+              icon={<Edit2 />}
+              extraClassName="c-review-section-edit"
+            />
+          </div>
+          <div className="c-review-section-content">
+            <div className="c-business-info-grid">
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Business Type</label>
+                <p className="c-business-info-value c-business-info-value-emphasis">
+                  {data.businessStructure.businessType || 'Not provided'}
+                </p>
+              </div>
               {data.businessStructure.llcDetails && (
                 <>
-                  <InfoRow label="LLC Type" value={`${data.businessStructure.llcDetails.memberType}-Member`} />
-                  <InfoRow label="Management" value={`${data.businessStructure.llcDetails.managementType}-Managed`} />
+                  <div className="c-business-info-item">
+                    <label className="c-business-info-label">LLC Type</label>
+                    <p className="c-business-info-value">{data.businessStructure.llcDetails.memberType}-Member</p>
+                  </div>
+                  <div className="c-business-info-item">
+                    <label className="c-business-info-label">Management</label>
+                    <p className="c-business-info-value">{data.businessStructure.llcDetails.managementType}-Managed</p>
+                  </div>
                 </>
               )}
               {data.businessStructure.corporationDetails && (
                 <>
-                  <InfoRow label="Corporation Type" value={data.businessStructure.corporationDetails.type || 'Not provided'} />
-                  <InfoRow label="Shareholders" value={data.businessStructure.corporationDetails.shareholderCount?.toString() || '1'} />
+                  <div className="c-business-info-item">
+                    <label className="c-business-info-label">Corporation Type</label>
+                    <p className="c-business-info-value">{data.businessStructure.corporationDetails.type || 'Not provided'}</p>
+                  </div>
+                  <div className="c-business-info-item">
+                    <label className="c-business-info-label">Shareholders</label>
+                    <p className="c-business-info-value">{data.businessStructure.corporationDetails.shareholderCount?.toString() || '1'}</p>
+                  </div>
                 </>
               )}
-              <InfoRow label="Tax ID" value={data.businessStructure.taxId || 'Not provided'} />
-              <InfoRow 
-                label="Fiscal Year" 
-                value={
-                  <div className="c-review-step-fiscal-year">
-                    <div className="c-review-step-fiscal-value">Start: {data.businessStructure.fiscalYearStart}</div>
-                    <div className="c-review-step-fiscal-value">End: {data.businessStructure.fiscalYearEnd}</div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Tax ID</label>
+                <p className="c-business-info-value">{data.businessStructure.taxId || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Fiscal Year Start</label>
+                <p className="c-business-info-value">{data.businessStructure.fiscalYearStart || 'Not provided'}</p>
+              </div>
+              <div className="c-business-info-item">
+                <label className="c-business-info-label">Fiscal Year End</label>
+                <p className="c-business-info-value">{data.businessStructure.fiscalYearEnd || 'Not provided'}</p>
+              </div>
+            </div>
+            <Separator text={''} />
+          </div>
+        </div>
+
+        {/* Selected Modules */}
+        <div className="c-review-section">
+          <div className="c-review-section-header">
+            <Check className="c-review-section-icon" />
+            <h3 className="c-review-section-title">Selected Modules</h3>
+            <Button
+              btnText="Edit"
+              icon={<Edit2 />}
+              extraClassName="c-review-section-edit"
+            />
+          </div>
+          <div className="c-review-section-content">
+            <div className="c-modules-display">
+              <div className="c-modules-summary">
+                <div className="c-modules-count">{selectedModules.length} Modules Selected</div>
+                <div className="c-modules-price">
+                  ${totalPrice}<span className="c-modules-price-period">/month</span>
+                </div>
+              </div>
+              <div className="c-modules-grid">
+                {selectedModules.map(([key]) => (
+                  <div key={key} className="c-module-item c-module-item-selected">
+                    <Check className="c-module-item-icon c-module-item-icon-selected" />
+                    <div className="c-module-item-text">
+                      <div className="c-module-item-name">
+                        {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                      </div>
+                      <div className="c-module-item-price">$15/month</div>
+                    </div>
+                    <Check className="c-module-item-check" />
                   </div>
-                } 
-              />
+                ))}
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Accounting Setup */}
-          <div className="c-review-step-card">
-            <SectionTitle>Accounting Setup</SectionTitle>
-            <div className="c-review-step-card-content">
-              <InfoRow label="Accounting Method" value={data.chartOfAccounts.accountingMethod || 'Not provided'} />
-              <InfoRow label="Default Currency" value={data.chartOfAccounts.defaultCurrency || 'Not provided'} />
-              <InfoRow 
-                label="Account Segmentation" 
-                value={
-                  <div className="c-review-step-segmentation">
-                    {data.chartOfAccounts.segmentation.departments && (
-                      <div className="c-review-step-segmentation-item">
-                        <Check className="c-review-step-segmentation-check" />
-                        <span>Departments</span>
-                      </div>
-                    )}
-                    {data.chartOfAccounts.segmentation.costCenters && (
-                      <div className="c-review-step-segmentation-item">
-                        <Check className="c-review-step-segmentation-check" />
-                        <span>Cost Centers</span>
-                      </div>
-                    )}
-                    {data.chartOfAccounts.segmentation.projects && (
-                      <div className="c-review-step-segmentation-item">
-                        <Check className="c-review-step-segmentation-check" />
-                        <span>Projects</span>
-                      </div>
-                    )}
-                  </div>
-                }
-              />
-            </div>
+        {/* User Setup */}
+        <div className="c-review-section">
+          <div className="c-review-section-header">
+            <User className="c-review-section-icon" />
+            <h3 className="c-review-section-title">User Setup</h3>
+            <Button
+              btnText="Edit"
+              icon={<Edit2 />}
+              extraClassName="c-review-section-edit"
+            />
           </div>
-
-          {/* Selected Modules */}
-          <div className="c-review-step-card">
-            <SectionTitle>Selected Modules</SectionTitle>
-            <div className="c-review-step-modules-grid">
-              {Object.entries(data.moduleSelection).map(([key, value]) => (
-                value && (
-                  <div key={key} className="c-review-step-module-item">
-                    <Check className="c-review-step-module-check" />
-                    <span className="c-review-step-module-name">
-                      {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                    </span>
+          <div className="c-review-section-content">
+            <div className="c-users-display">
+              {/* Admin User */}
+              <div className="c-admin-user">
+                <div className="c-admin-user-header">
+                  <div className="c-admin-user-avatar">
+                    {data.userSetup.adminUser.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'AD'}
                   </div>
-                )
-              ))}
-            </div>
-          </div>
-
-          {/* User Setup */}
-          <div className="c-review-step-card">
-            <SectionTitle>User Setup</SectionTitle>
-            <div className="c-review-step-card-content">
-              <div className="c-review-step-user-section">
-                <h4 className="c-review-step-subsection-title">Admin User</h4>
-                <div className="c-review-step-user-details">
-                  <InfoRow label="Name" value={data.userSetup.adminUser.name || 'Not provided'} />
-                  <InfoRow label="Email" value={data.userSetup.adminUser.email || 'Not provided'} />
+                  <div className="c-admin-user-info">
+                    <div className="c-admin-user-name">{data.userSetup.adminUser.name || 'Not provided'}</div>
+                    <div className="c-admin-user-email">{data.userSetup.adminUser.email || 'Not provided'}</div>
+                  </div>
+                  <div className="c-admin-user-badge">Admin</div>
                 </div>
               </div>
 
+              {/* Additional Users */}
               {data.userSetup.additionalUsers && data.userSetup.additionalUsers.length > 0 && (
-                <div className="c-review-step-user-section">
-                  <h4 className="c-review-step-subsection-title">Additional Users</h4>
-                  {data.userSetup.additionalUsers.map((user, index) => (
-                    <div key={index} className="c-review-step-user-info">
-                      <InfoRow label="Name" value={user.name || 'Not provided'} />
-                      <InfoRow label="Email" value={user.email || 'Not provided'} />
-                      <InfoRow label="Role" value={user.role || 'Not provided'} />
-                    </div>
-                  ))}
+                <div className="c-additional-users">
+                  <div className="c-additional-users-header">Additional Users ({data.userSetup.additionalUsers.length})</div>
+                  <div className="c-additional-users-list">
+                    {data.userSetup.additionalUsers.map((user, index) => (
+                      <div key={index} className="c-additional-user-item">
+                        <div className="c-additional-user-avatar">
+                          {user.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
+                        </div>
+                        <div className="c-additional-user-info">
+                          <div className="c-additional-user-name">{user.name || 'Not provided'}</div>
+                          <div className="c-additional-user-details">
+                            <span className="c-additional-user-email">{user.email || 'Not provided'}</span>
+                            <span className="c-additional-user-role">{user.role || 'Not provided'}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
-              <div className="c-review-step-user-section">
-                <h4 className="c-review-step-subsection-title">Departments</h4>
-                <div className="c-review-step-departments-grid">
-                  {data.userSetup.departments && data.userSetup.departments.length > 0 ? (
-                    data.userSetup.departments.map((dept, index) => (
-                      <div key={index} className="c-review-step-department-item">
-                        <Building2 className="c-review-step-department-icon" />
+              {/* Departments */}
+              {data.userSetup.departments && data.userSetup.departments.length > 0 && (
+                <div className="c-departments-display">
+                  <div className="c-departments-header">Departments ({data.userSetup.departments.length})</div>
+                  <div className="c-departments-list">
+                    {data.userSetup.departments.map((dept, index) => (
+                      <div key={index} className="c-department-tag">
                         {dept || 'Unnamed Department'}
                       </div>
-                    ))
-                  ) : (
-                    <p className="c-review-step-no-departments">No departments configured</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Terms and Conditions */}
+        <div className="c-review-section">
+          <div className="c-review-section-content">
+            <div className="c-terms-section">
+              <div className="c-terms-content">
+                <Controller
+                  name="termsAccepted"
+                  control={control}
+                  render={({ field }) => (
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      className="c-terms-switch"
+                    />
                   )}
+                />
+                <div className="c-terms-text">
+                  <div className="c-terms-title">Terms and Conditions</div>
+                  <div className="c-terms-description">
+                    I agree to the <a href="/terms" target="_blank">terms of service</a> and <a href="/privacy" target="_blank">privacy policy</a>. 
+                    By proceeding, I confirm that all information provided is accurate and complete.
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Terms and Conditions */}
-          <div className="c-review-step-card">
-            <div className="c-review-step-terms-container">
-              <div className="c-review-step-terms-info">
-                <Label htmlFor="terms" className="c-review-step-terms-label">Terms and Conditions</Label>
-                <p className="c-review-step-terms-description">
-                  I agree to the terms of service and privacy policy
-                </p>
-              </div>
-              <Controller
-                name="termsAccepted"
-                control={control}
-                render={({ field }) => (
-                  <Switch
-                    id="terms"
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                )}
-              />
-            </div>
-            {errors.termsAccepted && (
-              <div className="c-review-step-error">
-                <AlertCircle className="c-review-step-error-icon" />
-                <p className="c-review-step-error-message">You must accept the terms and conditions to continue</p>
-              </div>
-            )}
-          </div>
         </div>
+
+        {/* Validation Errors */}
+        {errors.termsAccepted && (
+          <div className="c-validation-errors">
+            <div className="c-validation-errors-title">
+              <AlertCircle />
+              Validation Error
+            </div>
+            <ul className="c-validation-errors-list">
+              <li>{errors.termsAccepted.message}</li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -20,13 +20,7 @@ export const Label: React.FC<LabelProps> = ({
         {title}
     </label>
       {description && (
-        <div className="c-field">
-          <div className="c-field-info">
-            <div className="c-field-description">
-              {description}
-            </div>
-          </div>
-        </div>
+        <p>{description}</p>
       )}
     </div>
   );

@@ -40,8 +40,6 @@ const EMPLOYEE_RANGES = [
 ];
 
 export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
-  const [logoPreview] = useState<string | null>(null);
-
   const {
     control,
     watch,
@@ -52,6 +50,9 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
     defaultValues: data,
     mode: 'onChange' // Validate on change for real-time feedback
   });
+
+  // Watch the company logo to show preview
+  const companyLogo = watch('companyLogo');
 
   // Watch form changes and update parent
   useEffect(() => {
@@ -80,14 +81,13 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
 
       <form className="c-welcome-step-content c-onboarding-content-inner c-step-form-group">
         <section className="c-company-section c-onboarding-section">
-          <h3>Company Info</h3>
+          <h3 className="c-section-title">Company Info</h3>
           <div className="c-logo-upload">
             <div className="c-logo-upload-header">
               <div className="c-logo-preview">
-              {logoPreview ? (
-
+              {companyLogo ? (
                 <Image
-                  src={logoPreview}
+                  src={companyLogo}
                   alt="Company logo preview"
                   width={96}
                   height={96}
@@ -96,8 +96,11 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
               }
               </div>
               <div className="c-logo-input">
-                <Label>Company Logo</Label>
-                <p>Upload your company logo. Recommended size: 400x400px.</p>
+                <Label
+                title={companyLogo ? 'Change Logo' : 'Upload Logo'}
+                description="Upload your company logo. Recommended size: 400x400px."
+                >
+                </Label>
                 <Controller
                   name="companyLogo"
                   control={control}
@@ -231,7 +234,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
           </div>
         </section>
         <section className="c-onboarding-section">
-          <h3>Business Address</h3>
+          <h3 className="c-section-title">Business Address</h3>
           <div className="c-grid-full">
                 <Controller
                   name="address.street"

@@ -41,6 +41,12 @@ const DEFAULT_DEPARTMENTS = [
 
 export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
   const [newDepartment, setNewDepartment] = useState('');
+  // Add separate state for new user form
+  const [newUser, setNewUser] = useState({
+    name: '',
+    email: '',
+    role: ''
+  });
   
   const {
     control,
@@ -80,7 +86,7 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
     return () => subscription.unsubscribe();
   }, [watch, onUpdate]);
 
-  const addDepartment = () => {
+  const addDepartment = (): void => {
     const watchedDepartments = watch('departments') || [];
     if (newDepartment && !watchedDepartments.includes(newDepartment)) {
       setValue('departments', [...watchedDepartments, newDepartment]);
@@ -88,7 +94,7 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
     }
   };
 
-  const handleRemoveDepartment = (department: string) => {
+  const removeDepartment = (department: string | undefined): void => {
     const watchedDepartments = watch('departments') || [];
     setValue('departments', watchedDepartments.filter((d) => d !== department));
   };
@@ -118,16 +124,20 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
 
   const handleAddUser = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const newUser = {
-      name: formData.get('newUserName') as string,
-      email: formData.get('newUserEmail') as string,
-      role: formData.get('newUserRole') as string,
-    };
-
+    
     if (newUser.name && newUser.email && newUser.role) {
-      append(newUser);
-      event.currentTarget.reset();
+      append({
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role,
+      });
+      
+      // Reset the form
+      setNewUser({
+        name: '',
+        email: '',
+        role: ''
+      });
     }
   };
 
@@ -142,7 +152,7 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
       <div className="c-onboarding-content-inner c-user-setup-step-content">
         {/* Admin User Setup */}
         <section className="c-onboarding-section">
-          <h3>Administrator Account</h3>
+          <h3 className="c-section-title">Administrator Account</h3>
           <Controller
             name="adminUser.name"
             control={control}
@@ -179,7 +189,7 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
 
         {/* Additional Users */}
         <section className="c-onboarding-section c-additional-users-section">
-          <h3>Additional Users</h3>
+          <h3 className="c-section-title">Additional Users</h3>
           {/* Add User Form */}
           <form onSubmit={(e) => handleAddUser(e)}>
             <div className="c-additional-users-form-grid">
@@ -188,39 +198,39 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
                 name="newUserName"
                 labelText="Full Name"
                 placeholder="Jane Smith"
+                value={newUser.name}
                 required
+                onChange={(e) => setNewUser(prev => ({ ...prev, name: (e.target as HTMLInputElement).value }))}
               />
               <Input
                 type="email"
                 name="newUserEmail"
                 labelText="Email Address"
                 placeholder="user@company.com"
+                value={newUser.email}
                 required
+                onChange={(e) => setNewUser(prev => ({ ...prev, email: (e.target as HTMLInputElement).value }))}
               />
-              <Controller
-                name="additionalUsers.0.role"
-                control={control}
-                render={({field}) => (
-                  <InputSelect
-                    name="newUserRole"
-                    labelText="Role"
-                    placeholder="Select distribution method"
-                    options={USER_ROLES.map((role) => {
-                      return {value: role, label: role}
-                    })}
-                    value={field.value || ''}
-                    onValueChange={field.onChange}
-                  >
-                  </InputSelect>
-                )}/>
+              <InputSelect
+                name="newUserRole"
+                labelText="Role"
+                placeholder="Select role"
+                options={USER_ROLES.map((role) => ({
+                  value: role, 
+                  label: role
+                }))}
+                value={newUser.role}
+                onValueChange={(value) => setNewUser(prev => ({ ...prev, role: value }))}
+              />
             </div>
             <Button
               type="submit"
               btnText="Add User"
               icon={<UserPlus />}
-              extraClassName="c-add-user-btn"
+              disabled={!newUser.name || !newUser.email || !newUser.role}
+              extraClassName="c-add-btn"
             />
-            </form>
+          </form>
 
             {/* Additional Users List */}
             {fields.length > 0 && (
@@ -239,16 +249,13 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
                         </div>
                       </div>
                     </div>
-                    <div className="c-additional-users-list-item-actions">
-                      <button
-                        type="button"
+                    <Button
+                      icon={<Trash2/>}
                         onClick={() => remove(index)}
-                        className="c-remove-user-button"
+                      extraClassName="c-trash-btn"
                         title="Remove user"
                       >
-                        <Trash2 />
-                      </button>
-                    </div>
+                    </Button>
                   </li>
                 ))}
               </ul>
@@ -257,25 +264,28 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
 
         {/* Department Structure */}
         <section className="c-onboarding-section c-departments-section">
-          <h3>Department Structure</h3>
+          <h3 className="c-section-title">Department Structure</h3>
             {/* Default Departments */}
             <div className="c-departments-grid">
-              {DEFAULT_DEPARTMENTS.map((dept) => (
-                <Button
-                  key={dept}
-                  className={cn(
-                    "c-department-button",
-                    (watch('departments') || []).includes(dept) && "is-selected"
-                  )}
-                  onClick={() => handleToggleDepartment(dept)}
-                >
-                  {dept}
-                </Button>
-              ))}
+              {DEFAULT_DEPARTMENTS.map((dept) => {
+                const isSelected = (watch('departments') || []).includes(dept);
+                return (
+                  <div
+                    key={dept}
+                    className={cn(
+                      "c-department-item",
+                      isSelected && "is-selected"
+                    )}
+                    onClick={() => handleToggleDepartment(dept)}
+                  >
+                    <span className="c-department-name">{dept}</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Custom Department Form */}
-            <div className="c-custom-department-form">
+          <div className="c-custom-department-section">
               <Input
                 type="text"
                 name="newDepartment"
@@ -289,35 +299,33 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
                     addDepartment();
                   }
                 }}
-                extraClassName="c-user-setup-department-input"
               />
               <Button
-                btnText="Add"
+                btnText="Add Department"
                 icon={<Plus />}
-                btnVariant="icon"
                 onClick={addDepartment}
                 disabled={!newDepartment}
-                extraClassName="c-custom-department-button"
+                extraClassName="c-add-btn"
               />
-            </div>
 
             {/* Custom Departments List */}
             {customDepartments.length > 0 && (
-              <div className="c-custom-departments-list">
+              <ol className="c-custom-departments-list">
                 {customDepartments.map((dept) => (
-                  <div key={dept} className="c-custom-departments-list-item">
+                  <li key={dept} className="c-custom-department-list-item">
                     <span>{dept}</span>
-                    <button
-                      type="button"
-                      className="c-department-remove"
-                      onClick={() => handleRemoveDepartment(dept || '')}
+                    <Button
+                      icon={<Trash2/>}
+                      onClick={() => removeDepartment(dept)}
+                      title="Remove department"
+                      extraClassName="c-trash-btn"
                     >
-                      <Trash2 size={14} />
-                    </button>
-                  </div>
+                    </Button>
+                  </li>
                 ))}
-              </div>
+              </ol>
             )}
+          </div>
         </section>
       </div>
 

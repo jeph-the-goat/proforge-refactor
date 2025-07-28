@@ -24,7 +24,7 @@
         border-radius: var(--px8);
 
         @media (min-width: 1024px) {
-          width: 16rem; // 256px - matches original lg:w-64
+          width: 20rem;
           border-bottom: none;
           border-right: 1px solid var(--neutral-700);
         }
@@ -36,35 +36,37 @@
             padding: 1.5rem;
           }
 
-          .c-onboarding-sidebar-title {
-            font-size: var(--px18);
+          h2 {
+            font-size: var(--px28);
             font-weight: 600;
             color: var(--neutral-0);
-            margin-bottom: 0;
+            margin-top: var(--section-padding-top);
             line-height: 1.25;
+
+            @media (min-width: 1024px) {
+              margin-top: 0;
+            }
           }
 
-          .c-onboarding-sidebar-subtitle {
+          .c-section-title-paragraph {
             font-size: var(--px14);
             color: var(--neutral-400);
-            margin-bottom: 0;
+            margin-bottom: 0.75rem;
+            margin-top: 0;
             line-height: 1.4;
           }
 
+          .c-container {
+            row-gap: 1rem;
+          }
+
           .c-onboarding-clear-progress-btn {
-            --btn-size: var(--px32);
-            --btn-min-height: var(--px32);
-            --btn-padding-x: var(--px12);
-            --btn-font-size: var(--px12);
-            --btn-bg-color: transparent;
-            --btn-color: var(--neutral-400);
-            --btn-hover-bg-color: var(--neutral-800);
-            --btn-hover-color: var(--neutral-200);
-            
-            margin-top: var(--px8);
-            width: 100%;
-            justify-content: flex-start;
-            text-align: left;
+            --btn-padding-x: var(--px18);
+            --btn-font-size: var(--px14);
+
+            margin-top: 0;
+            justify-content: center;
+            text-align: center;
           }
         }
 
@@ -89,10 +91,6 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
-
-            @media (min-width: 640px) {
-              padding: var(--px8) var(--px16);
-            }
 
             &:hover:not(.is-disabled) {
               background-color: var(--neutral-800);
@@ -141,8 +139,8 @@
             }
 
             .c-onboarding-sidebar-step-text {
-              font-size: var(--px14);
-              font-weight: 500;
+              font-size: var(--px18);
+              font-weight: normal;
             }
           }
         }
@@ -181,11 +179,12 @@
               --columns: 1;
               display: grid;
               margin: 0;
+              gap: var(--px12);
               grid-template-columns: repeat(var(--columns), 1fr);
-              gap: var(--px24);
 
               @media (min-width: 640px) {
                 --columns: 2;
+                gap: var(--px24);
               }
 
               .c-full-width {
@@ -194,10 +193,13 @@
             }
 
             h3 {
-              font-size: var(--px24);
+              font-size: var(--px18);
               font-weight: 600;
+            }
+
+            .c-section-title {
               color: var(--neutral-0);
-              margin-bottom: 1rem;
+              margin-bottom: var(--px18);
             }
 
             @media (min-width: 640px) {
@@ -220,6 +222,45 @@
                   color: var(--neutral-0);
                   font-weight: 500;
                 }
+              }
+            }
+
+            .c-add-btn {
+              --btn-min-height: var(--px32);
+              --btn-padding-x: var(--px12);
+              --btn-padding-y: var(--px12);
+              --btn-font-size: 16px;
+
+              width: 100%;
+
+              i {
+                width: var(--px24);
+                height: var(--px24);
+                color: var(--neutral-400);
+                cursor: pointer;
+                transition: all 0.2s ease;
+              }
+            }
+
+            .c-trash-btn {
+              --btn-min-width: var(--px18);
+              --btn-min-height: var(--px18);
+              --btn-icon-size: var(--px18);
+              --btn-icon-color: var(--neutral-400);
+              --btn-padding-x: var(--px12);
+              --btn-padding-y: var(--px8);
+
+              border: none;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: var(--px6);
+              transition: all 0.2s ease;
+
+              &:hover {
+                background-color: var(--error-500);
+                color: var(--neutral-0);
               }
             }
 
