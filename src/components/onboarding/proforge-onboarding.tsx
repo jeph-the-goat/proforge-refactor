@@ -37,6 +37,7 @@ const ONBOARDING_STORAGE_KEY = 'proforge-onboarding-progress';
 const INITIAL_ONBOARDING_DATA: OnboardingData = {
   businessInfo: {
     companyName: '',
+    companyLogo: '',
     address: {
       street: '',
       city: '',

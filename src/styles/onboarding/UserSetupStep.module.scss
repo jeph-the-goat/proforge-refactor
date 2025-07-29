@@ -1,102 +1,97 @@
 .cUserSetupStep {
   &:global {
     &.c-user-setup-step {
-      .c-user-setup-step-content {
-        display: flex;
-        flex-direction: column;
+      .c-additional-users-section {
+        .c-additional-users-form-grid {
+          --columns: 1;
+          display: grid;
+          margin: 0;
+          grid-template-columns: repeat(var(--columns), 1fr);
 
-        .c-additional-users-section {
-          .c-additional-users-form-grid {
-            --columns: 1;
-            display: grid;
-            margin: 0;
-            grid-template-columns: repeat(var(--columns), 1fr);
-
-            @media (min-width: 800px) {
-              --columns: 3;
-              gap: var(--px24);
-            }
+          @media (min-width: 800px) {
+            --columns: 3;
+            gap: var(--px24);
           }
+        }
 
-          .c-additional-users-list {
+        .c-additional-users-list {
+          display: flex;
+          flex-direction: column;
+          gap: var(--px12);
+          margin-top: var(--px24);
+          list-style: none;
+          padding: 0;
+
+          .c-additional-users-list-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
             gap: var(--px12);
-            margin-top: var(--px24);
-            list-style: none;
-            padding: 0;
+            padding: var(--px14) var(--px20);
+            background-color: var(--neutral-900);
+            border: 1px solid var(--neutral-700);
+            border-radius: var(--px8);
+            transition: all 0.2s ease;
 
-            .c-additional-users-list-item {
+            &:hover {
+              border-color: var(--neutral-600);
+              background-color: var(--neutral-850);
+            }
+
+            .c-additional-users-list-item-info {
               display: flex;
               align-items: center;
-              justify-content: space-between;
               gap: var(--px12);
-              padding: var(--px14) var(--px20);
-              background-color: var(--neutral-900);
-              border: 1px solid var(--neutral-700);
-              border-radius: var(--px8);
-              transition: all 0.2s ease;
+              flex: 1;
 
-              &:hover {
-                border-color: var(--neutral-600);
-                background-color: var(--neutral-850);
-              }
-
-              .c-additional-users-list-item-info {
+              .c-additional-users-list-item-avatar {
+                width: var(--px40);
+                height: var(--px40);
+                background-color: var(--primary-600);
+                color: var(--neutral-0);
+                border-radius: 50%;
                 display: flex;
                 align-items: center;
-                gap: var(--px12);
-                flex: 1;
+                justify-content: center;
+                font-size: var(--px14);
+                font-weight: var(--font-weight-bold);
+                flex-shrink: 0;
+              }
 
-                .c-additional-users-list-item-avatar {
-                  width: var(--px40);
-                  height: var(--px40);
-                  background-color: var(--primary-600);
+              .c-additional-users-list-item-text {
+                flex: 1;
+                min-width: 0;
+
+                h4 {
+                  font-size: var(--px16);
+                  font-weight: var(--font-weight-bold);
                   color: var(--neutral-0);
-                  border-radius: 50%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-size: var(--px14);
-                  font-weight: 600;
-                  flex-shrink: 0;
+                  margin: 0 0 var(--px4) 0;
+                  line-height: 1.3;
                 }
 
-                .c-additional-users-list-item-text {
-                  flex: 1;
-                  min-width: 0;
+                .c-additional-users-list-item-details {
+                  display: flex;
+                  flex-direction: column;
+                  gap: var(--px2);
 
-                  h4 {
-                    font-size: var(--px16);
-                    font-weight: 600;
-                    color: var(--neutral-0);
-                    margin: 0 0 var(--px4) 0;
-                    line-height: 1.3;
+                  @media (min-width: 640px) {
+                    flex-direction: row;
+                    gap: var(--px12);
                   }
 
-                  .c-additional-users-list-item-details {
-                    display: flex;
-                    flex-direction: column;
-                    gap: var(--px2);
+                  .c-email {
+                    font-size: var(--px12);
+                    color: var(--neutral-400);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
 
-                    @media (min-width: 640px) {
-                      flex-direction: row;
-                      gap: var(--px12);
-                    }
-
-                    .c-email {
-                      font-size: var(--px12);
-                      color: var(--neutral-400);
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      white-space: nowrap;
-                    }
-
-                    .c-role {
-                      font-size: 16px;
-                      color: var(--neutral-200);
-                      font-weight: 500;
-                    }
+                  .c-role {
+                    font-size: 16px;
+                    color: var(--neutral-200);
+                    font-weight: var(--font-weight-bold);
                   }
                 }
               }
@@ -105,8 +100,7 @@
         }
       }
 
-      .c-departments-section {
-        .c-departments-grid {
+      .c-departments-structure-grid {
           --columns: 1;
 
           display: grid;
@@ -149,7 +143,7 @@
 
             .c-department-name {
               font-size: var(--px14);
-              font-weight: 500;
+              font-weight: var(--font-weight-bold);
               color: var(--neutral-0);
               margin: 0;
             }
@@ -161,37 +155,34 @@
               --btn-font-size: var(--px14);
             }
           }
-        }
       }
 
-      .c-custom-department-section {
-        .c-custom-departments-list {
-          --columns: 1;
+      .c-custom-departments-list {
+        --columns: 1;
 
-          width: 100%;
-          display: grid;
-          grid-template-columns: repeat(var(--columns), 1fr);
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(var(--columns), 1fr);
+        gap: var(--px12);
+        margin-top: var(--px24);
+        background-color: var(--neutral-900);
+        transition: all 0.2s ease;
+        padding: 0;
+
+        .c-custom-department-list-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           gap: var(--px12);
-          margin-top: var(--px24);
+          padding: var(--px14) var(--px20);
           background-color: var(--neutral-900);
+          border: 1px solid var(--neutral-700);
+          border-radius: var(--px8);
           transition: all 0.2s ease;
-          padding: 0;
 
-          .c-custom-department-list-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--px12);
-            padding: var(--px14) var(--px20);
-            background-color: var(--neutral-900);
-            border: 1px solid var(--neutral-700);
-            border-radius: var(--px8);
-            transition: all 0.2s ease;
-
-            &:hover {
-              border-color: var(--neutral-600);
-              background-color: var(--neutral-850);
-            }
+          &:hover {
+            border-color: var(--neutral-600);
+            background-color: var(--neutral-850);
           }
         }
       }

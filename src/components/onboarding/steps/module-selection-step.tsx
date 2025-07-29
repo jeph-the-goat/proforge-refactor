@@ -11,6 +11,8 @@ import { cn } from '@/lib/utils';
 import { ModuleSelectionSchema, type ModuleSelection } from '@/lib/schemas/onboarding/module-selection.schema';
 import styles from '@/styles/onboarding/ModuleSelectionStep.module.scss';
 import {Section} from "@/components";
+import {StepContentSection} from "@/components/onboarding/StepContentSection";
+import {Subsection} from "@/components/form-elements/Subsection";
 
 type ModuleSelectionStepProps = {
   data: ModuleSelection;
@@ -224,65 +226,71 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
   };
 
   return (
-    <form className={cn(styles.cModuleSelectionStep, "c-module-selection-step")}>
+    <StepContentSection extraClassName={cn(styles.cModuleSelectionStep, "c-module-selection-step")}>
       <Section
         title="Module Selection"
         paragraph="Choose the modules you need for your business operations"
       >
       </Section>
 
-      <section className="c-onboarding-content-inner c-module-selection-step-content">
-        {/* Summary Card */}
-        <section className="c-onboarding-section c-module-selection-summary">
-          <div className="c-module-selection-summary-content">
-            <div className="c-module-selection-summary-text">
-              <h3>{selectedCount} Modules Selected</h3>
-              <p>Core accounting module is included by default</p>
-            </div>
-            {totalPrice > 0 && (
-              <div className="c-module-selection-summary-price">
-                <div className="c-price">
-                  ${totalPrice}
-                  <span className="c-price-period">/user/month</span>
-                </div>
-                <p className="c-price-label">Additional modules cost</p>
-              </div>
-            )}
+      {/* Summary Card */}
+      <Subsection>
+        <div className="c-module-selection-summary-hero">
+          <div className="c-module-selection-summary-hero-title">
+            <h3 className="c-module-selection-summary-hero-title-count">
+              {selectedCount} {" "}
+              <span>Modules Selected</span>
+            </h3>
+            <p>Core accounting module is included by default</p>
           </div>
-        </section>
+          {totalPrice > 0 && (
+            <div className="c-module-selection-summary-hero-price">
+              <div className="c-price">
+                ${totalPrice}
+                <span className="c-price-period">/user/month</span>
+              </div>
+              <p className="c-price-label">Additional modules cost</p>
+            </div>
+          )}
+        </div>
+      </Subsection>
 
         {/* Core Module */}
-        <section className="c-onboarding-section c-module-category">
-          <h3 className="c-section-title">Core Module</h3>
+      <Subsection
+        title="Core Module"
+        extraClassName="c-module-category">
           <div className="c-module-grid single-column">
             {MODULES.filter(m => m.category === 'core').map(renderModule)}
           </div>
-        </section>
+      </Subsection>
 
         {/* Standard Modules */}
-        <section className="c-onboarding-section c-module-category">
-          <h3 className="c-section-title">Standard Modules</h3>
+      <Subsection
+        title="Standard Modules"
+        extraClassName="c-module-category">
           <div className="c-module-grid">
             {modulesByCategory.standard.map(renderModule)}
           </div>
-        </section>
+      </Subsection>
 
         {/* Commerce Modules */}
-        <section className="c-onboarding-section c-module-category">
-          <h3 className="c-section-title">Commerce Modules</h3>
+      <Subsection
+        title="Commerce Modules"
+        extraClassName="c-module-category">
           <div className="c-module-grid">
             {modulesByCategory.commerce.map(renderModule)}
           </div>
-        </section>
+      </Subsection>
 
         {/* AI-Powered Modules */}
-        <section className="c-onboarding-section c-module-category">
-          <h3 className="c-section-title">AI-Powered Modules</h3>
+      <Subsection
+        title="AI-Powered Modules"
+        last
+        extraClassName="c-module-category">
           <div className="c-module-grid">
             {modulesByCategory.ai.map(renderModule)}
           </div>
-        </section>
-      </section>
-    </form>
+      </Subsection>
+    </StepContentSection>
   );
 }

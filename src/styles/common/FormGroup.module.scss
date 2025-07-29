@@ -9,6 +9,7 @@
       --input-border-color: var(--neutral-700);
       --input-border-radius: var(--px8);
       --input-placeholder-color: var(--neutral-400);
+      --font-weight-bold: 550;
 
       margin-bottom: var(--px18);
       width: 100%;
@@ -18,7 +19,7 @@
       label {
         display: block;
         margin-bottom: var(--px4);
-        font-weight: 600;
+        font-weight: var(--font-weight-bold);
       }
 
       p {

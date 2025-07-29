@@ -15,12 +15,12 @@ export const Label: React.FC<LabelProps> = ({
                                               ...props
                                             }) => {
   return (
-    <div>
-      <label className={cn(styles.cLabel, "c-label", extraClassName)} {...props}>
+    <div className={cn(styles.cLabelSection, "c-label-section", extraClassName)}>
+      <label className="c-label" {...props}>
         {title}
     </label>
       {description && (
-        <p>{description}</p>
+        <p className="c-description">{description}</p>
       )}
     </div>
   );

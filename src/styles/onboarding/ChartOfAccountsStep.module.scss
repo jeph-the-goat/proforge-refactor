@@ -1,340 +1,38 @@
 .cChartOfAccountsStep {
-  :global {
-    .c-chart-of-accounts-step {
-      width: 100%;
-      max-width: 100%;
+  &:global {
+    &.c-chart-of-accounts-step {
+      .c-account-settings {
+        margin-bottom: var(--px18);
 
-      &-content {
-        .c-card-header {
+        .c-account-toggle {
           display: flex;
+          align-items: center;
           justify-content: space-between;
+          margin-bottom: var(--px18);
+          gap: var(--px12);
+          transition: all 0.3s ease;
+
+          label {
+            font-weight: var(--font-weight-bold);
+          }
+
+          p {
+            font-size: var(--from-16-to-14px);
+            color: var(--neutral-400);
+          }
         }
+      }
+
+      .c-entity-setting {
+        width: 100%;
+        display: inline-flex;
+        flex: 1;
+        flex-direction: column;
+        margin: 0;
 
         p {
           font-size: var(--from-16-to-14px);
           color: var(--neutral-400);
-        }
-
-        .c-card-title-with-tooltip {
-          display: flex;
-          height: 100%;
-          gap: var(--px8);
-          margin: auto 0;
-
-          .c-tooltip-content {
-            width: var(--px14);
-            height: var(--px14);
-            color: var(--neutral-400);
-            cursor: help;
-            translate: 0 -15%;
-            transition: color 0.2s ease;
-          }
-        }
-
-        .c-card-content {
-          display: grid;
-          margin: 0;
-
-          .c-account-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0;
-            gap: var(--px12);
-            transition: all 0.3s ease;
-
-            label {
-              font-weight: bold;
-            }
-          }
-        }
-
-        .c-title {
-          font-size: var(--font-size-h4);
-          font-weight: 600;
-          margin-bottom: var(--from-24-to-20px);
-          color: var(--neutral-0);
-          line-height: 1.2;
-          padding-bottom: var(--px16);
-          border-bottom: 1px solid var(--neutral-800);
-        }
-
-        .c-tooltip-wrapper {
-          position: relative;
-          display: inline-flex;
-          align-items: center;
-
-          .c-tooltip-icon {
-            width: var(--px16);
-            height: var(--px16);
-            color: var(--neutral-400);
-            cursor: help;
-            transition: color 0.2s ease;
-
-            &:hover {
-              color: var(--neutral-200);
-            }
-          }
-        }
-
-        .c-subsection {
-          background-color: var(--neutral-900);
-          border: 1px solid var(--neutral-700);
-          border-radius: var(--px12);
-          padding: var(--from-24-to-20px);
-
-          .c-subsection-title {
-            font-size: var(--font-size-h6);
-            font-weight: 600;
-            margin-bottom: var(--from-16-to-12px);
-            color: var(--neutral-0);
-            line-height: 1.33;
-          }
-
-          .c-subsection-content {
-            display: grid;
-            gap: var(--from-20-to-16px);
-          }
-
-          .c-checkbox-group {
-            display: grid;
-            gap: var(--from-16-to-12px);
-
-            .c-checkbox-item {
-              display: flex;
-              align-items: flex-start;
-              gap: var(--px12);
-              padding: var(--px16);
-              background-color: var(--neutral-800);
-              border: 1px solid var(--neutral-700);
-              border-radius: var(--px8);
-              transition: all 0.3s ease;
-
-              &:hover {
-                background-color: var(--neutral-750);
-                border-color: var(--neutral-600);
-              }
-
-              &.is-checked {
-                background-color: color-mix(in srgb, var(--primary-500) 5%, var(--neutral-800));
-                border-color: var(--primary-600);
-              }
-
-              .c-checkbox {
-                margin-top: var(--px2);
-              }
-
-              .c-checkbox-content {
-                flex: 1;
-
-                .c-checkbox-label {
-                  font-size: var(--from-16-to-14px);
-                  font-weight: 600;
-                  color: var(--neutral-0);
-                  margin-bottom: var(--px4);
-                  line-height: 1.4;
-                }
-
-                .c-checkbox-description {
-                  font-size: var(--from-14-to-12px);
-                  color: var(--neutral-400);
-                  margin: 0;
-                  line-height: 1.5;
-                }
-              }
-            }
-          }
-        }
-
-        .c-section {
-          .c-ownership-structure-form {
-            display: grid;
-            gap: var(--from-20-to-16px);
-
-            .c-ownership-structure-item {
-              display: flex;
-              align-items: center;
-              gap: var(--px12);
-              padding: var(--px16);
-              background-color: var(--neutral-900);
-              border: 1px solid var(--neutral-700);
-              border-radius: var(--px8);
-
-              .c-ownership-structure-item-content {
-                flex: 1;
-                display: grid;
-                gap: var(--px12);
-
-                @media (min-width: 768px) {
-                  grid-template-columns: 1fr 1fr auto;
-                  align-items: center;
-                }
-
-                .c-ownership-structure-item-name {
-                  font-size: var(--from-16-to-14px);
-                  font-weight: 600;
-                  color: var(--neutral-0);
-                }
-
-                .c-ownership-structure-item-percentage {
-                  font-size: var(--from-14-to-12px);
-                  color: var(--neutral-400);
-                }
-
-                .c-ownership-structure-item-actions {
-                  display: flex;
-                  gap: var(--px8);
-
-                  .c-button {
-                    padding: var(--px8) var(--px12);
-                    font-size: var(--px12);
-                    min-width: auto;
-                  }
-                }
-              }
-            }
-
-            .c-ownership-structure-add-form {
-              display: grid;
-              gap: var(--px16);
-              padding: var(--px20);
-              background-color: var(--neutral-800);
-              border-radius: var(--px12);
-
-              @media (min-width: 768px) {
-                grid-template-columns: 1fr 1fr auto;
-                align-items: end;
-              }
-
-              .c-button {
-                padding: var(--px12) var(--px20);
-                font-size: var(--from-14-to-12px);
-
-                @media (max-width: 767px) {
-                  width: 100%;
-                }
-              }
-            }
-          }
-        }
-
-        .c-error {
-          font-size: var(--px14);
-          color: var(--error-500);
-          margin: var(--px4) 0 0;
-          padding-left: var(--px16);
-        }
-      }
-
-      .c-tooltip {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: var(--px20);
-        height: var(--px20);
-        background-color: var(--neutral-700);
-        border-radius: 50%;
-        color: var(--neutral-300);
-        cursor: help;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: var(--neutral-600);
-          color: var(--neutral-0);
-        }
-
-        svg {
-          width: var(--px12);
-          height: var(--px12);
-        }
-
-        .c-tooltip-content {
-          position: absolute;
-          bottom: 100%;
-          left: 50%;
-          transform: translateX(-50%);
-          margin-bottom: var(--px8);
-          padding: var(--px12) var(--px16);
-          background-color: var(--neutral-800);
-          border: 1px solid var(--neutral-600);
-          border-radius: var(--px8);
-          font-size: var(--px12);
-          color: var(--neutral-200);
-          white-space: nowrap;
-          opacity: 0;
-          visibility: hidden;
-          transition: all 0.3s ease;
-          z-index: 10;
-
-          &::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 4px solid transparent;
-            border-top-color: var(--neutral-600);
-          }
-        }
-
-        &:hover .c-tooltip-content {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-
-      @media (max-width: 767px) {
-        &-header {
-          margin-bottom: var(--from-48-to-32px);
-
-          h2 {
-            font-size: var(--font-size-h3);
-          }
-
-          p {
-            font-size: var(--from-18-to-16px);
-          }
-        }
-
-        .c-field {
-          flex-direction: column;
-          align-items: flex-start;
-
-          .c-field-info {
-            margin-bottom: var(--px12);
-            width: 100%;
-          }
-        }
-
-        .c-section {
-          padding: var(--from-24-to-20px);
-
-          .c-section-title {
-            font-size: var(--font-size-h5);
-          }
-
-          .c-section-content {
-            grid-template-columns: 1fr !important;
-          }
-        }
-
-        .c-subsection {
-          padding: var(--from-20-to-16px);
-        }
-
-        .c-ownership-structure-form {
-          .c-ownership-structure-item {
-            .c-ownership-structure-item-content {
-              grid-template-columns: 1fr !important;
-              gap: var(--px16);
-            }
-          }
-
-          .c-ownership-structure-add-form {
-            grid-template-columns: 1fr !important;
-            gap: var(--px16);
-          }
         }
       }
     }

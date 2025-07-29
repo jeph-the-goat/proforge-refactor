@@ -1,16 +1,18 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, {useEffect} from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {Label, Section} from "@/components";
 import { Input } from '@/components/form-elements/Input';
 import { InputSelect } from '@/components/form-elements/InputSelect';
-import { Upload } from 'lucide-react';
+import {AlertCircle, Upload} from 'lucide-react';
 import Image from 'next/image';
 import { BusinessInfoSchema, type BusinessInfo } from '@/lib/schemas/onboarding/business-info.schema';
 import styles from '@/styles/onboarding/WelcomeStep.module.scss';
 import {clsx} from "clsx";
+import {Subsection} from "@/components/form-elements/Subsection";
+import {StepContentSection} from "@/components/onboarding/StepContentSection";
 
 type WelcomeStepProps = {
   data: BusinessInfo;
@@ -73,32 +75,32 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
   };
 
   return (
-    <div className={clsx(styles.cWelcomeStep, "c-welcome-step c-step-content")}>
-      <Section
-        title="Welcome to ProForge ERP"
-        paragraph="Let's get started by setting up your business profile.">
-      </Section>
+      <StepContentSection extraClassName={clsx(styles.cWelcomeStep, "c-welcome-step")}>
+        <Section
+          title="Welcome to ProForge ERP"
+          paragraph="Let's get started by setting up your business profile.">
+        </Section>
 
-      <form className="c-welcome-step-content c-onboarding-content-inner c-step-form-group">
-        <section className="c-company-section c-onboarding-section">
-          <h3 className="c-section-title">Company Info</h3>
+        <Subsection
+          title="Company Info"
+          extraClassName="c-company-section">
           <div className="c-logo-upload">
             <div className="c-logo-upload-header">
               <div className="c-logo-preview">
-              {companyLogo ? (
-                <Image
-                  src={companyLogo}
-                  alt="Company logo preview"
-                  width={96}
-                  height={96}
-                />
-              ) : <Upload />
-              }
+                {companyLogo ? (
+                  <Image
+                    src={companyLogo}
+                    alt="Company logo preview"
+                    width={96}
+                    height={96}
+                  />
+                ) : <Upload />
+                }
               </div>
               <div className="c-logo-input">
                 <Label
-                title={companyLogo ? 'Change Logo' : 'Upload Logo'}
-                description="Upload your company logo. Recommended size: 400x400px."
+                  title={companyLogo ? 'Change Logo' : 'Upload Logo'}
+                  description="Upload your company logo. Recommended size: 400x400px."
                 >
                 </Label>
                 <Controller
@@ -122,7 +124,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
               </div>
             </div>
           </div>
-        {/* Company Information */}
+          {/* Company Information */}
           <Controller
             name="companyName"
             control={control}
@@ -180,7 +182,9 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
               )}
             />
           </div>
+        </Subsection>
 
+        <Subsection noHeader>
           <Controller
             name="companyWebsite"
             control={control}
@@ -198,133 +202,154 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
             )}
           />
           <div className="c-inline-grid">
-              <Controller
-                name="contactEmail"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    name={field.name}
-                    type="email"
-                    labelText="Contact Email"
-                    placeholder="contact@company.com"
-                    value={field.value}
-                    onChange={field.onChange}
-                    hasErrors={!!errors.contactEmail}
-                    errorText={errors.contactEmail?.message}
-                  />
-                )}
-              />
-
-              <Controller
-                name="contactPhone"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    name={field.name}
-                    type="tel"
-                    labelText="Contact Phone"
-                    placeholder="(555) 123-4567"
-                    value={field.value}
-                    onChange={field.onChange}
-                    hasErrors={!!errors.contactPhone}
-                    errorText={errors.contactPhone?.message}
-                  />
-                )}
-              />
-          </div>
-        </section>
-        <section className="c-onboarding-section">
-          <h3 className="c-section-title">Business Address</h3>
-          <div className="c-grid-full">
-                <Controller
-                  name="address.street"
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      type="text"
-                      name="address.street"
-                      labelText="Street Address"
-                      placeholder="123 Main St"
-                      value={field.value || ''}
-                      onChange={field.onChange}
-                      hasErrors={!!errors.address?.street}
-                      errorText={errors.address?.street?.message}
-                    />
-                  )}
+            <Controller
+              name="contactEmail"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  name={field.name}
+                  type="email"
+                  labelText="Contact Email"
+                  placeholder="contact@company.com"
+                  value={field.value}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.contactEmail}
+                  errorText={errors.contactEmail?.message}
                 />
-              </div>
+              )}
+            />
 
-          <div className="c-inline-grid">
-              <Controller
-                name="address.city"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    type="text"
-                    name="address.city"
-                    labelText="City"
-                    placeholder="City"
-                    value={field.value || ''}
-                    onChange={field.onChange}
-                    hasErrors={!!errors.address?.city}
-                    errorText={errors.address?.city?.message}
-                  />
-                )}
-              />
-
-              <Controller
-                name="address.state"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    type="text"
-                    name="address.state"
-                    labelText="State/Province"
-                    placeholder="State"
-                    value={field.value || ''}
-                    onChange={field.onChange}
-                    hasErrors={!!errors.address?.state}
-                    errorText={errors.address?.state?.message}
-                  />
-                )}
-              />
-
-              <Controller
-                name="address.zip"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    type="text"
-                    name="address.zip"
-                    labelText="ZIP/Postal Code"
-                    placeholder="12345"
-                    value={field.value || ''}
-                    onChange={field.onChange}
-                    hasErrors={!!errors.address?.zip}
-                    errorText={errors.address?.zip?.message}
-                  />
-                )}
-              />
-
-              <Controller
-                name="address.country"
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    type="text"
-                    name="address.country"
-                    labelText="Country"
-                    placeholder="Country"
-                    value={field.value || ''}
-                    onChange={field.onChange}
-                    hasErrors={!!errors.address?.country}
-                    errorText={errors.address?.country?.message}
-                  />
-                )}
-              />
+            <Controller
+              name="contactPhone"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  name={field.name}
+                  type="tel"
+                  labelText="Contact Phone"
+                  placeholder="(555) 123-4567"
+                  value={field.value}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.contactPhone}
+                  errorText={errors.contactPhone?.message}
+                />
+              )}
+            />
           </div>
-          </section>
-      </form>
-    </div>
+        </Subsection>
+
+        <Subsection
+          title="Business Address"
+          last
+        >
+          <div className="c-grid-full">
+            <Controller
+              name="address.street"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type="text"
+                  name="address.street"
+                  labelText="Street Address"
+                  placeholder="123 Main St"
+                  value={field.value || ''}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.address?.street}
+                  errorText={errors.address?.street?.message}
+                />
+              )}
+            />
+          </div>
+          <div className="c-inline-grid">
+            <Controller
+              name="address.city"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type="text"
+                  name="address.city"
+                  labelText="City"
+                  placeholder="City"
+                  value={field.value || ''}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.address?.city}
+                  errorText={errors.address?.city?.message}
+                />
+              )}
+            />
+
+            <Controller
+              name="address.state"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type="text"
+                  name="address.state"
+                  labelText="State/Province"
+                  placeholder="State"
+                  value={field.value || ''}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.address?.state}
+                  errorText={errors.address?.state?.message}
+                />
+              )}
+            />
+
+            <Controller
+              name="address.zip"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type="text"
+                  name="address.zip"
+                  labelText="ZIP/Postal Code"
+                  placeholder="12345"
+                  value={field.value || ''}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.address?.zip}
+                  errorText={errors.address?.zip?.message}
+                />
+              )}
+            />
+
+            <Controller
+              name="address.country"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type="text"
+                  name="address.country"
+                  labelText="Country"
+                  placeholder="Country"
+                  value={field.value || ''}
+                  onChange={field.onChange}
+                  hasErrors={!!errors.address?.country}
+                  errorText={errors.address?.country?.message}
+                />
+              )}
+            />
+          </div>
+        </Subsection>
+
+        {/* Validation Errors */}
+        {errors && (
+          <div className="c-validation-errors">
+            <div className="c-validation-errors-title">
+              <AlertCircle />
+              Validation Error
+            </div>
+            <ul className="c-validation-errors-list">
+              {errors.address && <li>{errors.address.message}</li>}
+              {errors.companyWebsite && <li>{errors.companyWebsite.message}</li>}
+              {errors.companyLogo && <li>{errors.companyLogo.message}</li>}
+              {errors.contactEmail && <li>{errors.contactEmail.message}</li>}
+              {errors.companyName && <li>{errors.companyName.message}</li>}
+              {errors.contactPhone && <li>{errors.contactPhone.message}</li>}
+              {errors.employeeCount && <li>{errors.employeeCount.message}</li>}
+              {errors.industry && <li>{errors.industry.message}</li>}
+            </ul>
+          </div>
+        )}
+      </StepContentSection>
   );
 }

@@ -1,5 +1,9 @@
 .cProForgeOnboarding {
   &:global {
+    --font-size-label: var(--px18);
+    --font-size-label-info: var(--px14);
+    --font-weight-bold: 550;
+
     &.c-proforge-onboarding {
       min-height: 100vh;
       background-color: var(--body-bg-color);
@@ -38,7 +42,7 @@
 
           h2 {
             font-size: var(--px28);
-            font-weight: 600;
+            font-weight: var(--font-weight-bold);
             color: var(--neutral-0);
             margin-top: var(--section-padding-top);
             line-height: 1.25;
@@ -49,7 +53,7 @@
           }
 
           .c-section-title-paragraph {
-            font-size: var(--px14);
+            font-size: var(--font-size-label-info);
             color: var(--neutral-400);
             margin-bottom: 0.75rem;
             margin-top: 0;
@@ -87,7 +91,7 @@
             padding: var(--px8) var(--px12);
             border-radius: var(--px8);
             margin-bottom: var(--px8);
-            font-size: var(--px14);
+            font-size: var(--font-size-label-info);
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -139,7 +143,7 @@
             }
 
             .c-onboarding-sidebar-step-text {
-              font-size: var(--px18);
+              font-size: var(--font-size-label);
               font-weight: normal;
             }
           }
@@ -163,8 +167,56 @@
             padding: 1.5rem 2rem;
           }
 
-          .c-onboarding-section {
-            margin-bottom: 2rem;
+          .c-onboarding-alert {
+            display: flex;
+            align-items: center;
+            gap: var(--px8);
+            padding: var(--px12) var(--px18);
+            border-radius: var(--px8);
+            margin-bottom: 1rem;
+            margin-top: var(--from-120-to-40px);
+            font-size: var(--px14);
+
+            @media (min-width: 640px) {
+              padding: var(--px18);
+              margin-bottom: 1.5rem;
+            }
+
+            &.c-onboarding-alert-error {
+              background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
+              color: var(--error-400);
+              border: 1px solid var(--error-800);
+            }
+
+            &.c-onboarding-alert-info {
+              background-color: color-mix(in srgb, var(--primary-500) 10%, transparent);
+              color: var(--primary-400);
+              border: 1px solid var(--primary-800);
+            }
+
+            .c-onboarding-alert-icon {
+              width: var(--px18);
+              height: var(--px18);
+              flex-shrink: 0;
+
+              @media (min-width: 640px) {
+                width: var(--px20);
+                height: var(--px20);
+              }
+
+              &.c-onboarding-alert-icon-pulse {
+                animation: pulse 2s infinite;
+              }
+            }
+
+            .c-onboarding-alert-text {
+              font-size: var(--px14);
+              margin: 0;
+
+              @media (min-width: 640px) {
+                font-size: var(--px18);
+              }
+            }
           }
 
           .c-onboarding-content-inner {
@@ -193,17 +245,12 @@
             }
 
             h3 {
-              font-size: var(--px18);
+              font-size: var(--font-size-label);
               font-weight: 600;
             }
 
-            .c-section-title {
-              color: var(--neutral-0);
-              margin-bottom: var(--px18);
-            }
-
             @media (min-width: 640px) {
-              padding: 1.5rem;
+              padding: var(--px24);
               max-width: 70rem;
             }
 
@@ -213,7 +260,7 @@
               gap: var(--px12);
 
               .c-switch-label {
-                font-size: var(--px14);
+                font-size: var(--font-size-label-info);
                 color: var(--neutral-400);
                 text-overflow-ellipsis: ellipsis;
                 transition: color 0.2s ease;
@@ -263,57 +310,6 @@
                 color: var(--neutral-0);
               }
             }
-
-            .c-onboarding-alert {
-              display: flex;
-              align-items: center;
-              gap: var(--px8);
-              padding: var(--px12) var(--px16);
-              border-radius: var(--px8);
-              margin-bottom: 1rem;
-              font-size: var(--px14);
-
-              @media (min-width: 640px) {
-                padding: var(--px16);
-                margin-bottom: 1.5rem;
-              }
-
-              &.c-onboarding-alert-error {
-                background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
-                color: var(--error-400);
-                border: 1px solid var(--error-800);
-              }
-
-              &.c-onboarding-alert-info {
-                background-color: color-mix(in srgb, var(--primary-500) 10%, transparent);
-                color: var(--primary-400);
-                border: 1px solid var(--primary-800);
-              }
-
-              .c-onboarding-alert-icon {
-                width: var(--px16);
-                height: var(--px16);
-                flex-shrink: 0;
-
-                @media (min-width: 640px) {
-                  width: var(--px20);
-                  height: var(--px20);
-                }
-
-                &.c-onboarding-alert-icon-pulse {
-                  animation: pulse 2s infinite;
-                }
-              }
-
-              .c-onboarding-alert-text {
-                font-size: var(--px14);
-                margin: 0;
-
-                @media (min-width: 640px) {
-                  font-size: var(--px16);
-                }
-              }
-            }
           }
 
           .c-onboarding-navigation {
@@ -355,8 +351,8 @@
               }
 
               .c-onboarding-nav-btn-icon {
-                width: var(--px16);
-                height: var(--px16);
+                width: var(--px18);
+                height: var(--px18);
                 margin-right: var(--px8);
 
                 &.c-onboarding-nav-btn-icon-spin {

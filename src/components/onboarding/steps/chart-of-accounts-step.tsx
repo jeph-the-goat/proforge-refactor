@@ -1,17 +1,19 @@
 // src/components/onboarding/steps/ChartOfAccountsStep.tsx
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, {useEffect} from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Label } from '@/components/form-elements/Label';
 import { Switch } from '@/components/form-elements/Switch';
 import { InputSelect } from '@/components/form-elements/InputSelect';
-import { InfoIcon } from 'lucide-react';
 import { ChartOfAccountsSchema, type ChartOfAccounts } from '@/lib/schemas/onboarding/chart-of-accounts.schema';
 import { cn } from '@/lib/utils';
 import styles from '@/styles/onboarding/ChartOfAccountsStep.module.scss';
 import {Section} from "@/components";
+import {Subsection} from "@/components/form-elements/Subsection";
+import {StepContentSection} from "@/components/onboarding/StepContentSection";
+import {AlertCircle} from "lucide-react";
 
 type ChartOfAccountsStepProps = {
   data: ChartOfAccounts;
@@ -27,55 +29,6 @@ const CURRENCIES = [
   { value: 'AUD', label: 'Australian Dollar (AUD)' },
   { value: 'JPY', label: 'Japanese Yen (JPY)' },
 ];
-
-// Simple tooltip component
-const Tooltip = ({ children, content }: { children: React.ReactNode; content: string }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  return (
-    <div className="c-tooltip-wrapper" style={{ position: 'relative', display: 'inline-block' }}>
-      <div
-        onMouseEnter={() => setIsVisible(true)}
-        onMouseLeave={() => setIsVisible(false)}
-        style={{ cursor: 'help' }}
-      >
-        {children}
-      </div>
-      {isVisible && (
-        <div
-          className="c-tooltip-content"
-          style={{
-            position: 'absolute',
-            bottom: '100%',
-            left: '50%',
-            padding: '8px 12px',
-            backgroundColor: 'var(--neutral-800)',
-            color: 'var(--neutral-200)',
-            borderRadius: '6px',
-            fontSize: '12px',
-            whiteSpace: 'nowrap',
-            zIndex: 10,
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
-          }}
-        >
-          {content}
-          <div
-            style={{
-              position: 'absolute',
-              top: '100%',
-              left: '50%',
-              width: 0,
-              height: 0,
-              borderLeft: '4px solid transparent',
-              borderRight: '4px solid transparent',
-              borderTop: '4px solid var(--neutral-800)',
-            }}
-          />
-        </div>
-      )}
-    </div>
-  );
-};
 
 export function ChartOfAccountsStep({
   data,
@@ -115,364 +68,347 @@ export function ChartOfAccountsStep({
   }, [watch, onUpdate]);
 
   return (
-    <div className={cn(styles.cChartOfAccountsStep, "c-chart-of-accounts-step")}>
+    <StepContentSection
+      extraClassName={cn(styles.cChartOfAccountsStep, "c-chart-of-accounts-step")}>
       <Section
         title="Chart of Accounts"
         paragraph="Configure your accounting settings and financial structure.">
       </Section>
 
-      <form className="c-onboarding-content-inner c-chart-of-accounts-step-content">
-        <section className="c-onboarding-section">
-        {/* Basic Accounting Settings */}
-          <h3 className="c-section-title">Basic Settings</h3>
-            <div className="c-card-content">
-              <div className="c-account-toggle">
-                <Label
-                  title="Accounting Method"
-                  description="Choose between cash or accrual accounting"
+      {/* Basic Accounting Settings */}
+      <Subsection
+        title="Basic Settings"
+        extraClassName="c-account-settings"
+      >
+        <div className="c-account-toggle">
+          <Label title="Accounting Method"/>
+          <Controller
+            name="accountingMethod"
+            control={control}
+            render={({field}) => (
+              <div className="c-switch-group">
+                    <span
+                      className={`c-switch-label ${
+                        field.value === 'Cash' ? 'active' : ''
+                      }`}
+                    >
+                      Cash
+                    </span>
+                <Switch
+                  checked={field.value === 'Accrual'}
+                  onCheckedChange={(checked) => field.onChange(checked ? 'Accrual' : 'Cash')}
+                />
+                <span
+                  className={`c-switch-label ${
+                    field.value === 'Accrual' ? 'active' : ''
+                  }`}
                 >
-                </Label>
+                      Accrual
+                    </span>
+              </div>
+            )}
+          />
+        </div>
+        <Controller
+          name="defaultCurrency"
+          control={control}
+          render={({field}) => (
+            <InputSelect
+              labelText="Default Currency"
+              name="currency"
+              placeholder="Select currency"
+              options={CURRENCIES}
+              value={field.value}
+              onValueChange={field.onChange}
+              hasErrors={!!errors.defaultCurrency}
+              errorText={errors.defaultCurrency?.message}
+            />
+          )}
+        />
+      </Subsection>
+
+      {/* Account Segmentation */}
+      <Subsection
+        title="Account Segmentation"
+        tooltip="Segment your accounts for better financial tracking and reporting"
+        extraClassName="c-account-settings"
+      >
+        <div className="c-account-toggle">
+          <Label
+            title="Departments"
+            description="Track finances by department"
+          >
+          </Label>
+          <Controller
+            name="segmentation.departments"
+            control={control}
+            render={({field}) => (
+              <Switch
+                checked={field.value}
+                onCheckedChange={field.onChange}
+              />
+            )}
+          />
+        </div>
+
+        <div className="c-account-toggle">
+          <Label
+            title="Cost Centers"
+            description="Track finances by cost center">
+          </Label>
+          <Controller
+            name="segmentation.costCenters"
+            control={control}
+            render={({field}) => (
+              <Switch
+                checked={field.value}
+                onCheckedChange={field.onChange}
+              />
+            )}
+          />
+        </div>
+
+        <div className="c-account-toggle">
+          <Label
+            title="Projects"
+            description="Track finances by project">
+          </Label>
+          <Controller
+            name="segmentation.projects"
+            control={control}
+            render={({field}) => (
+              <Switch
+                checked={field.value}
+                onCheckedChange={field.onChange}
+              />
+            )}
+          />
+        </div>
+      </Subsection>
+
+      {/* Entity-Specific Settings */}
+      <Subsection
+        title="Entity-Specific Settings"
+        tooltip="Configure settings specific to your business structure"
+        data-business-type={businessType}
+        last
+      >
+
+        {businessType === 'LLC' && (
+          <div className="c-inline-grid">
+            <Controller
+              name="ownershipStructure.distributionHandling"
+              control={control}
+              render={({field}) => (
+                <div className="c-entity-setting">
+                  <InputSelect
+                    labelText="Distribution Method"
+                    name="distributionHandling"
+                    placeholder="Select distribution method"
+                    options={[
+                      {value: 'proportional', label: 'Proportional to Ownership'},
+                      {value: 'fixed', label: 'Fixed Amounts'},
+                      {value: 'custom', label: 'Custom Schedule'},
+                    ]}
+                    value={field.value || ''}
+                    onValueChange={field.onChange}
+                    hasDescription
+                  />
+                  <p>
+                    How profits and losses will be distributed among members
+                  </p>
+                </div>
+              )}
+            />
+
+            <Controller
+              name="ownershipStructure.equityAccounts"
+              control={control}
+              render={({field}) => (
+                <div className="c-entity-setting">
+                  <InputSelect
+                    labelText="Equity Accounts"
+                    name="equityAccounts"
+                    placeholder="Select equity account structure"
+                    options={[
+                      {value: 'capital', label: 'Capital Accounts Only'},
+                      {value: 'drawing', label: 'Capital and Drawing Accounts'},
+                      {value: 'basis', label: 'Tax Basis Accounts'},
+                    ]}
+                    value={field.value?.[0] || ''}
+                    onValueChange={(value) => field.onChange([value])}
+                    hasDescription
+                  />
+                  <p>
+                    How member equity will be tracked in the system
+                  </p>
+                </div>
+              )}
+            />
+          </div>
+        )}
+
+        {businessType === 'Corporation' && (
+          <div className="c-inline-grid">
+            <Controller
+              name="ownershipStructure.stockStructure"
+              control={control}
+              render={({field}) => (
+                <div className="c-entity-setting">
+                  <InputSelect
+                    labelText="Stock Structure"
+                    name="stockStructure"
+                    placeholder="Select stock structure"
+                    options={[
+                      {value: 'common', label: 'Common Stock Only'},
+                      {value: 'preferred', label: 'Common and Preferred Stock'},
+                      {value: 'multiple', label: 'Multiple Stock Classes'},
+                    ]}
+                    value={field.value || ''}
+                    onValueChange={field.onChange}
+                    hasDescription
+                  />
+                  <p>
+                    Type of shares your corporation will issue
+                  </p>
+                </div>
+              )}
+            />
+
+            <Controller
+              name="ownershipStructure.retainedEarnings"
+              control={control}
+              render={({field}) => (
+                <div className="c-entity-setting">
+                  <InputSelect
+                    labelText="Retained Earnings Policy"
+                    name="retainedEarnings"
+                    placeholder="Select retained earnings policy"
+                    options={[
+                      {value: 'reinvest', label: 'Reinvest in Business'},
+                      {value: 'distribute', label: 'Regular Distribution'},
+                      {value: 'hybrid', label: 'Hybrid Approach'},
+                    ]}
+                    value={field.value || ''}
+                    onValueChange={field.onChange}
+                    hasDescription
+                  />
+                  <p>
+                    How the company will handle undistributed profits
+                  </p>
+                </div>
+              )}
+            />
+
+            <Controller
+              name="ownershipStructure.equityAccounts"
+              control={control}
+              render={({field}) => (
+                <div className="c-entity-setting">
+                  <InputSelect
+                    labelText="Equity Accounts"
+                    name="equityAccountsCorp"
+                    placeholder="Select equity account structure"
+                    options={[
+                      {value: 'standard', label: 'Standard Corporate Accounts'},
+                      {value: 'detailed', label: 'Detailed Class Tracking'},
+                      {value: 'consolidated', label: 'Consolidated Structure'},
+                    ]}
+                    value={field.value?.[0] || ''}
+                    onValueChange={(value) => field.onChange([value])}
+                    hasDescription
+                  />
+                  <p>
+                    How shareholder equity will be tracked in the system
+                  </p>
+                </div>
+              )}
+            />
+          </div>
+        )}
+
+        {(businessType === 'SoleProprietorship' || businessType === 'Partnership') && (
+          <div className="c-inline-grid">
+            <Controller
+              name="ownershipStructure.equityAccounts"
+              control={control}
+              render={({field}) => (
+                <div className="c-entity-setting">
+                  <InputSelect
+                    labelText="Equity Structure"
+                    name="equityStructure"
+                    placeholder="Select equity structure"
+                    options={[
+                      {value: 'simple', label: "Simple Owner's Equity"},
+                      {value: 'detailed', label: 'Detailed Capital Accounts'},
+                      ...(businessType === 'Partnership' ? [
+                        {value: 'partner', label: 'Partner Capital Accounts'}
+                      ] : []),
+                    ]}
+                    value={field.value?.[0] || ''}
+                    onValueChange={(value) => field.onChange([value])}
+                    hasDescription
+                  />
+                  <p>
+                    How owner&apos;s equity will be tracked in the system
+                  </p>
+                </div>
+              )}
+            />
+
+            {businessType === 'Partnership' && (
+              <div className="c-inline-grid">
                 <Controller
-                  name="accountingMethod"
+                  name="ownershipStructure.distributionHandling"
                   control={control}
                   render={({field}) => (
-                    <div className="c-switch-group">
-                        <span
-                          className={`c-switch-label ${
-                            field.value === 'Cash' ? 'active' : ''
-                          }`}
-                        >
-                          Cash
-                        </span>
-                      <Switch
-                        checked={field.value === 'Accrual'}
-                        onCheckedChange={(checked) => field.onChange(checked ? 'Accrual' : 'Cash')}
+                    <div className="c-entity-setting">
+                      <InputSelect
+                        labelText="Profit Sharing"
+                        name="profitSharing"
+                        placeholder="Select profit sharing method"
+                        options={[
+                          {value: 'equal', label: 'Equal Distribution'},
+                          {value: 'ownership', label: 'Based on Ownership %'},
+                          {value: 'custom', label: 'Custom Agreement'},
+                        ]}
+                        value={field.value || ''}
+                        onValueChange={field.onChange}
+                        hasDescription
                       />
-                      <span
-                        className={`c-switch-label ${
-                          field.value === 'Accrual' ? 'active' : ''
-                        }`}
-                      >
-                          Accrual
-                        </span>
+                      <p>
+                        How profits and losses will be shared between partners
+                      </p>
                     </div>
                   )}
                 />
               </div>
-            {errors.accountingMethod && (
-              <p className="c-error">{errors.accountingMethod.message}</p>
             )}
-            </div>
-          <div className="c-field">
-            <Controller
-              name="defaultCurrency"
-              control={control}
-              render={({field}) => (
-                <InputSelect
-                  labelText="Default Currency"
-                  name="currency"
-                  placeholder="Select currency"
-                  options={CURRENCIES}
-                  value={field.value}
-                  onValueChange={field.onChange}
-                  hasErrors={!!errors.defaultCurrency}
-                  errorText={errors.defaultCurrency?.message}
-                />
-              )}
-            />
           </div>
-        </section>
+        )}
 
-        <section className="c-onboarding-section">
-          {/* Account Segmentation */}
-            <div className="c-card-title-with-tooltip c-section-title">
-              <h3>Account Segmentation</h3>
-              <Tooltip
-                content="Segment your accounts for better financial tracking and reporting">
-                <InfoIcon className="c-tooltip-icon"/>
-              </Tooltip>
-            </div>
-            <div className="c-card-content">
-              <div className="c-account-toggle">
-                <Label
-                  title="Departments"
-                  description="Track finances by department"
-                >
-                </Label>
-              <Controller
-                name="segmentation.departments"
-                control={control}
-                render={({ field }) => (
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                )}
-              />
-              </div>
+        {!['LLC', 'Corporation', 'SoleProprietorship', 'Partnership'].includes(businessType) && (
+          <p>
+            Please select a business type to view specific settings.
+          </p>
+        )}
+      </Subsection>
 
-              <div className="c-account-toggle">
-                <Label
-                  title="Cost Centers"
-                  description="Track finances by cost center">
-                </Label>
-              <Controller
-                name="segmentation.costCenters"
-                control={control}
-                render={({ field }) => (
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                )}
-              />
-              </div>
-
-              <div className="c-account-toggle">
-                <Label
-                  title="Projects"
-                  description="Track finances by project">
-                </Label>
-              <Controller
-                name="segmentation.projects"
-                control={control}
-                render={({field}) => (
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                )}
-              />
-              </div>
+      {/* Validation Errors */}
+      {errors && (
+        <div className="c-validation-errors">
+          <div className="c-validation-errors-title">
+            <AlertCircle />
+            Validation Error
           </div>
-        </section>
-          {/* Entity-Specific Settings */}
-        <section className="c-onboarding-section" data-business-type={businessType}>
-          <div className="c-card-title-with-tooltip c-section-title">
-            <h3>Entity-Specific Settings</h3>
-            <Tooltip content="Configure settings specific to your business structure">
-              <InfoIcon className="c-tooltip-icon"/>
-            </Tooltip>
-          </div>
-
-            {businessType === 'LLC' && (
-              <div className="c-inline-grid">
-                <div className="c-card-content">
-                  <Controller
-                    name="ownershipStructure.distributionHandling"
-                    control={control}
-                    render={({field}) => (
-                      <InputSelect
-                        labelText="Distribution Method"
-                        name="distributionHandling"
-                        placeholder="Select distribution method"
-                        options={[
-                          {value: 'proportional', label: 'Proportional to Ownership'},
-                          {value: 'fixed', label: 'Fixed Amounts'},
-                          {value: 'custom', label: 'Custom Schedule'},
-                        ]}
-                        value={field.value || ''}
-                        onValueChange={field.onChange}
-                        hasDescription
-                      />
-                    )}
-                  />
-                  <div className="c-field">
-                    <div className="c-field-info">
-                      <p className="c-field-description">
-                        How profits and losses will be distributed among members
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="c-card-content">
-                  <Controller
-                    name="ownershipStructure.equityAccounts"
-                    control={control}
-                    render={({field}) => (
-                      <InputSelect
-                        labelText="Equity Accounts"
-                        name="equityAccounts"
-                        placeholder="Select equity account structure"
-                        options={[
-                          {value: 'capital', label: 'Capital Accounts Only'},
-                          {value: 'drawing', label: 'Capital and Drawing Accounts'},
-                          {value: 'basis', label: 'Tax Basis Accounts'},
-                        ]}
-                        value={field.value?.[0] || ''}
-                        onValueChange={(value) => field.onChange([value])}
-                        hasDescription
-                      />
-                    )}
-                  />
-                  <div className="c-field">
-                    <div className="c-field-info">
-                      <p className="c-field-description">
-                        How member equity will be tracked in the system
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {businessType === 'Corporation' && (
-              <div className="c-card-content">
-                <div className="c-field">
-                  <div className="c-field-info">
-                  <Controller
-                    name="ownershipStructure.stockStructure"
-                    control={control}
-                    render={({field}) => (
-                      <InputSelect
-                        labelText="Stock Structure"
-                        name="stockStructure"
-                        placeholder="Select stock structure"
-                        options={[
-                          {value: 'common', label: 'Common Stock Only'},
-                          {value: 'preferred', label: 'Common and Preferred Stock'},
-                          {value: 'multiple', label: 'Multiple Stock Classes'},
-                        ]}
-                        value={field.value || ''}
-                        onValueChange={field.onChange}
-                        hasDescription
-                      />
-                    )}
-                  />
-                    <p className="c-field-description">
-                      Type of shares your corporation will issue
-                    </p>
-                </div>
-                </div>
-
-                <div className="c-field">
-                  <div className="c-field-info">
-                  <Controller
-                    name="ownershipStructure.retainedEarnings"
-                    control={control}
-                    render={({field}) => (
-                      <InputSelect
-                        labelText="Retained Earnings Policy"
-                        name="retainedEarnings"
-                        placeholder="Select retained earnings policy"
-                        options={[
-                          {value: 'reinvest', label: 'Reinvest in Business'},
-                          {value: 'distribute', label: 'Regular Distribution'},
-                          {value: 'hybrid', label: 'Hybrid Approach'},
-                        ]}
-                        value={field.value || ''}
-                        onValueChange={field.onChange}
-                        hasDescription
-                      />
-                    )}
-                  />
-                    <p className="c-field-description">
-                      How the company will handle undistributed profits
-                    </p>
-                  </div>
-                </div>
-
-                <div className="c-field">
-                  <div className="c-field-info">
-                  <Controller
-                    name="ownershipStructure.equityAccounts"
-                    control={control}
-                    render={({field}) => (
-                      <InputSelect
-                        labelText="Equity Accounts"
-                        name="equityAccountsCorp"
-                        placeholder="Select equity account structure"
-                        options={[
-                          {value: 'standard', label: 'Standard Corporate Accounts'},
-                          {value: 'detailed', label: 'Detailed Class Tracking'},
-                          {value: 'consolidated', label: 'Consolidated Structure'},
-                        ]}
-                        value={field.value?.[0] || ''}
-                        onValueChange={(value) => field.onChange([value])}
-                        hasDescription
-                      />
-                    )}
-                  />
-                    <p className="c-field-description">
-                      How shareholder equity will be tracked in the system
-                    </p>
-                </div>
-              </div>
-              </div>
-            )}
-
-            {(businessType === 'SoleProprietorship' || businessType === 'Partnership') && (
-              <div className="c-card-content">
-                <div className="c-field">
-                  <div className="c-field-info">
-                  <Controller
-                    name="ownershipStructure.equityAccounts"
-                    control={control}
-                    render={({field}) => (
-                      <InputSelect
-                        labelText="Equity Structure"
-                        name="equityStructure"
-                        placeholder="Select equity structure"
-                        options={[
-                          {value: 'simple', label: "Simple Owner's Equity"},
-                          {value: 'detailed', label: 'Detailed Capital Accounts'},
-                          ...(businessType === 'Partnership' ? [
-                            {value: 'partner', label: 'Partner Capital Accounts'}
-                          ] : []),
-                        ]}
-                        value={field.value?.[0] || ''}
-                        onValueChange={(value) => field.onChange([value])}
-                        hasDescription
-                      />
-                    )}
-                  />
-                    <p className="c-field-description">
-                      How owner&apos;s equity will be tracked in the system
-                    </p>
-                </div>
-                </div>
-
-                {businessType === 'Partnership' && (
-                  <div className="c-field">
-                    <div className="c-field-info">
-                    <Controller
-                      name="ownershipStructure.distributionHandling"
-                      control={control}
-                      render={({field}) => (
-                        <InputSelect
-                          labelText="Profit Sharing"
-                          name="profitSharing"
-                          placeholder="Select profit sharing method"
-                          options={[
-                            {value: 'equal', label: 'Equal Distribution'},
-                            {value: 'ownership', label: 'Based on Ownership %'},
-                            {value: 'custom', label: 'Custom Agreement'},
-                          ]}
-                          value={field.value || ''}
-                          onValueChange={field.onChange}
-                          hasDescription
-                        />
-                      )}
-                    />
-                      <p className="c-field-description">
-                        How profits and losses will be shared between partners
-                      </p>
-                  </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {!['LLC', 'Corporation', 'SoleProprietorship', 'Partnership'].includes(businessType) && (
-              <div className="c-card-content">
-                <p className="c-field-description">
-                  Please select a business type to view specific settings.
-                </p>
-              </div>
-            )}
-        </section>
-      </form>
-    </div>
+          <ul className="c-validation-errors-list">
+            {errors.accountingMethod && <li>{errors.accountingMethod.message}</li>}
+            {errors.defaultCurrency && <li>{errors.defaultCurrency.message}</li>}
+            {errors.ownershipStructure && <li>{errors.ownershipStructure.message}</li>}
+            {errors.segmentation && <li>{errors.segmentation.message}</li>}
+          </ul>
+        </div>
+      )}
+    </StepContentSection>
   );
 }
