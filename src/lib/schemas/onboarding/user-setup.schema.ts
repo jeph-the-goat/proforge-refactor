@@ -3,11 +3,13 @@ import * as yup from 'yup';
 const AdminUserSchema = yup.object({
   name: yup.string()
     .min(1, 'Admin name is required')
-    .max(100, 'Name must be less than 100 characters'),
+    .max(100, 'Name must be less than 100 characters')
+    .required(),
   
   email: yup.string()
     .min(1, 'Admin email is required')
-    .email('Please enter a valid email'),
+    .email('Please enter a valid email')
+    .required(),
 });
 
 // Additional user sub-schema
@@ -29,18 +31,19 @@ const AdditionalUserSchema = yup.object({
 
 // Main user setup schema
 export const UserSetupSchema = yup.object({
-  adminUser: AdminUserSchema,
+  adminUser: AdminUserSchema.required(),
   
   additionalUsers: yup.array(AdditionalUserSchema)
-    .max(50, 'Maximum 50 additional users allowed'),
+    .max(50, 'Maximum 50 additional users allowed')
+    .optional(),
   
   departments: yup.array(yup.string())
     .min(1, 'At least one department is required')
-    .max(20, 'Maximum 20 departments allowed'),
+    .max(20, 'Maximum 20 departments allowed')
+    .required(),
 
   permissions: yup
     .object()
-    .default({})
     .optional()
     .test('valid-permissions', 'Each value must be a string array', value => {
       if (!value) return true;
@@ -55,11 +58,11 @@ export type UserSetup = {
     name: string;
     email: string;
   };
-  additionalUsers: {
-    name: string;
-    email: string;
-    role: string;
+  additionalUsers?: {
+    name?: string | undefined;
+    email?: string | undefined;
+    role?: string | undefined;
   }[];
-  departments: string[];
-  permissions: Record<string, string[]>;
+  departments: (string | undefined)[];
+  permissions?: Record<string, string[]> | undefined;
 }

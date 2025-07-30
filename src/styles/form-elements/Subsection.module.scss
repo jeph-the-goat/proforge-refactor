@@ -1,35 +1,39 @@
 .cSubsection {
   &:global {
     &.c-subsection {
-      margin-bottom: 2rem;
       --border: 1px solid var(--neutral-700);
 
-      &.no-border {
-        --border: none;
+      width: 100%;
+      gap: var(--px12);
+      margin-bottom: var(--px18) !important;
+
+      .c-form-group {
+        margin-bottom: var(--px18) !important;
       }
 
-      .c-section-title {
-        width: 100%;
+      .c-subsection-header {
         display: flex;
-        flex: 1;
         flex-direction: row;
-        gap: var(--px12);
+        align-items: center;
+        gap: var(--px8);
+        margin-left: 0;
         margin-right: auto;
         margin-bottom: var(--px18);
         padding-bottom: var(--px12);
         border-bottom: var(--border);
-
-        &-inline {
-          width: 100%;
-          display: inline-flex;
-          flex-direction: row;
-          margin: auto;
-          align-items: center;
-          gap: var(--px12);
-        }
       }
 
-      .c-section-edit {
+      .c-subsection-inline {
+        width: 100%;
+        display: inline-flex;
+        flex: 1;
+        flex-direction: row;
+        margin: auto;
+        align-items: center;
+        gap: var(--px12);
+      }
+
+      .c-subsection-edit {
         --btn-size: var(--px32);
         --btn-min-height: var(--px32);
         --btn-padding-x: var(--px18);
@@ -47,6 +51,16 @@
 
         &:hover {
           border-color: var(--primary-500);
+        }
+      }
+
+      &.no-border {
+        --border: none;
+      }
+
+      &.no-title {
+        .c-section-title {
+          display: none;
         }
       }
 

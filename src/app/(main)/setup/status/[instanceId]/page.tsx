@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/common/Button';
 import { AlertCircle, CheckCircle, Clock, Loader2, Rocket } from 'lucide-react';
@@ -38,7 +38,7 @@ export default function StatusPage({ params }: StatusPageProps) {
     getParams();
   }, [params]);
 
-  const fetchStatus = async () => {
+  const fetchStatus = useCallback(async () => {
     if (!instanceId) return; // Don't fetch until we have instanceId
     
     try {
@@ -72,7 +72,7 @@ export default function StatusPage({ params }: StatusPageProps) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [instanceId, router]);
 
   useEffect(() => {
     if (!instanceId) return; // Don't start polling until we have instanceId
@@ -91,7 +91,7 @@ export default function StatusPage({ params }: StatusPageProps) {
       clearInterval(interval);
       clearInterval(timer);
     };
-  }, [instanceId]); // Depend on instanceId
+  }, [fetchStatus, instanceId]); // Depend on instanceId
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -152,7 +152,7 @@ export default function StatusPage({ params }: StatusPageProps) {
                 ) : error ? (
                   <div className="c-status-error">
                     <p className="c-status-error-message">{error}</p>
-                    <Button onClick={fetchStatus} variant="outline" size="lg" className="c-status-retry-btn">
+                    <Button onClick={fetchStatus} extraClassName="c-status-retry-btn">
                       Try Again
                     </Button>
                   </div>

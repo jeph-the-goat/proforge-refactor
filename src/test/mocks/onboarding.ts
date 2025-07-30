@@ -1,4 +1,4 @@
-import {OnboardingData, validateOnboardingData} from '@/lib/schemas/onboarding';
+import {OnboardingData} from '@/lib/schemas/onboarding';
 
 export const mockOnboardingData: OnboardingData = {
   businessInfo: {
@@ -13,7 +13,7 @@ export const mockOnboardingData: OnboardingData = {
     },
     industry: 'Technology',
     employeeCount: '11-50',
-    website: 'https://test-company.com',
+    companyWebsite: 'https://test-company.com',
     contactEmail: 'admin@test-company.com',
     contactPhone: '+1-555-123-4567',
   },
@@ -23,9 +23,10 @@ export const mockOnboardingData: OnboardingData = {
       memberType: 'Single',
       managementType: 'Member',
     },
+    corporationDetails: null,
     taxId: '12-3456789',
-    fiscalYearStart: '2024-01-01',
-    fiscalYearEnd: '2024-12-31',
+    fiscalYearStart: 'January',
+    fiscalYearEnd: 'December',
   },
   chartOfAccounts: {
     accountingMethod: 'Accrual',
@@ -86,7 +87,7 @@ export const mockOnboardingDataMinimal: Partial<OnboardingData> = {
     },
     industry: 'Technology',
     employeeCount: '1-10',
-    website: 'https://minimal-test.com',
+    companyWebsite: 'https://minimal-test.com',
     contactEmail: 'admin@minimal-test.com',
     contactPhone: '+1-555-987-6543',
   },
@@ -104,9 +105,10 @@ export const mockOnboardingDataCorporation: OnboardingData = {
       type: 'C-Corp',
       shareholderCount: 1,
     },
+    llcDetails: null,
     taxId: '98-7654321',
-    fiscalYearStart: '2024-01-01',
-    fiscalYearEnd: '2024-12-31',
+    fiscalYearStart: 'January',
+    fiscalYearEnd: 'December',
   },
 };
 

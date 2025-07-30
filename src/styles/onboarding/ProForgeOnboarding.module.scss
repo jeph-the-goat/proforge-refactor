@@ -5,360 +5,220 @@
     --font-weight-bold: 550;
 
     &.c-proforge-onboarding {
+      width: 100%;
       min-height: 100vh;
-      background-color: var(--body-bg-color);
+      display: flex;
+      flex: 1;
+      flex-direction: column;
 
-      .c-onboarding-container {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
+      @media (min-width: 768px) {
+        flex-direction: row;
+        gap: var(--px24);
+      }
 
-        @media (min-width: 1024px) {
-          flex-direction: row;
+      .c-section {
+        --section-padding-bottom: var(--from-64-to-40px);
+
+        @media (min-width: 768px) {
+          margin-top: var(--header-height);
+          --section-padding-top: var(--px24);
         }
       }
 
-      .c-onboarding-sidebar {
+      .c-form-group {
+        max-width: 70rem;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      }
+
+      .c-onboarding-alert {
         display: flex;
-        width: 100%;
-        flex-direction: column;
+        align-items: center;
+        gap: var(--px8);
+        padding: var(--px12) var(--px18);
+        border-radius: var(--px8);
+        margin-bottom: 1rem;
         margin-top: var(--from-120-to-40px);
-        border-bottom: 1px solid var(--neutral-700);
-        border-top: 1px solid var(--neutral-700);
+        font-size: var(--px14);
+
+        @media (min-width: 640px) {
+          padding: var(--px18);
+          margin-bottom: 1.5rem;
+        }
+
+        &.c-onboarding-alert-error {
+          background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
+          color: var(--error-400);
+          border: 1px solid var(--error-800);
+        }
+
+        &.c-onboarding-alert-info {
+          background-color: color-mix(in srgb, var(--primary-500) 10%, transparent);
+          color: var(--primary-400);
+          border: 1px solid var(--primary-800);
+        }
+
+        .c-onboarding-alert-icon {
+          width: var(--px18);
+          height: var(--px18);
+          flex-shrink: 0;
+
+          @media (min-width: 640px) {
+            width: var(--px20);
+            height: var(--px20);
+          }
+
+          &.c-onboarding-alert-icon-pulse {
+            animation: pulse 2s infinite;
+          }
+        }
+
+        .c-onboarding-alert-text {
+          font-size: var(--px14);
+          margin: 0;
+
+          @media (min-width: 640px) {
+            font-size: var(--px18);
+          }
+        }
+      }
+
+      .c-onboarding-content {
+        width: 100%;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        background-color: var(--neutral-900);
+        border: 1px solid var(--neutral-700);
         border-radius: var(--px8);
 
-        @media (min-width: 1024px) {
-          width: 20rem;
-          border-bottom: none;
-          border-right: 1px solid var(--neutral-700);
-        }
-
-        .c-onboarding-sidebar-header {
-          padding: 1rem 1.5rem;
+        .c-inline-grid {
+          --columns: 1;
+          display: grid;
+          margin: 0;
+          gap: var(--px12);
+          grid-template-columns: repeat(var(--columns), 1fr);
 
           @media (min-width: 640px) {
-            padding: 1.5rem;
+            --columns: 2;
+            gap: var(--px24);
           }
 
-          h2 {
-            font-size: var(--px28);
-            font-weight: var(--font-weight-bold);
-            color: var(--neutral-0);
-            margin-top: var(--section-padding-top);
-            line-height: 1.25;
-
-            @media (min-width: 1024px) {
-              margin-top: 0;
-            }
+          .c-full-width {
+            grid-column: 1 / -1;
           }
+        }
 
-          .c-section-title-paragraph {
+        h3 {
+          font-size: var(--font-size-label);
+          font-weight: 600;
+        }
+
+        .c-switch-group {
+          display: flex;
+          align-items: center;
+          gap: var(--px12);
+
+          .c-switch-label {
             font-size: var(--font-size-label-info);
             color: var(--neutral-400);
-            margin-bottom: 0.75rem;
-            margin-top: 0;
-            line-height: 1.4;
-          }
+            text-overflow-ellipsis: ellipsis;
+            transition: color 0.2s ease;
 
-          .c-container {
-            row-gap: 1rem;
-          }
-
-          .c-onboarding-clear-progress-btn {
-            --btn-padding-x: var(--px18);
-            --btn-font-size: var(--px14);
-
-            margin-top: 0;
-            justify-content: center;
-            text-align: center;
+            &.active {
+              color: var(--neutral-0);
+              font-weight: 500;
+            }
           }
         }
 
-        .c-onboarding-sidebar-separator {
-          height: 1px;
-          background-color: var(--neutral-700);
-        }
+        .c-add-btn {
+          --btn-min-height: var(--px32);
+          --btn-padding-x: var(--px12);
+          --btn-padding-y: var(--px12);
+          --btn-font-size: 16px;
 
-        .c-onboarding-sidebar-nav {
-          flex: 1;
-          padding: 1rem;
-          overflow-y: auto;
+          width: 100%;
 
-          .c-onboarding-sidebar-step {
-            display: flex;
-            align-items: center;
-            gap: var(--px12);
-            padding: var(--px8) var(--px12);
-            border-radius: var(--px8);
-            margin-bottom: var(--px8);
-            font-size: var(--font-size-label-info);
-            font-weight: 500;
+          i {
+            width: var(--px24);
+            height: var(--px24);
+            color: var(--neutral-400);
             cursor: pointer;
             transition: all 0.2s ease;
+          }
+        }
 
-            &:hover:not(.is-disabled) {
-              background-color: var(--neutral-800);
-            }
+        .c-trash-btn {
+          --btn-min-width: var(--px18);
+          --btn-min-height: var(--px18);
+          --btn-icon-size: var(--px18);
+          --btn-icon-color: var(--neutral-400);
+          --btn-padding-x: var(--px12);
+          --btn-padding-y: var(--px8);
 
-            &.is-current {
-              background-color: color-mix(in srgb, var(--primary-500) 10%, transparent);
-              color: var(--primary-400);
-            }
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: var(--px6);
+          transition: all 0.2s ease;
 
-            &.is-completed {
-              color: var(--neutral-300);
-            }
-
-            &.is-disabled {
-              cursor: not-allowed;
-              opacity: 0.6;
-              color: var(--neutral-500);
-            }
-
-            .c-onboarding-sidebar-step-indicator {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: var(--px44);
-              height: var(--px44);
-              border-radius: 50%;
-              font-size: var(--px12);
-              font-weight: 600;
-              flex-shrink: 0;
-              border: 1px solid var(--neutral-600);
-              background-color: transparent;
-              color: var(--neutral-400);
-            }
-
-            &.is-current .c-onboarding-sidebar-step-indicator {
-              background-color: var(--primary-500);
-              border-color: var(--primary-500);
-              color: var(--neutral-0);
-            }
-
-            &.is-completed .c-onboarding-sidebar-step-indicator {
-              background-color: var(--primary-500);
-              border-color: var(--primary-500);
-              color: var(--neutral-0);
-            }
-
-            .c-onboarding-sidebar-step-text {
-              font-size: var(--font-size-label);
-              font-weight: normal;
-            }
+          &:hover {
+            background-color: var(--error-500);
+            color: var(--neutral-0);
           }
         }
       }
 
-      .c-onboarding-main {
+      .c-onboarding-navigation {
         display: flex;
         flex: 1;
+        max-width: 70rem;
         width: 100%;
         flex-direction: column;
+        justify-content: space-between;
+        gap: var(--px12);
+        margin: 1.5rem auto 0 auto;
 
-        .c-onboarding-content {
-          flex: 1;
+        @media (min-width: 640px) {
+          flex-direction: row;
+          margin-top: 2rem;
+        }
+
+        .c-onboarding-nav-btn {
           width: 100%;
-          margin: auto;
-          padding: 1rem 1.5rem 2rem;
 
           @media (min-width: 640px) {
-            justify-content: flex-start;
-            padding: 1.5rem 2rem;
+            width: auto;
           }
 
-          .c-onboarding-alert {
-            display: flex;
-            align-items: center;
-            gap: var(--px8);
-            padding: var(--px12) var(--px18);
-            border-radius: var(--px8);
-            margin-bottom: 1rem;
-            margin-top: var(--from-120-to-40px);
-            font-size: var(--px14);
+          &.c-onboarding-nav-btn-previous {
+            order: 2;
 
             @media (min-width: 640px) {
-              padding: var(--px18);
-              margin-bottom: 1.5rem;
-            }
-
-            &.c-onboarding-alert-error {
-              background-color: color-mix(in srgb, var(--error-500) 10%, transparent);
-              color: var(--error-400);
-              border: 1px solid var(--error-800);
-            }
-
-            &.c-onboarding-alert-info {
-              background-color: color-mix(in srgb, var(--primary-500) 10%, transparent);
-              color: var(--primary-400);
-              border: 1px solid var(--primary-800);
-            }
-
-            .c-onboarding-alert-icon {
-              width: var(--px18);
-              height: var(--px18);
-              flex-shrink: 0;
-
-              @media (min-width: 640px) {
-                width: var(--px20);
-                height: var(--px20);
-              }
-
-              &.c-onboarding-alert-icon-pulse {
-                animation: pulse 2s infinite;
-              }
-            }
-
-            .c-onboarding-alert-text {
-              font-size: var(--px14);
-              margin: 0;
-
-              @media (min-width: 640px) {
-                font-size: var(--px18);
-              }
+              order: 1;
             }
           }
 
-          .c-onboarding-content-inner {
-            width: 100%;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            background-color: var(--neutral-900);
-            border: 1px solid var(--neutral-700);
-            border-radius: var(--px8);
-
-            .c-inline-grid {
-              --columns: 1;
-              display: grid;
-              margin: 0;
-              gap: var(--px12);
-              grid-template-columns: repeat(var(--columns), 1fr);
-
-              @media (min-width: 640px) {
-                --columns: 2;
-                gap: var(--px24);
-              }
-
-              .c-full-width {
-                grid-column: 1 / -1;
-              }
-            }
-
-            h3 {
-              font-size: var(--font-size-label);
-              font-weight: 600;
-            }
+          &.c-onboarding-nav-btn-next,
+          &.c-onboarding-nav-btn-submit {
+            order: 1;
 
             @media (min-width: 640px) {
-              padding: var(--px24);
-              max-width: 70rem;
-            }
-
-            .c-switch-group {
-              display: flex;
-              align-items: center;
-              gap: var(--px12);
-
-              .c-switch-label {
-                font-size: var(--font-size-label-info);
-                color: var(--neutral-400);
-                text-overflow-ellipsis: ellipsis;
-                transition: color 0.2s ease;
-
-                &.active {
-                  color: var(--neutral-0);
-                  font-weight: 500;
-                }
-              }
-            }
-
-            .c-add-btn {
-              --btn-min-height: var(--px32);
-              --btn-padding-x: var(--px12);
-              --btn-padding-y: var(--px12);
-              --btn-font-size: 16px;
-
-              width: 100%;
-
-              i {
-                width: var(--px24);
-                height: var(--px24);
-                color: var(--neutral-400);
-                cursor: pointer;
-                transition: all 0.2s ease;
-              }
-            }
-
-            .c-trash-btn {
-              --btn-min-width: var(--px18);
-              --btn-min-height: var(--px18);
-              --btn-icon-size: var(--px18);
-              --btn-icon-color: var(--neutral-400);
-              --btn-padding-x: var(--px12);
-              --btn-padding-y: var(--px8);
-
-              border: none;
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: var(--px6);
-              transition: all 0.2s ease;
-
-              &:hover {
-                background-color: var(--error-500);
-                color: var(--neutral-0);
-              }
+              order: 2;
             }
           }
 
-          .c-onboarding-navigation {
-            display: flex;
-            max-width: 70rem;
-            width: 100%;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: var(--px12);
-            margin: 1.5rem auto 0 auto;
+          .c-onboarding-nav-btn-icon {
+            width: var(--px18);
+            height: var(--px18);
+            margin-right: var(--px8);
 
-            @media (min-width: 640px) {
-              flex-direction: row;
-              margin-top: 2rem;
-            }
-
-            .c-onboarding-nav-btn {
-              width: 100%;
-
-              @media (min-width: 640px) {
-                width: auto;
-              }
-
-              &.c-onboarding-nav-btn-previous {
-                order: 2;
-
-                @media (min-width: 640px) {
-                  order: 1;
-                }
-              }
-
-              &.c-onboarding-nav-btn-next,
-              &.c-onboarding-nav-btn-submit {
-                order: 1;
-
-                @media (min-width: 640px) {
-                  order: 2;
-                }
-              }
-
-              .c-onboarding-nav-btn-icon {
-                width: var(--px18);
-                height: var(--px18);
-                margin-right: var(--px8);
-
-                &.c-onboarding-nav-btn-icon-spin {
-                  animation: spin 1s linear infinite;
-                }
-              }
+            &.c-onboarding-nav-btn-icon-spin {
+              animation: spin 1s linear infinite;
             }
           }
         }

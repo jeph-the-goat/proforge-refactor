@@ -19,29 +19,27 @@ const OwnershipStructureSchema = yup.object({
 
 // Main chart of accounts schema matching ChartOfAccountsStep.tsx
 export const ChartOfAccountsSchema = yup.object({
-  accountingMethod: yup.mixed<AccountingMethod>().oneOf(['Cash', 'Accrual']).optional(),
+  accountingMethod: yup.mixed<AccountingMethod>().oneOf(['Cash', 'Accrual']).required(),
   
-  defaultCurrency: yup.mixed<string>().oneOf(['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'JPY']).optional(),
+  defaultCurrency: yup.mixed<string>().oneOf(['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'JPY']).required(),
   
-  segmentation: SegmentationSchema,
+  segmentation: SegmentationSchema.required(),
   
-  ownershipStructure: OwnershipStructureSchema,
+  ownershipStructure: OwnershipStructureSchema.required(),
 });
 
-export type Segmentation = {
-  departments?: boolean;
-  costCenters?: boolean;
-  projects?: boolean;
-};
-
-export type ChartOfAccounts = {
-  accountingMethod?: AccountingMethod;
-  defaultCurrency?: string;
-  segmentation: Segmentation;
-  ownershipStructure: {
-    equityAccounts?: string[];
-    distributionHandling?: string;
-    stockStructure?: string;
-    retainedEarnings?: string;
+export interface ChartOfAccounts {
+  accountingMethod: AccountingMethod;
+  defaultCurrency: string;
+  segmentation: {
+    departments?: boolean | undefined;
+    costCenters?: boolean | undefined;
+    projects?: boolean | undefined;
   };
-};
+  ownershipStructure: {
+    equityAccounts?: (string | undefined)[] | undefined;
+    distributionHandling?: string | undefined;
+    stockStructure?: string | undefined;
+    retainedEarnings?: string | undefined;
+  };
+}
