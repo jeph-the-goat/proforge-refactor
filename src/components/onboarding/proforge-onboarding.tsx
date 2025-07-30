@@ -58,8 +58,8 @@ const INITIAL_ONBOARDING_DATA: OnboardingData = {
     },
     corporationDetails: null,
     taxId: '',
-    fiscalYearStart: '',
-    fiscalYearEnd: '',
+    fiscalYearStart: "January",
+    fiscalYearEnd: "December",
   },
   chartOfAccounts: {
     accountingMethod: 'Accrual',
