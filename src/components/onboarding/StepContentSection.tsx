@@ -9,7 +9,7 @@ interface StepContentSectionProps {
 
 export const StepContentSection = ({children, extraClassName}:StepContentSectionProps) => {
   return (
-    <section className={cn(styles.cProForgeOnboarding, "c-onboarding-content-inner", extraClassName)}>
+    <section className={cn(styles.cProForgeOnboarding, "c-onboarding-content", extraClassName)}>
       {children}
     </section>
   );

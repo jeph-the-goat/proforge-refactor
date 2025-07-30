@@ -1,11 +1,10 @@
 import styles from "@/styles/common/Section.module.scss";
 
 import React, { ReactNode } from 'react';
-import { clsx } from "clsx";
-
 import { SectionTitleProps } from "@/types";
 
 import { SectionTitle } from "@/components";
+import {cn} from "@lib/utils";
 
 interface SectionProps extends SectionTitleProps {
   extraClassName?: string;
@@ -72,7 +71,7 @@ export const Section = ({
   };
 
   return (
-    <section className={clsx(styles.cSection, "c-section", extraClassName)}>
+    <section className={cn(styles.cSection, "c-section", extraClassName)}>
       {renderContent()}
     </section>
   );

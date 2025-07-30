@@ -3,21 +3,21 @@
 import React, {useEffect} from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {Label, Section} from "@/components";
+import {Label} from "@/components";
 import { Input } from '@/components/form-elements/Input';
 import { InputSelect } from '@/components/form-elements/InputSelect';
-import {AlertCircle, Upload} from 'lucide-react';
+import {Upload} from 'lucide-react';
 import Image from 'next/image';
 import { BusinessInfoSchema, type BusinessInfo } from '@/lib/schemas/onboarding/business-info.schema';
-import styles from '@/styles/onboarding/WelcomeStep.module.scss';
-import {clsx} from "clsx";
 import {Subsection} from "@/components/form-elements/Subsection";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
+import {cn} from "@lib/utils";
+import styles from '@/styles/onboarding/steps/WelcomeStep.module.scss';
 
-type WelcomeStepProps = {
+interface WelcomeStepProps {
   data: BusinessInfo;
   onUpdate: (data: { businessInfo: BusinessInfo }) => void;
-};
+}
 
 const INDUSTRIES = [
   'Construction',
@@ -75,12 +75,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
   };
 
   return (
-      <StepContentSection extraClassName={clsx(styles.cWelcomeStep, "c-welcome-step")}>
-        <Section
-          title="Welcome to ProForge ERP"
-          paragraph="Let's get started by setting up your business profile.">
-        </Section>
-
+      <StepContentSection extraClassName={cn(styles.cWelcomeStep, "c-welcome-step")}>
         <Subsection
           title="Company Info"
           extraClassName="c-company-section">
@@ -184,7 +179,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
           </div>
         </Subsection>
 
-        <Subsection noHeader>
+        <Subsection noTitle>
           <Controller
             name="companyWebsite"
             control={control}
@@ -330,26 +325,6 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
             />
           </div>
         </Subsection>
-
-        {/* Validation Errors */}
-        {errors && (
-          <div className="c-validation-errors">
-            <div className="c-validation-errors-title">
-              <AlertCircle />
-              Validation Error
-            </div>
-            <ul className="c-validation-errors-list">
-              {errors.address && <li>{errors.address.message}</li>}
-              {errors.companyWebsite && <li>{errors.companyWebsite.message}</li>}
-              {errors.companyLogo && <li>{errors.companyLogo.message}</li>}
-              {errors.contactEmail && <li>{errors.contactEmail.message}</li>}
-              {errors.companyName && <li>{errors.companyName.message}</li>}
-              {errors.contactPhone && <li>{errors.contactPhone.message}</li>}
-              {errors.employeeCount && <li>{errors.employeeCount.message}</li>}
-              {errors.industry && <li>{errors.industry.message}</li>}
-            </ul>
-          </div>
-        )}
       </StepContentSection>
   );
 }

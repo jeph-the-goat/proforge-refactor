@@ -1,9 +1,8 @@
 import {cn} from "@lib/utils";
 import {Tooltip} from "@/components/form-elements/Tooltip";
-import styles from "@/styles/form-elements/Subsection.module.scss";
 import {Edit2} from "lucide-react";
 import {Button} from "@/components";
-import React from "react";
+import styles from "@/styles/form-elements/Subsection.module.scss";
 
 interface SubsectionProps {
   title?: string;
@@ -14,7 +13,7 @@ interface SubsectionProps {
   children?: React.ReactNode;
 
   // Flags
-  noHeader?: boolean;
+  noTitle?: boolean;
   inline?: boolean;
   noBorder?: boolean;
   last?: boolean;
@@ -27,44 +26,61 @@ interface SubsectionProps {
  */
 export const Subsection = ({
                              title, description, extraClassName,
-                             tooltip, icon, last, children, noHeader, noBorder, inline,
+                             tooltip, icon, last, children,
+                             noTitle,
+                             noBorder,
+                             inline,
                              editable
                            }: SubsectionProps) => {
-  return (
-    <section className={cn(styles.cSubsection, "c-subsection", last && "last",
-      noBorder && "no-border", extraClassName)}>
-      {!noHeader && inline ? (
-        <div className="c-section-title-inline">
+
+  const renderModule = () => {
+    if (noTitle) {
+      return children;
+    }
+
+    if (inline) {
+      return (
+        <div className="c-subsection-inline">
           {icon && icon}
-          {title && <h3>{title} {children}</h3>}
-          {tooltip && <Tooltip content={tooltip}/>}
-          {description && <p>{description}</p>}
+          <h3 className="c-subsection-header">{title}</h3>
           {editable &&
               <Button
                   btnText="Edit"
                   icon={<Edit2/>}
-                  extraClassName="c-section-edit"
+                  extraClassName="c-subsection-edit"
+              />
+          }
+          {children}
+          {tooltip && <Tooltip content={tooltip}/>}
+          {description && <p>{description}</p>}
+        </div>
+      );
+    }
+
+    return (
+      <section>
+        <div className="c-subsection-header">
+          {icon && icon}
+          <h3>{title}</h3>
+          {tooltip && <Tooltip content={tooltip}/>}
+          {editable &&
+              <Button
+                  btnText="Edit"
+                  icon={<Edit2/>}
+                  extraClassName="c-subsection-edit"
               />
           }
         </div>
-      ) : !noHeader && (
-        <>
-          <div className="c-section-title">
-            {icon && icon}
-            {title && <h3>{title}</h3>}
-            {tooltip && <Tooltip content={tooltip}/>}
-            {description && <p>{description}</p>}
-            {editable &&
-                <Button
-                    btnText="Edit"
-                    icon={<Edit2/>}
-                    extraClassName="c-section-edit"
-                />
-            }
-          </div>
-          {children}
-        </>
-      )}
+        {description && <p>{description}</p>}
+        {children}
+      </section>
+    )
+  };
+
+  return (
+    <section className={cn(styles.cSubsection, "c-subsection", last && "last",
+      noBorder && "no-border", noTitle && "no-title", extraClassName)}>
+      {renderModule()}
     </section>
   );
 }

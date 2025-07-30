@@ -9,17 +9,16 @@ import { LucideIcon } from 'lucide-react';
 import { Switch } from '@/components/form-elements/Switch';
 import { cn } from '@/lib/utils';
 import { ModuleSelectionSchema, type ModuleSelection } from '@/lib/schemas/onboarding/module-selection.schema';
-import styles from '@/styles/onboarding/ModuleSelectionStep.module.scss';
-import {Section} from "@/components";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import {Subsection} from "@/components/form-elements/Subsection";
+import styles from '@/styles/onboarding/steps/ModuleSelectionStep.module.scss';
 
-type ModuleSelectionStepProps = {
+interface ModuleSelectionStepProps {
   data: ModuleSelection;
   onUpdate: (data: { moduleSelection: ModuleSelection }) => void;
-};
+}
 
-type Module = {
+interface Module {
   id: keyof ModuleSelection | 'accounting';
   name: string;
   description: string;
@@ -27,7 +26,7 @@ type Module = {
   required?: boolean;
   price?: number;
   category?: 'core' | 'standard' | 'commerce' | 'ai';
-};
+}
 
 const MODULES: Module[] = [
   {
@@ -227,14 +226,9 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
 
   return (
     <StepContentSection extraClassName={cn(styles.cModuleSelectionStep, "c-module-selection-step")}>
-      <Section
-        title="Module Selection"
-        paragraph="Choose the modules you need for your business operations"
+      <Subsection
+      noTitle
       >
-      </Section>
-
-      {/* Summary Card */}
-      <Subsection>
         <div className="c-module-selection-summary-hero">
           <div className="c-module-selection-summary-hero-title">
             <h3 className="c-module-selection-summary-hero-title-count">
@@ -255,7 +249,6 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
         </div>
       </Subsection>
 
-        {/* Core Module */}
       <Subsection
         title="Core Module"
         extraClassName="c-module-category">
@@ -264,7 +257,6 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
           </div>
       </Subsection>
 
-        {/* Standard Modules */}
       <Subsection
         title="Standard Modules"
         extraClassName="c-module-category">
@@ -273,7 +265,6 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
           </div>
       </Subsection>
 
-        {/* Commerce Modules */}
       <Subsection
         title="Commerce Modules"
         extraClassName="c-module-category">
@@ -282,7 +273,6 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
           </div>
       </Subsection>
 
-        {/* AI-Powered Modules */}
       <Subsection
         title="AI-Powered Modules"
         last

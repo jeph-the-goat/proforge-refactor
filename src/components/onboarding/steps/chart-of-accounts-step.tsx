@@ -9,11 +9,9 @@ import { Switch } from '@/components/form-elements/Switch';
 import { InputSelect } from '@/components/form-elements/InputSelect';
 import { ChartOfAccountsSchema, type ChartOfAccounts } from '@/lib/schemas/onboarding/chart-of-accounts.schema';
 import { cn } from '@/lib/utils';
-import styles from '@/styles/onboarding/ChartOfAccountsStep.module.scss';
-import {Section} from "@/components";
 import {Subsection} from "@/components/form-elements/Subsection";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
-import {AlertCircle} from "lucide-react";
+import styles from '@/styles/onboarding/steps/ChartOfAccountsStep.module.scss';
 
 type ChartOfAccountsStepProps = {
   data: ChartOfAccounts;
@@ -51,12 +49,12 @@ export function ChartOfAccountsStep({
       },
       ownershipStructure: {
         equityAccounts: data.ownershipStructure?.equityAccounts || [],
-        distributionHandling: data.ownershipStructure?.distributionHandling,
-        stockStructure: data.ownershipStructure?.stockStructure,
-        retainedEarnings: data.ownershipStructure?.retainedEarnings,
+        distributionHandling: data.ownershipStructure?.distributionHandling || "",
+        stockStructure: data.ownershipStructure?.stockStructure || "",
+        retainedEarnings: data.ownershipStructure?.retainedEarnings || "",
       },
     },
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
   // Watch for changes and update parent
@@ -70,12 +68,6 @@ export function ChartOfAccountsStep({
   return (
     <StepContentSection
       extraClassName={cn(styles.cChartOfAccountsStep, "c-chart-of-accounts-step")}>
-      <Section
-        title="Chart of Accounts"
-        paragraph="Configure your accounting settings and financial structure.">
-      </Section>
-
-      {/* Basic Accounting Settings */}
       <Subsection
         title="Basic Settings"
         extraClassName="c-account-settings"
@@ -127,7 +119,6 @@ export function ChartOfAccountsStep({
         />
       </Subsection>
 
-      {/* Account Segmentation */}
       <Subsection
         title="Account Segmentation"
         tooltip="Segment your accounts for better financial tracking and reporting"
@@ -393,22 +384,6 @@ export function ChartOfAccountsStep({
           </p>
         )}
       </Subsection>
-
-      {/* Validation Errors */}
-      {errors && (
-        <div className="c-validation-errors">
-          <div className="c-validation-errors-title">
-            <AlertCircle />
-            Validation Error
-          </div>
-          <ul className="c-validation-errors-list">
-            {errors.accountingMethod && <li>{errors.accountingMethod.message}</li>}
-            {errors.defaultCurrency && <li>{errors.defaultCurrency.message}</li>}
-            {errors.ownershipStructure && <li>{errors.ownershipStructure.message}</li>}
-            {errors.segmentation && <li>{errors.segmentation.message}</li>}
-          </ul>
-        </div>
-      )}
     </StepContentSection>
   );
 }

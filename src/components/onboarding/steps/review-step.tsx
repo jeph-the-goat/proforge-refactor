@@ -4,15 +4,14 @@ import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Switch } from '@/components/form-elements/Switch';
-import {Check, AlertCircle, Building2, Edit2, User, Briefcase} from 'lucide-react';
-import { Button } from '@/components/common/Button';
-import styles from '@/styles/onboarding/ReviewStep.module.scss';
+import {Check, AlertCircle, Building2, User, Briefcase} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import * as yup from 'yup';
 import type { OnboardingData } from '@/lib/schemas/onboarding';
-import { Section , Separator } from "@/components";
+import { Separator } from "@/components";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import {Subsection} from "@/components/form-elements/Subsection";
+import styles from '@/styles/onboarding/steps/ReviewStep.module.scss';
 
 // Simple validation schema for review step
 const ReviewStepSchema = yup.object({
@@ -23,10 +22,10 @@ const ReviewStepSchema = yup.object({
 
 type ReviewStepData = yup.InferType<typeof ReviewStepSchema>;
 
-type ReviewStepProps = {
+interface ReviewStepProps {
   data: OnboardingData;
   onUpdate: (data: Partial<OnboardingData>) => void;
-};
+}
 
 export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
   const {
@@ -50,17 +49,14 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
   }, [watch, onUpdate]);
 
   // Calculate selected modules count and total price
-  const selectedModules = Object.entries(data.moduleSelection).filter(([_, value]) => value);
+  const selectedModules = Object.entries(data.moduleSelection).filter(([k, value]) => {
+    void k;
+    return value;
+  });
   const totalPrice = selectedModules.length * 15; // Mock pricing
 
   return (
     <StepContentSection extraClassName={cn(styles.cReviewStep, "c-review-step")}>
-      <Section
-        title="Review Your Setup"
-        paragraph="Please review all the information you've provided. You can go back to any previous step to make changes if needed."
-      />
-
-      {/* Company */}
       <Subsection
         icon={<Briefcase className="c-review-section-icon"/>}
         title="Company Information"
@@ -118,7 +114,6 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
         <Separator text={''}/>
       </Subsection>
 
-        {/* Business Structure */}
       <Subsection
         title="Business Structure"
         icon={<Building2 className="c-review-section-icon"/>}
@@ -179,7 +174,6 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
         <Separator text={''}/>
       </Subsection>
 
-        {/* Selected Modules */}
       <Subsection
         title="Selected Modules"
         icon={<Check className="c-review-section-icon"/>}
@@ -206,14 +200,12 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
         </div>
       </Subsection>
 
-        {/* User Setup */}
       <Subsection
         title="User Setup"
         icon={<User className="c-review-section-icon"/>}
         editable
         extraClassName="c-review-section"
       >
-        {/* Admin User */}
         <div className="c-admin-user">
           <div className="c-admin-user-header">
             <div className="c-admin-user-avatar">
@@ -272,7 +264,6 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
           </div>
       </Subsection>
 
-        {/* Terms and Conditions */}
       <Subsection
         title="Terms and Conditions"
         extraClassName="c-review-section"

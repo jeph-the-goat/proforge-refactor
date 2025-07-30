@@ -1,14 +1,12 @@
 // src/components/onboarding/ProForgeOnboarding.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Loader2, CheckCircle, AlertCircle, Rocket } from 'lucide-react';
+import {Loader2, Rocket, AlertCircle} from 'lucide-react';
 import { Button } from '@/components/common/Button';
-import { Separator } from '@/components/common/Separator';
 import type { OnboardingData } from '@/lib/schemas/onboarding';
-import { Section } from "@/components";
 import { WelcomeStep } from '@/components/onboarding/steps/welcome-step';
 import { BusinessStructureStep } from '@/components/onboarding/steps/business-structure-step';
 import { ChartOfAccountsStep } from '@/components/onboarding/steps/chart-of-accounts-step';
@@ -16,10 +14,14 @@ import { ModuleSelectionStep } from '@/components/onboarding/steps/module-select
 import { UserSetupStep } from '@/components/onboarding/steps/user-setup-step';
 import { ReviewStep } from '@/components/onboarding/steps/review-step';
 import { cn } from '@/lib/utils';
-import { clsx } from 'clsx';
 import styles from '@/styles/onboarding/ProForgeOnboarding.module.scss';
+import {Subsection} from "@/components/form-elements/Subsection";
+import {OnboardingSidebar} from "@/components/onboarding/OnboardingSidebar";
+import {loadSavedProgress} from "@hooks/onboarding/useSavedProgress";
+import {ONBOARDING_STORAGE_KEY} from "@/constants/onboarding";
+import {Section} from "@/components";
 
-type SubscriptionData = {
+export type SubscriptionData = {
   subscriptionId: string;
   customerId: string;
   status: string;
@@ -29,9 +31,6 @@ type SubscriptionData = {
   addOns: string[];
   customerEmail: string | null;
 };
-
-// Local storage key
-const ONBOARDING_STORAGE_KEY = 'proforge-onboarding-progress';
 
 // Initial state values
 const INITIAL_ONBOARDING_DATA: OnboardingData = {
@@ -57,6 +56,7 @@ const INITIAL_ONBOARDING_DATA: OnboardingData = {
       memberType: 'Single',
       managementType: 'Member',
     },
+    corporationDetails: null,
     taxId: '',
     fiscalYearStart: '',
     fiscalYearEnd: '',
@@ -99,6 +99,15 @@ const INITIAL_ONBOARDING_DATA: OnboardingData = {
   termsAccepted: false,
 };
 
+const stepHeaders = [
+  {title: 'Welcome to ProForge ERP', p: "Let's get started by setting up your business profile"},
+  {title: 'Business Structure', p: "Configure your business structure and fiscal settings"},
+  {title: 'Chart of Accounts', p: "Configure your accounting settings and financial structure"},
+  {title: 'Module Selection', p: "Choose the modules you need for your business operations"},
+  {title: 'User Setup', p: "Configure your team members and organizational structure"},
+  {title: 'Review & Submit', p: "Please review all the information you've provided. You can go back to any previous step to make changes if needed"},
+];
+
 export default function ProForgeOnboarding({ 
   sessionId, 
   subscriptionData 
@@ -111,37 +120,9 @@ export default function ProForgeOnboarding({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [error, setError] = useState<string | null>(null);
-  
-  // Load saved progress from localStorage
-  const loadSavedProgress = () => {
-    try {
-      const saved = localStorage.getItem(ONBOARDING_STORAGE_KEY);
-      if (saved) {
-        const parsedData = JSON.parse(saved);
-        // Merge with subscription data to ensure latest info
-        return {
-          ...parsedData,
-          businessInfo: {
-            ...parsedData.businessInfo,
-            contactEmail: subscriptionData.customerEmail || parsedData.businessInfo.contactEmail,
-          },
-          moduleSelection: {
-            ...parsedData.moduleSelection,
-            // Update modules based on current subscription
-            aiFleet: subscriptionData.addOns.includes('ai-fleet'),
-            serviceScheduling: subscriptionData.addOns.includes('service-scheduling'),
-            aiAnalytics: subscriptionData.addOns.includes('ai-analytics'),
-          },
-        };
-      }
-    } catch (error) {
-      console.error('Failed to load saved progress:', error);
-    }
-    return null;
-  };
 
   const [onboardingData, setOnboardingData] = useState<OnboardingData>(() => {
-    const savedData = loadSavedProgress();
+    const savedData = loadSavedProgress(subscriptionData);
     if (savedData) {
       return savedData;
     }
@@ -178,8 +159,6 @@ export default function ProForgeOnboarding({
     };
   });
 
-  const totalSteps = 6;
-
   // Save progress to localStorage
   useEffect(() => {
     try {
@@ -197,7 +176,7 @@ export default function ProForgeOnboarding({
   };
 
   const handleNext = () => {
-    if (currentStep < totalSteps) {
+    if (currentStep < stepHeaders.length) {
       setCurrentStep((prev) => prev + 1);
     }
   };
@@ -273,163 +252,131 @@ export default function ProForgeOnboarding({
     }
   };
 
-  const clearSavedProgress = () => {
-    if (confirm('Are you sure you want to clear your saved progress?')) {
-      localStorage.removeItem(ONBOARDING_STORAGE_KEY);
-      window.location.reload();
-    }
-  };
-
   return (
-    <div className={cn(styles.cProForgeOnboarding, "c-proforge-onboarding")}>
-      <div className="c-onboarding-container">
-        {/* Sidebar */}
-        <div className="c-onboarding-sidebar">
-          <Section
-            extraClassName="c-onboarding-sidebar-header"
-            title="Setup Progress"
-            paragraph="Complete your ProForge setup"
-            >
-            {/* Show saved progress indicator */}
-            {loadSavedProgress() && (
-              <Button
-                extraClassName="c-onboarding-clear-progress-btn"
-                onClick={clearSavedProgress}
-              >
-                Clear saved progress
-              </Button>
-            )}
-          </Section>
-          <Separator text={''} />
-          <nav className="c-onboarding-sidebar-nav">
-            {[
-              'Welcome & Business Info',
-              'Business Structure',
-              'Chart of Accounts',
-              'Module Selection',
-              'User Setup',
-              'Review & Submit',
-            ].map((step, index) => (
-              <div
-                key={step}
-                className={clsx(
-                  "c-onboarding-sidebar-step",
-                  {
-                    "is-current": currentStep === index + 1,
-                    "is-completed": index + 1 < currentStep,
-                    "is-disabled": isSubmitting
-                  }
-                )}
-                onClick={() => !isSubmitting && setCurrentStep(index + 1)}
-              >
-                <div className="c-onboarding-sidebar-step-indicator">
-                  {index + 1 < currentStep ? <CheckCircle className="c-onboarding-sidebar-step-icon" /> : index + 1}
-                </div>
-                <span className="c-onboarding-sidebar-step-text">{step}</span>
+    <div
+      className={cn(styles.cProForgeOnboarding, "c-proforge-onboarding")}>
+      <OnboardingSidebar
+        navElementHeaders={[
+          'Welcome',
+          'Business Structure',
+          'Chart of Accounts',
+          'Module Selection',
+          'User Setup',
+          'Review & Submit',
+        ]}
+        currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
+        data={subscriptionData}
+        isSubmitting={isSubmitting}
+      />
+
+      <main className="c-form-group">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep}
+            initial={{opacity: 0, x: 20}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x: -20}}
+            transition={{duration: 0.2}}
+          >
+
+            {error && (
+              <div className="c-onboarding-alert c-onboarding-alert-error">
+                <AlertCircle className="c-onboarding-alert-icon"/>
+                <p className="c-onboarding-alert-text">{error}</p>
               </div>
-            ))}
-          </nav>
-        </div>
+            )}
 
-        {/* Main content */}
-        <div className="c-onboarding-main">
-          <main className="c-onboarding-content c-form-group">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentStep}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
-                  className="c-onboarding-step-container"
+            {submitMessage && (
+              <div className="c-onboarding-alert c-onboarding-alert-info">
+                <Rocket className="c-onboarding-alert-icon c-onboarding-alert-icon-pulse"/>
+                <p className="c-onboarding-alert-text">{submitMessage}</p>
+              </div>
+            )}
+
+            {/* Step title */}
+            <Section
+              addWrapper={false}
+              title={stepHeaders[currentStep - 1].title}
+              paragraph={stepHeaders[currentStep - 1].p}
+              extraClassName="c-onboarding-section"
+            >
+            </Section>
+
+            {/* Step content */}
+            {currentStep === 1 && onboardingData.businessInfo && (
+              <WelcomeStep data={onboardingData.businessInfo} onUpdate={updateOnboardingData}/>
+            )}
+            {currentStep === 2 && onboardingData.businessStructure && (
+              <BusinessStructureStep
+                businessStructure={onboardingData.businessStructure}
+                onUpdate={(businessStructure) => updateOnboardingData({businessStructure})}
+              />
+            )}
+            {currentStep === 3 && onboardingData.chartOfAccounts && onboardingData.businessStructure && (
+              <ChartOfAccountsStep
+                data={onboardingData.chartOfAccounts}
+                businessType={onboardingData.businessStructure.businessType}
+                onUpdate={updateOnboardingData}
+              />
+            )}
+            {currentStep === 4 && (
+              <ModuleSelectionStep
+                data={onboardingData.moduleSelection}
+                onUpdate={updateOnboardingData}
+              />
+            )}
+            {currentStep === 5 && (
+              <UserSetupStep data={onboardingData.userSetup} onUpdate={(userSetup) => updateOnboardingData(userSetup)}/>
+            )}
+            {currentStep === 6 && (
+              <ReviewStep data={onboardingData} onUpdate={updateOnboardingData}/>
+            )}
+
+            {/* Navigation buttons */}
+            <Subsection
+              inline
+              noBorder
+              extraClassName="c-onboarding-navigation">
+              <Button
+                onClick={handlePrevious}
+                disabled={currentStep === 1 || isSubmitting}
+                extraClassName="c-onboarding-nav-btn c-onboarding-nav-btn-previous"
+              >
+                Previous
+              </Button>
+              {currentStep < stepHeaders.length ? (
+                <Button
+                  onClick={handleNext}
+                  disabled={isSubmitting}
+                  extraClassName="c-onboarding-nav-btn c-onboarding-nav-btn-next"
                 >
-                  {error && (
-                    <div className="c-onboarding-alert c-onboarding-alert-error">
-                      <AlertCircle className="c-onboarding-alert-icon" />
-                      <p className="c-onboarding-alert-text">{error}</p>
-                    </div>
+                  Next
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleSubmit}
+                  disabled={isSubmitting || !onboardingData.termsAccepted}
+                  extraClassName="c-onboarding-nav-btn c-onboarding-nav-btn-submit"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2
+                        className="c-onboarding-nav-btn-icon c-onboarding-nav-btn-icon-spin"/>
+                      {submitMessage || 'Processing...'}
+                    </>
+                  ) : (
+                    <>
+                      <Rocket className="c-onboarding-nav-btn-icon"/>
+                      Launch My ERP System
+                    </>
                   )}
-
-                  {/* Submission message */}
-                  {submitMessage && (
-                    <div className="c-onboarding-alert c-onboarding-alert-info">
-                      <Rocket className="c-onboarding-alert-icon c-onboarding-alert-icon-pulse" />
-                      <p className="c-onboarding-alert-text">{submitMessage}</p>
-                    </div>
-                  )}
-
-                  {/* Step content */}
-                  {currentStep === 1 && onboardingData.businessInfo && (
-                    <WelcomeStep data={onboardingData.businessInfo} onUpdate={updateOnboardingData} />
-                  )}
-                  {currentStep === 2 && onboardingData.businessStructure && (
-                    <BusinessStructureStep
-                      businessStructure={onboardingData.businessStructure}
-                      onUpdate={(businessStructure) => updateOnboardingData({ businessStructure })}
-                    />
-                  )}
-                  {currentStep === 3 && onboardingData.chartOfAccounts && onboardingData.businessStructure && (
-                    <ChartOfAccountsStep
-                      data={onboardingData.chartOfAccounts}
-                      businessType={onboardingData.businessStructure.businessType}
-                      onUpdate={updateOnboardingData}
-                    />
-                  )}
-                  {currentStep === 4 && (
-                    <ModuleSelectionStep
-                      data={onboardingData.moduleSelection}
-                      onUpdate={updateOnboardingData}
-                    />
-                  )}
-                  {currentStep === 5 && (
-                    <UserSetupStep data={onboardingData.userSetup} onUpdate={updateOnboardingData} />
-                  )}
-                  {currentStep === 6 && (
-                    <ReviewStep data={onboardingData} onUpdate={updateOnboardingData} />
-                  )}
-
-                  {/* Navigation buttons */}
-                  <div className="c-onboarding-navigation">
-                    <Button
-                      onClick={handlePrevious}
-                      disabled={currentStep === 1 || isSubmitting}
-                      extraClassName="c-onboarding-nav-btn c-onboarding-nav-btn-previous"
-                    >
-                      Previous
-                    </Button>
-                    {currentStep < totalSteps ? (
-                      <Button 
-                        onClick={handleNext} 
-                        disabled={isSubmitting}
-                        extraClassName="c-onboarding-nav-btn c-onboarding-nav-btn-next"
-                      >
-                        Next
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={handleSubmit}
-                        disabled={isSubmitting || !onboardingData.termsAccepted}
-                        extraClassName="c-onboarding-nav-btn c-onboarding-nav-btn-submit"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="c-onboarding-nav-btn-icon c-onboarding-nav-btn-icon-spin" />
-                            {submitMessage || 'Processing...'}
-                          </>
-                        ) : (
-                          <>
-                            <Rocket className="c-onboarding-nav-btn-icon" />
-                            Launch My ERP System
-                          </>
-                        )}
-                      </Button>
-                    )}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-          </main>
-        </div>
-      </div>
+                </Button>
+              )}
+            </Subsection>
+          </motion.div>
+        </AnimatePresence>
+      </main>
     </div>
   );
 }

@@ -9,15 +9,15 @@ import { Input } from '@/components/form-elements/Input';
 import { Button } from '@/components/common/Button';
 import { UserSetupSchema, type UserSetup } from '@/lib/schemas/onboarding/user-setup.schema';
 import { cn } from '@/lib/utils';
-import styles from '@/styles/onboarding/UserSetupStep.module.scss';
-import {InputSelect, Section} from "@/components";
+import {InputSelect} from "@/components";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import {Subsection} from "@/components/form-elements/Subsection";
+import styles from '@/styles/onboarding/steps/UserSetupStep.module.scss';
 
-type UserSetupStepProps = {
+interface UserSetupStepProps {
   data: UserSetup;
   onUpdate: (data: { userSetup: UserSetup }) => void;
-};
+}
 
 const USER_ROLES = [
   'Administrator',
@@ -43,6 +43,7 @@ const DEFAULT_DEPARTMENTS = [
 
 export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
   const [newDepartment, setNewDepartment] = useState('');
+
   // Add separate state for new user form
   const [newUser, setNewUser] = useState({
     name: '',
@@ -59,12 +60,12 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
     resolver: yupResolver(UserSetupSchema),
     defaultValues: {
       adminUser: {
-        name: data.adminUser?.name || '',
-        email: data.adminUser?.email || '',
+        name: data?.adminUser?.name || '',
+        email: data?.adminUser?.email || '',
       },
-      additionalUsers: data.additionalUsers || [],
-      departments: data.departments?.length > 0 ? data.departments : [],
-      permissions: data.permissions || {},
+      additionalUsers: data?.additionalUsers || [],
+      departments: data && data.departments && data.departments?.length > 0 ? data.departments : [],
+      permissions: data?.permissions || {},
     },
     mode: 'onChange',
   });
@@ -145,13 +146,6 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
 
   return (
     <StepContentSection extraClassName={cn(styles.cUserSetupStep, "c-user-setup-step")}>
-      <Section
-        title="User Setup"
-        paragraph="Configure your team members and organizational structure."
-      >
-      </Section>
-
-      {/* Admin User Setup */}
       <Subsection title="Administrator Account">
         <Controller
           name="adminUser.name"

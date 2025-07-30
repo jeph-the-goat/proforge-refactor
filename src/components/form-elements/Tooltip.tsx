@@ -26,7 +26,7 @@ export const Tooltip = ({content, extraClassName}: TooltipProps) => {
           {content}
         </div>
       )}
-      <InfoIcon/>
+      <InfoIcon size={22} />
     </div>
   );
 };

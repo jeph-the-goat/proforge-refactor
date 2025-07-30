@@ -20,6 +20,12 @@
 
           .c-card {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--px12);
+            text-align: center;
             padding: 1rem 1.5rem;
             background-color: var(--neutral-900);
             border: 2px solid var(--neutral-700);
@@ -74,6 +80,7 @@
                 flex: 1;
                 justify-content: center;
                 color: var(--neutral-400);
+                margin: 0;
 
                 @media (min-width: 640px) {
                   flex: none;

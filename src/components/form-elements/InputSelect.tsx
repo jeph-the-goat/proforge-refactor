@@ -13,7 +13,7 @@ import {
   SelectProps,
 } from "@radix-ui/react-select";
 import {IcnChevronDown} from "@assets/icons";
-import {clsx} from "clsx";
+import {cn} from "@lib/utils";
 
 export interface cInputSelectOption {
   value: string;
@@ -60,7 +60,7 @@ export const InputSelect = (
 
   return (
     <FormGroup
-      extraClassName={clsx("c-form-group-select", extraClassName)}
+      extraClassName={cn("c-form-group-select", extraClassName)}
       name={name}
       labelText={labelText}
       labelIsHidden={labelIsHidden}
