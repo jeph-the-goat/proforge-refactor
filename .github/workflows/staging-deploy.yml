@@ -1,0 +1,54 @@
+name: Deploy PROD
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: proforge-frontend
+  ECS_CLUSTER: proforge-cluster
+  ECS_SERVICE: proforge-frontend-service
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id:     ${{ secrets.STAGING_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.STAGING_AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Fetch secrets from Parameter Store
+        run: bash .pipeline/script/ssm.sh prod
+
+      - name: Prepare production .env
+        run: npm run set-deploy-env:production
+
+      - name: Build & push Docker image as latest
+        run: |
+          REPO_URI=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:latest
+          echo "Building $REPO_URI"
+          docker build -t "$REPO_URI" .
+          docker push "$REPO_URI"
+
+      - name: Force new ECS deployment
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service ${{ env.ECS_SERVICE }} \
+            --force-new-deployment
