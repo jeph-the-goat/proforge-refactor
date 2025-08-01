@@ -1,10 +1,10 @@
-.cProForgeOnboarding {
+.cOnboardingForm {
   &:global {
     --font-size-label: var(--px18);
     --font-size-label-info: var(--px14);
     --font-weight-bold: 550;
 
-    &.c-proforge-onboarding {
+    &.c-onboarding-form {
       width: 100%;
       min-height: 100vh;
       display: flex;

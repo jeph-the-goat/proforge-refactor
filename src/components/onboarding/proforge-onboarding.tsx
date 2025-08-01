@@ -14,12 +14,12 @@ import { ModuleSelectionStep } from '@/components/onboarding/steps/module-select
 import { UserSetupStep } from '@/components/onboarding/steps/user-setup-step';
 import { ReviewStep } from '@/components/onboarding/steps/review-step';
 import { clsx } from "clsx";
-import styles from '@/styles/onboarding/ProForgeOnboarding.module.scss';
 import {Subsection} from "@/components/form-elements/Subsection";
 import {OnboardingSidebar} from "@/components/onboarding/OnboardingSidebar";
 import {loadSavedProgress} from "@hooks/onboarding/useSavedProgress";
 import {ONBOARDING_STORAGE_KEY} from "@/constants/onboarding";
 import {Section} from "@/components";
+import styles from '@/styles/onboarding/Form.module.scss';
 
 export type SubscriptionData = {
   subscriptionId: string;
@@ -254,7 +254,7 @@ export default function ProForgeOnboarding({
 
   return (
     <div
-      className={clsx(styles.cProForgeOnboarding, "c-proforge-onboarding")}>
+      className={clsx(styles.cOnboardingForm, "c-onboarding-form")}>
       <OnboardingSidebar
         navElementHeaders={[
           'Welcome',

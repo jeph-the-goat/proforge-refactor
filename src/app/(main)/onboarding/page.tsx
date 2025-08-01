@@ -4,10 +4,10 @@ import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import ProForgeOnboarding from "@/components/onboarding/proforge-onboarding"
 import { clsx } from "clsx"
-import styles from "@/styles/onboarding/Success.module.scss"
+import styles from "@/styles/onboarding/Onboarding.module.scss"
 import {Button, Section} from "@/components";
 
-type SubscriptionData = {
+interface SubscriptionData {
   subscriptionId: string;
   customerId: string;
   status: string;
@@ -18,7 +18,7 @@ type SubscriptionData = {
   customerEmail: string | null;
 }
 
-function SuccessContent() {
+function OnboardingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [isProcessing, setIsProcessing] = useState(true)
@@ -61,7 +61,7 @@ function SuccessContent() {
           setIsProcessing(false)
           return
         }
-        
+
         setSubscriptionData({
           subscriptionId: result.subscriptionId,
           customerId: result.customerId,
@@ -84,7 +84,7 @@ function SuccessContent() {
   }, [router, searchParams])
 
   if (subscriptionVerified && subscriptionData) {
-    return <ProForgeOnboarding sessionId={sessionId} subscriptionData={subscriptionData} />
+    return <ProForgeOnboarding sessionId={sessionId} subscriptionData={subscriptionData}/>
   }
 
   if (!isProcessing && !subscriptionVerified) {
@@ -105,25 +105,28 @@ function SuccessContent() {
     )
   }
 
+  // Loading state
   return (
     <Section
-      title="Processing Your Subscription"
-      paragraph="Please wait while we verify your subscription..."
+      title="Processing your subscription"
+      paragraph="Please wait..."
       extraClassName={clsx(styles.cSuccessPage, "c-success-page")}>
     </Section>
   )
 }
 
-export default function SuccessPage() {
+function OnboardingSetup() {
   return (
     <Suspense fallback={
       <Section
-        title="Loading"
+        title="Processing your subscription"
         paragraph="Please wait..."
         extraClassName={clsx(styles.cSuccessPage, "c-success-page")}>
       </Section>
     }>
-      <SuccessContent />
+      <OnboardingContent />
     </Suspense>
   )
-} 
+}
+
+export default OnboardingSetup;

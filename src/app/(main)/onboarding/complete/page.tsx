@@ -19,7 +19,7 @@ import styles from '@/styles/onboarding/Complete.module.scss';
 import { clsx } from 'clsx';
 import { Section } from "@/components";
 
-export default function SetupCompletePage() {
+function SetupCompletePage() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   // Mock data - in real implementation, this would come from API/database
@@ -331,3 +331,5 @@ export default function SetupCompletePage() {
     </Section>
   );
 }
+
+export default SetupCompletePage;

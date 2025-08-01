@@ -20,7 +20,7 @@ interface StatusPageProps {
   }>;
 }
 
-export default function StatusPage({ params }: StatusPageProps) {
+function StatusPage({ params }: StatusPageProps) {
   const [status, setStatus] = useState<ProvisioningStatus | null>(null);
   const [progress, setProgress] = useState(15);
   const [isLoading, setIsLoading] = useState(true);
@@ -267,3 +267,5 @@ export default function StatusPage({ params }: StatusPageProps) {
     </div>
   );
 }
+
+export default StatusPage;

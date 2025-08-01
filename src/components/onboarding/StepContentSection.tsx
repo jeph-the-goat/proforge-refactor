@@ -1,5 +1,5 @@
-import styles from "@/styles/onboarding/ProForgeOnboarding.module.scss"
 import { clsx } from "clsx";
+import styles from "@/styles/onboarding/Form.module.scss"
 
 
 interface StepContentSectionProps {
@@ -9,7 +9,7 @@ interface StepContentSectionProps {
 
 export const StepContentSection = ({children, extraClassName}:StepContentSectionProps) => {
   return (
-    <section className={clsx(styles.cProForgeOnboarding, "c-onboarding-content", extraClassName)}>
+    <section className={clsx(styles.cOnboardingForm, "c-onboarding-content", extraClassName)}>
       {children}
     </section>
   );
