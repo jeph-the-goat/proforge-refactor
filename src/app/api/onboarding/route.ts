@@ -55,7 +55,7 @@ export async function POST(request: Request) {
         metadata: {
           industry: validationResult.businessInfo.industry!,
           employeeCount: validationResult.businessInfo.employeeCount!,
-          website: validationResult.businessInfo.website || '',
+          website: validationResult.businessInfo.companyWebsite!,
           businessType: validationResult.businessStructure.businessType!,
           taxId: validationResult.businessStructure.taxId!,
           fiscalYearStart: validationResult.businessStructure.fiscalYearStart!,
