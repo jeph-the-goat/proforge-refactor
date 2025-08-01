@@ -36,6 +36,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@svgr/webpack": "^8.1.0",
+    "@testing-library/jest-dom": "latest",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -49,7 +50,6 @@
     "prisma": "^6.11.1",
     "typescript": "^5",
     "vite-plugin-svgr": "^4.2.0",
-    "vitest": "^3.2.4",
-    "@testing-library/jest-dom": "latest"
+    "vitest": "^3.2.4"
   }
 }
