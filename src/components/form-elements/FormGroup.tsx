@@ -30,8 +30,7 @@ export const FormGroup = (
   return (
     <div
       ref={ref}
-      className={clsx(styles.cFormGroup, "c-form-group", extraClassName)}
-      style={hasDescription ? {marginBottom: "0.5rem"} : {}}
+      className={clsx(styles.cFormGroup, "c-form-group", hasDescription && "has-description", extraClassName)}
     >
       <label
         htmlFor={`id_${name}`}

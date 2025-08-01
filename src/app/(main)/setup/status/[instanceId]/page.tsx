@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/common/Button';
 import { AlertCircle, CheckCircle, Clock, Loader2, Rocket } from 'lucide-react';
 import { clsx } from 'clsx';
-import styles from '@/styles/setup/status.module.scss';
+import styles from '@/styles/onboarding/Status.module.scss';
 
 interface ProvisioningStatus {
   success: boolean;

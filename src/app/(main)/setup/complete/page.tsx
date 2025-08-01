@@ -15,8 +15,9 @@ import {
   Rocket,
   Building2
 } from 'lucide-react';
+import styles from '@/styles/onboarding/Complete.module.scss';
 import { clsx } from 'clsx';
-import styles from '@/styles/setup/complete.module.scss';
+import { Section } from "@/components";
 
 export default function SetupCompletePage() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
@@ -70,7 +71,9 @@ export default function SetupCompletePage() {
   ];
 
   return (
-    <div className={clsx(styles.cSetupComplete, 'c-setup-complete')}>
+    <Section
+      hideSectionTitle
+      extraClassName={clsx(styles.cSetupComplete, 'c-setup-complete')}>
       {/* Celebratory background elements */}
       <div className="c-setup-complete-bg">
         <div className="c-setup-complete-bg-element c-setup-complete-bg-element-1"></div>
@@ -325,6 +328,6 @@ export default function SetupCompletePage() {
           </div>
         </div>
       </div>
-    </div>
+    </Section>
   );
 }

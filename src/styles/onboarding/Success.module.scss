@@ -1,81 +1,67 @@
 .cSuccessPage {
   &:global {
     &.c-success-page {
+      --section-padding-top: var(--px24);
+      --section-padding-bottom: var(--px24);
+
       min-height: 100vh;
       display: flex;
+      flex: 1;
       align-items: center;
       justify-content: center;
-      padding: var(--px16);
-      background-color: var(--neutral-900);
 
-      .c-success-page-container {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
+      .c-container {
+        row-gap: var(--px24);
+      }
 
-        .c-success-page-content {
-          text-align: center;
+      .c-section-title {
+        max-width: 90vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--px24);
+        background-color: var(--neutral-800);
+        text-align: center;
+        border-radius: var(--px12);
+        border: 1px solid var(--neutral-700);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        @media (min-width: 768px) {
           padding: var(--px32);
-          background-color: var(--neutral-800);
-          border-radius: var(--px16);
-          border: 1px solid var(--neutral-700);
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          max-width: 700px;
+        }
 
-          @media (min-width: 640px) {
-            padding: var(--px48);
-          }
+        h2 {
+          font-size: var(--px28);
+        }
+      }
 
-          .c-success-page-title {
-            font-size: var(--px24);
-            font-weight: 700;
-            color: var(--neutral-100);
-            margin: 0 0 var(--px16) 0;
-            line-height: 1.2;
+      &-button {
+        display: inline-block;
+        color: var(--primary-500);
+        font-size: var(--px16);
+        font-weight: 500;
+        text-decoration: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--px8) var(--px16);
+        border-radius: var(--px6);
+        transition: all 0.2s ease;
 
-            @media (min-width: 640px) {
-              font-size: var(--px32);
-            }
-          }
+        &:hover {
+          color: var(--primary-400);
+          text-decoration: underline;
+          background-color: var(--primary-500-alpha-10);
+        }
 
-          .c-success-page-description {
-            color: var(--neutral-300);
-            font-size: var(--px16);
-            line-height: 1.5;
-            margin: 0 0 var(--px24) 0;
+        &:focus {
+          outline: 2px solid var(--primary-500);
+          outline-offset: 2px;
+        }
 
-            @media (min-width: 640px) {
-              font-size: var(--px18);
-            }
-          }
-
-          .c-success-page-button {
-            display: inline-block;
-            color: var(--primary-500);
-            font-size: var(--px16);
-            font-weight: 500;
-            text-decoration: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: var(--px8) var(--px16);
-            border-radius: var(--px6);
-            transition: all 0.2s ease;
-
-            &:hover {
-              color: var(--primary-400);
-              text-decoration: underline;
-              background-color: var(--primary-500-alpha-10);
-            }
-
-            &:focus {
-              outline: 2px solid var(--primary-500);
-              outline-offset: 2px;
-            }
-
-            &:active {
-              transform: translateY(1px);
-            }
-          }
+        &:active {
+          transform: translateY(1px);
         }
       }
     }

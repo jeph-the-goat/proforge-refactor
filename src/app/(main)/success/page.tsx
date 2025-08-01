@@ -4,7 +4,8 @@ import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import ProForgeOnboarding from "@/components/onboarding/proforge-onboarding"
 import { clsx } from "clsx"
-import styles from "@/styles/success.module.scss"
+import styles from "@/styles/onboarding/Success.module.scss"
+import {Button, Section} from "@/components";
 
 type SubscriptionData = {
   subscriptionId: string;
@@ -88,52 +89,39 @@ function SuccessContent() {
 
   if (!isProcessing && !subscriptionVerified) {
     return (
-      <div className={clsx(styles.cSuccessPage, "c-success-page")}>
-        <div className="c-success-page-container">
-          <div className="c-success-page-content">
-            <h1 className="c-success-page-title">Subscription Error</h1>
-            <p className="c-success-page-description">
-              There was a problem verifying your subscription. Please contact support if this issue persists.
-            </p>
-            <button
-              onClick={() => router.push("/#pricing")}
-              className="c-success-page-button"
-            >
-              Return to Pricing
-            </button>
-          </div>
-        </div>
-      </div>
+      <Section
+        title="Subscription Error"
+        paragraph="There was a problem verifying your subscription. Please contact support if this issue persists."
+        extraClassName={clsx(styles.cSuccessPage, "c-success-page")}
+      >
+        <Button
+          title="Return to Pricing"
+          onClick={() => router.push("/#pricing")}
+          extraClassName="c-success-page-button"
+        >
+          Return to Pricing
+        </Button>
+      </Section>
     )
   }
 
   return (
-    <div className={clsx(styles.cSuccessPage, "c-success-page")}>
-      <div className="c-success-page-container">
-        <div className="c-success-page-content">
-          <h1 className="c-success-page-title">Processing Your Subscription</h1>
-          <p className="c-success-page-description">
-            Please wait while we verify your subscription...
-          </p>
-        </div>
-      </div>
-    </div>
+    <Section
+      title="Processing Your Subscription"
+      paragraph="Please wait while we verify your subscription..."
+      extraClassName={clsx(styles.cSuccessPage, "c-success-page")}>
+    </Section>
   )
 }
 
 export default function SuccessPage() {
   return (
     <Suspense fallback={
-      <div className={clsx(styles.cSuccessPage, "c-success-page")}>
-        <div className="c-success-page-container">
-          <div className="c-success-page-content">
-            <h1 className="c-success-page-title">Loading</h1>
-            <p className="c-success-page-description">
-              Please wait...
-            </p>
-          </div>
-        </div>
-      </div>
+      <Section
+        title="Loading"
+        paragraph="Please wait..."
+        extraClassName={clsx(styles.cSuccessPage, "c-success-page")}>
+      </Section>
     }>
       <SuccessContent />
     </Suspense>

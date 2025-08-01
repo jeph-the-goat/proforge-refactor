@@ -16,6 +16,10 @@
       max-width: 100%;
       text-align: left;
 
+      &.has-description {
+        margin-bottom: var(--px12);
+      }
+
       label {
         display: block;
         margin-bottom: var(--px4);
