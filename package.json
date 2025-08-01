@@ -20,6 +20,8 @@
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.6",
+    "lucide-react": "^0.525.0",
     "next": "15.3.3",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
@@ -34,16 +36,20 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@svgr/webpack": "^8.1.0",
+    "@testing-library/jest-dom": "latest",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "jsdom": "^26.1.0",
     "msw": "^2.10.3",
     "next-test-api-route-handler": "^4.0.16",
     "prisma": "^6.11.1",
     "typescript": "^5",
+    "vite-plugin-svgr": "^4.2.0",
     "vitest": "^3.2.4"
   }
 }

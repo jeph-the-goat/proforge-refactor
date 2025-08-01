@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
   sassOptions: {
     sourceMap: true,
   },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+  webpack: (config, {}) => {
     const fileLoaderRule = config.module.rules.find((rule: any) =>
       rule.test?.test?.('.svg')
     )

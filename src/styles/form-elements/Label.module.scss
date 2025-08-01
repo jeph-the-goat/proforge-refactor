@@ -1,0 +1,17 @@
+.cLabelSection {
+  &:global {
+    &.c-label-section {
+      flex: 1;
+      font-weight: var(--font-weight-bold);
+      color: var(--neutral-0);
+
+      .c-label {
+
+      }
+
+      .c-description {
+        margin-top: var(--px4);
+      }
+    }
+  }
+}

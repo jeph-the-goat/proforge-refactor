@@ -9,15 +9,28 @@
       --input-border-color: var(--neutral-700);
       --input-border-radius: var(--px8);
       --input-placeholder-color: var(--neutral-400);
+      --font-weight-bold: 550;
 
+      margin-bottom: var(--px18);
       width: 100%;
       max-width: 100%;
       text-align: left;
 
+      &.has-description {
+        margin-bottom: var(--px12);
+      }
+
       label {
         display: block;
         margin-bottom: var(--px4);
-        font-weight: 600;
+        font-weight: var(--font-weight-bold);
+      }
+
+      p {
+        margin: 0 var(--px18) 0 0;
+        font-size: var(--px14);
+        color: var(--neutral-400);
+        line-height: 1.4;
       }
 
       ::placeholder {

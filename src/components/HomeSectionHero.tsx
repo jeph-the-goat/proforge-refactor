@@ -16,7 +16,7 @@ export const HomeSectionHero = () => {
       <div className='c-section-hero-grid-text'>
 
         <EventBar
-          text="Level Up Your Web3 Game"
+          text="Level Up Your ERP Game"
           linkUrl="/"
           linkText="Join Free Webinar"
           users={DummyUserList}
@@ -24,8 +24,8 @@ export const HomeSectionHero = () => {
 
         <SectionTitle
           headingTag="h1"
-          title="Revolutionize Web3 Development"
-          paragraph="From multi-chain access to AI-driven smart contracts, our platform simplifies Web3 development."
+          title="Streamline Your Construction Business"
+          paragraph="The only ERP built for AIA billing and Union compliance. From job costing to certified payroll, manage everything in one powerful platform.."
         />
 
         <div className="c-button-container">
@@ -49,7 +49,7 @@ export const HomeSectionHero = () => {
 
         <Image
           src={HomeHeroImage}
-          alt="Revolutionize Web3 Development"
+          alt="Streamline Your Construction Business"
           width={1160}
           height={500}
         />

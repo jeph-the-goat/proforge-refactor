@@ -3,22 +3,22 @@ import * as yup from 'yup';
 // Module selection schema matching ModuleSelectionStep.tsx
 export const ModuleSelectionSchema = yup.object({
   // Standard modules
-  inventory: yup.boolean(),
-  manufacturing: yup.boolean(),
-  hrPayroll: yup.boolean(),
-  crm: yup.boolean(),
-  projectManagement: yup.boolean(),
-  assetManagement: yup.boolean(),
-  qualityManagement: yup.boolean(),
+  inventory: yup.boolean().required().default(false),
+  manufacturing: yup.boolean().required().default(false),
+  hrPayroll: yup.boolean().required().default(false),
+  crm: yup.boolean().required().default(false),
+  projectManagement: yup.boolean().required().default(false),
+  assetManagement: yup.boolean().required().default(false),
+  qualityManagement: yup.boolean().required().default(false),
   
   // Commerce modules
-  ecommerce: yup.boolean(),
-  pointOfSale: yup.boolean(),
+  ecommerce: yup.boolean().required().default(false),
+  pointOfSale: yup.boolean().required().default(false),
   
   // AI-powered modules
-  aiFleet: yup.boolean(),
-  serviceScheduling: yup.boolean(),
-  aiAnalytics: yup.boolean(),
+  aiFleet: yup.boolean().required().default(false),
+  serviceScheduling: yup.boolean().required().default(false),
+  aiAnalytics: yup.boolean().required().default(false),
 });
 
 export interface ModuleSelection {

@@ -15,7 +15,7 @@ vi.mock('@prisma/client', () => ({
   PrismaClient: vi.fn().mockImplementation(() => mockPrisma),
 }));
 
-import * as handler from '@app/api/provision/config/[instanceId]/route';
+import * as handler from '@/app/api/provision/config/[instanceId]/route';
 
 describe('/api/provision/config/[instanceId]', () => {
   beforeEach(() => {

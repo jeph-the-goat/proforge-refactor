@@ -33,14 +33,14 @@ export function validateEnv() {
   }
 
   // Validate Stripe key format
-  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  const stripeKey = process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY;
   if (!stripeKey?.startsWith('sk_')) {
     throw new Error('Invalid STRIPE_SECRET_KEY format');
   }
 
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
   if (!publishableKey?.startsWith('pk_')) {
-    throw new Error('Invalid NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY format');
+    throw new Error('Invalid STRIPE_PUBLISHABLE_KEY format');
   }
 
   // Validate domain format and accessibility

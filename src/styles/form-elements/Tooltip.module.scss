@@ -1,0 +1,32 @@
+.cTooltip {
+  &:global {
+   &.c-tooltip {
+     display: inline-flex;
+     align-items: center;
+     height: 100%;
+     margin: auto 0;
+     cursor: help;
+
+     .c-tooltip-content {
+       position: absolute;
+       z-index: 100;
+       width: 100%;
+       max-width: 18rem;
+       background-color: black;
+       border-radius: var(--px8);
+       padding: var(--px8) var(--px12);
+       translate: -10rem -50rem;
+       color: var(--neutral-300);
+       text-align: start;
+
+       @media (min-width: 640px) {
+         translate: var(--px32);
+       }
+     }
+
+     svg {
+       stroke: var(--neutral-400);
+     }
+   }
+  }
+}

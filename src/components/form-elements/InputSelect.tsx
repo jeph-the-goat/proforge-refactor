@@ -13,7 +13,7 @@ import {
   SelectProps,
 } from "@radix-ui/react-select";
 import {IcnChevronDown} from "@assets/icons";
-import {clsx} from "clsx";
+import { clsx } from "clsx";
 
 export interface cInputSelectOption {
   value: string;
@@ -25,6 +25,7 @@ interface InputSelectProps extends cFormGroupProps, SelectProps {
   placeholder?: string;
   options: cInputSelectOption[];
   value?: string;
+  hasDescription?: boolean;
   onValueChange?: (value: string) => void;
 }
 
@@ -35,6 +36,7 @@ export const InputSelect = (
     labelIsHidden,
     options,
     name,
+    hasDescription = false,
     placeholder,
     value,
     onValueChange,
@@ -66,6 +68,7 @@ export const InputSelect = (
       errorText={errorText}
       inputGroupIcon={undefined}
       inputGroupText={inputGroupText}
+      hasDescription={hasDescription}
     >
       <Select
         value={value || ""}
@@ -115,3 +118,5 @@ export const InputSelect = (
     </FormGroup>
   );
 };
+
+export {SelectContent, Select, SelectItem, SelectTrigger, SelectValue};

@@ -1,11 +1,10 @@
 import styles from "@/styles/common/Section.module.scss";
 
 import React, { ReactNode } from 'react';
-import { clsx } from "clsx";
-
 import { SectionTitleProps } from "@/types";
 
 import { SectionTitle } from "@/components";
+import { clsx } from "clsx";
 
 interface SectionProps extends SectionTitleProps {
   extraClassName?: string;

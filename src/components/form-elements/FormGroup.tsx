@@ -7,6 +7,7 @@ import {cFormGroupProps} from "@/types";
 
 interface FormGroupProps extends cFormGroupProps {
   name: string;
+  hasDescription?: boolean;
   children: ReactNode;
   ref?: Ref<HTMLDivElement>;
 }
@@ -17,6 +18,7 @@ export const FormGroup = (
     labelText,
     labelIsHidden,
     name,
+    hasDescription = false,
     children,
     inputGroupIcon,
     inputGroupText,
@@ -28,7 +30,7 @@ export const FormGroup = (
   return (
     <div
       ref={ref}
-      className={clsx(styles.cFormGroup, "c-form-group", extraClassName)}
+      className={clsx(styles.cFormGroup, "c-form-group", hasDescription && "has-description", extraClassName)}
     >
       <label
         htmlFor={`id_${name}`}

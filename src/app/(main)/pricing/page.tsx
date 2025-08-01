@@ -4,6 +4,7 @@ import {
   PricingSectionPlans,
   SectionLogoBanner,
   PricingSectionCompare,
+  SectionFooterBanner,
 } from "@/components";
 
 
@@ -22,6 +23,7 @@ function Pricing() {
       <PricingSectionPlans/>
       <SectionLogoBanner/>
       <PricingSectionCompare/>
+      <SectionFooterBanner/>
     </>
   );
 }

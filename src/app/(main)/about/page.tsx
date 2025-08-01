@@ -6,6 +6,7 @@ import {
   AboutSectionValues,
   AboutSectionTeam,
   SectionTestimonial,
+  SectionFooterBanner,
 } from "@/components";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ function About() {
       <AboutSectionValues/>
       <AboutSectionTeam/>
       <SectionTestimonial/>
+      <SectionFooterBanner/>
     </>
   );
 }

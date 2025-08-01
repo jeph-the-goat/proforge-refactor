@@ -15,6 +15,7 @@ export interface PlanProps extends cButtonColors {
   popular: boolean;
   icon: ReactNode;
   features: string[];
+  userCount: number;
   bestFor: string;
   blockchainConnections: string;
   smartContractAutomation: string;
@@ -44,6 +45,7 @@ export const Plans: PlanProps[] = [
       'Limited API requests (10k/month)',
       'Community support'
     ],
+    userCount: 1,
     bestFor: 'Beginners & small teams',
     blockchainConnections: 'Connect up to 2 blockchains',
     smartContractAutomation: 'Basic',
@@ -71,6 +73,7 @@ export const Plans: PlanProps[] = [
       'Real-time analytics dashboard',
       'Priority support'
     ],
+    userCount: 5,
     bestFor: 'Growing teams & businesses',
     blockchainConnections: 'Connect up to 5 blockchains',
     smartContractAutomation: 'Advanced',
@@ -98,6 +101,7 @@ export const Plans: PlanProps[] = [
       'Custom integrations',
       'Enterprise-level security & compliance'
     ],
+    userCount: 200,
     bestFor: 'Large enterprises',
     blockchainConnections: 'Unlimited blockchain',
     smartContractAutomation: 'AI-powered contract builder',

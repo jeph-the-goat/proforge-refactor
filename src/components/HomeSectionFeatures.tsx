@@ -18,7 +18,7 @@ export const HomeSectionFeatures = () => {
       badgeText="Features"
       headingClass="h3"
       title="Tools That Feel Like Superpowers"
-      paragraph="The only platform you’ll ever need for seamless Web3 development."
+      paragraph="Discover how our comprehensive ERP solution can transform your construction business operations."
     >
       <div className="c-home-section-features-grid">
 

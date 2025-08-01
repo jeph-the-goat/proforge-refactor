@@ -1,0 +1,40 @@
+.cChartOfAccountsStep {
+  &:global {
+    &.c-chart-of-accounts-step {
+      .c-account-settings {
+        margin-bottom: var(--px18);
+
+        .c-account-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: var(--px18);
+          gap: var(--px12);
+          transition: all 0.3s ease;
+
+          label {
+            font-weight: var(--font-weight-bold);
+          }
+
+          p {
+            font-size: var(--from-16-to-14px);
+            color: var(--neutral-400);
+          }
+        }
+      }
+
+      .c-entity-setting {
+        width: 100%;
+        display: inline-flex;
+        flex: 1;
+        flex-direction: column;
+        margin: 0;
+
+        p {
+          font-size: var(--from-16-to-14px);
+          color: var(--neutral-400);
+        }
+      }
+    }
+  }
+}
