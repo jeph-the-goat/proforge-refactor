@@ -4,8 +4,8 @@ import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import ProForgeOnboarding from "@/components/onboarding/proforge-onboarding"
 import { clsx } from "clsx"
-import styles from "@/styles/onboarding/Onboarding.module.scss"
-import {Button, Section} from "@/components";
+import { Button, Section } from "@/components";
+import styles from "@/styles/onboarding/Loading.module.scss"
 
 interface SubscriptionData {
   subscriptionId: string;
@@ -51,7 +51,9 @@ function OnboardingContent() {
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to verify subscription');
+          console.error(errorData.error || 'Failed to verify subscription');
+          setIsProcessing(false);
+          return
         }
 
         const result = await response.json();
@@ -92,12 +94,12 @@ function OnboardingContent() {
       <Section
         title="Subscription Error"
         paragraph="There was a problem verifying your subscription. Please contact support if this issue persists."
-        extraClassName={clsx(styles.cSuccessPage, "c-success-page")}
+        extraClassName={clsx(styles.cOnboardingLoading, "c-onboarding-loading")}
       >
         <Button
           title="Return to Pricing"
           onClick={() => router.push("/#pricing")}
-          extraClassName="c-success-page-button"
+          extraClassName="c-onboarding-loading-button"
         >
           Return to Pricing
         </Button>
@@ -109,21 +111,15 @@ function OnboardingContent() {
   return (
     <Section
       title="Processing your subscription"
-      paragraph="Please wait..."
-      extraClassName={clsx(styles.cSuccessPage, "c-success-page")}>
+      paragraph="Please wait while we verify your subscription..."
+      extraClassName={clsx(styles.cOnboardingLoading, "c-onboarding-loading")}>
     </Section>
   )
 }
 
 function OnboardingSetup() {
   return (
-    <Suspense fallback={
-      <Section
-        title="Processing your subscription"
-        paragraph="Please wait..."
-        extraClassName={clsx(styles.cSuccessPage, "c-success-page")}>
-      </Section>
-    }>
+    <Suspense>
       <OnboardingContent />
     </Suspense>
   )
