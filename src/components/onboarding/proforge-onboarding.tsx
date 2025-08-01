@@ -13,7 +13,7 @@ import { ChartOfAccountsStep } from '@/components/onboarding/steps/chart-of-acco
 import { ModuleSelectionStep } from '@/components/onboarding/steps/module-selection-step';
 import { UserSetupStep } from '@/components/onboarding/steps/user-setup-step';
 import { ReviewStep } from '@/components/onboarding/steps/review-step';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import styles from '@/styles/onboarding/ProForgeOnboarding.module.scss';
 import {Subsection} from "@/components/form-elements/Subsection";
 import {OnboardingSidebar} from "@/components/onboarding/OnboardingSidebar";
@@ -254,7 +254,7 @@ export default function ProForgeOnboarding({
 
   return (
     <div
-      className={cn(styles.cProForgeOnboarding, "c-proforge-onboarding")}>
+      className={clsx(styles.cProForgeOnboarding, "c-proforge-onboarding")}>
       <OnboardingSidebar
         navElementHeaders={[
           'Welcome',

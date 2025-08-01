@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Check, Zap, Calendar, BarChart3, Truck, Bot, ShoppingCart } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 import { Switch } from '@/components/form-elements/Switch';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import { ModuleSelectionSchema, type ModuleSelection } from '@/lib/schemas/onboarding/module-selection.schema';
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import {Subsection} from "@/components/form-elements/Subsection";
@@ -182,7 +182,7 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
     return (
       <div
         key={module.id}
-        className={cn(
+        className={clsx(
           "c-module-card",
           isSelected && "is-selected",
           module.required && "is-required"
@@ -225,7 +225,7 @@ export function ModuleSelectionStep({ data, onUpdate }: ModuleSelectionStepProps
   };
 
   return (
-    <StepContentSection extraClassName={cn(styles.cModuleSelectionStep, "c-module-selection-step")}>
+    <StepContentSection extraClassName={clsx(styles.cModuleSelectionStep, "c-module-selection-step")}>
       <Subsection
       noTitle
       >

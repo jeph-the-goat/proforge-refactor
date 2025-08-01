@@ -7,7 +7,7 @@ import { Input } from '@/components/form-elements/Input';
 import { InputSelect } from '@/components/form-elements/InputSelect';
 import {Building2, Users, Shield, TrendingUp} from 'lucide-react';
 import { BusinessStructureSchema, type BusinessStructure } from '@/lib/schemas/onboarding/business-structure.schema';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import {Subsection} from "@/components/form-elements/Subsection";
 import styles from '@/styles/onboarding/steps/BusinessStructureStep.module.scss';
@@ -99,7 +99,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
 
   return (
     <StepContentSection
-      extraClassName={cn(styles.cBusinessStructureStep, "c-business-structure-step")}>
+      extraClassName={clsx(styles.cBusinessStructureStep, "c-business-structure-step")}>
       <Subsection
         title="Choose Your Business Type"
         extraClassName="c-selection"
@@ -110,7 +110,7 @@ export function BusinessStructureStep({ businessStructure, onUpdate }: BusinessS
             return (
               <div
                 key={type}
-                className={cn(
+                className={clsx(
                   "c-card",
                   isSelected && "is-selected"
                 )}

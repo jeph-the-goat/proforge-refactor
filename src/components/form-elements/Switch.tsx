@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import styles from '@/styles/form-elements/Switch.module.scss';
 
 interface SwitchProps {
@@ -24,7 +24,7 @@ export const Switch: React.FC<SwitchProps> = ({
   };
 
   return (
-    <label className={cn(styles.cSwitch, "c-switch", className)}>
+    <label className={clsx(styles.cSwitch, "c-switch", className)}>
       <input
         id={id}
         type="checkbox"

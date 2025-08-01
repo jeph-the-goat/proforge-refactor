@@ -5,7 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Switch } from '@/components/form-elements/Switch';
 import {Check, AlertCircle, Building2, User, Briefcase} from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import * as yup from 'yup';
 import type { OnboardingData } from '@/lib/schemas/onboarding';
 import { Separator } from "@/components";
@@ -56,7 +56,7 @@ export function ReviewStep({ data, onUpdate }: ReviewStepProps) {
   const totalPrice = selectedModules.length * 15; // Mock pricing
 
   return (
-    <StepContentSection extraClassName={cn(styles.cReviewStep, "c-review-step")}>
+    <StepContentSection extraClassName={clsx(styles.cReviewStep, "c-review-step")}>
       <Subsection
         icon={<Briefcase className="c-review-section-icon"/>}
         title="Company Information"

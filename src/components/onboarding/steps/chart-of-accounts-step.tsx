@@ -8,7 +8,7 @@ import { Label } from '@/components/form-elements/Label';
 import { Switch } from '@/components/form-elements/Switch';
 import { InputSelect } from '@/components/form-elements/InputSelect';
 import { ChartOfAccountsSchema, type ChartOfAccounts } from '@/lib/schemas/onboarding/chart-of-accounts.schema';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import {Subsection} from "@/components/form-elements/Subsection";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import styles from '@/styles/onboarding/steps/ChartOfAccountsStep.module.scss';
@@ -67,7 +67,7 @@ export function ChartOfAccountsStep({
 
   return (
     <StepContentSection
-      extraClassName={cn(styles.cChartOfAccountsStep, "c-chart-of-accounts-step")}>
+      extraClassName={clsx(styles.cChartOfAccountsStep, "c-chart-of-accounts-step")}>
       <Subsection
         title="Basic Settings"
         extraClassName="c-account-settings"

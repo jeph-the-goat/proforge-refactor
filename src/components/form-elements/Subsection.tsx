@@ -1,4 +1,4 @@
-import {cn} from "@lib/utils";
+import { clsx } from "clsx";
 import {Tooltip} from "@/components/form-elements/Tooltip";
 import {Edit2} from "lucide-react";
 import {Button} from "@/components";
@@ -78,7 +78,7 @@ export const Subsection = ({
   };
 
   return (
-    <section className={cn(styles.cSubsection, "c-subsection", last && "last",
+    <section className={clsx(styles.cSubsection, "c-subsection", last && "last",
       noBorder && "no-border", noTitle && "no-title", extraClassName)}>
       {renderModule()}
     </section>

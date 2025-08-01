@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { BusinessInfoSchema, type BusinessInfo } from '@/lib/schemas/onboarding/business-info.schema';
 import {Subsection} from "@/components/form-elements/Subsection";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
-import {cn} from "@lib/utils";
+import { clsx } from "clsx";
 import styles from '@/styles/onboarding/steps/WelcomeStep.module.scss';
 
 interface WelcomeStepProps {
@@ -75,7 +75,7 @@ export function WelcomeStep({data, onUpdate}: WelcomeStepProps) {
   };
 
   return (
-      <StepContentSection extraClassName={cn(styles.cWelcomeStep, "c-welcome-step")}>
+      <StepContentSection extraClassName={clsx(styles.cWelcomeStep, "c-welcome-step")}>
         <Subsection
           title="Company Info"
           extraClassName="c-company-section">

@@ -8,7 +8,7 @@ import { Plus, Trash2, UserPlus } from 'lucide-react';
 import { Input } from '@/components/form-elements/Input';
 import { Button } from '@/components/common/Button';
 import { UserSetupSchema, type UserSetup } from '@/lib/schemas/onboarding/user-setup.schema';
-import { cn } from '@/lib/utils';
+import { clsx } from "clsx";
 import {InputSelect} from "@/components";
 import {StepContentSection} from "@/components/onboarding/StepContentSection";
 import {Subsection} from "@/components/form-elements/Subsection";
@@ -145,7 +145,7 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
   };
 
   return (
-    <StepContentSection extraClassName={cn(styles.cUserSetupStep, "c-user-setup-step")}>
+    <StepContentSection extraClassName={clsx(styles.cUserSetupStep, "c-user-setup-step")}>
       <Subsection title="Administrator Account">
         <Controller
           name="adminUser.name"
@@ -273,7 +273,7 @@ export function UserSetupStep({ data, onUpdate }: UserSetupStepProps) {
             return (
               <div
                 key={dept}
-                className={cn(
+                className={clsx(
                   "c-department-item",
                   isSelected && "is-selected"
                 )}

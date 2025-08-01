@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '@/styles/form-elements/Label.module.scss';
-import {cn} from "@lib/utils";
+import { clsx } from "clsx";
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   title: string;
@@ -15,7 +15,7 @@ export const Label: React.FC<LabelProps> = ({
                                               ...props
                                             }) => {
   return (
-    <div className={cn(styles.cLabelSection, "c-label-section", extraClassName)}>
+    <div className={clsx(styles.cLabelSection, "c-label-section", extraClassName)}>
       <label className="c-label" {...props}>
         {title}
     </label>

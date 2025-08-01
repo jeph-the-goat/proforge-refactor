@@ -1,6 +1,6 @@
 import {useState} from "react";
 import styles from "@/styles/form-elements/Tooltip.module.scss"
-import {cn} from "@lib/utils";
+import { clsx } from "clsx";
 import {InfoIcon} from "lucide-react";
 
 interface TooltipProps {
@@ -19,7 +19,7 @@ export const Tooltip = ({content, extraClassName}: TooltipProps) => {
     <div
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
-      className={cn(styles.cTooltip, "c-tooltip", extraClassName)}
+      className={clsx(styles.cTooltip, "c-tooltip", extraClassName)}
     >
       {isVisible && (
         <div className="c-tooltip-content">

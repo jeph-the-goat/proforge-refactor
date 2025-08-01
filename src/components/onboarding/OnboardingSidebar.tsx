@@ -1,6 +1,6 @@
 import {Button, Section, Separator} from "@/components";
 import {CheckCircle} from "lucide-react";
-import {cn} from "@lib/utils";
+import {clsx} from "clsx";
 
 import { loadSavedProgress, clearSavedProgress } from "@hooks/onboarding/useSavedProgress";
 import styles from "@/styles/onboarding/Navbar.module.scss";
@@ -19,9 +19,9 @@ export const OnboardingSidebar =
   ({navElementHeaders, currentStep, setCurrentStep, isSubmitting, data, extraClassName}: OnboardingSidebarProps) => {
 
     return (
-      <section className={cn(styles.cOnboardingSidebar, "c-onboarding-sidebar", extraClassName)}>
+      <section className={clsx(styles.cOnboardingSidebar, "c-onboarding-sidebar", extraClassName)}>
         <Section
-          extraClassName={cn("c-onboarding-sidebar-header", extraClassName)}
+          extraClassName={clsx("c-onboarding-sidebar-header", extraClassName)}
           title="Setup Progress"
           paragraph="Complete your ProForge setup"
         >
@@ -40,7 +40,7 @@ export const OnboardingSidebar =
           {navElementHeaders.map((step, index) => (
             <div
               key={step}
-              className={cn(
+              className={clsx(
                 "c-onboarding-sidebar-step",
                 {
                   "is-current": currentStep === index + 1,

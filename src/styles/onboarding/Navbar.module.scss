@@ -32,6 +32,11 @@
         margin: 0;
         padding: 0;
 
+        .c-container {
+          row-gap: 0 !important;
+          margin-bottom: var(--px24);
+        }
+
         h2 {
           font-size: var(--px28);
           font-weight: var(--font-weight-bold);
