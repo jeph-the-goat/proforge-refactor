@@ -149,7 +149,7 @@ export async function createCheckoutSession(planConfig: PlanConfig) {
       mode: 'subscription',
       billing_address_collection: 'required',
       line_items: lineItems,
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${baseUrl}/onboarding?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#pricing`,
       metadata: {
         userCount: userCount.toString(),
