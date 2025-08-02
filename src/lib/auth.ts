@@ -7,7 +7,7 @@ import Github from "next-auth/providers/github"
 import Facebook from "next-auth/providers/facebook"
 import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@auth/prisma-adapter"
-import { prisma } from "@/lib/prisma"
+import prisma from "@/lib/prisma"
 import { verifyPassword } from "@/app/(auth)/actions"
 
 // Extend the built-in session types

@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/prisma'
+import prisma from "@/lib/prisma"
 import stripe from '@/lib/stripe'
 import type { Customer, User } from '@prisma/client'
 
