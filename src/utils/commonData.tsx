@@ -202,35 +202,35 @@ export const SectionLogoBannerList = [
 export const SectionTestimonialList = [
   {
     quote: "As a solo developer, I always struggled with juggling tools. This platform has been a game-changer, it's like having a whole team in one app!",
-    image: "https://i.pravatar.cc/150?img=21",
+    image: "/images/team/21.jpeg",
     name: "Jordan M.",
     jobTitle: "Indie Developer",
     function: "Solo Developer"
   },
   {
     quote: "Their community support is top-notch. I got answers to my questions in minutes, and their guides are super helpful for beginners and pros alike.",
-    image: "https://i.pravatar.cc/150?img=2",
+    image: "/images/team/2.jpeg",
     name: "Evan K.",
     jobTitle: "Smart Contract Developer",
     function: "Community Advocate"
   },
   {
     quote: "We needed to build and launch our dApp fast, and this platform delivered. The AI-driven contract builder saved us weeks of work!",
-    image: "https://i.pravatar.cc/150?img=6",
+    image: "/images/team/6.jpeg",
     name: "Rachel T.",
     jobTitle: "Founder of NovaChain",
     function: "Startup Founder"
   },
   {
     quote: "Our team of 20 used to spend hours syncing across platforms. Now, we collaborate effortlessly and deploy in half the time. This is a must-have!",
-    image: "https://i.pravatar.cc/150?img=10",
+    image: "/images/team/10.jpeg",
     name: "Michael L.",
     jobTitle: "Lead Engineer at Decentro Labs",
     function: "Enterprise Team Lead"
   },
   {
     quote: "As someone new to Web3, I found the tools easy to use and incredibly powerful. The interactive demo was the perfect introduction!",
-    image: "https://i.pravatar.cc/150?img=32",
+    image: "/images/team/32.jpeg",
     name: "Sofia G.",
     jobTitle: "Blockchain Enthusiast",
     function: "Web3 Enthusiast"
