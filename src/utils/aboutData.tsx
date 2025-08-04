@@ -44,36 +44,36 @@ export const AboutTeamMembers = [
   {
     name: "Marilyn Siphron",
     role: "Founder & Executive Chairman",
-    image: "/images/team/marilyn-siphron.jpg"
+    image: "/images/team/49.jpeg"
   },
   {
     name: "Alena Dias",
     role: "Co-Founder & CEO",
-    image: "/images/team/alena-dias.jpg"
+    image: "/images/team/54.jpeg"
   },
   {
     name: "Dulce Geidt",
     role: "Chief Technology Officer",
-    image: "/images/team/dulce-geidt.jpg"
+    image: "/images/team/48.jpeg"
   },
   {
     name: "Desirae Schleifer",
     role: "Marketing Director",
-    image: "/images/team/desirae-schleifer.jpg"
+    image: "/images/team/52.jpeg"
   },
   {
     name: "Roger Levin",
     role: "Head of Product Design",
-    image: "/images/team/roger-levin.jpg"
+    image: "/images/team/47.jpeg"
   },
   {
     name: "Justin Mango",
     role: "Lead Blockchain Engineer",
-    image: "/images/team/justin-mango.jpg"
+    image: "/images/team/44.jpeg"
   },
   {
     name: "Omar Geidt",
     role: "Community Manager",
-    image: "/images/team/omar-geidt.jpg"
+    image: "/images/team/39.jpeg"
   }
 ];

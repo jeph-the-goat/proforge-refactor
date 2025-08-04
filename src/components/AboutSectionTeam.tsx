@@ -25,7 +25,7 @@ export const AboutSectionTeam = () => {
           <article key={memberIdx} className="c-about-section-team-grid-card">
 
             <Avatar
-              image="https://i.pravatar.cc/150?img=49"
+              image={member.image}
               alt={member.name}
               size="lg"
             />

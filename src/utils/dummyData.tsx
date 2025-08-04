@@ -16,52 +16,52 @@ export const DummyOptions = [
 export const DummyUserList = [
   {
     id: "1",
-    avatar: "https://i.pravatar.cc/150?img=49",
+    avatar: "/images/team/49.jpeg",
     userName: "alexchen"
   },
   {
     id: "2",
-    avatar: "https://i.pravatar.cc/150?img=54",
+    avatar: "/images/team/54.jpeg",
     userName: "sarahwilson"
   },
   {
     id: "3",
-    avatar: "https://i.pravatar.cc/150?img=48",
+    avatar: "/images/team/48.jpeg",
     userName: "mikejohnson"
   },
   {
     id: "4",
-    avatar: "https://i.pravatar.cc/150?img=52",
+    avatar: "/images/team/52.jpeg",
     userName: "emilydavis"
   },
   {
     id: "5",
-    avatar: "https://i.pravatar.cc/150?img=47",
+    avatar: "/images/team/47.jpeg",
     userName: "davidbrown"
   },
   {
     id: "6",
-    avatar: "https://i.pravatar.cc/150?img=44",
+    avatar: "/images/team/44.jpeg",
     userName: "jessicalee"
   },
   {
     id: "7",
-    avatar: "https://i.pravatar.cc/150?img=39",
+    avatar: "/images/team/39.jpeg",
     userName: "ryanmiller"
   },
   {
     id: "8",
-    avatar: "https://i.pravatar.cc/150?img=31",
+    avatar: "/images/team/31.jpeg",
     userName: "sophiagarcia"
   },
   {
     id: "9",
-    avatar: "https://i.pravatar.cc/150?img=14",
+    avatar: "/images/team/14.jpeg",
     userName: "jamesanderson"
   },
   {
     id: "10",
-    avatar: "https://i.pravatar.cc/150?img=7",
+    avatar: "/images/team/7.jpeg",
     userName: "oliviataylor"
   }
 ];
